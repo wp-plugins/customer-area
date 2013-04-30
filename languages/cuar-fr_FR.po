@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-04-29 15:07+0100\n"
-"PO-Revision-Date: 2013-04-29 15:08+0100\n"
+"POT-Creation-Date: 2013-04-30 23:33+0100\n"
+"PO-Revision-Date: 2013-04-30 23:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -18,7 +18,7 @@ msgstr ""
 #: ../includes/settings.class.php:59 ../includes/settings.class.php:60
 #: ../includes/settings.view.php:22
 msgid "Customer Area"
-msgstr "Zone Client"
+msgstr "Espace Client"
 
 #: ../includes/settings.class.php:82
 msgid "General Settings"
@@ -33,9 +33,9 @@ msgid "Include the default stylesheet."
 msgstr "Inclure la feuille de style par défaut"
 
 #: ../includes/settings.class.php:98
-msgid "If not, you should style the slider yourself in your theme."
+msgid "If not, you should style the plugin yourself in your theme."
 msgstr ""
-"Si non, vous devrez mettre en forme le slider par vous-même dans votre thème."
+"Si non, vous devrez mettre en forme le plugin par vous-même dans votre thème."
 
 #: ../includes/settings.class.php:149
 msgid " is not a valid value"
@@ -55,208 +55,266 @@ msgstr "doit être plus grand que %s"
 msgid "must be lower than %s"
 msgstr "doit être plus petit que %s"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:71
-#: ../includes/core-addons/private-file/private-file-addon.class.php:79
-#: ../includes/core-addons/private-file/private-file-addon.class.php:94
-#: ../includes/core-addons/private-file/private-file-addon.class.php:103
-#: ../includes/core-addons/private-file/private-file-addon.class.php:113
-#: ../includes/core-addons/private-file/private-file-addon.class.php:114
-#: ../includes/core-addons/private-file/private-file-addon.class.php:131
-#: ../includes/core-addons/private-file/private-file-addon.class.php:163
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:1
+msgid "Hello"
+msgstr "Bonjour"
+
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:4
+msgid "You must login to access your own customer area."
+msgstr "Vous devez être connecté pour accéder à votre espace client"
+
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:5
+msgid ""
+"If you do not have an account yet, please register or contact us so that we "
+"can create it."
+msgstr ""
+"Si vous n'avez pas encore de compte utilisateur, merci de vous enregistrer "
+"ou de nous contacter pour que nous puissions le créer."
+
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:9
+msgid "Login"
+msgstr "Connexion"
+
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:10
+msgid "Register"
+msgstr "S'enregistrer"
+
+#: ../includes/core-addons/customer-page/templates/customer-page.template.php:2
+#, php-format
+msgid "Hello %s,"
+msgstr "Bonjour %s,"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:110
+#: ../includes/core-addons/private-file/private-file-addon.class.php:118
+#: ../includes/core-addons/private-file/private-file-addon.class.php:135
+#: ../includes/core-addons/private-file/private-file-addon.class.php:144
+#: ../includes/core-addons/private-file/private-file-addon.class.php:154
+#: ../includes/core-addons/private-file/private-file-addon.class.php:155
+#: ../includes/core-addons/private-file/private-file-addon.class.php:192
+#: ../includes/core-addons/private-file/private-file-addon.class.php:223
 msgid "download-file"
 msgstr "télécharger-fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:73
-#: ../includes/core-addons/private-file/private-file-addon.class.php:81
-#: ../includes/core-addons/private-file/private-file-addon.class.php:95
-#: ../includes/core-addons/private-file/private-file-addon.class.php:104
-#: ../includes/core-addons/private-file/private-file-addon.class.php:116
-#: ../includes/core-addons/private-file/private-file-addon.class.php:117
-#: ../includes/core-addons/private-file/private-file-addon.class.php:132
-#: ../includes/core-addons/private-file/private-file-addon.class.php:167
+#: ../includes/core-addons/private-file/private-file-addon.class.php:112
+#: ../includes/core-addons/private-file/private-file-addon.class.php:120
+#: ../includes/core-addons/private-file/private-file-addon.class.php:136
+#: ../includes/core-addons/private-file/private-file-addon.class.php:145
+#: ../includes/core-addons/private-file/private-file-addon.class.php:157
+#: ../includes/core-addons/private-file/private-file-addon.class.php:158
+#: ../includes/core-addons/private-file/private-file-addon.class.php:193
+#: ../includes/core-addons/private-file/private-file-addon.class.php:227
 msgid "view-file"
 msgstr "voir-fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:148
-#: ../includes/core-addons/private-file/private-file-addon.class.php:153
-msgid "You are not authorized to access this file"
-msgstr "Vouc n'êtes pas autorisé à accéder à ce fichier"
+#: ../includes/core-addons/private-file/private-file-addon.class.php:179
+msgid "You are not authorized to view this file"
+msgstr "Vous n'êtes pas autorisé à voir ce fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:285
-#: ../includes/core-addons/private-file/private-file-addon.class.php:296
+#: ../includes/core-addons/private-file/private-file-addon.class.php:209
+#: ../includes/core-addons/private-file/private-file-addon.class.php:214
+msgid "You are not authorized to access this file"
+msgstr "Vous n'êtes pas autorisé à accéder à ce fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:345
+#: ../includes/core-addons/private-file/private-file-addon.class.php:356
 msgid "Customer Files"
 msgstr "Fichiers clients"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:286
+#: ../includes/core-addons/private-file/private-file-addon.class.php:346
 msgid "Customer File"
 msgstr "Fichier client"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:287
+#: ../includes/core-addons/private-file/private-file-addon.class.php:347
 msgid "Add New"
 msgstr "Ajouter un nouveau"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:288
+#: ../includes/core-addons/private-file/private-file-addon.class.php:348
 msgid "Add New Customer File"
 msgstr "Ajouter un fichier client"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:289
+#: ../includes/core-addons/private-file/private-file-addon.class.php:349
 msgid "Edit Customer File"
 msgstr "Editer un fichier client"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:290
+#: ../includes/core-addons/private-file/private-file-addon.class.php:350
 msgid "New Customer File"
 msgstr "Nouveau fichier client"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:291
+#: ../includes/core-addons/private-file/private-file-addon.class.php:351
 msgid "View Customer File"
 msgstr "Voir le fichier client"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:292
+#: ../includes/core-addons/private-file/private-file-addon.class.php:352
 msgid "Search Customer Files"
 msgstr "Chercher des fichiers privés : %s"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:293
+#: ../includes/core-addons/private-file/private-file-addon.class.php:353
 msgid "No customer files found"
 msgstr "Aucun fichier client trouvé"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:294
+#: ../includes/core-addons/private-file/private-file-addon.class.php:354
 msgid "No customer files found in Trash"
 msgstr "Aucun fichier client trouvé dans la corbeille"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:295
+#: ../includes/core-addons/private-file/private-file-addon.class.php:355
 msgid "Parent Customer File:"
 msgstr "Fichier client parent :"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:314
-msgid "private-file"
-msgstr "fichier-privé"
-
-#: ../includes/core-addons/private-file/private-file-addon.class.php:330
-#: ../includes/core-addons/private-file/private-file-addon.class.php:346
+#: ../includes/core-addons/private-file/private-file-addon.class.php:388
+#: ../includes/core-addons/private-file/private-file-addon.class.php:404
 msgid "File Categories"
 msgstr "Catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:331
+#: ../includes/core-addons/private-file/private-file-addon.class.php:389
 msgid "File Category"
 msgstr "Catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:332
+#: ../includes/core-addons/private-file/private-file-addon.class.php:390
 msgid "Search File Categories"
 msgstr "Chercher des catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:333
+#: ../includes/core-addons/private-file/private-file-addon.class.php:391
 msgid "Popular File Categories"
 msgstr "Catégories de fichier populaires"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:334
+#: ../includes/core-addons/private-file/private-file-addon.class.php:392
 msgid "All File Categories"
 msgstr "Toutes les catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:335
+#: ../includes/core-addons/private-file/private-file-addon.class.php:393
 msgid "Parent File Category"
 msgstr "Catégorie de fichier parente"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:336
+#: ../includes/core-addons/private-file/private-file-addon.class.php:394
 msgid "Parent File Category:"
 msgstr "Catégorie de fichier parente :"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:337
+#: ../includes/core-addons/private-file/private-file-addon.class.php:395
 msgid "Edit File Category"
 msgstr "Modifier la catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:338
+#: ../includes/core-addons/private-file/private-file-addon.class.php:396
 msgid "Update File Category"
 msgstr "Mettre à jour la catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:339
+#: ../includes/core-addons/private-file/private-file-addon.class.php:397
 msgid "Add New File Category"
 msgstr "Ajouter une catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:340
+#: ../includes/core-addons/private-file/private-file-addon.class.php:398
 msgid "New File Category"
 msgstr "Nouvelle catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:341
+#: ../includes/core-addons/private-file/private-file-addon.class.php:399
 msgid "Separate file categories with commas"
 msgstr "Séparez les catégories de fichier avec des virgules"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:343
+#: ../includes/core-addons/private-file/private-file-addon.class.php:401
 msgid "Add or remove file categories"
 msgstr "Ajouter ou enlever des catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:344
+#: ../includes/core-addons/private-file/private-file-addon.class.php:402
 msgid "Choose from the most used file categories"
 msgstr "Choisir parmi les catégories de fichier les plus courantes"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:358
+#: ../includes/core-addons/private-file/private-file-addon.class.php:416
 msgid "private-file-category"
 msgstr "catégorie-fichier-privé"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:55
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:122
+#: ../includes/core-addons/private-file/private-file-addon.class.php:431
+msgid "private-file"
+msgstr "fichier-privé"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:463
+msgid "unknown"
+msgstr "inconnu"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:56
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:123
 msgid "Owner"
 msgstr "Propriétaire"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:71
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:72
 msgid "Nobody"
 msgstr "Personne"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:115
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:116
 msgid "File"
 msgstr "Fichier"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:142
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:143
 msgid "Current file:"
 msgstr "Fichier actuel :"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:150
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:151
 msgid "Upload a file"
 msgstr "Téléverser un fichier"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:171
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:172
 msgid "Select the owner of this file"
 msgstr "Sélectionner le propriétaire de ce fichier"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:289
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:290
 #, php-format
 msgid "This file type is not allowed. You can only upload: %s"
 msgstr ""
 "Ce type de fichier n'est pas autorisé. Vous pouvez seulement téléverser : %s"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:313
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:314
 msgid "An unknown error happened while uploading your file."
 msgstr ""
 "Une erreur inconnue est survenue lors du téléversement de votre fichier."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:317
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:318
 #, php-format
 msgid "An error happened while uploading your file: %s"
 msgstr "Une erreur est survenue lors du téléversement de votre fichier : %s"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:370
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:371
 msgid "Private Files"
 msgstr "Fichiers privés"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:379
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:380
 msgid "Show after post"
 msgstr "Après l'article"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:386
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:387
 msgid ""
 "Show the view and download links below the post content for a customer file."
 msgstr ""
 "Afficher les liens pour voir ou télécharger un fichier sous le contenu d'un "
 "article représentant un fichier client."
 
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:4
-#, php-format
-msgid "View %s"
-msgstr "Voir %s"
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:2
+msgid "Associated file"
+msgstr "Fichier associé"
 
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:6
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:11
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:12
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:6
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:7
+msgid "View"
+msgstr "Voir"
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:15
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:16
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:10
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:11
+msgid "Download"
+msgstr "Télécharger"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_no_user_files.template.php:1
+msgid "You currently have no files."
+msgstr "Vous n'avez aucun fichier actuellement."
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files.template.php:3
+msgid "Your files"
+msgstr "Vos fichiers"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:2
 #, php-format
-msgid "Download %s"
-msgstr "Télécharger %s"
+msgid "Added on %s"
+msgstr "Ajouté le %s"
 
 #~ msgid "Categories"
 #~ msgstr "Catégories"

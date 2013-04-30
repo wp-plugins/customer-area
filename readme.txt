@@ -16,17 +16,20 @@ As of today, private content means files: you upload files for your customer, an
 or download them on his page.
 
 **Current features**
+
 * Secure customer area, accessible to logged-in users
 * Private files, that can be assigned to a particular user and will get listed in its customer area
 * Kick-ass filtering thanks to the integration of the [jQuery shuffle plugin](http://vestride.github.com/Shuffle)
  
 **Coming soon**
+
 * Email notifications
 * More private content type (messages/...)
 
 If you like our plugins, you might want to [check our website](http://www.marvinlabs.com) for more.
 
 If you want to get updates about our plugins, you can:
+
 * [Follow use on Twitter](http://twitter.com/marvinlabs)
 * [Follow use on Google+](https://plus.google.com/u/0/117677945360605555441)
 * [Follow use on Facebook](http://www.facebook.com/studio.marvinlabs)

@@ -44,6 +44,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		add_action( 'template_redirect', array( &$this, 'protect_access' ) );
 		add_filter( 'request', array( &$this, 'ensure_endpoint_queryvar_values' ) );
 		
+		add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
+		
 		// Init the admin interface if needed
 		if ( is_admin() ) {
 			$this->admin_interface = new CUAR_PrivateFileAdminInterface( $plugin, $this );
@@ -51,6 +53,35 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			$this->frontend_interface = new CUAR_PrivateFileFrontendInterface( $plugin, $this );
 		}
 	}	
+	
+	/*------- GENERAL MAINTAINANCE FUNCTIONS -------------------------------------------------------------------------*/
+	
+	/**
+	 * Delete the files when a post is deleted
+	 * @param int $post_id
+	 */
+	public function before_post_deleted( $post_id ) {
+		cuar_log_debug( "before_post_deleted " . $post_id );
+			
+		if ( get_post_type( $post_id )!='cuar_private_file' ) return;
+
+		cuar_log_debug( "before_post_deleted " . get_post_type( $post_id ) );
+		
+		$owner_id = $this->get_file_owner_id( $post_id );
+		$filename = $this->get_file_name( $post_id );
+		if ( empty( $filename ) || !$owner_id ) return;
+
+		cuar_log_debug( "before_post_deleted " . $filename );
+		
+		$filepath = $this->plugin->get_user_file_path( $owner_id, $filename );		
+
+		cuar_log_debug( "before_post_deleted " . $filepath );
+		
+		if ( file_exists( $filepath ) ) {
+			unlink( $filepath );
+			cuar_log_debug( "File deleted because the post has been removed:" . $filepath );
+		}
+	}
 	
 	/*------- FUNCTIONS TO ACCESS THE POST META ----------------------------------------------------------------------*/
 
@@ -60,7 +91,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @param int $post_id
 	 * @return boolean|int
 	 */
-	public static function get_file_owner_id( $post_id ) {
+	public function get_file_owner_id( $post_id ) {
 		$owner_id = get_post_meta( $post_id, 'cuar_owner', true );
 		if ( !$owner_id || empty( $owner_id ) ) return false;
 		return apply_filters( 'cuar_get_file_owner_id', $owner_id );
@@ -72,7 +103,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @param int $post_id
 	 * @return string|mixed
 	 */
-	public static function get_file_name( $post_id ) {
+	public function get_file_name( $post_id ) {
 		$file = get_post_meta( $post_id, 'cuar_private_file_file', true );	
 		if ( !$file || empty( $file ) ) return '';	
 		return apply_filters( 'cuar_get_file_name', $file['file'] );
@@ -84,7 +115,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @param int $post_id
 	 * @return string|mixed
 	 */
-	public static function get_file_type( $post_id ) {
+	public function get_file_type( $post_id ) {
 		$file = get_post_meta( $post_id, 'cuar_private_file_file', true );	
 		if ( !$file || empty( $file ) ) return '';	
 		return apply_filters( 'cuar_get_file_type', pathinfo( $file['file'], PATHINFO_EXTENSION ) );

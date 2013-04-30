@@ -25,96 +25,60 @@ $files_query = new WP_Query( apply_filters( 'cuar_user_files_query_parameters', 
 
 <?php if ( $files_query->have_posts() ) : ?>
 
-<ul class="filter-options">
-    <li data-group="all" class="active">All</li>
-    <li data-group="1">Wallpapers</li>
-    <li data-group="2">Graphic Design</li>
-    <li data-group="3">Photography</li>
-</ul>
+<?php 
+	$item_template = $this->plugin->get_template_file_path(
+			CUAR_INCLUDES_DIR . '/core-addons/private-file',
+			'private-file-customer_area_user_file_item.template.php',
+			'templates' ); 
 
-<table class="cuar-private-file-list">
-  <tbody>
+	$current_year = '';
+?>
+
+<div class="accordion-container">		
+	
 <?php 	while ( $files_query->have_posts() ) : $files_query->the_post(); global $post; ?>
 
-<?php 	$i = rand(0, 4); ?>
+<?php 		if ( empty( $current_year ) ) : 
+				$current_year = get_the_date( 'Y' ); ?>
+				
+<h4 class="accordion-section-title"><?php echo $current_year; ?></h4>
+<div class="accordion-section-content"><table class="cuar-private-file-list"><tbody>
+	
+<?php 		elseif ( $current_year!=get_the_date( 'Y' ) ) : 
+				$current_year = get_the_date( 'Y' ); ?>
+				
+</tbody></table></div>
+<h4><?php echo $current_year; ?></h4>
+<div class="accordion-section-content"><table class="cuar-private-file-list"><tbody>
 
-		<tr class="cuar-private-file" data-groups='["<?php echo $i; ?>"]'>
-		<td><?php echo $i; ?></td>
-<?php 		include( $this->plugin->get_template_file_path(
-					CUAR_INCLUDES_DIR . '/core-addons/private-file',
-					'private-file-customer_area_user_file_item.template.php',
-					'templates' ));	?>
-		</tr>
+<?php 		endif; ?>
+
+	<tr class="cuar-private-file"><?php	include( $item_template ); ?></tr>
 		
 <?php 	endwhile; ?>
 
-<?php 	while ( $files_query->have_posts() ) : $files_query->the_post(); global $post; ?>
-
-<?php 	$i = rand(0, 4); ?>
-
-		<tr class="cuar-private-file" data-groups='["<?php echo $i; ?>"]'>
-		<td><?php echo $i; ?></td>
-<?php 		include( $this->plugin->get_template_file_path(
-					CUAR_INCLUDES_DIR . '/core-addons/private-file',
-					'private-file-customer_area_user_file_item.template.php',
-					'templates' ));	?>
-		</tr>
-		
-<?php 	endwhile; ?>
-
-<?php 	while ( $files_query->have_posts() ) : $files_query->the_post(); global $post; ?>
-
-<?php 	$i = rand(0, 4); ?>
-
-		<tr class="cuar-private-file" data-groups='["<?php echo $i; ?>"]'>
-		<td><?php echo $i; ?></td>
-<?php 		include( $this->plugin->get_template_file_path(
-					CUAR_INCLUDES_DIR . '/core-addons/private-file',
-					'private-file-customer_area_user_file_item.template.php',
-					'templates' ));	?>
-		</tr>
-		
-<?php 	endwhile; ?>
-
-<?php 	while ( $files_query->have_posts() ) : $files_query->the_post(); global $post; ?>
-
-<?php 	$i = rand(0, 4); ?>
-
-		<tr class="cuar-private-file" data-groups='["<?php echo $i; ?>"]'>
-		<td><?php echo $i; ?></td>
-<?php 		include( $this->plugin->get_template_file_path(
-					CUAR_INCLUDES_DIR . '/core-addons/private-file',
-					'private-file-customer_area_user_file_item.template.php',
-					'templates' ));	?>
-		</tr>
-		
-<?php 	endwhile; ?>
-
-	</tbody>
-</table>
+</tbody></table></div>
 
 <script type="text/javascript">
 <!--
 jQuery(document).ready(function($) {
-    // Set up button clicks
-    $('.filter-options li').on('click', function() {
-        var $this = $(this),
-            $grid = $('table.cuar-private-file-list tbody');
-
+	$( "div.accordion-container" ).accordion({
+			heightStyle: "content",
+			header: "h4",
+			animate: 150
+		});
+	
+	$('.filter-options li').click(function() {
         // Hide current label, show current label in title
         $('.filter-options .active').removeClass('active');
-        $this.addClass('active');
+        $(this).addClass('active');
 
-        // Filter elements
-        $grid.shuffle($this.data('group'));
-    });
-	
-	var options = {
-	    group : 'all', // Which category to show
-	    speed : 800, // Speed of the transition (in milliseconds). 800 = .8 seconds
-	    easing : 'ease-out' // css easing function to use
-	};
-	$('table.cuar-private-file-list tbody').shuffle(options);
+        // Do the filtering
+	    var tag = $(this).data('tag');
+	    var firstRow = $( 'table.cuar-private-file-list tr:first' );
+
+		processRow( $, firstRow, tag );
+	});
 });
 //-->
 </script>

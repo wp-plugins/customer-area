@@ -68,9 +68,8 @@ class CUAR_PrivateFileFrontendInterface {
 
 	/**
 	 * Disable the navigation on the single page templates for private files
-	 * 
-	 * @todo improve this by getting the proper previous/next file for the same owner
 	 */
+	// TODO improve this by getting the proper previous/next file for the same owner
 	public function disable_single_post_navigation( $where, $in_same_cat, $excluded_categories ) {
 		if ( get_post_type()=='cuar_private_file' )	return "WHERE 1=0";		
 		return $where;
@@ -79,15 +78,11 @@ class CUAR_PrivateFileFrontendInterface {
 	/**
 	 * Loads the required javascript files (only when not in admin area)
 	 */
+	// TODO Load only on the customer area page
 	public function load_scripts() {
 		if ( is_admin() ) return;
 		
-		if ( apply_filters( 'cuar_private_file_include_jquery.shuffle', true ) ) {		
-			wp_enqueue_script(
-				'jquery.shuffle',
-				$this->plugin->get_frontend_theme_url() . '/jquery.shuffle.min.js', 
-				array( 'jquery' ) );
-		}
+		wp_enqueue_script( 'jquery-ui-accordion' );
 	}
 	
 	/** @var CUAR_Plugin */

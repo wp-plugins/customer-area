@@ -1,5 +1,6 @@
 <td class="title">
-	<a href="<?php the_permalink(); ?>" title="<?php esc_attr_e( 'Show description', 'cuar' ); ?>"><?php the_title(); ?></a>
+	<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Added on %s', 'cuar' ), get_the_date() ) ); ?>">
+		<?php the_title(); ?></a>
 </td>
 <td class="view-link">
 	<a href="<?php CUAR_PrivateFileThemeUtils::the_file_link( get_the_ID(), 'view' ); ?>" title="<?php esc_attr_e( 'View', 'cuar' ); ?>">	

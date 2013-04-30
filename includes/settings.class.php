@@ -1,0 +1,293 @@
+<?php
+/*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+*/
+
+
+if (!class_exists('CUAR_Settings')) :
+
+/**
+ * Creates the UI to change the plugin settings in the admin area. Also used to access the plugin settings
+* stored in the DB (@see CUAR_Plugin::get_option)
+*/
+class CUAR_Settings {
+
+	public function __construct( $plugin ) {
+		$this->plugin = $plugin;
+		$this->setup();
+		$this->reload_options();
+	}
+
+	/**
+	 * Get the value of a particular plugin option
+	 *
+	 * @param string $option_id the ID of the option to get
+	 * @return mixed the value
+	 */
+	public function get_option( $option_id ) {
+		return $this->options[ $option_id ];
+	}
+
+	/**
+	 * Setup the WordPress hooks we need
+	 */
+	public function setup() {
+		if ( is_admin() ) {
+			add_action('admin_menu', array( &$this, 'add_settings_menu_item' ) );
+			add_action('admin_init', array( &$this, 'page_init' ) );
+		}
+	}
+
+	/**
+	 * Add the menu item
+	 */
+	public function add_settings_menu_item() {
+		add_options_page(
+			__( 'Customer Area', 'cuar' ),
+			__( 'Customer Area', 'cuar' ),
+			'manage_options',
+			self::$OPTIONS_PAGE_SLUG,
+			array( &$this, 'print_settings_page' ) );
+	}
+
+	/**
+	 * Output the settings page
+	 */
+	public function print_settings_page(){
+		include( CUAR_INCLUDES_DIR . '/settings.view.php' );
+	}
+
+	/**
+	 * Register the settings
+	 */
+	public function page_init(){
+		register_setting( self::$OPTIONS_GROUP, self::$OPTIONS_GROUP, array( &$this, 'validate_options' ) );
+
+		// General settings
+		add_settings_section(
+				'cuar_section_general_settings',
+				__('General Settings', 'cuar'),
+				array( &$this, 'print_section_info_general_settings' ),
+				self::$OPTIONS_PAGE_SLUG
+			);
+			
+		add_settings_field(
+				self::$OPTION_INCLUDE_CSS,
+				__('Include CSS', 'cuar'),
+				array( &$this, 'print_input_field' ),
+				self::$OPTIONS_PAGE_SLUG,
+				'cuar_section_general_settings',
+				array(
+						'option_id' => self::$OPTION_INCLUDE_CSS,
+						'type' 		=> 'checkbox',
+						'caption'	=> __( 'Include the default stylesheet.', 'cuar' )
+										. '<p class="description">'
+										. __( 'If not, you should style the plugin yourself in your theme.', 'cuar' )
+										. '</p>' 
+					)
+			);
+		
+		// Allow addons to list their settings here
+		do_action( 'cuar_addon_print_settings', $this );
+	}
+
+	/**
+	 * Save the plugin settings
+	 * @param array $input The new option values
+	 * @return
+	 */
+	public function validate_options( $input ) {
+		$validated = array();
+		 
+		// Build the trusted options array
+		$this->validate_boolean( $input, $validated, self::$OPTION_INCLUDE_CSS );
+		 
+		// Allow addons to validate their settings here
+		$validated = apply_filters( 'cuar_addon_validate_options', $validated, $this, $input );
+		
+		$this->options = $validated;
+		return $validated;
+	}
+
+	/* ------------ VALIDATION HELPERS ------------------------------------------------------------------------------ */
+
+	/**
+	 * Validate a boolean value within an array
+	 *
+	 * @param array $input Input array
+	 * @param array $validated Output array
+	 * @param string $option_id Key of the value to check in the input array
+	 */
+	public function validate_boolean( $input, &$validated, $option_id ) {
+		$validated[ $option_id ] = isset( $input[ $option_id ] ) ? true : false;
+	}
+
+	/**
+	 * Validate an enum value within an array
+	 *
+	 * @param array $input Input array
+	 * @param array $validated Output array
+	 * @param string $option_id Key of the value to check in the input array
+	 * @param array $enum_values Array of possible values
+	 */
+	public function validate_enum( $input, &$validated, $option_id, $enum_values ) {
+		if ( !in_array( $input[ $option_id ], $enum_values ) ) {
+			add_settings_error( $option_id, 'settings-errors',
+			$option_id . ': ' . $input[ $option_id ] . __( ' is not a valid value', 'cuar' ), 'error' );
+
+			$validated[ $option_id ] = $this->default_options[ $option_id ];
+			return;
+		}
+		 
+		$validated[ $option_id ] = $input[ $option_id ];
+	}
+
+	/**
+	 * Validate an integer value within an array
+	 *
+	 * @param array $input Input array
+	 * @param array $validated Output array
+	 * @param string $option_id Key of the value to check in the input array
+	 * @param int $min Min value for the int (set to null to ignore check)
+	 * @param int $max Max value for the int (set to null to ignore check)
+	 */
+	public function validate_int( $input, &$validated, $option_id, $min = null, $max = null ) {
+		// Must be an int
+		if ( !is_int( intval( $input[ $option_id ] ) ) ) {
+			add_settings_error( $option_id, 'settings-errors',
+			$option_id . ': ' . __( 'must be an integer', 'cuar' ), 'error' );
+
+			$validated[ $option_id ] = $this->default_options[ $option_id ];
+			return;
+		}
+		 
+		// Must be > min
+		if ( $min!==null && $input[ $option_id ] < $min ) {
+			add_settings_error( $option_id, 'settings-errors',
+			$option_id . ': ' . sprintf( __( 'must be greater than %s', 'cuar' ), $min ), 'error' );
+
+			$validated[ $option_id ] = $this->default_options[ $option_id ];
+			return;
+		}
+		 
+		// Must be < max
+		if ( $max!==null && $input[ $option_id ] > $max ) {
+			add_settings_error( $option_id, 'settings-errors',
+			$option_id . ': ' . sprintf( __( 'must be lower than %s', 'cuar' ), $max ), 'error' );
+
+			$validated[ $option_id ] = $this->default_options[ $option_id ];
+			return;
+		}
+		 
+		// All good
+		$validated[ $option_id ] = intval( $input[ $option_id ] );
+	}
+
+	/* ------------ SECTIONS OUTPUT --------------------------------------------------------------------------------- */
+
+	public function print_section_info_general_settings() {
+		// echo '<p>' . __( 'Some general plugin options.', 'cuar' ) . '</p>';
+	}
+
+	/* ------------ FIELDS OUTPUT ----------------------------------------------------------------------------------- */
+
+	/**
+	 * Output a text field for a setting
+	 *
+	 * @param string $option_id
+	 * @param string $type
+	 * @param string $caption
+	 */
+	public function print_input_field( $args ) {
+		extract( $args );
+		 
+		if ( $type=='checkbox' ) {
+			echo sprintf( '<input type="%s" id="%s" name="%s[%s]" value="open" %s/> %s',
+					esc_attr( $type ),
+					esc_attr( $option_id ),
+					self::$OPTIONS_GROUP,
+					esc_attr( $option_id ),
+					( $this->options[ $option_id ]!=0 ) ? 'checked="checked" ' : '',
+					$caption
+			);
+		} else {
+			echo sprintf( '<input type="%s" id="%s" name="%s[%s]" value="%s" /> %s',
+					esc_attr( $type ),
+					esc_attr( $option_id ),
+					self::$OPTIONS_GROUP,
+					esc_attr( $option_id ),
+					esc_attr( $this->options[ $option_id ] ),
+					$caption
+			);
+		}
+	}
+
+	/**
+	 * Output a select field for a setting
+	 *
+	 * @param string $option_id
+	 * @param array  $options
+	 * @param string $caption
+	 */
+	public function print_select_field( $args ) {
+		extract( $args );
+		 
+		echo sprintf( '<select id="%s" name="%s[%s]">',
+				esc_attr( $option_id ),
+				self::$OPTIONS_GROUP,
+				esc_attr( $option_id ) );
+		 
+		foreach ( $options as $value => $label ) {
+			$selected = ( $this->options[ $option_id ] == $value ) ? 'selected="selected"' : '';
+
+			echo sprintf( '<option value="%s" %s>%s</option>', esc_attr( $value ), $selected, $label );
+		}
+		 
+		echo '</select>' . $caption;
+	}
+
+	/* ------------ OTHER FUNCTIONS --------------------------------------------------------------------------------- */
+
+	/**
+	 * Load the options (and defaults if the options do not exist yet
+	 */
+	private function reload_options() {
+		$current_options = get_option( CUAR_Settings::$OPTIONS_GROUP );
+		$this->default_options = array(
+				self::$OPTION_INCLUDE_CSS 					=> true,
+		);
+
+		$this->default_options = apply_filters( 'cuar_default_options', $this->default_options );
+		
+		if ( ! is_array( $current_options ) ) $current_options = array();
+		$this->options = array_merge( $this->default_options, $current_options );
+	}
+
+	public static $OPTIONS_PAGE_SLUG = 'cuar-settings';
+	public static $OPTIONS_GROUP = 'cuar_options';
+
+	// General options
+	public static $OPTION_INCLUDE_CSS	 				= 'include_css';
+
+
+	/** @var CUAR_Plugin The plugin instance */
+	private $plugin;
+
+	/** @var array */
+	private $default_options;
+}
+
+endif; // if (!class_exists('CUAR_Settings')) :

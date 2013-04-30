@@ -1,0 +1,81 @@
+/* -= File links */
+.cuar-private-file .view-link a, .cuar-private-file .download-link a {
+	background: url('images/icons.png') top left no-repeat;
+	
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	
+	text-decoration: none;
+	
+	text-indent: 100%;
+  	white-space: nowrap;
+  	overflow: hidden;
+}
+
+.cuar-private-file .view-link a {
+	background-position: -20px 0px;
+}
+
+.cuar-private-file .view-link a:hover {
+	background-position: -20px -19px;
+}
+
+.cuar-private-file .download-link a {
+	background-position: 0px 0px;
+}
+
+.cuar-private-file .download-link a:hover {
+	background-position: 0px -19px;
+}
+
+/* -= File list */
+.cuar-private-file-list {
+	width: 100%;
+	margin: 1em 0;
+	padding: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.cuar-private-file-list,
+.cuar-private-file-list tr,
+.cuar-private-file-list td {
+	border: none;
+	min-height: 40px;
+}
+
+.cuar-private-file-list td a,
+.cuar-private-file-list td a:hover,
+.cuar-private-file-list td a:visited {
+	text-decoration: none;
+	vertical-align: middle;
+}
+	
+.cuar-private-file-list .title {
+	width: 100%;
+}
+
+.cuar-private-file-list .title a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+.cuar-private-file .view-link, .cuar-private-file .download-link {
+	width: 30px;
+	text-align: right;
+}
+	
+.cuar-private-file-list .cuar-private-file {
+}
+
+.cuar-private-file-list .cuar-private-file:hover {
+	background: #fafafa;
+	cursor: pointer;
+}
+
+/* -= File after post */
+.cuar-private-file-container {
+	margin-top: 4em;
+}

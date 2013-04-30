@@ -1,0 +1,560 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Customer Area\n"
+"POT-Creation-Date: 2013-04-29 15:07+0100\n"
+"PO-Revision-Date: 2013-04-29 15:08+0100\n"
+"Last-Translator: \n"
+"Language-Team: MarvinLabs\n"
+"Language: FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: _x;_e;__;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../includes/settings.class.php:59 ../includes/settings.class.php:60
+#: ../includes/settings.view.php:22
+msgid "Customer Area"
+msgstr "Zone Client"
+
+#: ../includes/settings.class.php:82
+msgid "General Settings"
+msgstr "Réglages généraux"
+
+#: ../includes/settings.class.php:89
+msgid "Include CSS"
+msgstr "Inclure le CSS"
+
+#: ../includes/settings.class.php:96
+msgid "Include the default stylesheet."
+msgstr "Inclure la feuille de style par défaut"
+
+#: ../includes/settings.class.php:98
+msgid "If not, you should style the slider yourself in your theme."
+msgstr ""
+"Si non, vous devrez mettre en forme le slider par vous-même dans votre thème."
+
+#: ../includes/settings.class.php:149
+msgid " is not a valid value"
+msgstr "n'est pas une valeur valide"
+
+#: ../includes/settings.class.php:171
+msgid "must be an integer"
+msgstr "doit être un entier"
+
+#: ../includes/settings.class.php:180
+#, php-format
+msgid "must be greater than %s"
+msgstr "doit être plus grand que %s"
+
+#: ../includes/settings.class.php:189
+#, php-format
+msgid "must be lower than %s"
+msgstr "doit être plus petit que %s"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:71
+#: ../includes/core-addons/private-file/private-file-addon.class.php:79
+#: ../includes/core-addons/private-file/private-file-addon.class.php:94
+#: ../includes/core-addons/private-file/private-file-addon.class.php:103
+#: ../includes/core-addons/private-file/private-file-addon.class.php:113
+#: ../includes/core-addons/private-file/private-file-addon.class.php:114
+#: ../includes/core-addons/private-file/private-file-addon.class.php:131
+#: ../includes/core-addons/private-file/private-file-addon.class.php:163
+msgid "download-file"
+msgstr "télécharger-fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:73
+#: ../includes/core-addons/private-file/private-file-addon.class.php:81
+#: ../includes/core-addons/private-file/private-file-addon.class.php:95
+#: ../includes/core-addons/private-file/private-file-addon.class.php:104
+#: ../includes/core-addons/private-file/private-file-addon.class.php:116
+#: ../includes/core-addons/private-file/private-file-addon.class.php:117
+#: ../includes/core-addons/private-file/private-file-addon.class.php:132
+#: ../includes/core-addons/private-file/private-file-addon.class.php:167
+msgid "view-file"
+msgstr "voir-fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:148
+#: ../includes/core-addons/private-file/private-file-addon.class.php:153
+msgid "You are not authorized to access this file"
+msgstr "Vouc n'êtes pas autorisé à accéder à ce fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:285
+#: ../includes/core-addons/private-file/private-file-addon.class.php:296
+msgid "Customer Files"
+msgstr "Fichiers clients"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:286
+msgid "Customer File"
+msgstr "Fichier client"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:287
+msgid "Add New"
+msgstr "Ajouter un nouveau"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:288
+msgid "Add New Customer File"
+msgstr "Ajouter un fichier client"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:289
+msgid "Edit Customer File"
+msgstr "Editer un fichier client"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:290
+msgid "New Customer File"
+msgstr "Nouveau fichier client"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:291
+msgid "View Customer File"
+msgstr "Voir le fichier client"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:292
+msgid "Search Customer Files"
+msgstr "Chercher des fichiers privés : %s"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:293
+msgid "No customer files found"
+msgstr "Aucun fichier client trouvé"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:294
+msgid "No customer files found in Trash"
+msgstr "Aucun fichier client trouvé dans la corbeille"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:295
+msgid "Parent Customer File:"
+msgstr "Fichier client parent :"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:314
+msgid "private-file"
+msgstr "fichier-privé"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:330
+#: ../includes/core-addons/private-file/private-file-addon.class.php:346
+msgid "File Categories"
+msgstr "Catégories de fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:331
+msgid "File Category"
+msgstr "Catégorie de fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:332
+msgid "Search File Categories"
+msgstr "Chercher des catégories de fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:333
+msgid "Popular File Categories"
+msgstr "Catégories de fichier populaires"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:334
+msgid "All File Categories"
+msgstr "Toutes les catégories de fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:335
+msgid "Parent File Category"
+msgstr "Catégorie de fichier parente"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:336
+msgid "Parent File Category:"
+msgstr "Catégorie de fichier parente :"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:337
+msgid "Edit File Category"
+msgstr "Modifier la catégorie de fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:338
+msgid "Update File Category"
+msgstr "Mettre à jour la catégorie de fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:339
+msgid "Add New File Category"
+msgstr "Ajouter une catégorie de fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:340
+msgid "New File Category"
+msgstr "Nouvelle catégorie de fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:341
+msgid "Separate file categories with commas"
+msgstr "Séparez les catégories de fichier avec des virgules"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:343
+msgid "Add or remove file categories"
+msgstr "Ajouter ou enlever des catégories de fichier"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:344
+msgid "Choose from the most used file categories"
+msgstr "Choisir parmi les catégories de fichier les plus courantes"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:358
+msgid "private-file-category"
+msgstr "catégorie-fichier-privé"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:55
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:122
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:71
+msgid "Nobody"
+msgstr "Personne"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:115
+msgid "File"
+msgstr "Fichier"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:142
+msgid "Current file:"
+msgstr "Fichier actuel :"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:150
+msgid "Upload a file"
+msgstr "Téléverser un fichier"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:171
+msgid "Select the owner of this file"
+msgstr "Sélectionner le propriétaire de ce fichier"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:289
+#, php-format
+msgid "This file type is not allowed. You can only upload: %s"
+msgstr ""
+"Ce type de fichier n'est pas autorisé. Vous pouvez seulement téléverser : %s"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:313
+msgid "An unknown error happened while uploading your file."
+msgstr ""
+"Une erreur inconnue est survenue lors du téléversement de votre fichier."
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:317
+#, php-format
+msgid "An error happened while uploading your file: %s"
+msgstr "Une erreur est survenue lors du téléversement de votre fichier : %s"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:370
+msgid "Private Files"
+msgstr "Fichiers privés"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:379
+msgid "Show after post"
+msgstr "Après l'article"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:386
+msgid ""
+"Show the view and download links below the post content for a customer file."
+msgstr ""
+"Afficher les liens pour voir ou télécharger un fichier sous le contenu d'un "
+"article représentant un fichier client."
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:4
+#, php-format
+msgid "View %s"
+msgstr "Voir %s"
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:6
+#, php-format
+msgid "Download %s"
+msgstr "Télécharger %s"
+
+#~ msgid "Categories"
+#~ msgstr "Catégories"
+
+#~ msgid "Category"
+#~ msgstr "Catégorie"
+
+#~ msgid "Houston&hellip; we have a problem!"
+#~ msgstr "Houston&hellip; on a un problème !"
+
+#~ msgid ""
+#~ "We have not found what you are looking for. You could simply close this "
+#~ "window out of rage, but you might also want to have a look at the rest of "
+#~ "the website. I am sure you won' be disappointed again. Promise."
+#~ msgstr ""
+#~ "Nous n'avons pas trouvé ce que vous cherchiez. Pour sûr, vous devez être "
+#~ "en pétard, mais vous devriez parcourir le reste du site, vous ne serez "
+#~ "pas déçu de nouveau, promis."
+
+#~ msgid "See our work"
+#~ msgstr "Voir nos projets"
+
+#~ msgid "Browse our blog"
+#~ msgstr "Parcourir le blog"
+
+#~ msgid "By Date"
+#~ msgstr "Par date"
+
+#~ msgid "By Tag"
+#~ msgstr "Par étiquette"
+
+#~ msgid "Filter our work"
+#~ msgstr "Filtrer les projets"
+
+#~ msgid "All projects"
+#~ msgstr "Tous les projets"
+
+#~ msgid "By date"
+#~ msgstr "Par date"
+
+#~ msgid "By type"
+#~ msgstr "Par type"
+
+#~ msgid "Browse our archives"
+#~ msgstr "Parcourez nos archives"
+
+#~ msgid "Daily Archives: %s"
+#~ msgstr "Archives du jour : %s"
+
+#~ msgid "Monthly Archives: %s"
+#~ msgstr "Archives du mois : %s"
+
+#~ msgid "F Y"
+#~ msgstr "F Y"
+
+#~ msgid "Yearly Archives: %s"
+#~ msgstr "Archives de l'année : %s"
+
+#~ msgid "Y"
+#~ msgstr "Y"
+
+#~ msgid "Archives"
+#~ msgstr "Archives"
+
+#~ msgid "Category Archives: %s"
+#~ msgstr "Archives de la catégorie : %s"
+
+#~ msgid "Comment navigation"
+#~ msgstr "Navigation"
+
+#~ msgid "&laquo; Older Comments"
+#~ msgstr "Commentaires plus anciens &laquo;"
+
+#~ msgid "Newer Comments &raquo;"
+#~ msgstr "Commentaires plus récents &raquo;"
+
+#~ msgid "Comments are closed."
+#~ msgstr "Les commentaires ne sont plus possibles."
+
+#~ msgid "Leave a comment"
+#~ msgstr "Laisser un commentaire"
+
+#~ msgid "Learn more about &laquo; %s &raquo;"
+#~ msgstr "En savoir plus sur &laquo; %s &raquo;"
+
+#~ msgid "Filed under: "
+#~ msgstr "Classé dans : "
+
+#~ msgid "<li>&raquo; Tagged: "
+#~ msgstr "<li>&raquo; Etiqueté : "
+
+#~ msgid "Permalink to %s"
+#~ msgstr "Lien permanent vers %s"
+
+#~ msgid "Read more"
+#~ msgstr "En savoir plus"
+
+#~ msgid "Edit this post"
+#~ msgstr "Editer ce post"
+
+#~ msgid "Get in touch"
+#~ msgstr "Contactez-nous"
+
+#~ msgid "+33 6 50 21 23 94"
+#~ msgstr "06 50 21 23 94"
+
+#~ msgid "hello@marvinlabs.com"
+#~ msgstr "bonjour@marvinlabs.com"
+
+#~ msgid "+1 us on Google+"
+#~ msgstr "+1 sur Google+"
+
+#~ msgid "Like us on Facebook"
+#~ msgstr "Aimez-nous sur Facebook"
+
+#~ msgid "Follow us on Twitter"
+#~ msgstr "Suivez-nous sur Twitter"
+
+#~ msgid "Use our code from GitHub"
+#~ msgstr "Utilisez notre code publié sur GitHub"
+
+#~ msgid "We help fellow developers on StackOverflow"
+#~ msgstr "Nous aidons nos collègues développeurs sur StackOverflow"
+
+#~ msgid "Get our free WordPress plugins & themes"
+#~ msgstr "Téléchargez nos plugins et thèmes gratuits pour WordPress"
+
+#~ msgid "Main navigation menu"
+#~ msgstr "Menu de navigation principal"
+
+#~ msgid "Work"
+#~ msgstr "Projet"
+
+#~ msgid "work"
+#~ msgstr "projet"
+
+#~ msgid "Type"
+#~ msgstr "Type"
+
+#~ msgid "Types"
+#~ msgstr "Types"
+
+#~ msgid "work-type"
+#~ msgstr "type-de-projet"
+
+#~ msgid "Skill"
+#~ msgstr "Compétence"
+
+#~ msgid "Skills"
+#~ msgstr "Compétences"
+
+#~ msgid "work-skill"
+#~ msgstr "competence"
+
+#~ msgid "Technology"
+#~ msgstr "Technologie"
+
+#~ msgid "Technologies"
+#~ msgstr "Technologies"
+
+#~ msgid "work-technology"
+#~ msgstr "technologie"
+
+#~ msgid "work-category"
+#~ msgstr "catégorie-projet"
+
+#~ msgid "Single blog post"
+#~ msgstr "Post de blog unique"
+
+#~ msgid "Blog archive page"
+#~ msgstr "Archive du blog"
+
+#~ msgid "Footer, #getintouch"
+#~ msgstr "Footer, #getintouch"
+
+#~ msgid "Footer, #bottom"
+#~ msgstr "Footer, #bottom"
+
+#~ msgid "Page %s"
+#~ msgstr "Page %s"
+
+#~ msgid "About this project"
+#~ msgstr "A propos de ce projet"
+
+#~ msgid "Project launched in %s"
+#~ msgstr "Projet lancé en %s"
+
+#~ msgid "View the live website"
+#~ msgstr "Visiter le site en ligne"
+
+#~ msgid "Get the app on Google Play"
+#~ msgstr "Télécharger l'application sur GooglePlay"
+
+#~ msgid "Get the app on Apple's AppStore"
+#~ msgstr "Télécharger l'application sur l'AppStore d'Apple"
+
+#~ msgid "Get the WordPress plugin"
+#~ msgstr "Téléchargez le plugin WordPress"
+
+#~ msgid "Project type: "
+#~ msgstr "Type de projet : "
+
+#~ msgid "Skills: "
+#~ msgstr "Compétences : "
+
+#~ msgid "Technologies: "
+#~ msgstr "Technologies : "
+
+#~ msgid "You like this project and think we can do a good job with yours?"
+#~ msgstr ""
+#~ "Vous aimez ce projet et pensez que nous pourrions faire du bon travail "
+#~ "pour le votre ?"
+
+#~ msgid "Request a quote"
+#~ msgstr "Demandez un devis"
+
+#~ msgid "About this post"
+#~ msgstr "A propos de cet article"
+
+#~ msgid "Posted on: "
+#~ msgstr "Posté le :"
+
+#~ msgid "Tag Archives: %s"
+#~ msgstr "Archives d'étiquette : %s"
+
+#~ msgid "Our projects of type: %s"
+#~ msgstr "Nos projets de type : %s"
+
+#~ msgid "%1$s on %2$s"
+#~ msgstr "%1$s sur %2$s"
+
+#~ msgid "Posts navigation"
+#~ msgstr "Navigation"
+
+#~ msgid "<span class=\"meta-nav\">&laquo;</span> Older posts"
+#~ msgstr "<span class=\"meta-nav\">&laquo;</span> Articles plus anciens"
+
+#~ msgid "Newer posts <span class=\"meta-nav\">&raquo;</span>"
+#~ msgstr "Articles plus récents <span class=\"meta-nav\">&raquo;</span>"
+
+#~ msgid "show details"
+#~ msgstr "afficher les détails"
+
+#~ msgid "See all of our work"
+#~ msgstr "Voir tous nos projets"
+
+#~ msgid ""
+#~ "All content on this website is the property of &laquo;Constant le "
+#~ "jardinier&raquo; and may not be used without permission"
+#~ msgstr ""
+#~ "Tout le contenu sur ce site est la propriété exclusive de &laquo;Constant "
+#~ "le jardinier&raquo; et ne peut être utilisé sans permission"
+
+#~ msgid "&copy; Constant le jardinier"
+#~ msgstr "&copy; Constant le jardinier"
+
+#~ msgid ""
+#~ "Designed and carried out by MarvinLabs, digital creation studio in Basque "
+#~ "country, France (Biarritz, Anglet, Bayonne)"
+#~ msgstr ""
+#~ "Imaginé et réalisé par MarvinLabs, studio de création numérique au pays "
+#~ "basque (Biarritz, Anglet, Bayonne)"
+
+#~ msgid "A website planted with care by MarvinLabs"
+#~ msgstr "Un site délicatement planté par MarvinLabs"
+
+#~ msgid "and"
+#~ msgstr "et"
+
+#~ msgid "Paintings by Marilou Laure"
+#~ msgstr "Peintures par Marilou Laure"
+
+#~ msgid "illustrated with taste by Marilou Laure"
+#~ msgstr "illustré avec goût par Marilou Laure"
+
+#~ msgid "Left footer navigation"
+#~ msgstr "Navigation bas gauche"
+
+#~ msgid "Right footer navigation"
+#~ msgstr "Navigation bas droite"
+
+#~ msgid "Services"
+#~ msgstr "Services"
+
+#~ msgid "Service"
+#~ msgstr "Service"
+
+#~ msgid "Footer Widgets 1 (Left)"
+#~ msgstr "Footer Widgets 1 (Left)"
+
+#~ msgid "Footer Widgets 2 (Middle)"
+#~ msgstr "Footer Widgets 2 (Middle)"
+
+#~ msgid "Footer Widgets 3 (Right)"
+#~ msgstr "Footer Widgets 3 (Right)"
+
+#~ msgid "Nothing here"
+#~ msgstr "Rien ici"
+
+#~ msgid "You should not even be on this page!"
+#~ msgstr "Vous ne devriez même pas vous retrouver sur cette page !"

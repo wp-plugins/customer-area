@@ -1,0 +1,8 @@
+.metabox-row {
+	margin: 0.5em 0; 
+}
+
+span.label {
+	display: inline-block;
+	min-width: 33%;
+}

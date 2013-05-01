@@ -30,9 +30,9 @@ If you like our plugins, you might want to [check our website](http://www.marvin
 
 If you want to get updates about our plugins, you can:
 
-* [Follow use on Twitter](http://twitter.com/marvinlabs)
-* [Follow use on Google+](https://plus.google.com/u/0/117677945360605555441)
-* [Follow use on Facebook](http://www.facebook.com/studio.marvinlabs)
+* [Follow us on Twitter](http://twitter.com/marvinlabs)
+* [Follow us on Google+](https://plus.google.com/u/0/117677945360605555441)
+* [Follow us on Facebook](http://www.facebook.com/studio.marvinlabs)
 	
 == Upgrade Notice ==
 

@@ -64,6 +64,6 @@ include_once( CUAR_INCLUDES_DIR . '/core-addons/private-file/private-file-addon.
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-page/customer-page-addon.class.php' );
 
 // Start the plugin!
-global $bsxg_plugin;
-$bsxg_plugin = new CUAR_Plugin();
-$bsxg_plugin->run();
+global $cuar_plugin;
+$cuar_plugin = new CUAR_Plugin();
+$cuar_plugin->run();

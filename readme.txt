@@ -1,28 +1,29 @@
 === Customer Area ===
 Contributors: vprat, marvinlabs
-Tags: private files,client area,customer area,user files
+Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Customer area give your customers the possibility to get a page on your site where they can access private content. 
+Give your customers a page on your site where they can access private content (files, notices, ...). 
 
 == Description ==
 
-Customer area give your customers the possibility to get a page on your site where they can access private content. 
+Give your customers a page on your site where they can access private content in a secure and easy way. 
 As of today, private content means files: you upload files for your customer, and only him will be able to view them
-or download them on his page.
+or download them on his page. We will soon extend the plugin to allow for more content type: notices, ...
 
 **Current features**
 
 * Secure customer area, accessible to logged-in users
 * Private files, that can be assigned to a particular user and will get listed in its customer area
-* Kick-ass filtering thanks to the integration of the [jQuery shuffle plugin](http://vestride.github.com/Shuffle)
+* If necessary, you can customize most of the plugin pieces by making your own template files
  
 **Coming soon**
 
+* Customize the plugin output using themes
 * Email notifications
 * More private content type (messages/...)
 
@@ -68,8 +69,8 @@ Open a new topic on the plugin's support forum, I will consider every feature re
 = I implemented something, could you integrate it in the plugin? =
 
 Contributions are welcome. Additionally, if you wish to participate to development, you can send us an email 
-([check-out our website](http://www.marvinlabs.com)) and tell us a little bit about you (specially, send us a link to your wordpress.org profile
-with your other developed plugins.
+([check-out our website](http://www.marvinlabs.com)) and tell us a little bit about you (specially, send us a link to 
+your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 

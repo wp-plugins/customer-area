@@ -30,7 +30,7 @@ class CUAR_PrivateFileFrontendInterface {
 		$this->private_file_addon = $private_file_addon;
 
 		// Optionally output the file links in the post footer area
-		if ( CUAR_PrivateFileAdminInterface::$OPTION_SHOW_AFTER_POST_CONTENT ) {
+		if ( $this->plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_SHOW_AFTER_POST_CONTENT ) ) {
 			add_filter( 'the_content', array( &$this, 'after_post_content' ), 3000 );
 		}		
 		

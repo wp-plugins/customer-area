@@ -2,7 +2,7 @@
 /*
 Plugin Name: Customer Area
 Plugin URI: http://www.marvinlabs.com
-Version: 1.0.0
+Version: 1.0.1
 Description: Customer area give your customers the possibility to get a page on your site where they can access private content. 
 Author: MarvinLabs
 Author URI: http://www.marvinlabs.com
@@ -27,9 +27,10 @@ Domain Path: /languages
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
-define( 'CUAR_PLUGIN_DIR', 		plugin_dir_path( __FILE__ ) );
+if ( !defined( 'CUAR_PLUGIN_DIR' ) ) define( 'CUAR_PLUGIN_DIR', 	plugin_dir_path( __FILE__ ) );
+if ( !defined( 'CUAR_INCLUDES_DIR' ) ) define( 'CUAR_INCLUDES_DIR', 	CUAR_PLUGIN_DIR . '/includes' );
+
 define( 'CUAR_LANGUAGE_DIR', 	CUAR_PLUGIN_DIR . '/languages' );
-define( 'CUAR_INCLUDES_DIR', 	CUAR_PLUGIN_DIR . '/includes' );
 
 define( 'CUAR_PLUGIN_URL', 			plugin_dir_url( __FILE__ ) );
 define( 'CUAR_SCRIPTS_URL', 		CUAR_PLUGIN_URL . '/scripts' );
@@ -40,7 +41,7 @@ define( 'CUAR_FRONTEND_THEME_URL', 	CUAR_PLUGIN_URL . '/themes/frontend/default'
 /**
  * A function for debugging purposes
  */
-if ( !function_exists( 'cuar_debug' ) ) {
+if ( !function_exists( 'cuar_log_debug' ) ) {
 function cuar_log_debug( $message ) {
 	if (WP_DEBUG === true){
 		if( is_array( $message ) || is_object( $message ) ){

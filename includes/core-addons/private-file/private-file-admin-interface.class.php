@@ -43,8 +43,9 @@ class CUAR_PrivateFileAdminInterface {
 		add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ));
 		
 		// Settings
-		add_action( 'cuar_addon_print_settings', array( &$this, 'print_settings' ), 10, 1 );
-		add_filter( 'cuar_addon_validate_options', array( &$this, 'validate_options' ), 10, 3 );
+		add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 10, 1 );
+		add_action( 'cuar_addon_print_settings_cuar_private_files', array( &$this, 'print_settings' ), 10, 2 );
+		add_filter( 'cuar_addon_validate_options_cuar_private_files', array( &$this, 'validate_options' ), 10, 3 );
 	}
 	
 	/*------- CUSTOMISATION OF THE LISTING OF PRIVATE FILES ----------------------------------------------------------*/
@@ -216,7 +217,7 @@ class CUAR_PrivateFileAdminInterface {
 				: $_SESSION['cuar_private_file_save_post_notices'];
 	}
 	
-	private function add_save_post_notice( $msg, $type = 'error' ) {
+	public function add_save_post_notice( $msg, $type = 'error' ) {
 		if ( empty( $_SESSION[ 'cuar_private_file_save_post_notices' ] ) ) {
 			$_SESSION[ 'cuar_private_file_save_post_notices' ] = array();
 	 	}
@@ -276,6 +277,10 @@ class CUAR_PrivateFileAdminInterface {
 					cuar_log_debug( 'moved private file from ' . $previous_file['path'] . ' to ' . $new_file_path);
 				}
 			}
+			
+			// Other addons can do something after we save
+			do_action( "cuar_private_file_after_do_save_post", $post_id, $this->private_file_addon, $this );
+		
 			return $post_id;
 		}
 
@@ -327,7 +332,7 @@ class CUAR_PrivateFileAdminInterface {
 		}
 		
 		// Other addons can do something after we save
-		do_action( "cuar_private_file_after_do_save_post" );
+		do_action( "cuar_private_file_after_do_save_post", $post_id, $this->private_file_addon, $this );
 	}
 
 	public function custom_upload_dir( $default_dir ) {
@@ -359,32 +364,37 @@ class CUAR_PrivateFileAdminInterface {
 	}
 
 	/*------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE --------------------------------------------------------------*/
+
+	public function add_settings_tab( $tabs ) {
+		$tabs[ 'cuar_private_files' ] = __( 'Private Files', 'cuar' );
+		return $tabs;
+	}
 	
 	/**
 	 * Add our fields to the settings page
 	 * 
 	 * @param CUAR_Settings $cuar_settings The settings class
 	 */
-	public function print_settings( $cuar_settings ) {
+	public function print_settings( $cuar_settings, $options_group ) {
+// TODO OUTPUT ALLOWED FILE TYPES
+
 		add_settings_section(
-				'cuar_section_private_files_addon_settings',
-				__('Private Files', 'cuar'),
-				array( &$this, 'print_section_info' ),
+				'cuar_private_files_addon_settings_frontend',
+				__('Frontend Integration', 'cuar'),
+				array( &$this, 'print_frontend_section_info' ),
 				CUAR_Settings::$OPTIONS_PAGE_SLUG
 			);
-		
-		// TODO OUTPUT ALLOWED FILE TYPES
 
 		add_settings_field(
 				self::$OPTION_SHOW_AFTER_POST_CONTENT,
 				__('Show after post', 'cuar'),
 				array( &$cuar_settings, 'print_input_field' ),
 				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_section_private_files_addon_settings',
+				'cuar_private_files_addon_settings_frontend',
 				array(
 					'option_id' => self::$OPTION_SHOW_AFTER_POST_CONTENT,
 					'type' 		=> 'checkbox',
-					'caption'	=> __( 'Show the view and download links below the post content for a customer file.', 'cuar' ) )
+					'after'		=> __( 'Show the view and download links below the post content for a customer file.', 'cuar' ) )
 			);
 	}
 	
@@ -417,7 +427,7 @@ class CUAR_PrivateFileAdminInterface {
 	/**
 	 * Print some info about the section
 	 */
-	public function print_section_info() {
+	public function print_frontend_section_info() {
 		// echo '<p>' . __( 'Options for the private files add-on.', 'cuar' ) . '</p>';
 	}
 

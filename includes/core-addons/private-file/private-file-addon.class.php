@@ -242,7 +242,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		// Seems we are all good, checkout the requested action and do something
 		$file_type = $this->get_file_type( $post->ID );
 		$file_name = $this->get_file_name( $post->ID );
-		$file_path = $this->plugin->get_user_file_path( $current_user_id, $file_name );
+		$file_path = $this->plugin->get_user_file_path( $owner_id, $file_name );
 
 		if ( $action==_x( 'download-file', 'URL slug', 'cuar' ) ) {			
 			if ( $owner_id==$current_user_id ) {

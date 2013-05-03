@@ -35,14 +35,12 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$this->plugin = $plugin;
 
 		add_action( 'init', array( &$this, 'register_custom_types' ) );
+		add_filter( 'query_vars', array( &$this, 'add_query_vars' ) );
 		add_action( 'init', array( &$this, 'add_post_type_rewrites' ) );
 		add_filter( 'post_type_link', array( &$this, 'built_post_type_permalink' ), 1, 3);
 		
-		add_filter( 'query_vars', array( &$this, 'add_query_vars' ) );
-		add_action( 'init', array( &$this, 'add_rewrite_endpoints' ) );
 		add_action( 'template_redirect', array( &$this, 'handle_file_actions' ) );
 		add_action( 'template_redirect', array( &$this, 'protect_access' ) );
-		add_filter( 'request', array( &$this, 'ensure_endpoint_queryvar_values' ) );
 		
 		add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
 		
@@ -184,39 +182,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	/*------- HANDLE FILE VIEWING AND DOWNLOADING --------------------------------------------------------------------*/
 	
 	/**
-	 * Add query vars to WordPress 
-	 */
-	public function add_query_vars( $vars ) {
-		$vars[] = _x( 'download-file', 'URL slug', 'cuar' );
-		$vars[] = _x( 'view-file', 'URL slug', 'cuar' );
-		return $vars;
-	}
-	
-	/**
-	 * Add rewrite end-points to download or view the files associated to a post
-	 */
-	public function add_rewrite_endpoints() {
-		add_rewrite_endpoint( _x( 'download-file', 'URL slug', 'cuar' ) , EP_PERMALINK );
-		add_rewrite_endpoint( _x( 'view-file', 'URL slug', 'cuar' ) , EP_PERMALINK );
-	}
-	
-	/**
-	 * 
-	 * @param unknown $vars
-	 * @return boolean
-	 */
-	public function ensure_endpoint_queryvar_values( $vars ) {
-		if ( isset( $vars[ _x( 'download-file', 'URL slug', 'cuar' ) ] ) ) {
-			$vars[ _x( 'download-file', 'URL slug', 'cuar' ) ] = true;
-		}
-		if ( isset( $vars[ _x( 'view-file', 'URL slug', 'cuar' ) ] ) ) {
-			$vars[ _x( 'view-file', 'URL slug', 'cuar' ) ] = true;
-		}
-		
-		return $vars;
-	}
-	
-	/**
 	 * Protect access to single pages for private files: only for author and owner.
 	 */
 	public function protect_access() {		
@@ -239,13 +204,15 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	/**
 	 * Handle the actions on a private file
 	 */
-	public function handle_file_actions() {		
+	public function handle_file_actions() {					
 		// If not on a matching post type, we do nothing
 		if ( !is_singular('cuar_private_file') ) return;
 		
 		// If not a known action, do nothing
-		if ( !get_query_var( _x( 'download-file', 'URL slug', 'cuar' ) )
-				&& !get_query_var( _x( 'view-file', 'URL slug', 'cuar' ) ) ) {
+		$action = get_query_var( 'cuar_action' );
+		var_dump( $action );
+		if ( $action!=_x( 'download-file', 'URL slug', 'cuar' ) && $action!=_x( 'view-file', 'URL slug', 'cuar' ) ) {
+			cuar_log_debug( "Unknown action" );
 			return;
 		}
 		
@@ -260,7 +227,9 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 
 		$current_user_id = get_current_user_id();
 		$owner_id = $this->get_file_owner_id( $post->ID );
-		if ( $owner_id!=$current_user_id ) {
+		$author_id = $post->post_author;
+		
+		if ( $owner_id!=$current_user_id && $author_id!=$current_user_id ) {
 			wp_die( __( "You are not authorized to access this file", "cuar" ) );
 			exit();
 		}
@@ -275,18 +244,22 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$file_name = $this->get_file_name( $post->ID );
 		$file_path = $this->plugin->get_user_file_path( $current_user_id, $file_name );
 
-		if ( get_query_var( _x( 'download-file', 'URL slug', 'cuar' ) ) ) {			
-			do_action( 'cuar_private_file_download', $post->ID, $current_user_id );	
+		if ( $action==_x( 'download-file', 'URL slug', 'cuar' ) ) {			
+			if ( $owner_id==$current_user_id ) {
+				$this->increment_file_download_count( $post->ID );
+			}
+			
+			do_action( 'cuar_private_file_download', $post->ID, $current_user_id, $this );	
 					
 			$this->output_file( $file_path, $file_name, $file_type, 'download' );
-
-			$this->increment_file_download_count( $post->ID );
-		} else if ( get_query_var( _x( 'view-file', 'URL slug', 'cuar' ) ) ) {			
-			do_action( 'cuar_private_file_view', $post->ID, $current_user_id );		
+		} else if ( $action==_x( 'view-file', 'URL slug', 'cuar' ) ) {			
+			if ( $owner_id==$current_user_id ) {
+				$this->increment_file_download_count( $post->ID );
+			}
+			
+			do_action( 'cuar_private_file_view', $post->ID, $current_user_id, $this );		
 			
 			$this->output_file( $file_path, $file_name, $file_type, 'view' );
-			
-			$this->increment_file_download_count( $post->ID );
 		} else {
 			// Do nothing
 		}
@@ -482,12 +455,27 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	/**
 	 * Add the rewrite rule for the private files.  
 	 */
+	function add_query_vars( $vars ) {
+	    array_push( $vars, 'cuar_action' );
+	    return $vars;
+	}
+
+	/**
+	 * Add the rewrite rule for the private files.  
+	 */
 	function add_post_type_rewrites() {
 		global $wp_rewrite;
+		
+		$pf_slug = _x( 'private-file', 'URL slug', 'cuar' );
+		
 		$wp_rewrite->add_rewrite_tag('%cuar_private_file%', '([^/]+)', 'cuar_private_file=');
 		$wp_rewrite->add_rewrite_tag('%owner_name%', '([^/]+)', 'cuar_pf_owner_name=');
+		$wp_rewrite->add_rewrite_tag('%cuar_action%', '([^/]+)', 'cuar_action=');
 		$wp_rewrite->add_permastruct( 'cuar_private_file',
-				_x( 'private-file', 'URL slug', 'cuar' ) . '/%owner_name%/%year%/%monthnum%/%day%/%cuar_private_file%',
+				$pf_slug . '/%owner_name%/%year%/%monthnum%/%day%/%cuar_private_file%',
+				false);
+		$wp_rewrite->add_permastruct( 'cuar_private_file',
+				$pf_slug . '/%owner_name%/%year%/%monthnum%/%day%/%cuar_private_file%/%cuar_action%',
 				false);
 	}
 
@@ -527,7 +515,9 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$permalink = str_replace( "%year%", 	date( "Y", $post_date ), $permalink );
 		$permalink = str_replace( "%monthnum%", date( "m", $post_date ), $permalink );
 		$permalink = str_replace( "%day%", 		date( "d", $post_date ), $permalink );
-	
+
+		$permalink = str_replace( "%cuar_action%", '', $permalink );
+		
 		$permalink = home_url() . "/" . user_trailingslashit( $permalink );
 		$permalink = str_replace( "//", "/", $permalink );
 		$permalink = str_replace( ":/", "://", $permalink );

@@ -11,6 +11,11 @@
 	text-indent: 100%;
   	white-space: nowrap;
   	overflow: hidden;
+  	
+  	-webkit-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+       -moz-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+         -o-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+            transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0; 
 }
 
 .cuar-private-file .view-link a {
@@ -31,6 +36,7 @@
 
 /* -= File list */
 .cuar-private-file-container h4 {
+	margin: 20px 0;
 	border-bottom: 1px solid #eee;
 	opacity: 0.5;
 }
@@ -47,7 +53,7 @@
 
 .cuar-private-file-list {
 	width: 100%;
-	margin: 1em 0;
+	margin: 0;
 	padding: 0;
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -67,15 +73,11 @@
 	vertical-align: middle;
 }
 	
-	/*
 .cuar-private-file-list .date {
-	width: 20%;
-	font-size: 0.8em;
-	color: #777;
-	text-align: right;
+	width: 25%;
 	vertical-align: middle;
 }
-	*/
+
 .cuar-private-file-list .title {
 	width: 100%;
 }

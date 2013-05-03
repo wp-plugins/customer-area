@@ -394,8 +394,26 @@ class CUAR_PrivateFileAdminInterface {
 				array(
 					'option_id' => self::$OPTION_SHOW_AFTER_POST_CONTENT,
 					'type' 		=> 'checkbox',
-					'after'		=> __( 'Show the view and download links below the post content for a customer file.', 'cuar' ) )
+					'after'		=> 
+						__( 'Show the view and download links below the post content for a customer file.', 'cuar' ) )
 			);
+		
+		add_settings_field(
+				self::$OPTION_FILE_LIST_MODE, 
+				__('File list', 'cuar'),
+				array( &$cuar_settings, 'print_select_field' ), 
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_private_files_addon_settings_frontend',
+				array( 
+					'option_id' => self::$OPTION_FILE_LIST_MODE, 
+					'options'	=> array( 
+						'plain' 	=> __( "Don't group files", 'cuar' ),
+						'year' 		=> __( 'Group by year', 'cuar' ),
+						'category' 	=> __( 'Group by category', 'cuar' ) ),
+	    			'after'	=> '<p class="description">'
+	    				. __( 'You can choose how files will be organized by default in the customer area.', 'cuar' )
+	    				. '</p>' )
+			);	
 	}
 	
 	/**
@@ -409,6 +427,8 @@ class CUAR_PrivateFileAdminInterface {
 		// TODO OUTPUT ALLOWED FILE TYPES
 		
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_SHOW_AFTER_POST_CONTENT );
+		$cuar_settings->validate_enum( $input, $validated, self::$OPTION_FILE_LIST_MODE, 
+				array( 'plain', 'year', 'category' ) );
 		
 		return $validated;
 	}
@@ -421,6 +441,7 @@ class CUAR_PrivateFileAdminInterface {
 	 */
 	public static function set_default_options( $defaults ) {
 		$defaults[ self::$OPTION_SHOW_AFTER_POST_CONTENT ] = true;
+		$defaults[ self::$OPTION_FILE_LIST_MODE ] = 'year';
 		return $defaults;
 	}
 	
@@ -433,6 +454,7 @@ class CUAR_PrivateFileAdminInterface {
 
 	// Frontend options
 	public static $OPTION_SHOW_AFTER_POST_CONTENT		= 'frontend_show_after_post_content';
+	public static $OPTION_FILE_LIST_MODE				= 'frontend_file_list_mode';
 		
 	/** @var CUAR_Plugin */
 	private $plugin;

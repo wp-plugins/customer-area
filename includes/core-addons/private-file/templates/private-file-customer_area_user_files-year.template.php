@@ -1,6 +1,6 @@
 <div class="cuar-private-file-container">
 
-<h3><?php _e( 'Your files', 'cuar' ); ?></h3>
+<h3><?php _e( 'Your files grouped by year', 'cuar' ); ?></h3>
 
 <?php 
 $current_user_id = get_current_user_id();
@@ -28,8 +28,9 @@ $files_query = new WP_Query( apply_filters( 'cuar_user_files_query_parameters', 
 <?php 
 	$item_template = $this->plugin->get_template_file_path(
 			CUAR_INCLUDES_DIR . '/core-addons/private-file',
-			'private-file-customer_area_user_file_item.template.php',
-			'templates' ); 
+			"private-file-customer_area_user_file_item-{$display_mode}.template.php",
+			'templates',
+			"private-file-customer_area_user_file_item.template.php" ); 
 
 	$current_year = '';
 ?>
@@ -41,14 +42,18 @@ $files_query = new WP_Query( apply_filters( 'cuar_user_files_query_parameters', 
 <?php 		if ( empty( $current_year ) ) : 
 				$current_year = get_the_date( 'Y' ); ?>
 				
-<h4 class="accordion-section-title"><?php echo $current_year; ?></h4>
+<h4 title="<?php printf( __( 'Clic to show the files published in %s', 'cuar' ), $current_year );?>">
+	<?php echo $current_year; ?>
+</h4>
 <div class="accordion-section-content"><table class="cuar-private-file-list"><tbody>
 	
 <?php 		elseif ( $current_year!=get_the_date( 'Y' ) ) : 
 				$current_year = get_the_date( 'Y' ); ?>
 				
 </tbody></table></div>
-<h4><?php echo $current_year; ?></h4>
+<h4 title="<?php printf( __( 'Clic to show the files published in %s', 'cuar' ), $current_year );?>">
+	<?php echo $current_year; ?>
+</h4>
 <div class="accordion-section-content"><table class="cuar-private-file-list"><tbody>
 
 <?php 		endif; ?>
@@ -59,26 +64,16 @@ $files_query = new WP_Query( apply_filters( 'cuar_user_files_query_parameters', 
 
 </tbody></table></div>
 
+</div>
+
 <script type="text/javascript">
 <!--
 jQuery(document).ready(function($) {
 	$( "div.accordion-container" ).accordion({
 			heightStyle: "content",
 			header: "h4",
-			animate: 150
+			animate: 250
 		});
-	
-	$('.filter-options li').click(function() {
-        // Hide current label, show current label in title
-        $('.filter-options .active').removeClass('active');
-        $(this).addClass('active');
-
-        // Do the filtering
-	    var tag = $(this).data('tag');
-	    var firstRow = $( 'table.cuar-private-file-list tr:first' );
-
-		processRow( $, firstRow, tag );
-	});
 });
 //-->
 </script>

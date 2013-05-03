@@ -63,6 +63,17 @@ by copying the file "protect-downloads.htaccess" included in our plugin's extras
 (it should be /wp-content/customer-area). Then you will need to rename that file ".htaccess" so that your server takes
 it into account.
 
+= How can I customize the templates? =
+
+The plugin allows to customize how the information is displayed in the customer area. To change that:
+
+* Create a folder in your theme named "customer-area"
+* Create a subfolder in that folder named "templates" 
+* Locate the template file you want to change (hint: look in the plugin folders, they are all named .template.php)
+* Copy that file to your theme's "customer-area/templates" folder
+* Do your changes, save the file
+* You should be able to see the changes immediatly and automatically 
+
 = That feature is missing, will you implement it? =
 
 Open a new topic on the plugin's support forum, I will consider every feature request and all ideas are welcome.

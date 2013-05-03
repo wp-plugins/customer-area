@@ -185,9 +185,15 @@ class CUAR_Plugin {
 	 * customized the template. If so, it returns the path to the customized file. Else, it returns the default
 	 * passed as parameter.
 	 * 
+	 * Order of preference is:
+	 * 1. user-directory/filename
+	 * 2. user-directory/fallback-filename
+	 * 3. default-directory/filename
+	 * 4. default-directory/fallback-filename
+	 * 
 	 * @param string $default_path
 	 */
-	public function get_template_file_path( $default_root, $filename, $sub_directory = '' ) {		
+	public function get_template_file_path( $default_root, $filename, $sub_directory = '', $fallback_filename = '' ) {		
 		$relative_path = ( !empty( $sub_directory ) ) ? trailingslashit( $sub_directory ) . $filename : $filename;
 		
 		$possible_locations = apply_filters( 'cuar_available_template_file_locations', 
@@ -195,12 +201,34 @@ class CUAR_Plugin {
 					get_stylesheet_directory() . '/customer-area',
 					get_stylesheet_directory() ) );
 		
+		// Look for the preferred file first
 		foreach ( $possible_locations as $dir ) {
 			$path =  trailingslashit( $dir ) . $relative_path;
 			if ( file_exists( $path ) ) return $path;
 		}
 		
-		return trailingslashit( $default_root ) . $relative_path;
+		// Then for the fallback alternative if any
+		if ( !empty( $fallback_filename ) ) {
+			$fallback_relative_path = ( !empty( $sub_directory ) ) 
+											? trailingslashit( $sub_directory ) . $fallback_filename 
+											: $fallback_filename;
+		
+			foreach ( $possible_locations as $dir ) {
+				$path =  trailingslashit( $dir ) . $fallback_relative_path;
+				if ( file_exists( $path ) ) return $path;
+			}
+		}
+		
+		// Then from default directory
+		$path =  trailingslashit( $default_root ) . $relative_path;
+		if ( file_exists( $path ) ) return $path;
+
+		if ( !empty( $fallback_filename ) ) {
+			$path =  trailingslashit( $default_root ) . $fallback_relative_path;
+			if ( file_exists( $path ) ) return $path;
+		}
+		
+		return '';
 	}
 	
 	/**

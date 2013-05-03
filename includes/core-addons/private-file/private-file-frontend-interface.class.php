@@ -60,10 +60,12 @@ class CUAR_PrivateFileFrontendInterface {
 	}
 
 	public function print_customer_area_content() {
+		$display_mode = $this->plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_FILE_LIST_MODE );
+		
 		include( $this->plugin->get_template_file_path(
 				CUAR_INCLUDES_DIR . '/core-addons/private-file',
-				'private-file-customer_area_user_files.template.php',
-				'templates' ));			
+				"private-file-customer_area_user_files-{$display_mode}.template.php",
+				'templates' ));
 	}
 
 	/**

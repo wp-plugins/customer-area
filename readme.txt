@@ -19,6 +19,7 @@ or download them on his page. We will soon extend the plugin to allow for more c
 
 * Secure customer area, accessible to logged-in users
 * Private files, that can be assigned to a particular user and will get listed in its customer area
+* Comments on private files: the customer/user can send some feedback/observations about it
 * If necessary, you can customize most of the plugin pieces by making your own template files
  
 **Coming soon**
@@ -73,6 +74,12 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 1.0.2 (2013/05/03) =
+
+* Fixed a bug in the permalinks preventing the file downloads
+* Added download count 
+* Added support for comments on private files
 
 = 1.0.1 (2013/05/02) =
 

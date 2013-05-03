@@ -18,9 +18,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
 
-require_once( __DIR__ . '/private-file-admin-interface.class.php' );
-require_once( __DIR__ . '/private-file-frontend-interface.class.php' );
-require_once( __DIR__ . '/private-file-theme-utils.class.php' );
+require_once( dirname(__FILE__) . '/private-file-admin-interface.class.php' );
+require_once( dirname(__FILE__) . '/private-file-frontend-interface.class.php' );
+require_once( dirname(__FILE__) . '/private-file-theme-utils.class.php' );
 
 if (!class_exists('CUAR_PrivateFileAddOn')) :
 

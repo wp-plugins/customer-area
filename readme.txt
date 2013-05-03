@@ -3,7 +3,7 @@ Contributors: vprat, marvinlabs
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.0.4
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,7 @@ or download them on his page. We will soon extend the plugin to allow for more c
 
 * Secure customer area, accessible to logged-in users
 * Private files, that can be assigned to a particular user and will get listed in its customer area
+* Show private files grouped by category / by year / ungrouped in the customer area
 * Comments on private files: the customer/user can send some feedback/observations about it
 * If necessary, you can customize most of the plugin pieces by making your own template files
  
@@ -86,13 +87,16 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 1.0.4 (2013/05/03) =
+= 1.1.0 (2013/05/03) =
 
-* Redirect to login page if accessing directly a private file and not logged-in
-* Fixed a bug in the permalinks preventing the file downloads
 * Added download count 
 * Added support for comments on private files
 * Added compatibility with PHP 5.2
+* Added possibility to show files grouped by category / by year / ungrouped in the customer area
+* Updated french translation
+* Don't show register link if registration is disabled anyway
+* Redirect to login page if accessing directly a private file and not logged-in
+* Fixed a bug in the permalinks preventing the file downloads
 
 = 1.0.1 (2013/05/02) =
 

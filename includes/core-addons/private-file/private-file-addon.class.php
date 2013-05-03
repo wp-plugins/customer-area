@@ -187,6 +187,12 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	public function protect_access() {		
 		// If not on a matching post type, we do nothing
 		if ( !is_singular('cuar_private_file') ) return;
+		
+		// If not logged-in, we ask for details
+		if ( !is_user_logged_in() ) {
+			wp_redirect( wp_login_url( $_SERVER['REQUEST_URI'] ) );
+			exit;
+		}
 
 		// If not authorized to download the file, we bail	
 		$post = get_queried_object();
@@ -210,9 +216,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		// If not a known action, do nothing
 		$action = get_query_var( 'cuar_action' );
-		var_dump( $action );
 		if ( $action!=_x( 'download-file', 'URL slug', 'cuar' ) && $action!=_x( 'view-file', 'URL slug', 'cuar' ) ) {
-			cuar_log_debug( "Unknown action" );
 			return;
 		}
 		

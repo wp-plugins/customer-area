@@ -75,6 +75,10 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
+= 1.0.3 (2013/05/03) =
+
+* Redirect to login page if accessing directly a private file and not logged-in
+
 = 1.0.2 (2013/05/03) =
 
 * Fixed a bug in the permalinks preventing the file downloads

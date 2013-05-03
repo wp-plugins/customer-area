@@ -122,6 +122,30 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	}
 	
 	/**
+	 * Get the number of times the file has been downloaded
+	 *
+	 * @param int $post_id
+	 * @return int
+	 */
+	public function get_file_download_count( $post_id ) {
+		$count = get_post_meta( $post_id, 'cuar_private_file_download_count', true );	
+		if ( !$count || empty( $count ) ) return 0;	
+		return intval( $count );
+	}
+	
+	/**
+	 * Get the number of times the file has been downloaded
+	 *
+	 * @param int $post_id
+	 * @return int
+	 */
+	public function increment_file_download_count( $post_id ) {
+		update_post_meta( $post_id, 
+			'cuar_private_file_download_count', 
+			$this->get_file_download_count( $post_id ) + 1 );
+	}
+	
+	/**
 	 * Get the permalink to a file for the specified action
 	 * @param int $post_id
 	 * @param string $action
@@ -251,14 +275,18 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$file_name = $this->get_file_name( $post->ID );
 		$file_path = $this->plugin->get_user_file_path( $current_user_id, $file_name );
 
-		if ( get_query_var( _x( 'download-file', 'URL slug', 'cuar' ) ) ) {
+		if ( get_query_var( _x( 'download-file', 'URL slug', 'cuar' ) ) ) {			
 			do_action( 'cuar_private_file_download', $post->ID, $current_user_id );	
 					
 			$this->output_file( $file_path, $file_name, $file_type, 'download' );
-		} else if ( get_query_var( _x( 'view-file', 'URL slug', 'cuar' ) ) ) {
+
+			$this->increment_file_download_count( $post->ID );
+		} else if ( get_query_var( _x( 'view-file', 'URL slug', 'cuar' ) ) ) {			
 			do_action( 'cuar_private_file_view', $post->ID, $current_user_id );		
 			
 			$this->output_file( $file_path, $file_name, $file_type, 'view' );
+			
+			$this->increment_file_download_count( $post->ID );
 		} else {
 			// Do nothing
 		}
@@ -390,7 +418,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$args = array(
 				'labels' 				=> $labels,
 				'hierarchical' 			=> false,
-				'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail' ),
+				'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'comments' ),
 				'taxonomies' 			=> array( 'cuar_private_file_category' ),
 				'public' 				=> true,
 				'show_ui' 				=> true,

@@ -3,7 +3,7 @@ Contributors: vprat, marvinlabs
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,15 +75,13 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 1.0.3 (2013/05/03) =
+= 1.0.4 (2013/05/03) =
 
 * Redirect to login page if accessing directly a private file and not logged-in
-
-= 1.0.2 (2013/05/03) =
-
 * Fixed a bug in the permalinks preventing the file downloads
 * Added download count 
 * Added support for comments on private files
+* Added compatibility with PHP 5.2
 
 = 1.0.1 (2013/05/02) =
 

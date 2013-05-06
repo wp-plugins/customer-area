@@ -36,31 +36,19 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		$this->customer_page_shortcode = new CUAR_CustomerPageShortcode( $cuar_plugin );
 		
 		if ( !is_admin() ) {
-			add_action( 'cuar_before_login_required_template', array( &$this, 'default_login_mesage' ) );
-			add_action( 'cuar_before_customer_area_template', array( &$this, 'default_welcome_mesage' ) );
+			add_action( 'cuar_before_customer_area_template', array( &$this, 'default_welcome_message' ) );
 		}
 	}	
 	
 	/*------- Some default messages above/below the templates --------------------------------------------------------*/
-	
-	public function default_login_mesage() {
-		$out = sprintf( "<h2>%s</h2>", __('Hello', 'cuar') );
-		$out .= sprintf( "<p>%s</p>", __( 'You must login to access your own customer area. '
-										. 'If you do not have an account yet, please register or ' 
-										. 'contact us so that we can create it.', 
-					'cuar' ) );
-		
-		echo apply_filters( "cuar_default_login_mesage", $out );
-	}
-	
-	/*------- Some default messages above/below the templates --------------------------------------------------------*/
-	
-	public function default_welcome_mesage() {
+
+	public function default_welcome_message() {
 		global $current_user;
 		$out = sprintf( __('Hello %s,', 'cuar'), $current_user->display_name );
-		$out = sprintf( "<h2>%s</h2>", $out );
+		$out = sprintf( '<h2 class="cuar_page_title">%s <small><a href="%s" class="logout-link">%s</small></h2>', $out, 
+				wp_logout_url( get_permalink() ), __('Logout', 'cuar') );
 		
-		echo apply_filters( "cuar_default_welcome_mesage", $out );
+		echo apply_filters( "cuar_default_welcome_message", $out );
 	}
 	
 	/*------- INITIALISATIONS ----------------------------------------------------------------------------------------*/

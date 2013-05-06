@@ -3,7 +3,7 @@ Contributors: vprat, marvinlabs
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,10 +87,10 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 1.2.0 (2013/05/06) =
+= 1.1.1 (2013/05/06) =
 
 * Added some hooks to customize the login page and the customer area
-
+* Added a link to logout of the customer area 
 
 = 1.1.0 (2013/05/03) =
 

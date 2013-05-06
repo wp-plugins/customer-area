@@ -49,10 +49,16 @@ class CUAR_CustomerPageShortcode {
 		// If not logged-in, we should do so.
 		if ( !is_user_logged_in() ) {
 	  		ob_start();
+	  		
+	  		do_action( 'cuar_before_login_required_template' );
+	  		
 	  		include( $this->plugin->get_template_file_path(
 	  				CUAR_INCLUDES_DIR . '/core-addons/customer-page',
 	  				'customer-page-login-required.template.php',
-	  				'templates' ));	  		
+	  				'templates' ));
+
+	  		do_action( 'cuar_after_login_required_template' );
+	  		
 	  		$out = ob_get_contents();
 	  		ob_end_clean(); 
 	  		
@@ -61,10 +67,16 @@ class CUAR_CustomerPageShortcode {
 		
 		// Build the HTML output for a logged-in user. 
   		ob_start();
+	  		
+	  	do_action( 'cuar_before_customer_area_template' );
+	  		
   		include( $this->plugin->get_template_file_path(
   				CUAR_INCLUDES_DIR . '/core-addons/customer-page',
   				'customer-page.template.php',
   				'templates' ));	  	
+	  		
+	  	do_action( 'cuar_after_customer_area_template' );
+	  	
   		$out = ob_get_contents();
   		ob_end_clean(); 
   		

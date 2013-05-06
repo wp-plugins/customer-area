@@ -87,6 +87,11 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
+= 1.2.0 (2013/05/06) =
+
+* Added some hooks to customize the login page and the customer area
+
+
 = 1.1.0 (2013/05/03) =
 
 * Added download count 

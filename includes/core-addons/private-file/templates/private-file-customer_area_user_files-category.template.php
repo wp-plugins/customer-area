@@ -1,6 +1,6 @@
 <div class="cuar-private-file-container">
 
-<h3><?php _e( 'Your files grouped by category', 'cuar' ); ?></h3>
+<h3><?php _e( 'Your files', 'cuar' ); ?></h3>
 
 <div class="accordion-container">	
 

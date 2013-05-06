@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-05-03 17:59+0100\n"
-"PO-Revision-Date: 2013-05-03 17:59+0100\n"
+"POT-Creation-Date: 2013-05-06 19:37+0100\n"
+"PO-Revision-Date: 2013-05-06 19:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -66,11 +66,20 @@ msgstr "doit être plus grand que %s"
 msgid "must be lower than %s"
 msgstr "doit être plus petit que %s"
 
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:47
+#, php-format
+msgid "Hello %s,"
+msgstr "Bonjour %s,"
+
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:49
+msgid "Logout"
+msgstr "Déconnexion"
+
 #: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:1
 msgid "Hello"
 msgstr "Bonjour"
 
-#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:4
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:2
 msgid ""
 "You must login to access your own customer area. If you do not have an "
 "account yet, please register or contact us so that we can create it."
@@ -79,18 +88,13 @@ msgstr ""
 "n'avez pas encore de compte utilisateur, merci de vous enregistrer ou de "
 "nous contacter pour que nous puissions le créer."
 
-#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:10
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:7
 msgid "Login"
 msgstr "Connexion"
 
-#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:12
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:9
 msgid "Register"
 msgstr "S'enregistrer"
-
-#: ../includes/core-addons/customer-page/templates/customer-page.template.php:2
-#, php-format
-msgid "Hello %s,"
-msgstr "Bonjour %s,"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:163
 #: ../includes/core-addons/private-file/private-file-addon.class.php:171
@@ -339,20 +343,14 @@ msgid "You currently have no files."
 msgstr "Vous n'avez aucun fichier actuellement."
 
 #: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:3
-msgid "Your files grouped by category"
-msgstr "Vos fichiers groupés par catégorie"
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-plain.template.php:3
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:3
+msgid "Your files"
+msgstr "Vos fichiers"
 
 #: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:40
 msgid "Clic to show the files in this category"
 msgstr "Cliquer pour afficher les fichiers dans cette catégorie"
-
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-plain.template.php:3
-msgid "Your files"
-msgstr "Vos fichiers"
-
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:3
-msgid "Your files grouped by year"
-msgstr "Vos fichiers groupés par année"
 
 #: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:45
 #: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:54
@@ -366,6 +364,12 @@ msgstr "Cliquez pour afficher les fichiers publiés en %s"
 #, php-format
 msgid "Added on %s"
 msgstr "Ajouté le %s"
+
+#~ msgid "Your files grouped by category"
+#~ msgstr "Vos fichiers groupés par catégorie"
+
+#~ msgid "Your files grouped by year"
+#~ msgstr "Vos fichiers groupés par année"
 
 #~ msgid "You must login to access your own customer area."
 #~ msgstr "Vous devez être connecté pour accéder à votre espace client"

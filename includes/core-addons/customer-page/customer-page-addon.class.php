@@ -45,8 +45,8 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 	public function default_welcome_message() {
 		global $current_user;
 		$out = sprintf( __('Hello %s,', 'cuar'), $current_user->display_name );
-		$out = sprintf( '<h2 class="cuar_page_title">%s <small><a href="%s" class="logout-link">%s</small></h2>', $out, 
-				wp_logout_url( get_permalink() ), __('Logout', 'cuar') );
+		$out = sprintf( '<h2 class="cuar_page_title">%s <small><a href="%s" class="logout-link">%s</a></small></h2>', 
+				$out, wp_logout_url( get_permalink() ), __('Logout', 'cuar') );
 		
 		echo apply_filters( "cuar_default_welcome_message", $out );
 	}

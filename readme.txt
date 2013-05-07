@@ -37,6 +37,11 @@ If you want to get updates about our plugins, you can:
 * [Follow us on Twitter](http://twitter.com/marvinlabs)
 * [Follow us on Google+](https://plus.google.com/u/0/117677945360605555441)
 * [Follow us on Facebook](http://www.facebook.com/studio.marvinlabs)
+
+
+All the screenshots where done on a WordPress 3.6 development site, using the base Twenty Thirteen theme. No other
+customisation has been done to the plugin or to the add-ons.
+	
 	
 == Upgrade Notice ==
 
@@ -54,11 +59,6 @@ upload a file (below the content box), set the owner of that file, publish, and 
 
 == Screenshots ==
 
-All the screenshots below where done on a WordPress 3.6 development site, using the base Twenty Thirteen theme. No other
-customisation has been done to the plugin or to the add-ons.
-
-= Plugin features =
-
 1. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
 expands the panel. Currently shown is the "Invoices" category.
 2. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
@@ -71,15 +71,9 @@ particular file
 other WordPress admin screen
 8. The main settings screen.
 9. The private files settings screen.
-
-= Login Form Add-on =
-
 20. The login screen when the login form add-on is enabled.
 21. The lost password screen when the login form add-on is enabled.
 22. The registration screen when the login form add-on is enabled.
-
-= Notifications Add-on =
-
 40. Send a notification to your customer when you create a new private file (see top-right box). You need to enable
 the notifications add-on.
 41. The settings screen when the notifications add-on is enabled.

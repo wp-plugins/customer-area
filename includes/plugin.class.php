@@ -67,7 +67,7 @@ class CUAR_Plugin {
 
 		// If we got this far, fallback to the plug-in language folder.
 		// We could use load_textdomain - but this avoids touching any more constants.
-		load_plugin_textdomain( 'cuar', false, $plugin_name . '/languages' );
+		load_plugin_textdomain( $domain, false, $plugin_name . '/languages' );
 	}
 
 	/**

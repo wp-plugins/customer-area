@@ -67,17 +67,17 @@ expands the panel. Currently shown is the "Product Samples" category.
 4. The detail page for a private file. Same page as in the previous screenshot, except that we have scrolled down
 to show that you can also comment on a private file, you can then have a discussion with your customer about that
 particular file
-6. The private file edition page. You can have a title, description, attach a file and set the owner easily, as in any
+5. The private file edition page. You can have a title, description, attach a file and set the owner easily, as in any
 other WordPress admin screen
-8. The main settings screen.
-9. The private files settings screen.
-20. The login screen when the login form add-on is enabled.
-21. The lost password screen when the login form add-on is enabled.
-22. The registration screen when the login form add-on is enabled.
-40. Send a notification to your customer when you create a new private file (see top-right box). You need to enable
+6. The main settings screen.
+7. The private files settings screen.
+8. The login screen when the login form add-on is enabled.
+9. The lost password screen when the login form add-on is enabled.
+10. The registration screen when the login form add-on is enabled.
+11. Send a notification to your customer when you create a new private file (see top-right box). You need to enable
 the notifications add-on.
-41. The settings screen when the notifications add-on is enabled.
-42. The rest of the settings screen when the notifications add-on is enabled.
+12. The settings screen when the notifications add-on is enabled.
+13. The rest of the settings screen when the notifications add-on is enabled.
 
 == Frequently Asked Questions ==
 

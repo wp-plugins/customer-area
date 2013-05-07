@@ -59,20 +59,20 @@ upload a file (below the content box), set the owner of that file, publish, and 
 
 == Screenshots ==
 
-1. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
+01. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
 expands the panel. Currently shown is the "Invoices" category.
-2. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
+02. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
 expands the panel. Currently shown is the "Product Samples" category.
-3. The detail page for a private file. You can see the title, description and download links. 
-4. The detail page for a private file. Same page as in the previous screenshot, except that we have scrolled down
+03. The detail page for a private file. You can see the title, description and download links. 
+04. The detail page for a private file. Same page as in the previous screenshot, except that we have scrolled down
 to show that you can also comment on a private file, you can then have a discussion with your customer about that
 particular file
-5. The private file edition page. You can have a title, description, attach a file and set the owner easily, as in any
+05. The private file edition page. You can have a title, description, attach a file and set the owner easily, as in any
 other WordPress admin screen
-6. The main settings screen.
-7. The private files settings screen.
-8. The login screen when the login form add-on is enabled.
-9. The lost password screen when the login form add-on is enabled.
+06. The main settings screen.
+07. The private files settings screen.
+08. The login screen when the login form add-on is enabled.
+09. The lost password screen when the login form add-on is enabled.
 10. The registration screen when the login form add-on is enabled.
 11. Send a notification to your customer when you create a new private file (see top-right box). You need to enable
 the notifications add-on.

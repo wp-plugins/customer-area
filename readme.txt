@@ -72,8 +72,10 @@ other WordPress admin screen
 06. The main settings screen.
 07. The private files settings screen.
 08. The login screen when the login form add-on is enabled.
-09. The lost password screen when the login form add-on is enabled.
-10. The registration screen when the login form add-on is enabled.
+09. The lost password screen when the login form add-on is enabled. Also shows the integration with the Really Simple
+CAPTCHA plugin.
+10. The registration screen when the login form add-on is enabled. Also shows the integration with the Really Simple
+CAPTCHA plugin.
 11. Send a notification to your customer when you create a new private file (see top-right box). You need to enable
 the notifications add-on.
 12. The settings screen when the notifications add-on is enabled.

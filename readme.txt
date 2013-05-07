@@ -59,9 +59,9 @@ upload a file (below the content box), set the owner of that file, publish, and 
 
 == Screenshots ==
 
-1. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
+01. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
 expands the panel. Currently shown is the "Invoices" category.
-2. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
+02. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
 expands the panel. Currently shown is the "Product Samples" category.
 3. The detail page for a private file. You can see the title, description and download links. 
 4. The detail page for a private file. Same page as in the previous screenshot, except that we have scrolled down

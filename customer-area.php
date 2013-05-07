@@ -30,7 +30,7 @@ Domain Path: /languages
 if ( !defined( 'CUAR_PLUGIN_DIR' ) ) define( 'CUAR_PLUGIN_DIR', 	plugin_dir_path( __FILE__ ) );
 if ( !defined( 'CUAR_INCLUDES_DIR' ) ) define( 'CUAR_INCLUDES_DIR', 	CUAR_PLUGIN_DIR . '/includes' );
 
-define( 'CUAR_LANGUAGE_DIR', 	CUAR_PLUGIN_DIR . '/languages' );
+define( 'CUAR_LANGUAGE_DIR', 		'customer-area/languages' );
 
 define( 'CUAR_PLUGIN_URL', 			plugin_dir_url( __FILE__ ) );
 define( 'CUAR_SCRIPTS_URL', 		CUAR_PLUGIN_URL . '/scripts' );

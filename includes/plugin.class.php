@@ -51,21 +51,23 @@ class CUAR_Plugin {
 	 * Edits to translation files inside customer-area/languages will be lost with an update
 	 * **If you're creating custom translation files, please use the global language folder.**
 	 */
-	public function load_textdomain() {
-		$domain = 'cuar';
+	public function load_textdomain( $domain = 'cuar', $plugin_name = 'customer-area' ) {
+		if ( empty( $domain ) ) $domain = 'cuar';
+		if ( empty( $plugin_name ) ) $plugin_name = 'customer-area';
+	
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 			
 		$mofile = $domain . '-' . $locale . '.mo';
 
 		/* Check the global language folder */
-		$files = array( WP_LANG_DIR . '/customer-area/' . $mofile, WP_LANG_DIR . '/' . $mofile );
+		$files = array( WP_LANG_DIR . '/' . $plugin_name . '/' . $mofile, WP_LANG_DIR . '/' . $mofile );
 		foreach ( $files as $file ){
 			if( file_exists( $file ) ) return load_textdomain( $domain, $file );
 		}
 
 		// If we got this far, fallback to the plug-in language folder.
 		// We could use load_textdomain - but this avoids touching any more constants.
-		load_plugin_textdomain( 'cuar', false, CUAR_LANGUAGE_DIR );
+		load_plugin_textdomain( 'cuar', false, $plugin_name . '/languages' );
 	}
 
 	/**

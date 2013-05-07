@@ -101,14 +101,14 @@ class CUAR_Plugin {
 	 * This function offers a way for addons to do their stuff after this plugin is loaded
 	 */
 	public function get_admin_theme_url() {
-		return apply_filters( 'cuar_admin_theme_url', CUAR_ADMIN_THEME_URL );
+		return apply_filters( 'cuar_admin_theme_url', $this->get_option( CUAR_Settings::$OPTION_ADMIN_THEME_URL ) );
 	}
 	
 	/**
 	 * This function offers a way for addons to do their stuff after this plugin is loaded
 	 */
 	public function get_frontend_theme_url() {
-		return apply_filters( 'cuar_frontend_theme_url', CUAR_FRONTEND_THEME_URL );
+		return apply_filters( 'cuar_frontend_theme_url', $this->get_option( CUAR_Settings::$OPTION_FRONTEND_THEME_URL ) );
 	}
 	
 	/**

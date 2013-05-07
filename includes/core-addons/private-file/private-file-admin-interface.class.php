@@ -414,6 +414,20 @@ class CUAR_PrivateFileAdminInterface {
 	    				. __( 'You can choose how files will be organized by default in the customer area.', 'cuar' )
 	    				. '</p>' )
 			);	
+
+		add_settings_field(
+				self::$OPTION_HIDE_EMPTY_CATEGORIES,
+				__('Empty categories', 'cuar'),
+				array( &$cuar_settings, 'print_input_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_private_files_addon_settings_frontend',
+				array(
+					'option_id' => self::$OPTION_HIDE_EMPTY_CATEGORIES,
+					'type' 		=> 'checkbox',
+					'after'		=> 
+						__( 'When listing files by category, empty categories will be hidden if you check this.', 
+							'cuar' ) )
+			);
 	}
 	
 	/**
@@ -429,6 +443,7 @@ class CUAR_PrivateFileAdminInterface {
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_SHOW_AFTER_POST_CONTENT );
 		$cuar_settings->validate_enum( $input, $validated, self::$OPTION_FILE_LIST_MODE, 
 				array( 'plain', 'year', 'category' ) );
+		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_HIDE_EMPTY_CATEGORIES );
 		
 		return $validated;
 	}
@@ -442,6 +457,7 @@ class CUAR_PrivateFileAdminInterface {
 	public static function set_default_options( $defaults ) {
 		$defaults[ self::$OPTION_SHOW_AFTER_POST_CONTENT ] = true;
 		$defaults[ self::$OPTION_FILE_LIST_MODE ] = 'year';
+		$defaults[ self::$OPTION_HIDE_EMPTY_CATEGORIES ] = true;
 		return $defaults;
 	}
 	
@@ -455,6 +471,7 @@ class CUAR_PrivateFileAdminInterface {
 	// Frontend options
 	public static $OPTION_SHOW_AFTER_POST_CONTENT		= 'frontend_show_after_post_content';
 	public static $OPTION_FILE_LIST_MODE				= 'frontend_file_list_mode';
+	public static $OPTION_HIDE_EMPTY_CATEGORIES			= 'frontend_hide_empty_file_categories';
 		
 	/** @var CUAR_Plugin */
 	private $plugin;

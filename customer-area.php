@@ -2,7 +2,7 @@
 /*
 Plugin Name: Customer Area
 Plugin URI: http://www.marvinlabs.com
-Version: 1.1.2
+Version: 1.2.0
 Description: Customer area give your customers the possibility to get a page on your site where they can access private content. 
 Author: MarvinLabs
 Author URI: http://www.marvinlabs.com
@@ -33,9 +33,9 @@ if ( !defined( 'CUAR_INCLUDES_DIR' ) ) define( 'CUAR_INCLUDES_DIR', 	CUAR_PLUGIN
 define( 'CUAR_LANGUAGE_DIR', 		'customer-area/languages' );
 
 define( 'CUAR_PLUGIN_URL', 			plugin_dir_url( __FILE__ ) );
-define( 'CUAR_SCRIPTS_URL', 		CUAR_PLUGIN_URL . '/scripts' );
-define( 'CUAR_ADMIN_THEME_URL', 	CUAR_PLUGIN_URL . '/themes/admin/default' );
-define( 'CUAR_FRONTEND_THEME_URL', 	CUAR_PLUGIN_URL . '/themes/frontend/default' );
+define( 'CUAR_SCRIPTS_URL', 		CUAR_PLUGIN_URL . 'scripts' );
+define( 'CUAR_ADMIN_THEME_URL', 	CUAR_PLUGIN_URL . 'themes/admin/default' );
+define( 'CUAR_FRONTEND_THEME_URL', 	CUAR_PLUGIN_URL . 'themes/frontend/default' );
 
 
 /**

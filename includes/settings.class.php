@@ -166,6 +166,30 @@ class CUAR_Settings {
 										. '</p>' 
 					)
 			);
+			
+		add_settings_field(
+				self::$OPTION_ADMIN_THEME_URL,
+				__('Admin theme', 'cuar'),
+				array( &$cuar_settings, 'print_theme_select_field' ),
+				self::$OPTIONS_PAGE_SLUG,
+				'cuar_general_settings',
+				array(
+						'option_id' 	=> self::$OPTION_ADMIN_THEME_URL,
+						'theme_type'	=> 'admin'
+					)
+			);
+			
+		add_settings_field(
+				self::$OPTION_FRONTEND_THEME_URL,
+				__('Frontend theme', 'cuar'),
+				array( &$cuar_settings, 'print_theme_select_field' ),
+				self::$OPTIONS_PAGE_SLUG,
+				'cuar_general_settings',
+				array(
+						'option_id' 	=> self::$OPTION_FRONTEND_THEME_URL,
+						'theme_type'	=> 'frontend'
+					)
+			);
 	}
 	
 	public function print_core_settings_general_section_info() {
@@ -181,6 +205,8 @@ class CUAR_Settings {
 	 */
 	public function validate_core_settings( $validated, $cuar_settings, $input ) {
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_INCLUDE_CSS );
+		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_ADMIN_THEME_URL );
+		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_FRONTEND_THEME_URL );
 		
 		return $validated;
 	}
@@ -193,6 +219,8 @@ class CUAR_Settings {
 	 */
 	public static function set_default_core_options( $defaults ) {
 		$defaults[ self::$OPTION_INCLUDE_CSS ] = true;
+		$defaults[ self::$OPTION_ADMIN_THEME_URL ] = CUAR_ADMIN_THEME_URL;
+		$defaults[ self::$OPTION_FRONTEND_THEME_URL ] = CUAR_FRONTEND_THEME_URL;
 				
 		return $defaults;
 	}
@@ -393,6 +421,62 @@ class CUAR_Settings {
 		if ( isset( $after ) ) echo $after;
 	}
 
+	/**
+	 * Output a select field for a theme
+	 *
+	 * @param string $option_id
+	 * @param array  $options
+	 * @param string $caption
+	 */
+	public function print_theme_select_field( $args ) {
+		extract( $args );
+		
+		if ( isset( $before ) ) echo $before;
+		 
+		echo sprintf( '<select id="%s" name="%s[%s]">',
+				esc_attr( $option_id ),
+				self::$OPTIONS_GROUP,
+				esc_attr( $option_id ) );
+		
+		$theme_locations = apply_filters( 'cuar_theme_locations', array(
+				array(
+						'dir'	=> CUAR_PLUGIN_DIR . '/themes/' . $theme_type,
+						'url'	=> CUAR_PLUGIN_URL . 'themes/' . $theme_type,
+						'label'	=> __( 'Main plugin folder', 'cuar' )
+					),
+				array(
+						'dir'	=> get_stylesheet_directory() . '/customer-area/themes/' . $theme_type,
+						'url'	=> get_stylesheet_directory_uri() . '/customer-area/themes/' . $theme_type,
+						'label'	=> __( 'Current theme folder', 'cuar' )
+				),
+				array(
+						'dir'	=> WP_CONTENT_DIR . '/customer-area/themes/' . $theme_type,
+						'url'	=> WP_CONTENT_URL . '/customer-area/themes/' . $theme_type,
+						'label'	=> __( 'WordPress content folder', 'cuar' )
+				)
+			) );
+		
+		foreach ( $theme_locations as $theme_location ) {
+			$subfolders = array_filter( glob( $theme_location['dir'] . '/*' ), 'is_dir' );
+
+			foreach ( $subfolders as $s ) {
+				$theme_name = basename( $s );				
+				$label = $theme_location['label'] . ' - ' . $theme_name;
+				$value = esc_attr( $theme_location['url'] . '/' . $theme_name );
+ 				$selected = ( $this->options[ $option_id ] == $value ) ? 'selected="selected"' : '';
+
+ 				var_dump($this->options[ $option_id ]);
+ 				var_dump($value);
+ 				
+ 				echo sprintf( '<option value="%s" %s>%s</option>', esc_attr( $value ), $selected, $label );
+			}
+		}
+		 
+ 		echo '</select>';
+		
+		if ( isset( $after ) ) echo $after;
+	}
+
 	/* ------------ OTHER FUNCTIONS --------------------------------------------------------------------------------- */
 
 	/**
@@ -411,8 +495,9 @@ class CUAR_Settings {
 	public static $OPTIONS_GROUP = 'cuar_options';
 
 	// Core options
-	public static $OPTION_INCLUDE_CSS	 = 'cuar_include_css';
-
+	public static $OPTION_INCLUDE_CSS			= 'cuar_include_css';
+	public static $OPTION_ADMIN_THEME_URL 		= 'cuar_admin_theme_url';
+	public static $OPTION_FRONTEND_THEME_URL 	= 'cuar_frontend_theme_url';
 
 	/** @var CUAR_Plugin The plugin instance */
 	private $plugin;

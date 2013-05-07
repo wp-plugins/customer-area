@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-05-06 19:37+0100\n"
-"PO-Revision-Date: 2013-05-06 19:37+0100\n"
+"POT-Creation-Date: 2013-05-07 12:34+0100\n"
+"PO-Revision-Date: 2013-05-07 12:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -40,31 +40,51 @@ msgid "If not, you should style the plugin yourself in your theme."
 msgstr ""
 "Si non, vous devrez mettre en forme le plugin par vous-même dans votre thème."
 
-#: ../includes/settings.class.php:225
+#: ../includes/settings.class.php:172
+msgid "Admin theme"
+msgstr "Thème d'administration"
+
+#: ../includes/settings.class.php:184
+msgid "Frontend theme"
+msgstr "Thème du site"
+
+#: ../includes/settings.class.php:253
 msgid " cannot be empty"
 msgstr " ne peut pas être vide"
 
-#: ../includes/settings.class.php:243
+#: ../includes/settings.class.php:271
 msgid " is not a valid email"
 msgstr "n'est pas une addresse mel valide"
 
-#: ../includes/settings.class.php:260
+#: ../includes/settings.class.php:288
 msgid " is not a valid value"
 msgstr "n'est pas une valeur valide"
 
-#: ../includes/settings.class.php:282
+#: ../includes/settings.class.php:310
 msgid "must be an integer"
 msgstr "doit être un entier"
 
-#: ../includes/settings.class.php:291
+#: ../includes/settings.class.php:319
 #, php-format
 msgid "must be greater than %s"
 msgstr "doit être plus grand que %s"
 
-#: ../includes/settings.class.php:300
+#: ../includes/settings.class.php:328
 #, php-format
 msgid "must be lower than %s"
 msgstr "doit être plus petit que %s"
+
+#: ../includes/settings.class.php:445
+msgid "Main plugin folder"
+msgstr "Répertoire principale du plugin"
+
+#: ../includes/settings.class.php:450
+msgid "Current theme folder"
+msgstr "Répertoire du thème actuel"
+
+#: ../includes/settings.class.php:455
+msgid "WordPress content folder"
+msgstr "Répertoire de contenu WordPress"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:47
 #, php-format
@@ -316,6 +336,18 @@ msgstr ""
 "Vous pouvez choisir la manière par défaut dont seront groupés le fichiers "
 "dans la zone client."
 
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:420
+msgid "Empty categories"
+msgstr "Catégories vides"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:428
+msgid ""
+"When listing files by category, empty categories will be hidden if you check "
+"this."
+msgstr ""
+"Si les fichiers sont groupés par catégorie, les catégories vides seront "
+"ignorées si vous cochez cette case."
+
 #: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:2
 msgid "Associated file"
 msgstr "Fichier associé"
@@ -348,9 +380,13 @@ msgstr "Vous n'avez aucun fichier actuellement."
 msgid "Your files"
 msgstr "Vos fichiers"
 
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:40
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:43
 msgid "Clic to show the files in this category"
 msgstr "Cliquer pour afficher les fichiers dans cette catégorie"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:58
+msgid "No files in this category"
+msgstr "Aucun fichier dans cette catégorie"
 
 #: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:45
 #: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:54
@@ -373,9 +409,6 @@ msgstr "Ajouté le %s"
 
 #~ msgid "You must login to access your own customer area."
 #~ msgstr "Vous devez être connecté pour accéder à votre espace client"
-
-#~ msgid "Categories"
-#~ msgstr "Catégories"
 
 #~ msgid "Category"
 #~ msgstr "Catégorie"

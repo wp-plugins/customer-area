@@ -5,10 +5,13 @@
 <div class="accordion-container">	
 
 <?php 
-function cuar_list_category_files( $category, $item_template, $current_user_id, $breadcrumb_sep, $breadcrumb = "", $parent = null ) {
+function cuar_list_category_files( $category, $item_template, $current_user_id, $breadcrumb_sep, $breadcrumb = "", 
+			$parent = null ) {
 	if ( !$category ) return;
 
-	// Get posts in the category
+	// Get posts in the category	
+	global $cuar_plugin;
+	$hide_empty_categories = $cuar_plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_HIDE_EMPTY_CATEGORIES );
 	$args = array(
 			'post_type' 		=> 'cuar_private_file',
 			'posts_per_page' 	=> -1,
@@ -34,20 +37,25 @@ function cuar_list_category_files( $category, $item_template, $current_user_id, 
 	
 	$files_query = new WP_Query( apply_filters( 'cuar_user_files_query_parameters', $args ) );
 	
-	if ( $files_query->have_posts() ) {	
-		// Print heading	
+	// Print heading
+	if ( $files_query->have_posts() || !$hide_empty_categories ) {
 ?>
 	<h4 class="accordion-section-title" title="<?php _e( 'Clic to show the files in this category', 'cuar' );?>"><?php echo $heading; ?></h4>
 	<div class="accordion-section-content">
 		<table class="cuar-private-file-list"><tbody>
 <?php
-	
-		// Print posts
-		while ( $files_query->have_posts() ) { 
-			$files_query->the_post(); 
-			global $post; 
+		if ( $files_query->have_posts() ) {		
+			// Print posts
+			while ( $files_query->have_posts() ) { 
+				$files_query->the_post(); 
+				global $post; 
 ?>
 			<tr class="cuar-private-file"><?php	include( $item_template ); ?></tr>
+<?php 		
+			}
+		} else {
+?>
+			<tr class="cuar-private-file"><td><?php _e( 'No files in this category', 'cuar' ); ?></td></tr>
 <?php 		
 		}
 ?>

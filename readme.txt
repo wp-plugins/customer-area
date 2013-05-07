@@ -1,9 +1,10 @@
 === Customer Area ===
 Contributors: vprat, marvinlabs
+Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.1.2
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,6 +65,25 @@ by copying the file "protect-downloads.htaccess" included in our plugin's extras
 (it should be /wp-content/customer-area). Then you will need to rename that file ".htaccess" so that your server takes
 it into account.
 
+= How can I create my own theme? =
+
+The plugin allows you to create your own theme. The easiest way to start is to copy the default themes folder to either
+your theme's folder or your WordPress' content folder. You should endup with a folder structure similar to:
+
+* wp-content/customer-area/themes/admin/default
+* wp-content/customer-area/themes/frontend/default
+
+or if you chose to copy to the WordPress TwentyThirteen's theme folder:
+
+* wp-content/themes/twentythirteen/customer-area/themes/admin/default
+* wp-content/themes/twentythirteen/customer-area/themes/frontend/default
+
+Once you have copied the folders, you simply need to rename the default folder to a name of your choice, and start 
+editing the style.css stylesheet. 
+ 
+> *Hint: If you are using a theme that could be upgraded in the future, we recommend to put your customer area themes in 
+the WordPress content directory.*
+
 = How can I customize the templates? =
 
 The plugin allows to customize how the information is displayed in the customer area. To change that:
@@ -86,6 +106,11 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 1.2.0 (2013/05/07) =
+
+* Added setting to show/hide empty file categories
+* Added setting to select the theme
 
 = 1.1.2 (2013/05/06) =
 

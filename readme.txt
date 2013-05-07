@@ -14,7 +14,7 @@ Give your customers a page on your site where they can access private content (f
 
 Give your customers a page on your site where they can access private content in a secure and easy way. 
 As of today, private content means files: you upload files for your customer, and only him will be able to view them
-or download them on his page. We will soon extend the plugin to allow for more content type: notices, ...
+or download them on his page. 
 
 **Current features**
 
@@ -22,11 +22,11 @@ or download them on his page. We will soon extend the plugin to allow for more c
 * Private files, that can be assigned to a particular user and will get listed in its customer area
 * Show private files grouped by category / by year / ungrouped in the customer area
 * Comments on private files: the customer/user can send some feedback/observations about it
-* If necessary, you can customize most of the plugin pieces by making your own template files
+* Customize the plugin appearance using your own themes and templates 
  
 **Coming soon**
 
-* Customize the plugin output using themes
+* Login and registration forms integration 
 * Email notifications
 * More private content type (messages/...)
 
@@ -54,7 +54,36 @@ upload a file (below the content box), set the owner of that file, publish, and 
 
 == Screenshots ==
 
-Coming soon.
+All the screenshots below where done on a WordPress 3.6 development site, using the base Twenty Thirteen theme. No other
+customisation has been done to the plugin or to the add-ons.
+
+= Plugin features =
+
+1. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
+expands the panel. Currently shown is the "Invoices" category.
+2. The customer area for logged-in customer "Gail". Files are grouped by categories. A click on the category title 
+expands the panel. Currently shown is the "Product Samples" category.
+3. The detail page for a private file. You can see the title, description and download links. 
+4. The detail page for a private file. Same page as in the previous screenshot, except that we have scrolled down
+to show that you can also comment on a private file, you can then have a discussion with your customer about that
+particular file
+6. The private file edition page. You can have a title, description, attach a file and set the owner easily, as in any
+other WordPress admin screen
+8. The main settings screen.
+9. The private files settings screen.
+
+= Login Form Add-on =
+
+20. The login screen when the login form add-on is enabled.
+21. The lost password screen when the login form add-on is enabled.
+22. The registration screen when the login form add-on is enabled.
+
+= Notifications Add-on =
+
+40. Send a notification to your customer when you create a new private file (see top-right box). You need to enable
+the notifications add-on.
+41. The settings screen when the notifications add-on is enabled.
+42. The rest of the settings screen when the notifications add-on is enabled.
 
 == Frequently Asked Questions ==
 

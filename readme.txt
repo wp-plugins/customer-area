@@ -132,6 +132,10 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
+= 1.3.0 (2013/05/08) =
+
+* Added a capability manager for the plugin
+
 = 1.2.0 (2013/05/07) =
 
 * Added setting to show/hide empty file categories

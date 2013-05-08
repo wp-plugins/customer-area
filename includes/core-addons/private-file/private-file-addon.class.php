@@ -44,6 +44,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
 		
+		add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
+		
 		// Init the admin interface if needed
 		if ( is_admin() ) {
 			$this->admin_interface = new CUAR_PrivateFileAdminInterface( $plugin, $this );
@@ -373,6 +375,18 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 
 	/*------- INITIALISATIONS ----------------------------------------------------------------------------------------*/
 
+	public function declare_configurable_capabilities( $capability_groups ) {
+		$capability_groups[] = array(
+				'group_name' => __( 'Customer Files', 'cuar' ),
+				'capabilities' => array(
+						'cuar_pf_edit' 		=> 'Create/Edit/Delete files',
+						'cuar_pf_read' 		=> 'Access files'
+					)
+			);
+		
+		return $capability_groups;
+	}
+	
 	/**
 	 * Register the custom post type for files and the associated taxonomies
 	 */
@@ -408,13 +422,13 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				'can_export' 			=> false,
 				'rewrite' 				=> false,
 				'capabilities' 			=> array(
-						'edit_post' 			=> 'cuar_editor',
-						'edit_posts' 			=> 'cuar_editor',
-						'edit_others_posts' 	=> 'cuar_editor',
-						'publish_posts' 		=> 'cuar_editor',
-						'read_post' 			=> 'cuar_editor',
-						'read_private_posts' 	=> 'cuar_editor',
-						'delete_post' 			=> 'cuar_editor'
+						'edit_post' 			=> 'cuar_pf_edit',
+						'edit_posts' 			=> 'cuar_pf_edit',
+						'edit_others_posts' 	=> 'cuar_pf_edit',
+						'publish_posts' 		=> 'cuar_pf_edit',
+						'read_post' 			=> 'cuar_pf_read',
+						'read_private_posts' 	=> 'cuar_pf_edit',
+						'delete_post' 			=> 'cuar_pf_edit'
 				)
 		);
 

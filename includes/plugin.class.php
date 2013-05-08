@@ -124,9 +124,6 @@ class CUAR_Plugin {
 	public function load_defaults() {	
 		// Start a session when we save a post in order to store error logs
 		if (!session_id()) session_start();
-		
-		$admin_role = get_role( 'administrator' );
-		$admin_role->add_cap( 'cuar_editor' );
 	}
 	
 	/**

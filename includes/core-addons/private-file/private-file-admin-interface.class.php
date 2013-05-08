@@ -366,7 +366,7 @@ class CUAR_PrivateFileAdminInterface {
 	/*------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE --------------------------------------------------------------*/
 
 	public function add_settings_tab( $tabs ) {
-		$tabs[ 'cuar_private_files' ] = __( 'Private Files', 'cuar' );
+		$tabs[ 'cuar_private_files' ] = __( 'Customer Files', 'cuar' );
 		return $tabs;
 	}
 	
@@ -458,6 +458,11 @@ class CUAR_PrivateFileAdminInterface {
 		$defaults[ self::$OPTION_SHOW_AFTER_POST_CONTENT ] = true;
 		$defaults[ self::$OPTION_FILE_LIST_MODE ] = 'year';
 		$defaults[ self::$OPTION_HIDE_EMPTY_CATEGORIES ] = true;
+
+		$admin_role = get_role( 'administrator' );
+		$admin_role->add_cap( 'cuar_pf_edit' );
+		$admin_role->add_cap( 'cuar_pf_read' );
+		
 		return $defaults;
 	}
 	

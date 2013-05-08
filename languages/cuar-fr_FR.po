@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-05-07 13:15+0100\n"
-"PO-Revision-Date: 2013-05-07 13:16+0100\n"
+"POT-Creation-Date: 2013-05-08 10:58+0100\n"
+"PO-Revision-Date: 2013-05-08 10:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -88,6 +88,10 @@ msgstr "Répertoire du thème actuel"
 msgid "WordPress content folder"
 msgstr "Répertoire de contenu WordPress"
 
+#: ../includes/core-addons/capabilities/capabilities-admin-interface.class.php:41
+msgid "Capabilities"
+msgstr "Permissions"
+
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:47
 #, php-format
 msgid "Hello %s,"
@@ -118,169 +122,174 @@ msgstr "Connexion"
 msgid "Register"
 msgstr "S'enregistrer"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:163
-#: ../includes/core-addons/private-file/private-file-addon.class.php:171
-#: ../includes/core-addons/private-file/private-file-addon.class.php:219
-#: ../includes/core-addons/private-file/private-file-addon.class.php:251
+#: ../includes/core-addons/private-file/private-file-addon.class.php:165
+#: ../includes/core-addons/private-file/private-file-addon.class.php:173
+#: ../includes/core-addons/private-file/private-file-addon.class.php:221
+#: ../includes/core-addons/private-file/private-file-addon.class.php:253
 msgctxt "URL slug"
 msgid "download-file"
 msgstr "télécharger-fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:165
-#: ../includes/core-addons/private-file/private-file-addon.class.php:173
-#: ../includes/core-addons/private-file/private-file-addon.class.php:219
-#: ../includes/core-addons/private-file/private-file-addon.class.php:259
+#: ../includes/core-addons/private-file/private-file-addon.class.php:167
+#: ../includes/core-addons/private-file/private-file-addon.class.php:175
+#: ../includes/core-addons/private-file/private-file-addon.class.php:221
+#: ../includes/core-addons/private-file/private-file-addon.class.php:261
 msgctxt "URL slug"
 msgid "view-file"
 msgstr "voir-fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:205
+#: ../includes/core-addons/private-file/private-file-addon.class.php:207
 msgid "You are not authorized to view this file"
 msgstr "Vous n'êtes pas autorisé à voir ce fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:237
-#: ../includes/core-addons/private-file/private-file-addon.class.php:242
+#: ../includes/core-addons/private-file/private-file-addon.class.php:239
+#: ../includes/core-addons/private-file/private-file-addon.class.php:244
 msgid "You are not authorized to access this file"
 msgstr "Vous n'êtes pas autorisé à accéder à ce fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:381
-#: ../includes/core-addons/private-file/private-file-addon.class.php:392
+#: ../includes/core-addons/private-file/private-file-addon.class.php:380
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:369
+msgid "Customer Files"
+msgstr "Fichiers clients"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:395
+#: ../includes/core-addons/private-file/private-file-addon.class.php:406
 msgctxt "cuar_private_file"
 msgid "Customer Files"
 msgstr "Fichiers clients"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:382
+#: ../includes/core-addons/private-file/private-file-addon.class.php:396
 msgctxt "cuar_private_file"
 msgid "Customer File"
 msgstr "Fichier client"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:383
+#: ../includes/core-addons/private-file/private-file-addon.class.php:397
 msgctxt "cuar_private_file"
 msgid "Add New"
 msgstr "Ajouter un nouveau"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:384
+#: ../includes/core-addons/private-file/private-file-addon.class.php:398
 msgctxt "cuar_private_file"
 msgid "Add New Customer File"
 msgstr "Ajouter un fichier client"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:385
+#: ../includes/core-addons/private-file/private-file-addon.class.php:399
 msgctxt "cuar_private_file"
 msgid "Edit Customer File"
 msgstr "Editer un fichier client"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:386
+#: ../includes/core-addons/private-file/private-file-addon.class.php:400
 msgctxt "cuar_private_file"
 msgid "New Customer File"
 msgstr "Nouveau fichier client"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:387
+#: ../includes/core-addons/private-file/private-file-addon.class.php:401
 msgctxt "cuar_private_file"
 msgid "View Customer File"
 msgstr "Voir le fichier client"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:388
+#: ../includes/core-addons/private-file/private-file-addon.class.php:402
 msgctxt "cuar_private_file"
 msgid "Search Customer Files"
 msgstr "Chercher des fichiers privés : %s"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:389
+#: ../includes/core-addons/private-file/private-file-addon.class.php:403
 msgctxt "cuar_private_file"
 msgid "No customer files found"
 msgstr "Aucun fichier client trouvé"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:390
+#: ../includes/core-addons/private-file/private-file-addon.class.php:404
 msgctxt "cuar_private_file"
 msgid "No customer files found in Trash"
 msgstr "Aucun fichier client trouvé dans la corbeille"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:391
+#: ../includes/core-addons/private-file/private-file-addon.class.php:405
 msgctxt "cuar_private_file"
 msgid "Parent Customer File:"
 msgstr "Fichier client parent :"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:424
-#: ../includes/core-addons/private-file/private-file-addon.class.php:440
+#: ../includes/core-addons/private-file/private-file-addon.class.php:438
+#: ../includes/core-addons/private-file/private-file-addon.class.php:454
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
 msgstr "Catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:425
+#: ../includes/core-addons/private-file/private-file-addon.class.php:439
 msgctxt "cuar_private_file_category"
 msgid "File Category"
 msgstr "Catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:426
+#: ../includes/core-addons/private-file/private-file-addon.class.php:440
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
 msgstr "Chercher des catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:427
+#: ../includes/core-addons/private-file/private-file-addon.class.php:441
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
 msgstr "Catégories de fichier populaires"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:428
+#: ../includes/core-addons/private-file/private-file-addon.class.php:442
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
 msgstr "Toutes les catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:429
+#: ../includes/core-addons/private-file/private-file-addon.class.php:443
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
 msgstr "Catégorie de fichier parente"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:430
+#: ../includes/core-addons/private-file/private-file-addon.class.php:444
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
 msgstr "Catégorie de fichier parente :"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:431
+#: ../includes/core-addons/private-file/private-file-addon.class.php:445
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
 msgstr "Modifier la catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:432
+#: ../includes/core-addons/private-file/private-file-addon.class.php:446
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
 msgstr "Mettre à jour la catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:433
+#: ../includes/core-addons/private-file/private-file-addon.class.php:447
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
 msgstr "Ajouter une catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:434
+#: ../includes/core-addons/private-file/private-file-addon.class.php:448
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
 msgstr "Nouvelle catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:435
+#: ../includes/core-addons/private-file/private-file-addon.class.php:449
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
 msgstr "Séparez les catégories de fichier avec des virgules"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:437
+#: ../includes/core-addons/private-file/private-file-addon.class.php:451
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
 msgstr "Ajouter ou enlever des catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:438
+#: ../includes/core-addons/private-file/private-file-addon.class.php:452
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Choisir parmi les catégories de fichier les plus courantes"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:452
+#: ../includes/core-addons/private-file/private-file-addon.class.php:466
 msgctxt "URL slug"
 msgid "private-file-category"
 msgstr "catégorie-fichier-privé"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:473
+#: ../includes/core-addons/private-file/private-file-addon.class.php:487
 msgctxt "URL slug"
 msgid "private-file"
 msgstr "fichier-privé"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:514
+#: ../includes/core-addons/private-file/private-file-addon.class.php:528
 msgctxt "URL slug"
 msgid "unknown"
 msgstr "inconnu"
@@ -325,10 +334,6 @@ msgstr ""
 #, php-format
 msgid "An error happened while uploading your file: %s"
 msgstr "Une erreur est survenue lors du téléversement de votre fichier : %s"
-
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:369
-msgid "Private Files"
-msgstr "Fichiers privés"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:383
 msgid "Frontend Integration"
@@ -432,6 +437,9 @@ msgstr "Cliquez pour afficher les fichiers publiés en %s"
 #, php-format
 msgid "Added on %s"
 msgstr "Ajouté le %s"
+
+#~ msgid "Private Files"
+#~ msgstr "Fichiers privés"
 
 #~ msgid "Your files grouped by category"
 #~ msgstr "Vos fichiers groupés par catégorie"

@@ -1,4 +1,4 @@
-<h2><?php _e( 'Hello', 'cuar'); ?></h2>
+<h2 class="cuar_page_title"><?php _e( 'Hello', 'cuar'); ?></h2>
 <p><?php _e( 'You must login to access your own customer area. '
 	. 'If you do not have an account yet, please register or ' 
 	. 'contact us so that we can create it.', 'cuar' ); ?></p>

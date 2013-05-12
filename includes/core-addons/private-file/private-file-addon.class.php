@@ -463,7 +463,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				'hierarchical' 		=> true,
 				'query_var' 		=> true,
 				'rewrite' 			=> array(
-						'slug' 				=> _x( 'private-file-category', 'URL slug', 'cuar' )
+						'slug' 				=> 'private-file-category'
 					),
 		);
 	  
@@ -484,7 +484,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	function add_post_type_rewrites() {
 		global $wp_rewrite;
 		
-		$pf_slug = _x( 'private-file', 'URL slug', 'cuar' );
+		$pf_slug = 'private-file';
 		
 		$wp_rewrite->add_rewrite_tag('%cuar_private_file%', '([^/]+)', 'cuar_private_file=');
 		$wp_rewrite->add_rewrite_tag('%owner_name%', '([^/]+)', 'cuar_pf_owner_name=');
@@ -525,7 +525,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			$owner = get_userdata( $owner_id );
 			$owner = sanitize_title_with_dashes( $owner->user_nicename );
 		} else {
-			$owner = _x( 'unknown', 'URL slug', 'cuar' );
+			$owner = 'unknown';
 		}
 		$permalink = str_replace( '%owner_name%', $owner, $permalink );
 	

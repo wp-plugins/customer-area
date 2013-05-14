@@ -17,7 +17,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 ?>
 
-<div class="wrap">
+<div class="wrap cuar-settings-<?php echo $this->current_tab; ?>">
 	<?php screen_icon(); ?>
 	
 	<h2 class="nav-tab-wrapper">
@@ -30,8 +30,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php endforeach; ?>
 	</h2>
 	
-<?php do_action( 'cuar_before_settings' ); ?>
-<?php do_action( 'cuar_before_settings_' . $this->current_tab ); ?>
+	<div class="cuar-main">
+	
+<?php do_action( 'cuar_before_settings', $this ); ?>
+<?php do_action( 'cuar_before_settings_' . $this->current_tab, $this ); ?>
 	
 	<form method="post" action="options.php"> 	
 		<input type="hidden" id="cuar_tab" name="cuar_tab" value="<?php echo $this->current_tab; ?>" />
@@ -41,11 +43,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 		do_settings_sections( CUAR_Settings::$OPTIONS_PAGE_SLUG ); 
 	?>
 	
-<?php do_action( 'cuar_in_settings_form_' . $this->current_tab ); ?>
+<?php do_action( 'cuar_in_settings_form_' . $this->current_tab, $this ); ?>
 	
 	<?php submit_button(); ?>
 	</form>
 	
-<?php do_action( 'cuar_after_settings_' . $this->current_tab ); ?>
-<?php do_action( 'cuar_after_settings' ); ?>
+<?php do_action( 'cuar_after_settings_' . $this->current_tab, $this ); ?>
+<?php do_action( 'cuar_after_settings', $this ); ?>
+
+	</div>
+	
+	<div class="cuar-side">
+
+	<?php do_action( 'cuar_before_settings_side', $this ); ?>
+	<?php do_action( 'cuar_settings_side_' . $this->current_tab, $this ); ?>
+	<?php do_action( 'cuar_after_settings_side', $this ); ?>
+		
+	</div>
 </div>
+

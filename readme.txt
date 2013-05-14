@@ -132,6 +132,12 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
+= 1.3.2 (2013/05/14) =
+
+* Fixed a bug with permalinks (again)
+* Added contextual help in the settings page
+* Created an add-on tab in the settings, you can now easily know which add-ons could help you enhance your customer area
+
 = 1.3.1 (2013/05/12) =
 
 * Fixed a bug with permalinks

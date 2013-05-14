@@ -162,17 +162,17 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			$url = trailingslashit( $url );
 	
 			if ( $action=="download" ) {
-				$url .= _x( 'download-file', 'URL slug', 'cuar' );
+				$url .= 'download-file';
 			} else if ( $action=="view" ) {
-				$url .= _x( 'view-file', 'URL slug', 'cuar' );
+				$url .= 'view-file';
 			} else {
 				cuar_log_debug( "CUAR_PrivateFileAddOn::get_file_permalink - unknown action" );
 			}
 		} else {
 			if ( $action=="download" ) {
-				$url .= '&' . _x( 'download-file', 'URL slug', 'cuar' ) . '=1';
+				$url .= '&' . 'download-file' . '=1';
 			} else if ( $action=="view" ) {
-				$url .= '&' . _x( 'view-file', 'URL slug', 'cuar' ) . '=1';
+				$url .= '&' . 'view-file' . '=1';
 			} else {
 				cuar_log_debug( "CUAR_PrivateFileAddOn::get_file_permalink - unknown action" );
 			}
@@ -218,7 +218,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		// If not a known action, do nothing
 		$action = get_query_var( 'cuar_action' );
-		if ( $action!=_x( 'download-file', 'URL slug', 'cuar' ) && $action!=_x( 'view-file', 'URL slug', 'cuar' ) ) {
+		if ( $action!='download-file' && $action!='view-file' ) {
 			return;
 		}
 		
@@ -250,7 +250,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$file_name = $this->get_file_name( $post->ID );
 		$file_path = $this->plugin->get_user_file_path( $owner_id, $file_name );
 
-		if ( $action==_x( 'download-file', 'URL slug', 'cuar' ) ) {			
+		if ( $action=='download-file' ) {			
 			if ( $owner_id==$current_user_id ) {
 				$this->increment_file_download_count( $post->ID );
 			}
@@ -258,7 +258,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			do_action( 'cuar_private_file_download', $post->ID, $current_user_id, $this );	
 					
 			$this->output_file( $file_path, $file_name, $file_type, 'download' );
-		} else if ( $action==_x( 'view-file', 'URL slug', 'cuar' ) ) {			
+		} else if ( $action=='view-file' ) {			
 			if ( $owner_id==$current_user_id ) {
 				$this->increment_file_download_count( $post->ID );
 			}

@@ -38,7 +38,7 @@ class CUAR_Settings {
 	 * @return mixed the value
 	 */
 	public function get_option( $option_id ) {
-		return $this->options[ $option_id ];
+		return isset( $this->options[ $option_id ] ) ? $this->options[ $option_id ] : null;
 	}
 
 	/**
@@ -239,6 +239,50 @@ class CUAR_Settings {
 	}
 	
 	/**
+	 * Validate a value in any case
+	 *
+	 * @param array $input Input array
+	 * @param array $validated Output array
+	 * @param string $option_id Key of the value to check in the input array
+	 */
+	public function validate_license_key( $input, &$validated, $option_id, $store_url, $product_name ) {
+		$validated[ $option_id ] = trim( $input[ $option_id ] );
+
+		// Only validate on license change or every N days
+		$last_check = $this->get_option( $option_id . '_lastcheck' );
+		
+		if ( $last_check ) { 
+			$days_since_lastcheck = ( time() - intval( $last_check ) ) / ( 24 * 60 * 60 ) ;
+		} else {
+			$days_since_lastcheck = 99999;
+		}
+		
+		if ( $days_since_lastcheck > 2 
+				|| $input[ $option_id ]!=$this->get_option( $option_id ) ) {
+			// data to send in our API request
+			$api_params = array(
+					'edd_action'	=> 'activate_license',
+					'license' 		=> $validated[ $option_id ],
+					'item_name' 	=> urlencode( $product_name ) 
+			);
+			
+			// Call the custom API.
+			$response = wp_remote_get( add_query_arg( $api_params, $store_url ), 
+					array( 'timeout' => 15, 'sslverify' => false ) );
+
+			// make sure the response came back okay
+			if ( is_wp_error( $response ) ) return false;
+			
+			// decode the license data
+			// $license_data->license will be either "active" or "inactive"
+			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+	
+			$validated[ $option_id . '_status' ] = $license_data->license;		
+			$validated[ $option_id . '_lastcheck' ] = time();		
+		}
+	}
+	
+	/**
 	 * Validate a value which should simply be not empty 
 	 *
 	 * @param array $input Input array
@@ -337,6 +381,50 @@ class CUAR_Settings {
 
 	/* ------------ FIELDS OUTPUT ----------------------------------------------------------------------------------- */
 
+	/**
+	 * Output a text field for a license key
+	 *
+	 * @param string $option_id
+	 */
+	public function print_license_key_field( $args ) {
+		extract( $args );
+
+		if ( isset( $before ) ) echo $before;
+			
+		echo sprintf( '<input type="text" id="%s" name="%s[%s]" value="%s" class="regular-text" />',
+				esc_attr( $option_id ),
+				self::$OPTIONS_GROUP,
+				esc_attr( $option_id ),
+				esc_attr( $this->options[ $option_id ] )
+		);
+			
+		$status = $this->get_option( $option_id . '_status' );
+		if ( isset( $status ) && $status!==false ) {
+			if ( $status=="active" ) {
+				printf( '&nbsp;&nbsp;<span class="status" style="color: green;">%s</span>',
+					__( 'Your license is active!', 'cuar' ) );
+			} else if ( $status=="invalid" ) {
+				printf( '&nbsp;&nbsp;<span class="status" style="color: red;">%s</span>',
+					__( 'Your license key is invalid!', 'cuar' ) );
+			} else if ( $status=="expired" ) {
+				printf( '&nbsp;&nbsp;<span class="status" style="color: orange;">%s</span>',
+					__( 'Your license key is expired!', 'cuar' ) );
+			} 
+		}
+		
+		$last_check = $this->get_option( $option_id . '_lastcheck' );
+		if ( isset( $last_check ) ) {
+			printf( '&nbsp;&nbsp;<span>(%s: %s)</span>',
+				__( 'Last check', 'cuar' ),
+				date( __( 'd/m/Y', 'cuar' ), $last_check ) );
+		}
+		
+		printf( '<p class="description">%s</p>', __( 'The license key you have received for this add-on. '
+	    		. 'This is required in order to get automatic plugin updates.', 'cuarlf' ) );
+		
+		if ( isset( $after ) ) echo $after;
+	}
+	
 	/**
 	 * Output a text field for a setting
 	 *
@@ -479,6 +567,19 @@ class CUAR_Settings {
 
 	/* ------------ OTHER FUNCTIONS --------------------------------------------------------------------------------- */
 
+	/**
+	 * Prints a sidebox on the side of the settings screen
+	 * 
+	 * @param string $title
+	 * @param string $content
+	 */
+	public function print_sidebox( $title, $content ) {
+		echo '<div class="cuar-sidebox">';
+		echo '<h2 class="cuar-sidebox-title">' . $title . '</h2>';
+		echo '<div class="cuar-sidebox-content">' . $content . '</div>';
+		echo '</div>';
+	}
+	
 	/**
 	 * Load the options (and defaults if the options do not exist yet
 	 */

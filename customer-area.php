@@ -61,6 +61,7 @@ include_once( CUAR_INCLUDES_DIR . '/plugin.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/theme-utils.class.php' );
 
 // Core addons
+include_once( CUAR_INCLUDES_DIR . '/core-addons/help/help-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/capabilities/capabilities-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/private-file/private-file-addon.class.php' );
 include_once( CUAR_INCLUDES_DIR . '/core-addons/customer-page/customer-page-addon.class.php' );

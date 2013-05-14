@@ -6,3 +6,70 @@ span.label {
 	display: inline-block;
 	min-width: 33%;
 }
+
+/* -= SETTINGS PAGE */
+
+.cuar-main {
+	width: 69%;
+	float: left;
+	margin-top: 35px;
+}
+
+.cuar-side {
+	width: 29%;
+	float: right;
+	margin-top: 35px;
+}
+
+/* -= SETTINGS SIDEBOXES */
+
+.cuar-sidebox {
+	border-bottom: 5px solid #eee;
+	margin-bottom: 20px;
+}
+
+.cuar-sidebox ul {
+	list-style: disc;
+	margin-left: 30px;
+}
+
+.cuar-sidebox h2.cuar-sidebox-title {
+	background: #eee;
+	padding: 10px 20px;
+	font-size: 18px;
+	line-height: 18px;
+}
+
+.cuar-sidebox div.cuar-sidebox-content {
+	background: #fafafa;
+	padding: 7px 20px;
+}
+
+/* -= ADD-ONS TAB */
+
+.cuar-addon {
+	float: left;
+	width: 22%;
+	margin: 1%;
+	padding: 10px;
+	border: 1px solid #eee;
+	background: #fafafa;
+}
+
+.cuar-addon:hover {
+	background: #f0f0f0;
+}
+
+.cuar-addon img {
+	max-width: 100%;
+}
+
+.cuar-addon h2 {
+	text-align: center;
+}
+
+/* -= INDIVIDUAL SETTINGS TAB ADJUSTMENTS */
+
+.cuar-settings-cuar_addons p.submit {
+	display: none;
+}

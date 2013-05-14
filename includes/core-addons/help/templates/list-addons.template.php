@@ -18,6 +18,6 @@
 		<h2><a href="<?php echo $item->get_permalink(); ?>"><?php echo str_replace( 'Customer Area – ', '', $item->get_title() ); ?></a></h2>
 		<p><?php echo $item->get_description(); ?></p>
 	</div>
-
+	
 <?php endforeach; ?>
 </div>

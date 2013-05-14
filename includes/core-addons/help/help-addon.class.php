@@ -58,7 +58,7 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 	 */
 	public function print_addons_sidebox( $cuar_settings ) {		
 		$content = sprintf( '<p>%s</p><p><a href="%s" class="button-primary" target="_blank">%s</a></p>', 
-						__( 'Customer Area is a very modular plugin. We have built is so that it can be ' 
+						__( '&laquo Customer Area &raquo; is a very modular plugin. We have built it so that it can be ' 
 							. 'extended in many ways. Some add-ons are presented in this page by selecting the '
 							. '&laquo Add-ons &raquo; tab. You can also view all extensions we have by clicking the '
 							. 'link below.' , 'cuar' ),

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-05-08 10:58+0100\n"
-"PO-Revision-Date: 2013-05-08 10:59+0100\n"
+"POT-Creation-Date: 2013-05-14 17:49+0100\n"
+"PO-Revision-Date: 2013-05-14 17:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -50,41 +50,69 @@ msgstr "Thème d'administration"
 msgid "Frontend theme"
 msgstr "Thème du site"
 
-#: ../includes/settings.class.php:253
+#: ../includes/settings.class.php:297
 msgid " cannot be empty"
 msgstr " ne peut pas être vide"
 
-#: ../includes/settings.class.php:271
+#: ../includes/settings.class.php:315
 msgid " is not a valid email"
 msgstr "n'est pas une addresse mel valide"
 
-#: ../includes/settings.class.php:288
+#: ../includes/settings.class.php:332
 msgid " is not a valid value"
 msgstr "n'est pas une valeur valide"
 
-#: ../includes/settings.class.php:310
+#: ../includes/settings.class.php:354
 msgid "must be an integer"
 msgstr "doit être un entier"
 
-#: ../includes/settings.class.php:319
+#: ../includes/settings.class.php:363
 #, php-format
 msgid "must be greater than %s"
 msgstr "doit être plus grand que %s"
 
-#: ../includes/settings.class.php:328
+#: ../includes/settings.class.php:372
 #, php-format
 msgid "must be lower than %s"
 msgstr "doit être plus petit que %s"
 
-#: ../includes/settings.class.php:445
+#: ../includes/settings.class.php:405
+msgid "Your license is active!"
+msgstr "Votre license est active !"
+
+#: ../includes/settings.class.php:408
+msgid "Your license key is invalid!"
+msgstr "Votre licence est invalide !"
+
+#: ../includes/settings.class.php:411
+msgid "Your license key is expired!"
+msgstr "Votre licence est expirée !"
+
+#: ../includes/settings.class.php:418
+msgid "Last check"
+msgstr "Dernière vérification"
+
+#: ../includes/settings.class.php:419
+msgid "d/m/Y"
+msgstr "d/m/Y"
+
+#: ../includes/settings.class.php:422
+msgid ""
+"The license key you have received for this add-on. This is required in order "
+"to get automatic plugin updates."
+msgstr ""
+"La clé de licence que vous avez reçu avec cette extension. Cette clé est "
+"nécessaire pour obtenir des mises à jour automatiquement."
+
+#: ../includes/settings.class.php:533
 msgid "Main plugin folder"
 msgstr "Répertoire principale du plugin"
 
-#: ../includes/settings.class.php:450
+#: ../includes/settings.class.php:538
 msgid "Current theme folder"
 msgstr "Répertoire du thème actuel"
 
-#: ../includes/settings.class.php:455
+#: ../includes/settings.class.php:543
 msgid "WordPress content folder"
 msgstr "Répertoire de contenu WordPress"
 
@@ -122,21 +150,34 @@ msgstr "Connexion"
 msgid "Register"
 msgstr "S'enregistrer"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:165
-#: ../includes/core-addons/private-file/private-file-addon.class.php:173
-#: ../includes/core-addons/private-file/private-file-addon.class.php:221
-#: ../includes/core-addons/private-file/private-file-addon.class.php:253
-msgctxt "URL slug"
-msgid "download-file"
-msgstr "télécharger-fichier"
+#: ../includes/core-addons/help/help-addon.class.php:45
+msgid "Add-ons"
+msgstr "Extensions"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:167
-#: ../includes/core-addons/private-file/private-file-addon.class.php:175
-#: ../includes/core-addons/private-file/private-file-addon.class.php:221
-#: ../includes/core-addons/private-file/private-file-addon.class.php:261
-msgctxt "URL slug"
-msgid "view-file"
-msgstr "voir-fichier"
+#: ../includes/core-addons/help/help-addon.class.php:61
+msgid ""
+"&laquo Customer Area &raquo; is a very modular plugin. We have built it so "
+"that it can be extended in many ways. Some add-ons are presented in this "
+"page by selecting the &laquo Add-ons &raquo; tab. You can also view all "
+"extensions we have by clicking the link below."
+msgstr ""
+"&laquo Espace Client &raquo; est une extension très modulable. Nous l'avons "
+"construite de manière à pouvoir l'étendre dans de nombreuses directions. "
+"Quelques extensions sont présentées dans cette page en sélectionnant "
+"l'onglet &laquo Extensions &raquo;. Vous pouvez aussi voir toutes les "
+"extensions que nous tenons à votre disposition en suivant le lien ci-dessous."
+
+#: ../includes/core-addons/help/help-addon.class.php:66
+msgid "Browse all extensions"
+msgstr "Voir toutes les extensions"
+
+#: ../includes/core-addons/help/help-addon.class.php:68
+msgid "Enhance your customer area"
+msgstr "Améliorez votre espace client"
+
+#: ../includes/core-addons/help/templates/list-addons.template.php:6
+msgid "Enhance your customer area with our add-ons"
+msgstr "Améliorez votre espace client avec nos extensions"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:207
 msgid "You are not authorized to view this file"
@@ -278,21 +319,6 @@ msgstr "Ajouter ou enlever des catégories de fichier"
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Choisir parmi les catégories de fichier les plus courantes"
-
-#: ../includes/core-addons/private-file/private-file-addon.class.php:466
-msgctxt "URL slug"
-msgid "private-file-category"
-msgstr "catégorie-fichier-privé"
-
-#: ../includes/core-addons/private-file/private-file-addon.class.php:487
-msgctxt "URL slug"
-msgid "private-file"
-msgstr "fichier-privé"
-
-#: ../includes/core-addons/private-file/private-file-addon.class.php:528
-msgctxt "URL slug"
-msgid "unknown"
-msgstr "inconnu"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:57
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:124
@@ -438,6 +464,26 @@ msgstr "Cliquez pour afficher les fichiers publiés en %s"
 msgid "Added on %s"
 msgstr "Ajouté le %s"
 
+#~ msgctxt "URL slug"
+#~ msgid "download-file"
+#~ msgstr "télécharger-fichier"
+
+#~ msgctxt "URL slug"
+#~ msgid "view-file"
+#~ msgstr "voir-fichier"
+
+#~ msgctxt "URL slug"
+#~ msgid "private-file-category"
+#~ msgstr "catégorie-fichier-privé"
+
+#~ msgctxt "URL slug"
+#~ msgid "private-file"
+#~ msgstr "fichier-privé"
+
+#~ msgctxt "URL slug"
+#~ msgid "unknown"
+#~ msgstr "inconnu"
+
 #~ msgid "Private Files"
 #~ msgstr "Fichiers privés"
 
@@ -446,9 +492,6 @@ msgstr "Ajouté le %s"
 
 #~ msgid "Your files grouped by year"
 #~ msgstr "Vos fichiers groupés par année"
-
-#~ msgid "You must login to access your own customer area."
-#~ msgstr "Vous devez être connecté pour accéder à votre espace client"
 
 #~ msgid "Category"
 #~ msgstr "Catégorie"

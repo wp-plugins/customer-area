@@ -33,7 +33,8 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 		// We only do something within the admin interface
 		if ( is_admin() ) {
 			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 1000, 1 );
-			add_filter( 'cuar_before_settings_side', array( &$this, 'print_addons_sidebox' ) );
+			add_filter( 'cuar_after_settings_side', array( &$this, 'print_addons_sidebox' ), 800 );
+			add_filter( 'cuar_after_settings_side', array( &$this, 'print_marvinlabs_sidebox' ), 1000 );
 			add_filter( 'cuar_before_settings_cuar_addons', array( &$this, 'print_addons' ) );
 		} 
 	}	
@@ -66,6 +67,31 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 						__( 'Browse all extensions', 'cuar' ) );
 		
 		$cuar_settings->print_sidebox( __( 'Enhance your customer area', 'cuar' ), $content );
+	}
+
+
+	/**
+	 * @param CUAR_Settings $cuar_settings
+	 */
+	public function print_marvinlabs_sidebox( $cuar_settings ) {
+		$content = sprintf( '<p>&raquo; ' . 
+				__( 'If you like our plugins, you might want to <a href="%s">check our website</a> for more.', 'cuar' ) 
+				. '</p>', 'http://www.marvinlabs.com' );
+	
+		$content .= '<p>&raquo; ' . __( 'If you want to get updates about our plugins, you can:', 'cuar' ) . '</p><ul>';
+		$content .= sprintf( '<li><a href="%2$s">%1$s</a>', 
+				__( 'Follow us on Twitter', 'cuar' ), 
+				"http://twitter.com/marvinlabs");
+		$content .= sprintf( '<li><a href="%2$s">%1$s</a>', 
+				__( 'Follow us on Google+', 'cuar' ), 
+				"https://plus.google.com/u/0/117677945360605555441");
+		$content .= sprintf( '<li><a href="%2$s">%1$s</a>', 
+				__( 'Follow us on Facebook', 'cuar' ), 
+				"http://www.facebook.com/studio.marvinlabs");
+		$content .= '</ul>';
+
+
+		$cuar_settings->print_sidebox( __( 'Get more from MarvinLabs', 'cuar' ), $content );		
 	}
 	
 	/** @var CUAR_Plugin */

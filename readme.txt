@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.3.1
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,9 +26,16 @@ or download them on his page.
  
 **Coming soon**
 
-* Login and registration forms integration 
-* Email notifications
 * More private content type (messages/...)
+
+**Extensions are now available!**
+
+Customer Area is available for free and should cover the needs of most users. If you want to encourage us to actively 
+maintain it, or if you need a particular feature not included in the basic plugin, you can buy our premium extensions 
+from [our online shop](http://www.marvinlabs.com/shop): 
+
+* [Login and registration forms integration](http://www.marvinlabs.com/downloads/customer-area-login-register-forms/)
+* [Email notifications](http://www.marvinlabs.com/downloads/customer-area-notifications/)
 
 If you like our plugins, you might want to [check our website](http://www.marvinlabs.com) for more.
 
@@ -132,7 +139,7 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 1.3.2 (2013/05/14) =
+= 1.4.0 (2013/05/15) =
 
 * Fixed a bug with permalinks (again)
 * Added contextual help in the settings page

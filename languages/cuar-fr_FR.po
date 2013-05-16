@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-05-15 08:43+0100\n"
-"PO-Revision-Date: 2013-05-15 08:43+0100\n"
+"POT-Creation-Date: 2013-05-16 15:36+0100\n"
+"PO-Revision-Date: 2013-05-16 15:38+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -17,86 +17,87 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../includes/settings.class.php:64 ../includes/settings.class.php:65
-msgid "Customer Area"
-msgstr "Espace Client"
+#: ../includes/settings.class.php:68 ../includes/settings.class.php:69
+#: ../includes/settings.class.php:82
+msgid "Settings"
+msgstr "Réglages"
 
-#: ../includes/settings.class.php:136
+#: ../includes/settings.class.php:152
 msgid "General"
 msgstr "Réglages généraux"
 
-#: ../includes/settings.class.php:149
+#: ../includes/settings.class.php:165
 msgid "General Settings"
 msgstr "Réglages généraux"
 
-#: ../includes/settings.class.php:156
+#: ../includes/settings.class.php:172
 msgid "Include CSS"
 msgstr "Inclure le CSS"
 
-#: ../includes/settings.class.php:163
+#: ../includes/settings.class.php:179
 msgid "Include the default stylesheet."
 msgstr "Inclure la feuille de style par défaut"
 
-#: ../includes/settings.class.php:165
+#: ../includes/settings.class.php:181
 msgid "If not, you should style the plugin yourself in your theme."
 msgstr ""
 "Si non, vous devrez mettre en forme le plugin par vous-même dans votre thème."
 
-#: ../includes/settings.class.php:172
+#: ../includes/settings.class.php:188
 msgid "Admin theme"
 msgstr "Thème d'administration"
 
-#: ../includes/settings.class.php:184
+#: ../includes/settings.class.php:200
 msgid "Frontend theme"
 msgstr "Thème du site"
 
-#: ../includes/settings.class.php:297
+#: ../includes/settings.class.php:313
 msgid " cannot be empty"
 msgstr " ne peut pas être vide"
 
-#: ../includes/settings.class.php:315
+#: ../includes/settings.class.php:331
 msgid " is not a valid email"
 msgstr "n'est pas une addresse mel valide"
 
-#: ../includes/settings.class.php:332
+#: ../includes/settings.class.php:348
 msgid " is not a valid value"
 msgstr "n'est pas une valeur valide"
 
-#: ../includes/settings.class.php:354
+#: ../includes/settings.class.php:370
 msgid "must be an integer"
 msgstr "doit être un entier"
 
-#: ../includes/settings.class.php:363
+#: ../includes/settings.class.php:379
 #, php-format
 msgid "must be greater than %s"
 msgstr "doit être plus grand que %s"
 
-#: ../includes/settings.class.php:372
+#: ../includes/settings.class.php:388
 #, php-format
 msgid "must be lower than %s"
 msgstr "doit être plus petit que %s"
 
-#: ../includes/settings.class.php:405
+#: ../includes/settings.class.php:421
 msgid "Your license is active!"
 msgstr "Votre license est active !"
 
-#: ../includes/settings.class.php:408
+#: ../includes/settings.class.php:424
 msgid "Your license key is invalid!"
 msgstr "Votre licence est invalide !"
 
-#: ../includes/settings.class.php:411
+#: ../includes/settings.class.php:427
 msgid "Your license key is expired!"
 msgstr "Votre licence est expirée !"
 
-#: ../includes/settings.class.php:418
+#: ../includes/settings.class.php:434
 msgid "Last check"
 msgstr "Dernière vérification"
 
-#: ../includes/settings.class.php:419
+#: ../includes/settings.class.php:435
 msgid "d/m/Y"
 msgstr "d/m/Y"
 
-#: ../includes/settings.class.php:422
+#: ../includes/settings.class.php:438
 msgid ""
 "The license key you have received for this add-on. This is required in order "
 "to get automatic plugin updates."
@@ -104,17 +105,31 @@ msgstr ""
 "La clé de licence que vous avez reçu avec cette extension. Cette clé est "
 "nécessaire pour obtenir des mises à jour automatiquement."
 
-#: ../includes/settings.class.php:533
+#: ../includes/settings.class.php:549
 msgid "Main plugin folder"
 msgstr "Répertoire principale du plugin"
 
-#: ../includes/settings.class.php:538
+#: ../includes/settings.class.php:554
 msgid "Current theme folder"
 msgstr "Répertoire du thème actuel"
 
-#: ../includes/settings.class.php:543
+#: ../includes/settings.class.php:559
 msgid "WordPress content folder"
 msgstr "Répertoire de contenu WordPress"
+
+#: ../includes/core-addons/admin-area/admin-area-addon.class.php:48
+msgid "Administration Area"
+msgstr "Zone d'administration"
+
+#: ../includes/core-addons/admin-area/admin-area-addon.class.php:50
+msgid "View the menu"
+msgstr "Voir le menu"
+
+#: ../includes/core-addons/admin-area/admin-area-addon.class.php:63
+#: ../includes/core-addons/admin-area/admin-area-addon.class.php:64
+#: ../includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:31
+msgid "Customer Area"
+msgstr "Espace Client"
 
 #: ../includes/core-addons/capabilities/capabilities-admin-interface.class.php:41
 msgid "Capabilities"
@@ -150,11 +165,22 @@ msgstr "Connexion"
 msgid "Register"
 msgstr "S'enregistrer"
 
-#: ../includes/core-addons/help/help-addon.class.php:45
+#: ../includes/core-addons/help/help-addon.class.php:49
+#: ../includes/core-addons/help/help-addon.class.php:58
 msgid "Add-ons"
 msgstr "Extensions"
 
-#: ../includes/core-addons/help/help-addon.class.php:61
+#: ../includes/core-addons/help/help-addon.class.php:71
+#: ../includes/core-addons/help/help-addon.class.php:81
+msgid "Enhance your customer area"
+msgstr "Améliorez votre espace client"
+
+#: ../includes/core-addons/help/help-addon.class.php:73
+#: ../includes/core-addons/help/help-addon.class.php:90
+msgid "Get more from MarvinLabs"
+msgstr "Plus de MarvinLabs"
+
+#: ../includes/core-addons/help/help-addon.class.php:104
 msgid ""
 "&laquo Customer Area &raquo; is a very modular plugin. We have built it so "
 "that it can be extended in many ways. Some add-ons are presented in this "
@@ -167,13 +193,36 @@ msgstr ""
 "l'onglet &laquo Extensions &raquo;. Vous pouvez aussi voir toutes les "
 "extensions que nous tenons à votre disposition en suivant le lien ci-dessous."
 
-#: ../includes/core-addons/help/help-addon.class.php:66
+#: ../includes/core-addons/help/help-addon.class.php:109
 msgid "Browse all extensions"
 msgstr "Voir toutes les extensions"
 
-#: ../includes/core-addons/help/help-addon.class.php:68
-msgid "Enhance your customer area"
-msgstr "Améliorez votre espace client"
+#: ../includes/core-addons/help/help-addon.class.php:127
+#, php-format
+msgid ""
+"If you like our plugins, you might want to <a href=\"%s\">check our website</"
+"a> for more."
+msgstr ""
+"Si vous aimez nos plugins, vous devriez <a href=\"%s\">jeter un oeil sur "
+"notre site</a> pour voir les autres."
+
+#: ../includes/core-addons/help/help-addon.class.php:130
+msgid "If you want to get updates about our plugins, you can:"
+msgstr ""
+"Si vous souhaitez rester au courant des actualités de nos plugins, vous "
+"pouvez :"
+
+#: ../includes/core-addons/help/help-addon.class.php:132
+msgid "Follow us on Twitter"
+msgstr "Nous suivre sur Twitter"
+
+#: ../includes/core-addons/help/help-addon.class.php:135
+msgid "Follow us on Google+"
+msgstr "Nous mettre +1 sur Google+"
+
+#: ../includes/core-addons/help/help-addon.class.php:138
+msgid "Follow us on Facebook"
+msgstr "Nous suivre sur Facebook"
 
 #: ../includes/core-addons/help/templates/list-addons.template.php:6
 msgid "Enhance your customer area with our add-ons"
@@ -189,20 +238,21 @@ msgid "You are not authorized to access this file"
 msgstr "Vous n'êtes pas autorisé à accéder à ce fichier"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:380
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:369
-msgid "Customer Files"
-msgstr "Fichiers clients"
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:59
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:60
+msgid "Private Files"
+msgstr "Fichiers privés"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:395
 #: ../includes/core-addons/private-file/private-file-addon.class.php:406
 msgctxt "cuar_private_file"
-msgid "Customer Files"
-msgstr "Fichiers clients"
+msgid "Private Files"
+msgstr "Fichiers privés"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:396
 msgctxt "cuar_private_file"
-msgid "Customer File"
-msgstr "Fichier client"
+msgid "Private File"
+msgstr "Fichier privé"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:397
 msgctxt "cuar_private_file"
@@ -211,43 +261,43 @@ msgstr "Ajouter un nouveau"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:398
 msgctxt "cuar_private_file"
-msgid "Add New Customer File"
-msgstr "Ajouter un fichier client"
+msgid "Add New Private File"
+msgstr "Nouveau fichier privé"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:399
 msgctxt "cuar_private_file"
-msgid "Edit Customer File"
-msgstr "Editer un fichier client"
+msgid "Edit Private File"
+msgstr "Modifier le fichier privé"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:400
 msgctxt "cuar_private_file"
-msgid "New Customer File"
-msgstr "Nouveau fichier client"
+msgid "New Private File"
+msgstr "Nouveau fichier privé"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:401
 msgctxt "cuar_private_file"
-msgid "View Customer File"
-msgstr "Voir le fichier client"
+msgid "View Private File"
+msgstr "Voir le fichier privé"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:402
 msgctxt "cuar_private_file"
-msgid "Search Customer Files"
-msgstr "Chercher des fichiers privés : %s"
+msgid "Search Private Files"
+msgstr "Chercher dans les fichiers privés"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:403
 msgctxt "cuar_private_file"
-msgid "No customer files found"
-msgstr "Aucun fichier client trouvé"
+msgid "No private files found"
+msgstr "Aucun fichier privé trouvé"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:404
 msgctxt "cuar_private_file"
-msgid "No customer files found in Trash"
-msgstr "Aucun fichier client trouvé dans la corbeille"
+msgid "No private files found in Trash"
+msgstr "Aucun fichier privé trouvé dans la corbeille"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:405
 msgctxt "cuar_private_file"
-msgid "Parent Customer File:"
-msgstr "Fichier client parent :"
+msgid "Parent Private File:"
+msgstr "Fichier privé parent :"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:438
 #: ../includes/core-addons/private-file/private-file-addon.class.php:454
@@ -320,96 +370,140 @@ msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Choisir parmi les catégories de fichier les plus courantes"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:57
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:124
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:66
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:67
+msgid "New Private File"
+msgstr "Nouveau fichier privé"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:73
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:74
+msgid "Private File Categories"
+msgstr "Catégories de fichier"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:94
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:161
 msgid "Owner"
 msgstr "Propriétaire"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:73
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:110
 msgid "Nobody"
 msgstr "Personne"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:117
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:154
 msgid "File"
 msgstr "Fichier"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:144
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:181
 msgid "Current file:"
 msgstr "Fichier actuel :"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:152
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:189
 msgid "Upload a file"
 msgstr "Téléverser un fichier"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:173
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:210
 msgid "Select the owner of this file"
 msgstr "Sélectionner le propriétaire de ce fichier"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:295
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:332
 #, php-format
 msgid "This file type is not allowed. You can only upload: %s"
 msgstr ""
 "Ce type de fichier n'est pas autorisé. Vous pouvez seulement téléverser : %s"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:319
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:356
 msgid "An unknown error happened while uploading your file."
 msgstr ""
 "Une erreur inconnue est survenue lors du téléversement de votre fichier."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:323
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:360
 #, php-format
 msgid "An error happened while uploading your file: %s"
 msgstr "Une erreur est survenue lors du téléversement de votre fichier : %s"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:383
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:406
+msgid "Customer Files"
+msgstr "Fichiers clients"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:420
 msgid "Frontend Integration"
 msgstr "Intégration au site"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:390
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:427
 msgid "Show after post"
 msgstr "Après l'article"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:398
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:435
 msgid ""
 "Show the view and download links below the post content for a customer file."
 msgstr ""
 "Afficher les liens pour voir ou télécharger un fichier sous le contenu d'un "
 "article représentant un fichier client."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:403
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:440
 msgid "File list"
 msgstr "Liste de fichiers"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:410
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:447
 msgid "Don't group files"
 msgstr "Ne pas grouper les fichiers"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:411
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:448
 msgid "Group by year"
 msgstr "Grouper par année"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:412
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:449
 msgid "Group by category"
 msgstr "Grouper par catégorie"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:414
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:451
 msgid ""
 "You can choose how files will be organized by default in the customer area."
 msgstr ""
 "Vous pouvez choisir la manière par défaut dont seront groupés le fichiers "
 "dans la zone client."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:420
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:457
 msgid "Empty categories"
 msgstr "Catégories vides"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:428
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:465
 msgid ""
 "When listing files by category, empty categories will be hidden if you check "
 "this."
 msgstr ""
 "Si les fichiers sont groupés par catégorie, les catégories vides seront "
 "ignorées si vous cochez cette case."
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:471
+msgid "File Storage"
+msgstr "Stockage des fichiers"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:531
+#, php-format
+msgid "The files will be stored in the following directory: <code>%s</code>."
+msgstr ""
+"Les fichiers seront stockés dans le répertoire suivant : <code>%s</code>."
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:536
+#, php-format
+msgid ""
+"Each user has his own sub-directory. For instance, yours is: <code>%s</code>."
+msgstr ""
+"Chaque utilisateur a son propre sous-répertoire. Par exemple, le votre "
+"est  : <code>%s</code>."
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:542
+#, php-format
+msgid ""
+"That directory should at least have the permissions set to 775. Currently it "
+"is %s. You should adjust that directory permissions as upload or download "
+"might not work properly."
+msgstr ""
+"Ce répertoire doit avoir au moins les permissions fixées à 775. Actuellement "
+"c'est %s. Vous devez ajuster les permissions du répertoire sinon les "
+"téléchargements ou les créations de fichiers pourraient ne pas marcher "
+"correctement."
 
 #: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:2
 msgid "Associated file"
@@ -464,6 +558,38 @@ msgstr "Cliquez pour afficher les fichiers publiés en %s"
 msgid "Added on %s"
 msgstr "Ajouté le %s"
 
+#~ msgctxt "cuar_private_file"
+#~ msgid "Customer Files"
+#~ msgstr "Fichiers clients"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "Customer File"
+#~ msgstr "Fichier client"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "Add New Customer File"
+#~ msgstr "Ajouter un fichier client"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "Edit Customer File"
+#~ msgstr "Editer un fichier client"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "New Customer File"
+#~ msgstr "Nouveau fichier client"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "View Customer File"
+#~ msgstr "Voir le fichier client"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "Search Customer Files"
+#~ msgstr "Chercher des fichiers privés"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "Parent Customer File:"
+#~ msgstr "Fichier client parent :"
+
 #~ msgctxt "URL slug"
 #~ msgid "download-file"
 #~ msgstr "télécharger-fichier"
@@ -483,9 +609,6 @@ msgstr "Ajouté le %s"
 #~ msgctxt "URL slug"
 #~ msgid "unknown"
 #~ msgstr "inconnu"
-
-#~ msgid "Private Files"
-#~ msgstr "Fichiers privés"
 
 #~ msgid "Your files grouped by category"
 #~ msgstr "Vos fichiers groupés par catégorie"
@@ -597,15 +720,6 @@ msgstr "Ajouté le %s"
 
 #~ msgid "hello@marvinlabs.com"
 #~ msgstr "bonjour@marvinlabs.com"
-
-#~ msgid "+1 us on Google+"
-#~ msgstr "+1 sur Google+"
-
-#~ msgid "Like us on Facebook"
-#~ msgstr "Aimez-nous sur Facebook"
-
-#~ msgid "Follow us on Twitter"
-#~ msgstr "Suivez-nous sur Twitter"
 
 #~ msgid "Use our code from GitHub"
 #~ msgstr "Utilisez notre code publié sur GitHub"

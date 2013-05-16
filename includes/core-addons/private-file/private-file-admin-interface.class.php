@@ -29,6 +29,8 @@ class CUAR_PrivateFileAdminInterface {
 		$this->plugin = $plugin;
 		$this->private_file_addon = $private_file_addon;
 
+		add_action('cuar_admin_submenu_pages', array( &$this, 'add_settings_menu_item' ), 10 );
+		
 		// File listing
 		add_filter( 'manage_edit-cuar_private_file_columns', array( &$this, 'user_column_register' ));
 		add_action( 'manage_cuar_private_file_posts_custom_column', array( &$this, 'user_column_display'), 10, 2 );
@@ -46,6 +48,41 @@ class CUAR_PrivateFileAdminInterface {
 		add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 10, 1 );
 		add_action( 'cuar_addon_print_settings_cuar_private_files', array( &$this, 'print_settings' ), 10, 2 );
 		add_filter( 'cuar_addon_validate_options_cuar_private_files', array( &$this, 'validate_options' ), 10, 3 );
+	}
+
+	/**
+	 * Add the menu item
+	 */
+	public function add_settings_menu_item( $submenus ) {
+		$my_submenus = array(
+				array(
+					'page_title'	=> __( 'Private Files', 'cuar' ),
+					'title'			=> __( 'Private Files', 'cuar' ),
+					'slug'			=> "edit.php?post_type=cuar_private_file",
+					'function' 		=> null,
+					'capability'	=> 'cuar_pf_edit'
+				),
+				array(
+					'page_title'	=> __( 'New Private File', 'cuar' ),
+					'title'			=> __( 'New Private File', 'cuar' ),
+					'slug'			=> "post-new.php?post_type=cuar_private_file",
+					'function' 		=> null,
+					'capability'	=> 'cuar_pf_edit'
+				),
+				array(
+					'page_title'	=> __( 'Private File Categories', 'cuar' ),
+					'title'			=> __( 'Private File Categories', 'cuar' ),
+					'slug'			=> "edit-tags.php?taxonomy=cuar_private_file_category",
+					'function' 		=> null,
+					'capability'	=> 'cuar_pf_edit'
+				)
+			); 
+	
+		foreach ( $my_submenus as $submenu ) {
+			$submenus[] = $submenu;
+		}
+	
+		return $submenus;
 	}
 	
 	/*------- CUSTOMISATION OF THE LISTING OF PRIVATE FILES ----------------------------------------------------------*/
@@ -379,7 +416,7 @@ class CUAR_PrivateFileAdminInterface {
 // TODO OUTPUT ALLOWED FILE TYPES
 
 		add_settings_section(
-				'cuar_private_files_addon_settings_frontend',
+				'cuar_private_files_addon_frontend',
 				__('Frontend Integration', 'cuar'),
 				array( &$this, 'print_frontend_section_info' ),
 				CUAR_Settings::$OPTIONS_PAGE_SLUG
@@ -390,7 +427,7 @@ class CUAR_PrivateFileAdminInterface {
 				__('Show after post', 'cuar'),
 				array( &$cuar_settings, 'print_input_field' ),
 				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_private_files_addon_settings_frontend',
+				'cuar_private_files_addon_frontend',
 				array(
 					'option_id' => self::$OPTION_SHOW_AFTER_POST_CONTENT,
 					'type' 		=> 'checkbox',
@@ -403,7 +440,7 @@ class CUAR_PrivateFileAdminInterface {
 				__('File list', 'cuar'),
 				array( &$cuar_settings, 'print_select_field' ), 
 				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_private_files_addon_settings_frontend',
+				'cuar_private_files_addon_frontend',
 				array( 
 					'option_id' => self::$OPTION_FILE_LIST_MODE, 
 					'options'	=> array( 
@@ -420,13 +457,20 @@ class CUAR_PrivateFileAdminInterface {
 				__('Empty categories', 'cuar'),
 				array( &$cuar_settings, 'print_input_field' ),
 				CUAR_Settings::$OPTIONS_PAGE_SLUG,
-				'cuar_private_files_addon_settings_frontend',
+				'cuar_private_files_addon_frontend',
 				array(
 					'option_id' => self::$OPTION_HIDE_EMPTY_CATEGORIES,
 					'type' 		=> 'checkbox',
 					'after'		=> 
 						__( 'When listing files by category, empty categories will be hidden if you check this.', 
 							'cuar' ) )
+			);
+
+		add_settings_section(
+				'cuar_private_files_addon_storage',
+				__('File Storage', 'cuar'),
+				array( &$this, 'print_storage_section_info' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG
 			);
 	}
 	
@@ -471,6 +515,35 @@ class CUAR_PrivateFileAdminInterface {
 	 */
 	public function print_frontend_section_info() {
 		// echo '<p>' . __( 'Options for the private files add-on.', 'cuar' ) . '</p>';
+	}
+	
+	/**
+	 * Print some info about the section
+	 */
+	public function print_storage_section_info() {
+		$storage_dir = $this->plugin->get_base_upload_directory();
+		$sample_storage_dir = $storage_dir . '/' . $this->plugin->get_user_storage_directory( get_current_user_id() );
+		
+		$required_perms = '775';
+		$current_perms = substr( sprintf('%o', fileperms( $storage_dir ) ), -3);
+		
+		echo '<p>' 
+				. sprintf( __( 'The files will be stored in the following directory: <code>%s</code>.', 'cuar' ),
+						$storage_dir ) 
+				. '</p>';
+
+		echo '<p>'
+				. sprintf( __( 'Each user has his own sub-directory. For instance, yours is: <code>%s</code>.', 'cuar' ),
+						$sample_storage_dir )
+				. '</p>';
+
+		if ( $required_perms > $current_perms ) {
+			echo '<p style="color: red;">' 
+				. sprintf( __('That directory should at least have the permissions set to 775. Currently it is '
+						. '%s. You should adjust that directory permissions as upload or download might not work ' 
+						. 'properly.', 'cuar' ), $current_perms ) 
+				. '</p>';
+		}
 	}
 
 	// Frontend options

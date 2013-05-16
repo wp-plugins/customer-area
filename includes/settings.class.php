@@ -46,8 +46,12 @@ class CUAR_Settings {
 	 */
 	public function setup() {
 		if ( is_admin() ) {
-			add_action('admin_menu', array( &$this, 'add_settings_menu_item' ) );
+			add_action('cuar_admin_submenu_pages', array( &$this, 'add_settings_menu_item' ), 100 );
 			add_action('admin_init', array( &$this, 'page_init' ) );
+			
+			// Links under the plugin name
+			$plugin_file = 'customer-area/customer-area.php';
+			add_filter( "plugin_action_links_{$plugin_file}", array( &$this, 'print_plugin_action_links' ), 10, 2 );
 
 			// We have some core settings to take care of too
 			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_core_settings_tab' ), 10, 1 );
@@ -59,13 +63,25 @@ class CUAR_Settings {
 	/**
 	 * Add the menu item
 	 */
-	public function add_settings_menu_item() {
-		add_options_page(
-			__( 'Customer Area', 'cuar' ),
-			__( 'Customer Area', 'cuar' ),
-			'manage_options',
-			self::$OPTIONS_PAGE_SLUG,
-			array( &$this, 'print_settings_page' ) );
+	public function add_settings_menu_item( $submenus ) {
+		$submenu = array(
+				'page_title'	=> __( 'Settings', 'cuar' ),
+				'title'			=> __( 'Settings', 'cuar' ),
+				'slug'			=> self::$OPTIONS_PAGE_SLUG,
+				'function' 		=> array( &$this, 'print_settings_page' ),
+				'capability'	=> 'manage_options'
+			);
+		
+		$submenus[] = $submenu;
+		
+		return $submenus;
+	}
+	
+	public function print_plugin_action_links( $links, $file ) {
+		$link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page=' .  self::$OPTIONS_PAGE_SLUG . '">'
+				. __( 'Settings', 'cuar' ) . '</a>';
+		array_unshift( $links, $link );	
+		return $links;
 	}
 
 	/**
@@ -581,6 +597,25 @@ class CUAR_Settings {
 	}
 	
 	/**
+	 * Update an option and persist to DB if asked to
+	 *  
+	 * @param string $option_id
+	 * @param mixed $new_value
+	 * @param boolean $commit
+	 */
+	public function update_option( $option_id, $new_value, $commit = true ) {
+		$this->options[ $option_id ] = $new_value;
+		if ( $commit ) $this->save_options();
+	}
+	
+	/**
+	 * Persist the current plugin options to DB
+	 */
+	public function save_options() {
+		update_option( CUAR_Settings::$OPTIONS_GROUP, $this->options );
+	}
+	
+	/**
 	 * Load the options (and defaults if the options do not exist yet
 	 */
 	private function reload_options() {
@@ -596,6 +631,7 @@ class CUAR_Settings {
 	public static $OPTIONS_GROUP = 'cuar_options';
 
 	// Core options
+	public static $OPTION_CURRENT_VERSION		= 'cuar_current_version';
 	public static $OPTION_INCLUDE_CSS			= 'cuar_include_css';
 	public static $OPTION_ADMIN_THEME_URL 		= 'cuar_admin_theme_url';
 	public static $OPTION_FRONTEND_THEME_URL 	= 'cuar_frontend_theme_url';

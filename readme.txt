@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.4.0
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,6 +138,15 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 1.5.0 (2013/05/16) =
+
+* Re-organised the administration menu under a single menu item
+* Added a quick link to the settings in the plugin list  
+* Added some version upgrade mechanism for the future
+* Added an indication in the settings to give the path of private files and to say if permissions are correctly set
+* Added a kind of dashboard page as the plugin entry point, that should be filled later on (feels empty right now, 
+we are waiting for your ideas)
 
 = 1.4.0 (2013/05/15) =
 

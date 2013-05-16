@@ -36,8 +36,20 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 			add_filter( 'cuar_after_settings_side', array( &$this, 'print_addons_sidebox' ), 800 );
 			add_filter( 'cuar_after_settings_side', array( &$this, 'print_marvinlabs_sidebox' ), 1000 );
 			add_filter( 'cuar_before_settings_cuar_addons', array( &$this, 'print_addons' ) );
+			add_filter( 'admin_init', array( &$this, 'add_dashboard_metaboxes' ) );
+			
+			$plugin_file = 'customer-area/customer-area.php';
+			add_filter( "plugin_action_links_{$plugin_file}", array( &$this, 'print_plugin_action_links' ), 10, 2 );
 		} 
 	}	
+	
+	public function print_plugin_action_links( $links, $file ) {
+		$link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page=' .  CUAR_Settings::$OPTIONS_PAGE_SLUG 
+				. '&cuar_tab=cuar_addons">'
+				. __( 'Add-ons', 'cuar' ) . '</a>';
+		array_unshift( $links, $link );	
+		return $links;
+	}
 
 	/*------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE --------------------------------------------------------------*/
 	
@@ -54,10 +66,40 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 		include( dirname( __FILE__ ) . '/templates/list-addons.template.php' );
 	}
 	
+	
+	public function add_dashboard_metaboxes() {	
+		add_meta_box('cuar_dashboard_addons', __( 'Enhance your customer area', 'cuar' ), 
+				array( &$this, 'get_addons_sidebox_content' ), 'customer-area', 'side' );
+		add_meta_box('cuar_dashboard_marvinlabs', __( 'Get more from MarvinLabs', 'cuar' ), 
+				array( &$this, 'get_marvinlabs_sidebox_content' ), 'customer-area', 'side' );
+	}
+	
 	/**
 	 * @param CUAR_Settings $cuar_settings
 	 */
-	public function print_addons_sidebox( $cuar_settings ) {		
+	public function print_addons_sidebox( $cuar_settings ) {	
+		$cuar_settings->print_sidebox( __( 'Enhance your customer area', 'cuar' ),
+				$this->get_addons_sidebox_content() );
+	}
+
+
+	/**
+	 * @param CUAR_Settings $cuar_settings
+	 */
+	public function print_marvinlabs_sidebox( $cuar_settings ) {
+		$cuar_settings->print_sidebox( __( 'Get more from MarvinLabs', 'cuar' ), 
+				$this->get_marvinlabs_sidebox_content() );		
+	}
+	
+	/**
+	 * @param CUAR_Settings $cuar_settings
+	 */
+	public function get_addons_sidebox_content( $args = null ) {	
+		// Extract parameters and provide defaults for the missing ones
+		$args = extract( wp_parse_args( $args, array(
+				'echo'	=> false
+			) ), EXTR_SKIP );
+			
 		$content = sprintf( '<p>%s</p><p><a href="%s" class="button-primary" target="_blank">%s</a></p>', 
 						__( '&laquo Customer Area &raquo; is a very modular plugin. We have built it so that it can be ' 
 							. 'extended in many ways. Some add-ons are presented in this page by selecting the '
@@ -66,14 +108,21 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 						"http://www.marvinlabs.com/shop/",
 						__( 'Browse all extensions', 'cuar' ) );
 		
-		$cuar_settings->print_sidebox( __( 'Enhance your customer area', 'cuar' ), $content );
+		if ( $echo ) echo $content;
+		
+		return $content;
 	}
 
 
 	/**
 	 * @param CUAR_Settings $cuar_settings
 	 */
-	public function print_marvinlabs_sidebox( $cuar_settings ) {
+	public function get_marvinlabs_sidebox_content( $args = null ) {
+		// Extract parameters and provide defaults for the missing ones
+		$args = extract( wp_parse_args( $args, array(
+				'echo'	=> false
+			) ), EXTR_SKIP );
+		
 		$content = sprintf( '<p>&raquo; ' . 
 				__( 'If you like our plugins, you might want to <a href="%s">check our website</a> for more.', 'cuar' ) 
 				. '</p>', 'http://www.marvinlabs.com' );
@@ -89,9 +138,10 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 				__( 'Follow us on Facebook', 'cuar' ), 
 				"http://www.facebook.com/studio.marvinlabs");
 		$content .= '</ul>';
-
-
-		$cuar_settings->print_sidebox( __( 'Get more from MarvinLabs', 'cuar' ), $content );		
+		
+		if ( $echo ) echo $content;
+		
+		return $content;	
 	}
 	
 	/** @var CUAR_Plugin */

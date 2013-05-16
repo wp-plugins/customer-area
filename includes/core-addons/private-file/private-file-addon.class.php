@@ -374,10 +374,10 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	}
 
 	/*------- INITIALISATIONS ----------------------------------------------------------------------------------------*/
-
+	
 	public function declare_configurable_capabilities( $capability_groups ) {
 		$capability_groups[] = array(
-				'group_name' => __( 'Customer Files', 'cuar' ),
+				'group_name' => __( 'Private Files', 'cuar' ),
 				'capabilities' => array(
 						'cuar_pf_edit' 		=> 'Create/Edit/Delete files',
 						'cuar_pf_read' 		=> 'Access files'
@@ -392,19 +392,19 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 */
 	public function register_custom_types() {
 		$labels = array(
-				'name' 				=> _x( 'Customer Files', 'cuar_private_file', 'cuar' ),
-				'singular_name' 	=> _x( 'Customer File', 'cuar_private_file', 'cuar' ),
+				'name' 				=> _x( 'Private Files', 'cuar_private_file', 'cuar' ),
+				'singular_name' 	=> _x( 'Private File', 'cuar_private_file', 'cuar' ),
 				'add_new' 			=> _x( 'Add New', 'cuar_private_file', 'cuar' ),
-				'add_new_item' 		=> _x( 'Add New Customer File', 'cuar_private_file', 'cuar' ),
-				'edit_item' 		=> _x( 'Edit Customer File', 'cuar_private_file', 'cuar' ),
-				'new_item' 			=> _x( 'New Customer File', 'cuar_private_file', 'cuar' ),
-				'view_item' 		=> _x( 'View Customer File', 'cuar_private_file', 'cuar' ),
-				'search_items' 		=> _x( 'Search Customer Files', 'cuar_private_file', 'cuar' ),
-				'not_found' 		=> _x( 'No customer files found', 'cuar_private_file', 'cuar' ),
-				'not_found_in_trash'=> _x( 'No customer files found in Trash', 'cuar_private_file', 'cuar' ),
-				'parent_item_colon' => _x( 'Parent Customer File:', 'cuar_private_file', 'cuar' ),
-				'menu_name' 		=> _x( 'Customer Files', 'cuar_private_file', 'cuar' ),
-		);
+				'add_new_item' 		=> _x( 'Add New Private File', 'cuar_private_file', 'cuar' ),
+				'edit_item' 		=> _x( 'Edit Private File', 'cuar_private_file', 'cuar' ),
+				'new_item' 			=> _x( 'New Private File', 'cuar_private_file', 'cuar' ),
+				'view_item' 		=> _x( 'View Private File', 'cuar_private_file', 'cuar' ),
+				'search_items' 		=> _x( 'Search Private Files', 'cuar_private_file', 'cuar' ),
+				'not_found' 		=> _x( 'No private files found', 'cuar_private_file', 'cuar' ),
+				'not_found_in_trash'=> _x( 'No private files found in Trash', 'cuar_private_file', 'cuar' ),
+				'parent_item_colon' => _x( 'Parent Private File:', 'cuar_private_file', 'cuar' ),
+				'menu_name' 		=> _x( 'Private Files', 'cuar_private_file', 'cuar' ),
+			);
 
 		$args = array(
 				'labels' 				=> $labels,
@@ -413,7 +413,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				'taxonomies' 			=> array( 'cuar_private_file_category' ),
 				'public' 				=> true,
 				'show_ui' 				=> true,
-				'show_in_menu' 			=> true,
+				'show_in_menu' 			=> false,
 				'show_in_nav_menus' 	=> false,
 				'publicly_queryable' 	=> true,
 				'exclude_from_search' 	=> true,
@@ -429,8 +429,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 						'read_post' 			=> 'cuar_pf_read',
 						'read_private_posts' 	=> 'cuar_pf_edit',
 						'delete_post' 			=> 'cuar_pf_edit'
-				)
-		);
+					)
+			);
 
 		register_post_type( 'cuar_private_file', apply_filters( 'cuar_private_file_post_type_args', $args ) );
 
@@ -452,12 +452,13 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				'choose_from_most_used' 	=> _x( 'Choose from the most used file categories', 'cuar_private_file_category',
 						'cuar' ),
 				'menu_name' 				=> _x( 'File Categories', 'cuar_private_file_category', 'cuar' ),
-		);
+			);
 	  
 		$args = array(
 				'labels' 			=> $labels,
 				'public' 			=> true,
-				'show_in_nav_menus' => false,
+				'show_in_menu' 		=> false,
+				'show_in_nav_menus' => 'customer-area',
 				'show_ui' 			=> true,
 				'show_tagcloud' 	=> false,
 				'hierarchical' 		=> true,
@@ -465,7 +466,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				'rewrite' 			=> array(
 						'slug' 				=> 'private-file-category'
 					),
-		);
+			);
 	  
 		register_taxonomy( 'cuar_private_file_category', array( 'cuar_private_file' ), $args );
 	}

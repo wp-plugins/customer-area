@@ -37,7 +37,8 @@ class CUAR_Plugin {
 		add_action( 'init', array( &$this, 'load_scripts' ) );
 		add_action( 'init', array( &$this, 'load_styles' ) );		
 		add_action( 'init', array( &$this, 'load_defaults' ) );
-		add_action( 'plugins_loaded', array( &$this, 'load_addons' ) );
+		add_action( 'plugins_loaded', array( &$this, 'load_addons' ) );	
+		add_action( 'admin_init', array( &$this, 'check_versions' ) );
 		
 		if ( is_admin() ) {		
 		} else {
@@ -81,7 +82,7 @@ class CUAR_Plugin {
 // 			CUAR_SCRIPTS_URL . '/jquery.bxslider.min.js', 
 // 			array( 'jquery' ) );
 	}
-
+	
 	/**
 	 * Loads the required css (only when not in admin area)
 	 */
@@ -95,6 +96,21 @@ class CUAR_Plugin {
 				'cuar.frontend',
 				$this->get_frontend_theme_url() . '/style.css' );
 		}
+	}
+	
+	/**
+	 * 
+	 */
+	public function check_versions() {
+		$plugin_data = get_plugin_data( WP_CONTENT_DIR . '/plugins/' . CUAR_PLUGIN_FILE, false, false );
+		$current_version = $plugin_data[ 'Version' ];
+		$active_version = $this->get_option( CUAR_Settings::$OPTION_CURRENT_VERSION );
+		if ( !isset( $active_version ) ) $active_version = '1.4.0';
+		
+		if ( $active_version != $current_version ) {
+			do_action( 'cuar_version_upgraded', $active_version, $current_version );
+			$this->settings->update_option( CUAR_Settings::$OPTION_CURRENT_VERSION, $current_version );
+		}		
 	}
 	
 	/**
@@ -157,7 +173,7 @@ class CUAR_Plugin {
 		if ( empty( $user_id ) || empty( $filename ) ) return false;
 		
 		$dir = $this->get_base_upload_directory() . '/' . $this->get_user_storage_directory( $user_id );		
-		if ( $create_dirs && !file_exists( $dir ) ) mkdir( $dir, '0777', true );
+		if ( $create_dirs && !file_exists( $dir ) ) mkdir( $dir, 0775, true );
 		
 		return $dir . '/' . $filename;
 	}

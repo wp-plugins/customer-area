@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ?>
 
 <div class="wrap cuar-settings-<?php echo $this->current_tab; ?>">
-	<?php screen_icon(); ?>
+	<?php screen_icon( 'icon32-settings' ); ?>
 	
 	<h2 class="nav-tab-wrapper">
 <?php foreach ( $this->tabs as $tab_id => $tab_label) : ?>

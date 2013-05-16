@@ -1,0 +1,270 @@
+<?php
+/*  Copyright 2013 MarvinLabs (contact@marvinlabs.com)
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+*/
+
+require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
+
+require_once( dirname(__FILE__) . '/private-page-admin-interface.class.php' );
+require_once( dirname(__FILE__) . '/private-page-frontend-interface.class.php' );
+
+if (!class_exists('CUAR_PrivatePageAddOn')) :
+
+/**
+ * Add-on to put private files in the customer area
+*
+* @author Vincent Prat @ MarvinLabs
+*/
+class CUAR_PrivatePageAddOn extends CUAR_AddOn {
+
+	public function run_addon( $plugin ) {
+		$this->plugin = $plugin;
+
+		if ( $plugin->get_option( CUAR_PrivatePageAdminInterface::$OPTION_ENABLE_ADDON ) ) {
+			add_action( 'init', array( &$this, 'register_custom_types' ) );
+			
+			add_action( 'init', array( &$this, 'add_post_type_rewrites' ) );
+			add_filter( 'post_type_link', array( &$this, 'built_post_type_permalink' ), 1, 3);
+			
+			add_action( 'template_redirect', array( &$this, 'protect_access' ) );
+			
+			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
+		}
+				
+		// Init the admin interface if needed
+		if ( is_admin() ) {
+			$this->admin_interface = new CUAR_PrivatePageAdminInterface( $plugin, $this );
+		} else {
+			$this->frontend_interface = new CUAR_PrivatePageFrontendInterface( $plugin, $this );
+		}
+	}	
+	
+	/**
+	 * When the plugin is upgraded
+	 * 
+	 * @param unknown $from_version
+	 * @param unknown $to_version
+	 */
+	public function plugin_version_upgrade( $from_version, $to_version ) {
+		// If upgrading from before 1.6.0 we should flush rewrite rules
+		if ( $from_version<'1.6.0' ) {
+			global $wp_rewrite;  
+			$wp_rewrite->flush_rules();
+		}
+	}
+		
+	/*------- FUNCTIONS TO ACCESS THE POST META ----------------------------------------------------------------------*/
+
+	/**
+	 * Get the name of the owner associated to the given post
+	 *
+	 * @param int $post_id
+	 * @return boolean|int
+	 */
+	public function get_page_owner_id( $post_id ) {
+		$owner_id = get_post_meta( $post_id, 'cuar_owner', true );
+		if ( !$owner_id || empty( $owner_id ) ) return false;
+		return apply_filters( 'cuar_get_page_owner_id', $owner_id );
+	}
+	
+	/**
+	 * Get the number of times the page has been viewed
+	 *
+	 * @param int $post_id
+	 * @return int
+	 */
+	public function get_page_view_count( $post_id ) {
+		$count = get_post_meta( $post_id, 'cuar_private_page_view_count', true );	
+		if ( !$count || empty( $count ) ) return 0;	
+		return intval( $count );
+	}
+	
+	/**
+	 * Get the number of times the page has been viewed
+	 *
+	 * @param int $post_id
+	 * @return int
+	 */
+	public function increment_page_view_count( $post_id ) {
+		update_post_meta( $post_id, 
+			'cuar_private_page_view_count', 
+			$this->get_page_download_count( $post_id ) + 1 );
+	}
+
+	/*------- HANDLE FILE VIEWING AND DOWNLOADING --------------------------------------------------------------------*/
+	
+	/**
+	 * Protect access to single pages for private files: only for author and owner.
+	 */
+	public function protect_access() {		
+		// If not on a matching post type, we do nothing
+		if ( !is_singular('cuar_private_page') ) return;
+		
+		// If not logged-in, we ask for details
+		if ( !is_user_logged_in() ) {
+			wp_redirect( wp_login_url( $_SERVER['REQUEST_URI'] ) );
+			exit;
+		}
+
+		// If not authorized to view the page, we bail	
+		$post = get_queried_object();
+		$author_id = $post->post_author;
+
+		$current_user_id = get_current_user_id();
+		$owner_id = $this->get_page_owner_id( $post->ID );
+		
+		if ( $owner_id!=$current_user_id && $author_id!=$current_user_id ) {
+			wp_die( __( "You are not authorized to view this page", "cuar" ) );
+			exit();
+		}
+	}
+
+	/*------- INITIALISATIONS ----------------------------------------------------------------------------------------*/
+	
+	public function declare_configurable_capabilities( $capability_groups ) {
+		$capability_groups[] = array(
+				'group_name' => __( 'Private Pages', 'cuar' ),
+				'capabilities' => array(
+						'cuar_pp_edit' 		=> 'Create/Edit/Delete pages',
+						'cuar_pp_read' 		=> 'Access pages'
+					)
+			);
+		
+		return $capability_groups;
+	}
+	
+	/**
+	 * Register the custom post type for files and the associated taxonomies
+	 */
+	public function register_custom_types() {
+		$labels = array(
+				'name' 				=> _x( 'Private Pages', 'cuar_private_page', 'cuar' ),
+				'singular_name' 	=> _x( 'Private Page', 'cuar_private_page', 'cuar' ),
+				'add_new' 			=> _x( 'Add New', 'cuar_private_page', 'cuar' ),
+				'add_new_item' 		=> _x( 'Add New Private Page', 'cuar_private_page', 'cuar' ),
+				'edit_item' 		=> _x( 'Edit Private Page', 'cuar_private_page', 'cuar' ),
+				'new_item' 			=> _x( 'New Private Page', 'cuar_private_page', 'cuar' ),
+				'view_item' 		=> _x( 'View Private Page', 'cuar_private_page', 'cuar' ),
+				'search_items' 		=> _x( 'Search Private Pages', 'cuar_private_page', 'cuar' ),
+				'not_found' 		=> _x( 'No private pages found', 'cuar_private_page', 'cuar' ),
+				'not_found_in_trash'=> _x( 'No private pages found in Trash', 'cuar_private_page', 'cuar' ),
+				'parent_item_colon' => _x( 'Parent Private Page:', 'cuar_private_page', 'cuar' ),
+				'menu_name' 		=> _x( 'Private Pages', 'cuar_private_page', 'cuar' ),
+			);
+
+		$args = array(
+				'labels' 				=> $labels,
+				'hierarchical' 			=> false,
+				'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'comments' ),
+				'taxonomies' 			=> array(),
+				'public' 				=> true,
+				'show_ui' 				=> true,
+				'show_in_menu' 			=> false,
+				'show_in_nav_menus' 	=> false,
+				'publicly_queryable' 	=> true,
+				'exclude_from_search' 	=> true,
+				'has_archive' 			=> false,
+				'query_var' 			=> 'cuar_private_page',
+				'can_export' 			=> false,
+				'rewrite' 				=> false,
+				'capabilities' 			=> array(
+						'edit_post' 			=> 'cuar_pp_edit',
+						'edit_posts' 			=> 'cuar_pp_edit',
+						'edit_others_posts' 	=> 'cuar_pp_edit',
+						'publish_posts' 		=> 'cuar_pp_edit',
+						'read_post' 			=> 'cuar_pp_read',
+						'read_private_posts' 	=> 'cuar_pp_edit',
+						'delete_post' 			=> 'cuar_pp_edit'
+					)
+			);
+
+		register_post_type( 'cuar_private_page', apply_filters( 'cuar_private_page_post_type_args', $args ) );
+	}
+
+	/**
+	 * Add the rewrite rule for the private files.  
+	 */
+	function add_post_type_rewrites() {
+		global $wp_rewrite;
+		
+		$pf_slug = 'private-page';
+		
+		$wp_rewrite->add_rewrite_tag('%cuar_private_page%', '([^/]+)', 'cuar_private_page=');
+		$wp_rewrite->add_rewrite_tag('%owner_name%', '([^/]+)', 'cuar_pp_owner_name=');
+		$wp_rewrite->add_permastruct( 'cuar_private_page',
+				$pf_slug . '/%owner_name%/%cuar_private_page%',
+				false);
+	}
+
+	/**
+	 * Build the permalink for the private files
+	 * 
+	 * @param unknown $post_link
+	 * @param unknown $post
+	 * @param unknown $leavename
+	 * @return unknown|mixed
+	 */
+	function built_post_type_permalink( $post_link, $post, $leavename ) {
+		// Only change permalinks for private files
+		if ( $post->post_type!='cuar_private_page') return $post_link;
+	
+		// Only change permalinks for published posts
+		$draft_or_pending = isset( $post->post_status )
+		&& in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) );
+		if( $draft_or_pending and !$leavename ) return $post_link;
+	
+		// Change the permalink
+		global $wp_rewrite, $cuar_pp_addon;
+	
+		$permalink = $wp_rewrite->get_extra_permastruct( 'cuar_private_page' );
+		$permalink = str_replace( "%cuar_private_page%", $post->post_name, $permalink );
+	
+		$owner_id = $cuar_pp_addon->get_page_owner_id( $post->ID );
+		if ( $owner_id ) {
+			$owner = get_userdata( $owner_id );
+			$owner = sanitize_title_with_dashes( $owner->user_nicename );
+		} else {
+			$owner = 'unknown';
+		}
+		$permalink = str_replace( '%owner_name%', $owner, $permalink );
+	
+		$post_date = strtotime( $post->post_date );
+		$permalink = str_replace( "%year%", 	date( "Y", $post_date ), $permalink );
+		$permalink = str_replace( "%monthnum%", date( "m", $post_date ), $permalink );
+		$permalink = str_replace( "%day%", 		date( "d", $post_date ), $permalink );
+		
+		$permalink = home_url() . "/" . user_trailingslashit( $permalink );
+		$permalink = str_replace( "//", "/", $permalink );
+		$permalink = str_replace( ":/", "://", $permalink );
+	
+		return $permalink;
+	}
+	
+	/** @var CUAR_Plugin */
+	private $plugin;
+
+	/** @var CUAR_PrivatePageAdminInterface */
+	private $admin_interface;
+
+	/** @var CUAR_PrivatePageFrontendInterface */
+	private $frontend_interface;
+}
+
+// Make sure the addon is loaded
+global $cuar_pp_addon;
+$cuar_pp_addon = new CUAR_PrivatePageAddOn();
+
+endif; // if (!class_exists('CUAR_PrivatePageAddOn')) 

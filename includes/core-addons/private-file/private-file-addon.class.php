@@ -34,18 +34,20 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	public function run_addon( $plugin ) {
 		$this->plugin = $plugin;
 
-		add_action( 'init', array( &$this, 'register_custom_types' ) );
-		add_filter( 'query_vars', array( &$this, 'add_query_vars' ) );
-		add_action( 'init', array( &$this, 'add_post_type_rewrites' ) );
-		add_filter( 'post_type_link', array( &$this, 'built_post_type_permalink' ), 1, 3);
-		
-		add_action( 'template_redirect', array( &$this, 'handle_file_actions' ) );
-		add_action( 'template_redirect', array( &$this, 'protect_access' ) );
-		
-		add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
-		
-		add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
-		
+		if ( $plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_ENABLE_ADDON ) ) {
+			add_action( 'init', array( &$this, 'register_custom_types' ) );
+			add_filter( 'query_vars', array( &$this, 'add_query_vars' ) );
+			add_action( 'init', array( &$this, 'add_post_type_rewrites' ) );
+			add_filter( 'post_type_link', array( &$this, 'built_post_type_permalink' ), 1, 3);
+			
+			add_action( 'template_redirect', array( &$this, 'handle_file_actions' ) );
+			add_action( 'template_redirect', array( &$this, 'protect_access' ) );
+			
+			add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
+			
+			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
+		}
+				
 		// Init the admin interface if needed
 		if ( is_admin() ) {
 			$this->admin_interface = new CUAR_PrivateFileAdminInterface( $plugin, $this );

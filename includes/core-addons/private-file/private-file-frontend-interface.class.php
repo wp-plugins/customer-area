@@ -25,21 +25,23 @@ if (!class_exists('CUAR_PrivateFileFrontendInterface')) :
  */
 class CUAR_PrivateFileFrontendInterface {
 	
-	public function __construct( $cuar_plugin, $private_file_addon ) {
-		$this->plugin = $cuar_plugin;
+	public function __construct( $plugin, $private_file_addon ) {
+		$this->plugin = $plugin;
 		$this->private_file_addon = $private_file_addon;
 
-		// Optionally output the file links in the post footer area
-		if ( $this->plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_SHOW_AFTER_POST_CONTENT ) ) {
-			add_filter( 'the_content', array( &$this, 'after_post_content' ), 3000 );
-		}		
-		
-		add_action( 'cuar_customer_area_content', array( &$this, 'print_customer_area_content' ), 10 );
-
-		add_filter( "get_previous_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
-		add_filter( "get_next_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
-
-		add_action( 'init', array( &$this, 'load_scripts' ) );
+		if ( $plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_ENABLE_ADDON ) ) {
+			// Optionally output the file links in the post footer area
+			if ( $this->plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_SHOW_AFTER_POST_CONTENT ) ) {
+				add_filter( 'the_content', array( &$this, 'after_post_content' ), 3000 );
+			}		
+			
+			add_action( 'cuar_customer_area_content', array( &$this, 'print_customer_area_content' ), 10 );
+	
+			add_filter( "get_previous_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
+			add_filter( "get_next_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
+	
+			add_action( 'init', array( &$this, 'load_scripts' ) );
+		}
 	}
 
 	/*------- FUNCTIONS TO PRINT IN THE FRONTEND ---------------------------------------------------------------------*/

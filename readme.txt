@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.5.0
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,9 +19,10 @@ or download them on his page.
 **Current features**
 
 * Secure customer area, accessible to logged-in users
+* Private pages, that can be assigned to a particular user and will get listed in its customer area
 * Private files, that can be assigned to a particular user and will get listed in its customer area
 * Show private files grouped by category / by year / ungrouped in the customer area
-* Comments on private files: the customer/user can send some feedback/observations about it
+* Comments on private files and pages: the customer/user can send some feedback/observations about it
 * Customize the plugin appearance using your own themes and templates 
  
 **Coming soon**
@@ -138,6 +139,11 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 1.6.0 (2013/05/16) =
+
+* Added a new private content type: private pages 
+* Possibility to disable private files from the settings if that add-on is not required
 
 = 1.5.0 (2013/05/16) =
 

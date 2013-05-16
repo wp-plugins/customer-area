@@ -64,9 +64,16 @@ class CUAR_Settings {
 	 * Add the menu item
 	 */
 	public function add_settings_menu_item( $submenus ) {
+		$separator = '<span style="display:block;  
+				        margin: 3px 5px 6px -5px; 
+				        padding:0; 
+				        height:1px; 
+				        line-height:1px; 
+				        background:#ddd;"></span>';
+		
 		$submenu = array(
 				'page_title'	=> __( 'Settings', 'cuar' ),
-				'title'			=> __( 'Settings', 'cuar' ),
+				'title'			=> $separator . __( 'Settings', 'cuar' ),
 				'slug'			=> self::$OPTIONS_PAGE_SLUG,
 				'function' 		=> array( &$this, 'print_settings_page' ),
 				'capability'	=> 'manage_options'
@@ -138,6 +145,11 @@ class CUAR_Settings {
 		$validated = apply_filters( 'cuar_addon_validate_options_' . $this->current_tab, $validated, $this, $input );
 
 		$this->options = array_merge( $this->options, $validated );
+		
+		// Also flush rewrite rules
+		global $wp_rewrite;  
+		$wp_rewrite->flush_rules();
+		
 		return $this->options;
 	}
 

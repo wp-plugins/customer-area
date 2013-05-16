@@ -29,35 +29,45 @@ class CUAR_PrivateFileAdminInterface {
 		$this->plugin = $plugin;
 		$this->private_file_addon = $private_file_addon;
 
-		add_action('cuar_admin_submenu_pages', array( &$this, 'add_settings_menu_item' ), 10 );
-		
-		// File listing
-		add_filter( 'manage_edit-cuar_private_file_columns', array( &$this, 'user_column_register' ));
-		add_action( 'manage_cuar_private_file_posts_custom_column', array( &$this, 'user_column_display'), 10, 2 );
-		add_filter( 'manage_edit-cuar_private_file_sortable_columns', array( &$this, 'user_column_register_sortable' ));
-		add_filter( 'request', array( &$this, 'user_column_orderby' ));
-
-		// File edit page
-		add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ));
-		add_action( 'save_post', array( &$this, 'do_save_post' ));
-		add_action( 'admin_notices', array( &$this, 'print_save_post_messages' ));
-		add_filter( 'upload_dir', array( &$this, 'custom_upload_dir' ));
-		add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ));
-		
 		// Settings
 		add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 10, 1 );
 		add_action( 'cuar_addon_print_settings_cuar_private_files', array( &$this, 'print_settings' ), 10, 2 );
 		add_filter( 'cuar_addon_validate_options_cuar_private_files', array( &$this, 'validate_options' ), 10, 3 );
+		
+		if ( $plugin->get_option( self::$OPTION_ENABLE_ADDON ) ) {
+			// Admin menu
+			add_action('cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 10 );
+			
+			// File listing
+			add_filter( 'manage_edit-cuar_private_file_columns', array( &$this, 'user_column_register' ));
+			add_action( 'manage_cuar_private_file_posts_custom_column', array( &$this, 'user_column_display'), 10, 2 );
+			add_filter( 'manage_edit-cuar_private_file_sortable_columns', array( &$this, 'user_column_register_sortable' ));
+			add_filter( 'request', array( &$this, 'user_column_orderby' ));
+	
+			// File edit page
+			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ));
+			add_action( 'save_post', array( &$this, 'do_save_post' ));
+			add_action( 'admin_notices', array( &$this, 'print_save_post_messages' ));
+			add_filter( 'upload_dir', array( &$this, 'custom_upload_dir' ));
+			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ));
+		}		
 	}
 
 	/**
 	 * Add the menu item
 	 */
-	public function add_settings_menu_item( $submenus ) {
+	public function add_menu_items( $submenus ) {
+		$separator = '<span style="display:block;  
+				        margin: 3px 5px 6px -5px; 
+				        padding:0; 
+				        height:1px; 
+				        line-height:1px; 
+				        background:#ddd;"></span>';
+		
 		$my_submenus = array(
 				array(
 					'page_title'	=> __( 'Private Files', 'cuar' ),
-					'title'			=> __( 'Private Files', 'cuar' ),
+					'title'			=> $separator . __( 'Private Files', 'cuar' ),
 					'slug'			=> "edit.php?post_type=cuar_private_file",
 					'function' 		=> null,
 					'capability'	=> 'cuar_pf_edit'
@@ -115,7 +125,7 @@ class CUAR_PrivateFileAdminInterface {
 	 * Register the column as sortable
 	 */
 	public function user_column_register_sortable( $columns ) {
-		$columns['cuar_owner'] = 'cuar_customer';
+		$columns['cuar_owner'] = 'cuar_owner';
 	
 		return $columns;
 	}
@@ -403,7 +413,7 @@ class CUAR_PrivateFileAdminInterface {
 	/*------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE --------------------------------------------------------------*/
 
 	public function add_settings_tab( $tabs ) {
-		$tabs[ 'cuar_private_files' ] = __( 'Customer Files', 'cuar' );
+		$tabs[ 'cuar_private_files' ] = __( 'Private Files', 'cuar' );
 		return $tabs;
 	}
 	
@@ -413,8 +423,26 @@ class CUAR_PrivateFileAdminInterface {
 	 * @param CUAR_Settings $cuar_settings The settings class
 	 */
 	public function print_settings( $cuar_settings, $options_group ) {
-// TODO OUTPUT ALLOWED FILE TYPES
+		add_settings_section(
+				'cuar_private_files_addon_general',
+				__('General settings', 'cuar'),
+				array( &$this, 'print_frontend_section_info' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG
+			);
 
+		add_settings_field(
+				self::$OPTION_ENABLE_ADDON,
+				__('Enable add-on', 'cuar'),
+				array( &$cuar_settings, 'print_input_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_private_files_addon_general',
+				array(
+					'option_id' => self::$OPTION_ENABLE_ADDON,
+					'type' 		=> 'checkbox',
+					'after'		=> 
+						__( 'Check this to enable the private files add-on.', 'cuar' ) )
+			);
+		
 		add_settings_section(
 				'cuar_private_files_addon_frontend',
 				__('Frontend Integration', 'cuar'),
@@ -484,6 +512,7 @@ class CUAR_PrivateFileAdminInterface {
 	public function validate_options( $validated, $cuar_settings, $input ) {
 		// TODO OUTPUT ALLOWED FILE TYPES
 		
+		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_ENABLE_ADDON );
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_SHOW_AFTER_POST_CONTENT );
 		$cuar_settings->validate_enum( $input, $validated, self::$OPTION_FILE_LIST_MODE, 
 				array( 'plain', 'year', 'category' ) );
@@ -499,13 +528,16 @@ class CUAR_PrivateFileAdminInterface {
 	 * @return array
 	 */
 	public static function set_default_options( $defaults ) {
+		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
 		$defaults[ self::$OPTION_SHOW_AFTER_POST_CONTENT ] = true;
 		$defaults[ self::$OPTION_FILE_LIST_MODE ] = 'year';
 		$defaults[ self::$OPTION_HIDE_EMPTY_CATEGORIES ] = true;
 
 		$admin_role = get_role( 'administrator' );
-		$admin_role->add_cap( 'cuar_pf_edit' );
-		$admin_role->add_cap( 'cuar_pf_read' );
+		if ( $admin_role ) {
+			$admin_role->add_cap( 'cuar_pf_edit' );
+			$admin_role->add_cap( 'cuar_pf_read' );
+		}
 		
 		return $defaults;
 	}
@@ -527,6 +559,7 @@ class CUAR_PrivateFileAdminInterface {
 		$required_perms = '775';
 		$current_perms = substr( sprintf('%o', fileperms( $storage_dir ) ), -3);
 		
+		echo '<div class="cuar-section-description">';
 		echo '<p>' 
 				. sprintf( __( 'The files will be stored in the following directory: <code>%s</code>.', 'cuar' ),
 						$storage_dir ) 
@@ -544,7 +577,11 @@ class CUAR_PrivateFileAdminInterface {
 						. 'properly.', 'cuar' ), $current_perms ) 
 				. '</p>';
 		}
+		echo '</div>';
 	}
+
+	// General options
+	public static $OPTION_ENABLE_ADDON					= 'enable_private_files';
 
 	// Frontend options
 	public static $OPTION_SHOW_AFTER_POST_CONTENT		= 'frontend_show_after_post_content';

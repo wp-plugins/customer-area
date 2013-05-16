@@ -45,6 +45,10 @@ span.label {
     background: url( 'images/ic_settings_32.png' ) no-repeat center !important;
 }
 
+#icon-customer-area.icon32.icon32-posts-cuar_private_page {
+    background: url( 'images/ic_private_page_32.png' ) no-repeat center !important;
+}
+
 .dashboard-logo {
 	max-width: 80%;
 	margin: 0 auto 50px;
@@ -81,6 +85,10 @@ span.label {
 .cuar-sidebox div.cuar-sidebox-content {
 	background: #fafafa;
 	padding: 7px 20px;
+}
+
+.cuar-main .cuar-section-description {
+	padding: 5px 10px;
 }
 
 /* -= ADD-ONS TAB */

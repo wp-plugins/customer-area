@@ -637,6 +637,8 @@ class CUAR_Settings {
 		
 		if ( ! is_array( $current_options ) ) $current_options = array();
 		$this->options = array_merge( $this->default_options, $current_options );
+		
+		do_action( 'cuar_options_loaded', $this->options );
 	}
 
 	public static $OPTIONS_PAGE_SLUG = 'cuar-settings';

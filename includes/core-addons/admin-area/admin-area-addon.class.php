@@ -26,6 +26,10 @@ if (!class_exists('CUAR_AdminAreaAddOn')) :
 * @author Vincent Prat @ MarvinLabs
 */
 class CUAR_AdminAreaAddOn extends CUAR_AddOn {
+	
+	public function __construct() {
+		parent::__construct( __( 'Administration Area', 'cuar' ), '1.0.0' );
+	}
 
 	public function run_addon( $plugin ) {
 		$this->plugin = $plugin;

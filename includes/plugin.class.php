@@ -254,8 +254,15 @@ class CUAR_Plugin {
 		return $this->settings->get_option( $option_id );
 	}
 	
+	public function register_addon( $addon ) {
+		$this->registered_addons[] = $addon;
+	}
+	
 	/** @var CUAR_Settings */
 	private $settings;
+	
+	/** @var array */
+	private $registered_addons = array();
 }
 
 endif; // if (!class_exists('CUAR_Plugin')) :

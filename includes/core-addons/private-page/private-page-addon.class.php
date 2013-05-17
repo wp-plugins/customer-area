@@ -29,6 +29,10 @@ if (!class_exists('CUAR_PrivatePageAddOn')) :
 * @author Vincent Prat @ MarvinLabs
 */
 class CUAR_PrivatePageAddOn extends CUAR_AddOn {
+	
+	public function __construct() {
+		parent::__construct( __( 'Private Pages', 'cuar' ), '1.0.0' );
+	}
 
 	public function run_addon( $plugin ) {
 		$this->plugin = $plugin;

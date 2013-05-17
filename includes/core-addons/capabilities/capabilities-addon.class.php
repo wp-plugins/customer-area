@@ -28,6 +28,10 @@ if (!class_exists('CUAR_CapabilitiesAddOn')) :
 * @author Vincent Prat @ MarvinLabs
 */
 class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
+	
+	public function __construct() {
+		parent::__construct( __( 'Capabilities Manager', 'cuar' ), '1.0.0' );
+	}
 
 	public function run_addon( $plugin ) {
 		$this->plugin = $plugin;

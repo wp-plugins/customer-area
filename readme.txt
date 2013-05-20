@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,11 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 1.6.3 (2013/05/20) =
+
+* Fixed bug: http://wordpress.org/support/topic/how-to-keep-the-submenu-opened-when-editing-a-page-or-file
+* Fixed bug: http://wordpress.org/support/topic/wp_debug-notice-for-fileperms
 
 = 1.6.2 (2013/05/17) =
 

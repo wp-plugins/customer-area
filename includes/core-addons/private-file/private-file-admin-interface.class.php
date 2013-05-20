@@ -45,12 +45,43 @@ class CUAR_PrivateFileAdminInterface {
 			add_filter( 'request', array( &$this, 'user_column_orderby' ));
 	
 			// File edit page
-			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ));
+			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ) );
 			add_action( 'save_post', array( &$this, 'do_save_post' ));
-			add_action( 'admin_notices', array( &$this, 'print_save_post_messages' ));
+			add_action( 'admin_notices', array( &$this, 'print_save_post_messages' ) );
 			add_filter( 'upload_dir', array( &$this, 'custom_upload_dir' ));
-			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ));
+			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );
+			
+			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
 		}		
+	}
+			
+	/**
+	 * Highlight the proper menu item in the customer area
+	 */
+	public function highlight_menu_item() {
+		// For posts
+		if ( isset( $_REQUEST['taxonomy'] ) && $_REQUEST['taxonomy']=='cuar_private_file_category' ) {		
+			$highlight_top 	= '#toplevel_page_customer-area';
+			$unhighligh_top = '#menu-posts';
+		} else {
+			$highlight_top 	= null;
+			$unhighligh_top = null;
+		}
+		
+		if ( $highlight_top && $unhighligh_top ) {
+?>
+<script type="text/javascript">
+jQuery(document).ready( function($) {
+	$('<?php echo $unhighligh_top; ?>')
+		.removeClass('wp-has-current-submenu')
+		.addClass('wp-not-current-submenu');
+	$('<?php echo $highlight_top; ?>')
+		.removeClass('wp-not-current-submenu')
+		.addClass('wp-has-current-submenu current');
+});     
+</script>
+<?php
+		}
 	}
 
 	/**
@@ -553,8 +584,8 @@ class CUAR_PrivateFileAdminInterface {
 	 * Print some info about the section
 	 */
 	public function print_storage_section_info() {
-		$storage_dir = $this->plugin->get_base_upload_directory();
-		$sample_storage_dir = $storage_dir . '/' . $this->plugin->get_user_storage_directory( get_current_user_id() );
+		$storage_dir = $this->plugin->get_base_upload_directory( true );
+		$sample_storage_dir = $this->plugin->get_user_storage_directory( get_current_user_id(), true, true );
 		
 		$required_perms = '775';
 		$current_perms = substr( sprintf('%o', fileperms( $storage_dir ) ), -3);

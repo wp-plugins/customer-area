@@ -147,8 +147,12 @@ class CUAR_Plugin {
 	 * 
 	 * @return string
 	 */
-	public function get_base_upload_directory() {
-		return WP_CONTENT_DIR . '/customer-area';
+	public function get_base_upload_directory( $create_dirs = false ) {
+		$dir = WP_CONTENT_DIR . '/customer-area';
+		
+		if ( $create_dirs && !file_exists( $dir ) ) mkdir( $dir, 0775, true );
+
+		return $dir;
 	}
 	
 	/**
@@ -183,7 +187,7 @@ class CUAR_Plugin {
 	 * 
 	 * @param int $user_id The id of the user, or null to get the base directory
 	 */
-	public function get_user_storage_directory( $user_id ) {
+	public function get_user_storage_directory( $user_id, $absolute = false, $create_dirs = false ) {
 		if ( empty( $user_id ) ) return false;
 		
 		$dir = get_user_meta($user_id, 'cuar_directory', true);
@@ -191,6 +195,9 @@ class CUAR_Plugin {
 			$dir = uniqid( $user_id . '_' );
 			add_user_meta( $user_id, 'cuar_directory', $dir );
 		}
+		
+		if ( $absolute ) $dir = $this->get_base_upload_directory() . "/" . $dir;
+		if ( $create_dirs && !file_exists( $dir ) ) mkdir( $dir, 0775, true );
 		
 		return $dir;
 	}

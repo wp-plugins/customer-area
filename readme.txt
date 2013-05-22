@@ -98,6 +98,17 @@ by copying the file "protect-downloads.htaccess" included in our plugin's extras
 (it should be /wp-content/customer-area). Then you will need to rename that file ".htaccess" so that your server takes
 it into account.
 
+= How do I create a private file? =
+
+1. Log in the WordPress admin panel
+1. Go to Customer Area
+1. Select Private Files > Add new
+1. Give it a title
+1. (optional) write a description
+1. (optional) assign a category to it
+1. Choose the file owner (the user who will see it in his customer area)
+1. Upload the associated file (box below the description)
+
 = How can I create my own theme? =
 
 The plugin allows you to create your own theme. The easiest way to start is to copy the default themes folder to either

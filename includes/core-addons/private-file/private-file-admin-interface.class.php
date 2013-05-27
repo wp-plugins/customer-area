@@ -37,6 +37,7 @@ class CUAR_PrivateFileAdminInterface {
 		if ( $plugin->get_option( self::$OPTION_ENABLE_ADDON ) ) {
 			// Admin menu
 			add_action('cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 10 );
+			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
 			
 			// File listing
 			add_filter( 'manage_edit-cuar_private_file_columns', array( &$this, 'user_column_register' ));
@@ -49,9 +50,7 @@ class CUAR_PrivateFileAdminInterface {
 			add_action( 'save_post', array( &$this, 'do_save_post' ));
 			add_action( 'admin_notices', array( &$this, 'print_save_post_messages' ) );
 			add_filter( 'upload_dir', array( &$this, 'custom_upload_dir' ));
-			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );
-			
-			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
+			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );			
 		}		
 	}
 			
@@ -59,8 +58,13 @@ class CUAR_PrivateFileAdminInterface {
 	 * Highlight the proper menu item in the customer area
 	 */
 	public function highlight_menu_item() {
+		global $post;
+		
 		// For posts
 		if ( isset( $_REQUEST['taxonomy'] ) && $_REQUEST['taxonomy']=='cuar_private_file_category' ) {		
+			$highlight_top 	= '#toplevel_page_customer-area';
+			$unhighligh_top = '#menu-posts';
+		} else if ( isset( $post ) && get_post_type( $post )=='cuar_private_file' ) {		
 			$highlight_top 	= '#toplevel_page_customer-area';
 			$unhighligh_top = '#menu-posts';
 		} else {

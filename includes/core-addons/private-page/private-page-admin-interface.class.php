@@ -36,7 +36,8 @@ class CUAR_PrivatePageAdminInterface {
 		
 		if ( $plugin->get_option( self::$OPTION_ENABLE_ADDON ) ) {
 			// Admin menu
-			add_action('cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 11 );
+			add_action('cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 11 );			
+			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
 			
 			// Page listing
 			add_filter( 'manage_edit-cuar_private_page_columns', array( &$this, 'user_column_register' ));
@@ -84,6 +85,37 @@ class CUAR_PrivatePageAdminInterface {
 		}
 	
 		return $submenus;
+	}
+			
+	/**
+	 * Highlight the proper menu item in the customer area
+	 */
+	public function highlight_menu_item() {
+		global $post;
+		
+		// For posts
+		if ( isset( $post ) && get_post_type( $post )=='cuar_private_page' ) {		
+			$highlight_top 	= '#toplevel_page_customer-area';
+			$unhighligh_top = '#menu-posts';
+		} else {
+			$highlight_top 	= null;
+			$unhighligh_top = null;
+		}
+		
+		if ( $highlight_top && $unhighligh_top ) {
+?>
+<script type="text/javascript">
+jQuery(document).ready( function($) {
+	$('<?php echo $unhighligh_top; ?>')
+		.removeClass('wp-has-current-submenu')
+		.addClass('wp-not-current-submenu');
+	$('<?php echo $highlight_top; ?>')
+		.removeClass('wp-not-current-submenu')
+		.addClass('wp-has-current-submenu current');
+});     
+</script>
+<?php
+		}
 	}
 	
 	/*------- CUSTOMISATION OF THE LISTING OF PRIVATE FILES ----------------------------------------------------------*/

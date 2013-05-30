@@ -10,7 +10,7 @@ function cuar_list_category_files( $category, $item_template, $current_user_id, 
 	if ( !$category ) return;
 
 	// Get posts in the category	
-	global $cuar_plugin;
+	global $cuar_plugin, $cuar_po_addon;
 	$hide_empty_categories = $cuar_plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_HIDE_EMPTY_CATEGORIES );
 	$args = array(
 			'post_type' 		=> 'cuar_private_file',
@@ -24,11 +24,7 @@ function cuar_list_category_files( $category, $item_template, $current_user_id, 
 					'terms'				=> $category->slug,
 					'operator'			=> 'IN'
 			) ),
-			'meta_query' 		=> array( array(
-					'key' 		=> 'cuar_owner',
-					'value' 	=> $current_user_id,
-					'compare' 	=> '='
-			) )
+			'meta_query' 		=> $cuar_po_addon->get_meta_query_post_owned_by( $current_user_id )
 		);
 
 	$heading = '';

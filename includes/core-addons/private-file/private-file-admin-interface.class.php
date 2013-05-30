@@ -26,6 +26,8 @@ if (!class_exists('CUAR_PrivateFileAdminInterface')) :
 class CUAR_PrivateFileAdminInterface {
 	
 	public function __construct( $plugin, $private_file_addon ) {
+		global $cuar_po_addon;
+		
 		$this->plugin = $plugin;
 		$this->private_file_addon = $private_file_addon;
 
@@ -39,17 +41,11 @@ class CUAR_PrivateFileAdminInterface {
 			add_action('cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 10 );
 			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
 			
-			// File listing
-			add_filter( 'manage_edit-cuar_private_file_columns', array( &$this, 'user_column_register' ));
-			add_action( 'manage_cuar_private_file_posts_custom_column', array( &$this, 'user_column_display'), 10, 2 );
-			add_filter( 'manage_edit-cuar_private_file_sortable_columns', array( &$this, 'user_column_register_sortable' ));
-			add_filter( 'request', array( &$this, 'user_column_orderby' ));
-	
 			// File edit page
 			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ) );
-			add_action( 'save_post', array( &$this, 'do_save_post' ));
-			add_action( 'admin_notices', array( &$this, 'print_save_post_messages' ) );
-			add_filter( 'upload_dir', array( &$this, 'custom_upload_dir' ));
+			add_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ), 10, 4 );
+			
+			add_filter( 'upload_dir', array( &$this, 'custom_upload_dir' ));			
 			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );			
 		}		
 	}
@@ -130,55 +126,6 @@ jQuery(document).ready( function($) {
 		return $submenus;
 	}
 	
-	/*------- CUSTOMISATION OF THE LISTING OF PRIVATE FILES ----------------------------------------------------------*/
-	
-	/**
-	 * Register the column
-	 */
-	public function user_column_register( $columns ) {
-		$columns['cuar_owner'] = __( 'Owner', 'cuar' );
-		return $columns;
-	}
-	
-	/**
-	 * Display the column content
-	 */
-	public function user_column_display( $column_name, $post_id ) {
-		if ( 'cuar_owner' != $column_name )
-			return;
-	
-		$owner_id = $this->private_file_addon->get_file_owner_id( $post_id );
-		if ( $owner_id ) {
-			$owner = new WP_User( $owner_id );
-			echo $owner->display_name;
-		} else {
-			_e( 'Nobody', 'cuar' ); 
-		}
-	}
-	
-	/**
-	 * Register the column as sortable
-	 */
-	public function user_column_register_sortable( $columns ) {
-		$columns['cuar_owner'] = 'cuar_owner';
-	
-		return $columns;
-	}
-	
-	/**
-	 * Handle sorting of data
-	 */
-	public function user_column_orderby( $vars ) {
-		if ( isset( $vars['orderby'] ) && 'cuar_owner' == $vars['orderby'] ) {
-			$vars = array_merge( $vars, array(
-					'meta_key' 	=> 'cuar_owner',
-					'orderby' 	=> 'meta_value'
-				) );
-		}
-	
-		return $vars;
-	}
-	
 	/*------- CUSTOMISATION OF THE EDIT PAGE OF A PRIVATE FILES ------------------------------------------------------*/
 
 	/**
@@ -198,13 +145,6 @@ jQuery(document).ready( function($) {
 				'cuar_private_file_upload', 
 				__('File', 'cuar'), 
 				array( &$this, 'print_upload_meta_box'), 
-				'cuar_private_file', 
-				'normal', 'high');
-		
-		add_meta_box( 
-				'cuar_private_file_owner', 
-				__('Owner', 'cuar'), 
-				array( &$this, 'print_owner_meta_box'), 
 				'cuar_private_file', 
 				'normal', 'high');
 	}
@@ -238,75 +178,6 @@ jQuery(document).ready( function($) {
 <?php 
 		do_action( "cuar_private_file_upload_meta_box_footer" );
 	}
-
-	/**
-	 * Print the metabox to select the owner of the file
-	 */
-	public function print_owner_meta_box() {
-		global $post;
-		wp_nonce_field( plugin_basename(__FILE__), 'wp_cuar_nonce_owner' );
-	
-		$current_uid = $this->private_file_addon->get_file_owner_id( $post->ID );		
-		$all_users = get_users();
-		
-		do_action( "cuar_private_file_owner_meta_box_header" );
-?>
-		<div id="cuar-owner" class="metabox-row">
-			<span class="label"><label for="cuar_owner"><?php _e('Select the owner of this file', 'cuar');?></label></span> 	
-			<span class="field">
-				<select name="cuar_owner" id="cuar_owner">
-<?php 			foreach ( $all_users as $u ) :
-					$selected =  ( $current_uid!=$u->ID ? '' : ' selected="selected"' );
-?>
-					<option value="<?php echo $u->ID;?>"<?php echo $selected; ?>><?php echo $u->display_name; ?>
-					</option>
-<?php 			endforeach; ?>				
-				</select>
-			</span>
-		</div>
-<?php
-		do_action( "cuar_private_file_owner_meta_box_footer" );
-	}
-	
-	/**
-	 * Print the eventual errors that occured during a post save/update
-	 */
-	public function print_save_post_messages() {
-		$notices = $this->get_save_post_notices();
-		if ( $notices ) {
-			foreach ( $notices as $n ) {
-				echo sprintf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $n['type'] ), esc_html( $n['msg'] ) );
-			}
-		}
-		$this->clear_save_post_notices();
-	}
-	
-	/**
-	 * Remove the notices stored in the session for save posts
-	 */
-	private function clear_save_post_notices() {
-		if ( isset( $_SESSION['cuar_private_file_save_post_notices'] ) ) {
-			unset( $_SESSION['cuar_private_file_save_post_notices'] ); 
-		}
-	}
-
-	/**
-	 * Remove the stored notices
-	 */
-	private function get_save_post_notices() {
-		return empty( $_SESSION[ 'cuar_private_file_save_post_notices' ] ) 
-				? false 
-				: $_SESSION['cuar_private_file_save_post_notices'];
-	}
-	
-	public function add_save_post_notice( $msg, $type = 'error' ) {
-		if ( empty( $_SESSION[ 'cuar_private_file_save_post_notices' ] ) ) {
-			$_SESSION[ 'cuar_private_file_save_post_notices' ] = array();
-	 	}
-	 	$_SESSION[ 'cuar_private_file_save_post_notices' ][] = array(
-				'type' 	=> $type,
-				'msg' 	=> $msg );
-	}
 	
 	/**
 	 * Callback to handle saving a post
@@ -315,8 +186,8 @@ jQuery(document).ready( function($) {
 	 * @param string $post
 	 * @return void|unknown
 	 */
-	public function do_save_post( $post_id, $post = null ) {
-		global $post;
+	public function do_save_post( $post_id, $post, $previous_owner, $new_owner ) {
+		global $post, $cuar_po_addon;
 		
 		// When auto-saving, we don't do anything
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
@@ -324,32 +195,22 @@ jQuery(document).ready( function($) {
 		// Only take care of our own post type
 		if ( !$post || get_post_type( $post->ID )!='cuar_private_file' ) return;
 	
-		// Other addons can do something before we save
-		do_action( "cuar_private_file_before_do_save_post" );
-		
-		// Save the owner details
-		if ( !wp_verify_nonce( $_POST['wp_cuar_nonce_owner'], plugin_basename(__FILE__) ) ) return $post_id;
-
-		$previous_owner_id = $this->private_file_addon->get_file_owner_id( $post_id );
-		$new_owner_id = $_POST['cuar_owner'];
-		update_post_meta( $post_id, 'cuar_owner', $new_owner_id );
-
 		// Save the file
 		if ( !wp_verify_nonce( $_POST['wp_cuar_nonce_file'], plugin_basename(__FILE__) ) ) return $post_id;
 
 		// If nothing to upload but owner changed, we'll simply move the file
-		$previous_file = get_post_meta( $post_id, 'cuar_private_file_file', true );		
+		$has_owner_changed = ($new_owner['id']!=$previous_owner['id']) 
+								|| ($new_owner['type']!=$previous_owner['type']);
 		
+		$previous_file = get_post_meta( $post_id, 'cuar_private_file_file', true );				
 		if ( empty( $_FILES['cuar_private_file_file']['name'] ) ) {
 			if ( $previous_file ) {
-				$previous_file['path'] = $this->plugin->get_user_file_path( 
-						$previous_owner_id, $previous_file['file'], true );
-	
-				if ( $previous_owner_id!=$new_owner_id 
-						&& file_exists( $previous_file['path'] ) ) {
-	
-					$new_file_path = $this->plugin->get_user_file_path( 
-							$new_owner_id, $previous_file['file'], true );
+				$previous_file['path'] = $cuar_po_addon->get_owner_file_path( 
+						$previous_file['file'], $previous_owner['id'], $previous_owner['type'], true );
+				
+				if ( $has_owner_changed && file_exists( $previous_file['path'] ) ) {	
+					$new_file_path = $cuar_po_addon->get_owner_file_path( 
+							$previous_file['file'], $new_owner['id'], $new_owner['type'], true );
 					if ( copy( $previous_file['path'], $new_file_path ) ) unlink( $previous_file['path'] );
 	
 					$new_file = $previous_file;
@@ -359,11 +220,7 @@ jQuery(document).ready( function($) {
 					cuar_log_debug( 'moved private file from ' . $previous_file['path'] . ' to ' . $new_file_path);
 				}
 			}
-			
-			// Other addons can do something after we save
-			do_action( "cuar_private_file_after_do_save_post", $post_id, $this->private_file_addon, $this );
-		
-			return $post_id;
+			return $post_id;		
 		}
 
 		// Do some file type checking on the uploaded file if needed
@@ -378,15 +235,15 @@ jQuery(document).ready( function($) {
 							implode( ', ', $supported_types ) ) );
 				cuar_log_debug( $msg );
 				
-				$this->add_save_post_notice( $msg );
+				$this->plugin->add_admin_notice( $msg );
 				return;
 			}
 		}
 		
 		// Delete the existing file if any
 		if ( $previous_file ) {
-			$previous_file['path'] = $this->plugin->get_user_file_path( 
-					$previous_owner_id, $previous_file['file'], true );
+			$previous_file['path'] = $cuar_po_addon->get_owner_file_path( 
+						$previous_file['file'], $previous_owner['id'], $previous_owner['type'], true );
 
 			if ( $previous_file['path'] && file_exists( $previous_file['path'] ) ) {
 				unlink( $previous_file['path'] );
@@ -400,35 +257,36 @@ jQuery(document).ready( function($) {
 		if ( empty( $upload ) ) {
 			$msg = sprintf( __( 'An unknown error happened while uploading your file.', 'cuar' ) );
 			cuar_log_debug( $msg );
-			$this->add_save_post_notice( $msg );
+			$this->plugin->add_admin_notice( $msg );
 		} else if ( isset( $upload['error'] ) ) {
 			$msg = sprintf( __( 'An error happened while uploading your file: %s', 'cuar' ), $upload['error'] );
 			cuar_log_debug( $msg );
-			$this->add_save_post_notice( $msg );
+			$this->plugin->add_admin_notice( $msg );
 		} else {
 			$upload['file'] = basename( $upload['file'] );
 			update_post_meta( $post_id, 'cuar_private_file_file', $upload );
 			cuar_log_debug( 'Uploaded new private file: ' . print_r( $upload, true ) );
-
-			do_action( "cuar_private_file_after_new_upload" );
 		}
-		
-		// Other addons can do something after we save
-		do_action( "cuar_private_file_after_do_save_post", $post_id, $this->private_file_addon, $this );
 	}
 
+	/**
+	 * Change the upload directory on the fly when uploading our private file
+	 * @param unknown $default_dir
+	 * @return unknown|multitype:boolean string unknown
+	 */
 	public function custom_upload_dir( $default_dir ) {
+		global $cuar_po_addon;
+		
 		if ( ! isset( $_POST['post_ID'] ) || $_POST['post_ID'] < 0 ) return $default_dir;	
 		if ( $_POST['post_type'] != 'cuar_private_file' ) return $default_dir;
-		if ( ! isset( $_POST['cuar_owner'] ) ) return $default_dir;	
 	
-		$dir = $this->plugin->get_base_upload_directory();
-		$url = $this->plugin->get_base_upload_url();
+		$dir = $cuar_po_addon->get_base_private_storage_directory();
+		$url = $cuar_po_addon->get_base_private_storage_url();
 	
 		$bdir = $dir;
 		$burl = $url;
 	
-		$subdir = '/' . $this->plugin->get_user_storage_directory( $_POST[ 'cuar_owner' ] );
+		$subdir = '/' . $cuar_po_addon->get_private_storage_directory( $_POST['post_ID'] );
 		
 		$dir .= $subdir;
 		$url .= $subdir;
@@ -591,7 +449,7 @@ jQuery(document).ready( function($) {
 		$storage_dir = $this->plugin->get_base_upload_directory( true );
 		$sample_storage_dir = $this->plugin->get_user_storage_directory( get_current_user_id(), true, true );
 		
-		$required_perms = '775';
+		$required_perms = '705';
 		$current_perms = substr( sprintf('%o', fileperms( $storage_dir ) ), -3);
 		
 		echo '<div class="cuar-section-description">';
@@ -606,8 +464,8 @@ jQuery(document).ready( function($) {
 				. '</p>';
 
 		if ( $required_perms > $current_perms ) {
-			echo '<p style="color: red;">' 
-				. sprintf( __('That directory should at least have the permissions set to 775. Currently it is '
+			echo '<p style="color: orange;">' 
+				. sprintf( __('That directory should at least have the permissions set to 705. Currently it is '
 						. '%s. You should adjust that directory permissions as upload or download might not work ' 
 						. 'properly.', 'cuar' ), $current_perms ) 
 				. '</p>';

@@ -3,6 +3,7 @@
 <h3><?php _e( 'Your pages', 'cuar' ); ?></h3>
 
 <?php 
+global $cuar_po_addon;
 $current_user_id = get_current_user_id();
 
 // Get user pages
@@ -11,14 +12,8 @@ $args = array(
 		'posts_per_page' 	=> -1,
 		'orderby' 			=> 'date',
 		'order' 			=> 'DESC',
-		'meta_query' 		=> array(
-				array(
-						'key' 		=> 'cuar_owner',
-						'value' 	=> $current_user_id,
-						'compare' 	=> '='
-				)
-		)
-);
+		'meta_query' 		=> $cuar_po_addon->get_meta_query_post_owned_by( $current_user_id )
+	);
 
 $pages_query = new WP_Query( apply_filters( 'cuar_user_pages_query_parameters', $args ) );
 ?>

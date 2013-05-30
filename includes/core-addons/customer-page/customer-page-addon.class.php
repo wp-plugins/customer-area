@@ -44,7 +44,7 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		}
 	}	
 	
-	/*------- Some default messages above/below the templates --------------------------------------------------------*/
+	/*------- DEFAULT MESSAGES --------------------------------------------------------------------------------------*/
 
 	public function default_welcome_message() {
 		global $current_user;
@@ -55,7 +55,7 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		echo apply_filters( "cuar_default_welcome_message", $out );
 	}
 	
-	/*------- INITIALISATIONS ----------------------------------------------------------------------------------------*/
+	/*------- INITIALISATIONS ---------------------------------------------------------------------------------------*/
 
 	/** @var CUAR_Plugin */
 	private $cuar_plugin;

@@ -26,6 +26,8 @@ if (!class_exists('CUAR_PrivatePageAdminInterface')) :
 class CUAR_PrivatePageAdminInterface {
 	
 	public function __construct( $plugin, $private_page_addon ) {
+		global $cuar_po_addon;
+		
 		$this->plugin = $plugin;
 		$this->private_page_addon = $private_page_addon;
 
@@ -38,17 +40,6 @@ class CUAR_PrivatePageAdminInterface {
 			// Admin menu
 			add_action('cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 11 );			
 			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
-			
-			// Page listing
-			add_filter( 'manage_edit-cuar_private_page_columns', array( &$this, 'user_column_register' ));
-			add_action( 'manage_cuar_private_page_posts_custom_column', array( &$this, 'user_column_display'), 10, 2 );
-			add_filter( 'manage_edit-cuar_private_page_sortable_columns', array( &$this, 'user_column_register_sortable' ));
-			add_filter( 'request', array( &$this, 'user_column_orderby' ));
-	
-			// Page edit page
-			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ));
-			add_action( 'save_post', array( &$this, 'do_save_post' ));
-			add_action( 'admin_notices', array( &$this, 'print_save_post_messages' ));
 		}		
 	}
 
@@ -116,168 +107,6 @@ jQuery(document).ready( function($) {
 </script>
 <?php
 		}
-	}
-	
-	/*------- CUSTOMISATION OF THE LISTING OF PRIVATE FILES ----------------------------------------------------------*/
-	
-	/**
-	 * Register the column
-	 */
-	public function user_column_register( $columns ) {
-		$columns['cuar_owner'] = __( 'Owner', 'cuar' );
-		return $columns;
-	}
-	
-	/**
-	 * Display the column content
-	 */
-	public function user_column_display( $column_name, $post_id ) {
-		if ( 'cuar_owner' != $column_name )
-			return;
-	
-		$owner_id = $this->private_page_addon->get_page_owner_id( $post_id );
-		if ( $owner_id ) {
-			$owner = new WP_User( $owner_id );
-			echo $owner->display_name;
-		} else {
-			_e( 'Nobody', 'cuar' ); 
-		}
-	}
-	
-	/**
-	 * Register the column as sortable
-	 */
-	public function user_column_register_sortable( $columns ) {
-		$columns['cuar_owner'] = 'cuar_owner';
-	
-		return $columns;
-	}
-	
-	/**
-	 * Handle sorting of data
-	 */
-	public function user_column_orderby( $vars ) {
-		if ( isset( $vars['orderby'] ) && 'cuar_owner' == $vars['orderby'] ) {
-			$vars = array_merge( $vars, array(
-					'meta_key' 	=> 'cuar_owner',
-					'orderby' 	=> 'meta_value'
-				) );
-		}
-	
-		return $vars;
-	}
-	
-	/*------- CUSTOMISATION OF THE EDIT PAGE OF A PRIVATE FILES ------------------------------------------------------*/
-
-	/**
-	 * Register some additional boxes on the page to edit the files
-	 */
-	public function register_edit_page_meta_boxes() {		
-		add_meta_box( 
-				'cuar_private_page_owner', 
-				__('Owner', 'cuar'), 
-				array( &$this, 'print_owner_meta_box'), 
-				'cuar_private_page', 
-				'normal', 'high');
-	}
-
-	/**
-	 * Print the metabox to select the owner of the file
-	 */
-	public function print_owner_meta_box() {
-		global $post;
-		wp_nonce_field( plugin_basename(__FILE__), 'wp_cuar_nonce_owner' );
-	
-		$current_uid = $this->private_page_addon->get_page_owner_id( $post->ID );		
-		$all_users = get_users();
-		
-		do_action( "cuar_private_page_owner_meta_box_header" );
-?>
-		<div id="cuar-owner" class="metabox-row">
-			<span class="label"><label for="cuar_owner"><?php _e('Select the owner of this page', 'cuar');?></label></span> 	
-			<span class="field">
-				<select name="cuar_owner" id="cuar_owner">
-<?php 			foreach ( $all_users as $u ) :
-					$selected =  ( $current_uid!=$u->ID ? '' : ' selected="selected"' );
-?>
-					<option value="<?php echo $u->ID;?>"<?php echo $selected; ?>><?php echo $u->display_name; ?>
-					</option>
-<?php 			endforeach; ?>				
-				</select>
-			</span>
-		</div>
-<?php
-		do_action( "cuar_private_page_owner_meta_box_footer" );
-	}
-	
-	/**
-	 * Print the eventual errors that occured during a post save/update
-	 */
-	public function print_save_post_messages() {
-		$notices = $this->get_save_post_notices();
-		if ( $notices ) {
-			foreach ( $notices as $n ) {
-				echo sprintf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $n['type'] ), esc_html( $n['msg'] ) );
-			}
-		}
-		$this->clear_save_post_notices();
-	}
-	
-	/**
-	 * Remove the notices stored in the session for save posts
-	 */
-	private function clear_save_post_notices() {
-		if ( isset( $_SESSION['cuar_private_page_save_post_notices'] ) ) {
-			unset( $_SESSION['cuar_private_page_save_post_notices'] ); 
-		}
-	}
-
-	/**
-	 * Remove the stored notices
-	 */
-	private function get_save_post_notices() {
-		return empty( $_SESSION[ 'cuar_private_page_save_post_notices' ] ) 
-				? false 
-				: $_SESSION['cuar_private_page_save_post_notices'];
-	}
-	
-	public function add_save_post_notice( $msg, $type = 'error' ) {
-		if ( empty( $_SESSION[ 'cuar_private_page_save_post_notices' ] ) ) {
-			$_SESSION[ 'cuar_private_page_save_post_notices' ] = array();
-	 	}
-	 	$_SESSION[ 'cuar_private_page_save_post_notices' ][] = array(
-				'type' 	=> $type,
-				'msg' 	=> $msg );
-	}
-	
-	/**
-	 * Callback to handle saving a post
-	 *  
-	 * @param int $post_id
-	 * @param string $post
-	 * @return void|unknown
-	 */
-	public function do_save_post( $post_id, $post = null ) {
-		global $post;
-		
-		// When auto-saving, we don't do anything
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
-	
-		// Only take care of our own post type
-		if ( !$post || get_post_type( $post->ID )!='cuar_private_page' ) return;
-	
-		// Other addons can do something before we save
-		do_action( "cuar_private_page_before_do_save_post" );
-		
-		// Save the owner details
-		if ( !wp_verify_nonce( $_POST['wp_cuar_nonce_owner'], plugin_basename(__FILE__) ) ) return $post_id;
-
-		$previous_owner_id = $this->private_page_addon->get_page_owner_id( $post_id );
-		$new_owner_id = $_POST['cuar_owner'];
-		update_post_meta( $post_id, 'cuar_owner', $new_owner_id );
-		
-		// Other addons can do something after we save
-		do_action( "cuar_private_page_after_do_save_post", $post_id, $this->private_page_addon, $this );
 	}
 
 	/*------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE --------------------------------------------------------------*/

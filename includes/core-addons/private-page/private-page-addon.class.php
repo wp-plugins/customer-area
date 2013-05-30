@@ -31,7 +31,7 @@ if (!class_exists('CUAR_PrivatePageAddOn')) :
 class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( __( 'Private Pages', 'cuar' ), '1.0.0' );
+		parent::__construct( __( 'Private Pages', 'cuar' ), '2.0.0' );
 	}
 
 	public function run_addon( $plugin ) {
@@ -39,11 +39,10 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 
 		if ( $plugin->get_option( CUAR_PrivatePageAdminInterface::$OPTION_ENABLE_ADDON ) ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
+			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
 			
 			add_action( 'init', array( &$this, 'add_post_type_rewrites' ) );
 			add_filter( 'post_type_link', array( &$this, 'built_post_type_permalink' ), 1, 3);
-			
-			add_action( 'template_redirect', array( &$this, 'protect_access' ) );
 			
 			add_filter( 'cuar_configurable_capability_groups', array( &$this, 'declare_configurable_capabilities' ) );
 		}
@@ -71,18 +70,6 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	}
 		
 	/*------- FUNCTIONS TO ACCESS THE POST META ----------------------------------------------------------------------*/
-
-	/**
-	 * Get the name of the owner associated to the given post
-	 *
-	 * @param int $post_id
-	 * @return boolean|int
-	 */
-	public function get_page_owner_id( $post_id ) {
-		$owner_id = get_post_meta( $post_id, 'cuar_owner', true );
-		if ( !$owner_id || empty( $owner_id ) ) return false;
-		return apply_filters( 'cuar_get_page_owner_id', $owner_id );
-	}
 	
 	/**
 	 * Get the number of times the page has been viewed
@@ -108,34 +95,6 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 			$this->get_page_download_count( $post_id ) + 1 );
 	}
 
-	/*------- HANDLE FILE VIEWING AND DOWNLOADING --------------------------------------------------------------------*/
-	
-	/**
-	 * Protect access to single pages for private files: only for author and owner.
-	 */
-	public function protect_access() {		
-		// If not on a matching post type, we do nothing
-		if ( !is_singular('cuar_private_page') ) return;
-		
-		// If not logged-in, we ask for details
-		if ( !is_user_logged_in() ) {
-			wp_redirect( wp_login_url( $_SERVER['REQUEST_URI'] ) );
-			exit;
-		}
-
-		// If not authorized to view the page, we bail	
-		$post = get_queried_object();
-		$author_id = $post->post_author;
-
-		$current_user_id = get_current_user_id();
-		$owner_id = $this->get_page_owner_id( $post->ID );
-		
-		if ( $owner_id!=$current_user_id && $author_id!=$current_user_id ) {
-			wp_die( __( "You are not authorized to view this page", "cuar" ) );
-			exit();
-		}
-	}
-
 	/*------- INITIALISATIONS ----------------------------------------------------------------------------------------*/
 	
 	public function declare_configurable_capabilities( $capability_groups ) {
@@ -148,6 +107,16 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 			);
 		
 		return $capability_groups;
+	}
+	
+	/**
+	 * Declare that our post type is owned by someone
+	 * @param unknown $types
+	 * @return string
+	 */
+	public function register_private_post_types($types) {
+		$types[] = "cuar_private_page";
+		return $types;
 	}
 	
 	/**
@@ -222,6 +191,8 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	 * @return unknown|mixed
 	 */
 	function built_post_type_permalink( $post_link, $post, $leavename ) {
+		global $cuar_po_addon;
+		
 		// Only change permalinks for private files
 		if ( $post->post_type!='cuar_private_page') return $post_link;
 	
@@ -235,14 +206,8 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	
 		$permalink = $wp_rewrite->get_extra_permastruct( 'cuar_private_page' );
 		$permalink = str_replace( "%cuar_private_page%", $post->post_name, $permalink );
-	
-		$owner_id = $cuar_pp_addon->get_page_owner_id( $post->ID );
-		if ( $owner_id ) {
-			$owner = get_userdata( $owner_id );
-			$owner = sanitize_title_with_dashes( $owner->user_nicename );
-		} else {
-			$owner = 'unknown';
-		}
+
+		$owner = sanitize_title_with_dashes( $cuar_po_addon->get_post_owner_displayname( $post->ID, true ));
 		$permalink = str_replace( '%owner_name%', $owner, $permalink );
 	
 		$post_date = strtotime( $post->post_date );

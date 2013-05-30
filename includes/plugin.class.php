@@ -41,9 +41,12 @@ class CUAR_Plugin {
 		add_action( 'admin_init', array( &$this, 'check_versions' ) );
 		
 		if ( is_admin() ) {		
+			add_action( 'admin_notices', array( &$this, 'print_admin_notices' ));
 		} else {
 		}
 	}
+
+	/*------- MAIN HOOKS INTO WP ------------------------------------------------------------------------------------*/
 	
 	/**
 	 * Load the translation file for current language. Checks in wp-content/languages first
@@ -76,11 +79,6 @@ class CUAR_Plugin {
 	 */
 	public function load_scripts() {
 		if ( is_admin() ) return;
-		
-// 		wp_enqueue_script(
-// 			'jquery.bxslider',
-// 			CUAR_SCRIPTS_URL . '/jquery.bxslider.min.js', 
-// 			array( 'jquery' ) );
 	}
 	
 	/**
@@ -114,6 +112,16 @@ class CUAR_Plugin {
 	}
 	
 	/**
+	 * Initialise some defaults for the plugin (add basic capabilities, ...)
+	 */
+	public function load_defaults() {	
+		// Start a session when we save a post in order to store error logs
+		if (!session_id()) session_start();
+	}
+
+	/*------- TEMPLATING & THEMING ----------------------------------------------------------------------------------*/
+
+	/**
 	 * This function offers a way for addons to do their stuff after this plugin is loaded
 	 */
 	public function get_admin_theme_url() {
@@ -125,81 +133,6 @@ class CUAR_Plugin {
 	 */
 	public function get_frontend_theme_url() {
 		return apply_filters( 'cuar_frontend_theme_url', $this->get_option( CUAR_Settings::$OPTION_FRONTEND_THEME_URL ) );
-	}
-	
-	/**
-	 * This function offers a way for addons to do their stuff after this plugin is loaded
-	 */
-	public function load_addons() {
-		do_action( 'cuar_addons_init', $this );
-	}
-	
-	/**
-	 * Initialise some defaults for the plugin (add basic capabilities, ...)
-	 */
-	public function load_defaults() {	
-		// Start a session when we save a post in order to store error logs
-		if (!session_id()) session_start();
-	}
-	
-	/**
-	 * This is the base directory where we will store the user files
-	 * 
-	 * @return string
-	 */
-	public function get_base_upload_directory( $create_dirs = false ) {
-		$dir = WP_CONTENT_DIR . '/customer-area';
-		
-		if ( $create_dirs && !file_exists( $dir ) ) mkdir( $dir, 0775, true );
-
-		return $dir;
-	}
-	
-	/**
-	 * This is the base URL where we can access the user files directly (should be protected to forbid direct
-	 * downloads)
-	 * 
-	 * @return string
-	 */
-	public function get_base_upload_url() {
-		return WP_CONTENT_URL . '/customer-area';
-	}
-	
-	/**
-	 * Get the absolute path to a user file.
-	 * 
-	 * @param int $user_id
-	 * @param string $filename
-	 * @param boolean $create_dirs
-	 * @return boolean|string
-	 */
-	public function get_user_file_path( $user_id, $filename, $create_dirs = false ) {
-		if ( empty( $user_id ) || empty( $filename ) ) return false;
-		
-		$dir = $this->get_base_upload_directory() . '/' . $this->get_user_storage_directory( $user_id );		
-		if ( $create_dirs && !file_exists( $dir ) ) mkdir( $dir, 0775, true );
-		
-		return $dir . '/' . $filename;
-	}
-	
-	/**
-	 * Get a user's private storage directory. This directory is relative to the main upload directory
-	 * 
-	 * @param int $user_id The id of the user, or null to get the base directory
-	 */
-	public function get_user_storage_directory( $user_id, $absolute = false, $create_dirs = false ) {
-		if ( empty( $user_id ) ) return false;
-		
-		$dir = get_user_meta($user_id, 'cuar_directory', true);
-		if (empty($dir)) {
-			$dir = uniqid( $user_id . '_' );
-			add_user_meta( $user_id, 'cuar_directory', $dir );
-		}
-		
-		if ( $absolute ) $dir = $this->get_base_upload_directory() . "/" . $dir;
-		if ( $create_dirs && !file_exists( $dir ) ) mkdir( $dir, 0775, true );
-		
-		return $dir;
 	}
 	
 	/**
@@ -252,6 +185,8 @@ class CUAR_Plugin {
 		
 		return '';
 	}
+
+	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
 	
 	/**
 	 * Access to the settings (delegated to our settings class instance)
@@ -261,15 +196,88 @@ class CUAR_Plugin {
 		return $this->settings->get_option( $option_id );
 	}
 	
+	/** @var CUAR_Settings */
+	private $settings;
+
+	/*------- ADD-ONS -----------------------------------------------------------------------------------------------*/
+
+	/**
+	 * This function offers a way for addons to do their stuff after this plugin is loaded
+	 */
+	public function load_addons() {
+		do_action( 'cuar_before_addons_init', $this );
+		do_action( 'cuar_addons_init', $this );
+		do_action( 'cuar_after_addons_init', $this );
+	}
+	
+	/**
+	 * Register an add-on in the plugin
+	 * @param CUAR_AddOn $addon
+	 */
 	public function register_addon( $addon ) {
 		$this->registered_addons[] = $addon;
 	}
 	
-	/** @var CUAR_Settings */
-	private $settings;
-	
 	/** @var array */
 	private $registered_addons = array();
+
+	/*------- ADMIN NOTICES -----------------------------------------------------------------------------------------*/
+	
+	/**
+	 * Print the eventual errors that occured during a post save/update
+	 */
+	public function print_admin_notices() {
+		$notices = $this->get_admin_notices();
+		if ( $notices ) {
+			foreach ( $notices as $n ) {
+				echo sprintf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $n['type'] ), esc_html( $n['msg'] ) );
+			}
+		}
+		$this->clear_admin_notices();
+	}
+	
+	/**
+	 * Remove the notices stored in the session for save posts
+	 */
+	private function clear_admin_notices() {
+		if ( isset( $_SESSION['cuar_admin_notices'] ) ) {
+			unset( $_SESSION['cuar_admin_notices'] ); 
+		}
+	}
+
+	/**
+	 * Remove the stored notices
+	 */
+	private function get_admin_notices() {
+		return empty( $_SESSION[ 'cuar_admin_notices' ] ) ? false : $_SESSION['cuar_admin_notices'];
+	}
+	
+	/**
+	 * Add an admin notice (useful when in a save post function for example)
+	 * 
+	 * @param string $msg
+	 * @param string $type error or updated
+	 */
+	public function add_admin_notice( $msg, $type = 'error' ) {
+		if ( empty( $_SESSION[ 'cuar_admin_notices' ] ) ) {
+			$_SESSION[ 'cuar_admin_notices' ] = array();
+	 	}
+	 	$_SESSION[ 'cuar_admin_notices' ][] = array(
+				'type' 	=> $type,
+				'msg' 	=> $msg 
+	 		);
+	}
+	
+	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
+	
+	/**
+	 * Tells which post types are private (shown on the customer area page)
+	 * @return array
+	 */
+	public function get_private_post_types() {
+		return apply_filters('cuar_private_post_types', array());
+	}	
+	
 }
 
 endif; // if (!class_exists('CUAR_Plugin')) :

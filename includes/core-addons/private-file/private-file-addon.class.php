@@ -32,7 +32,7 @@ if (!class_exists('CUAR_PrivateFileAddOn')) :
 class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( __( 'Private Files', 'cuar' ), '1.0.0' );
+		parent::__construct( __( 'Private Files', 'cuar' ), '2.0.0' );
 	}
 
 	public function run_addon( $plugin ) {
@@ -40,12 +40,13 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 
 		if ( $plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_ENABLE_ADDON ) ) {
 			add_action( 'init', array( &$this, 'register_custom_types' ) );
+			add_filter( 'cuar_private_post_types', array( &$this, 'register_private_post_types' ) );
+			
 			add_filter( 'query_vars', array( &$this, 'add_query_vars' ) );
 			add_action( 'init', array( &$this, 'add_post_type_rewrites' ) );
 			add_filter( 'post_type_link', array( &$this, 'built_post_type_permalink' ), 1, 3);
 			
 			add_action( 'template_redirect', array( &$this, 'handle_file_actions' ) );
-			add_action( 'template_redirect', array( &$this, 'protect_access' ) );
 			
 			add_action( 'before_delete_post', array( &$this, 'before_post_deleted' ) );
 			
@@ -67,21 +68,14 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @param int $post_id
 	 */
 	public function before_post_deleted( $post_id ) {
-		cuar_log_debug( "before_post_deleted " . $post_id );
+		global $cuar_po_addon;
 			
 		if ( get_post_type( $post_id )!='cuar_private_file' ) return;
 
-		cuar_log_debug( "before_post_deleted " . get_post_type( $post_id ) );
-		
-		$owner_id = $this->get_file_owner_id( $post_id );
 		$filename = $this->get_file_name( $post_id );
-		if ( empty( $filename ) || !$owner_id ) return;
-
-		cuar_log_debug( "before_post_deleted " . $filename );
+		if ( empty( $filename ) ) return;
 		
-		$filepath = $this->plugin->get_user_file_path( $owner_id, $filename );		
-
-		cuar_log_debug( "before_post_deleted " . $filepath );
+		$filepath = $cuar_po_addon->get_private_file_path( $filename, $post_id );		
 		
 		if ( file_exists( $filepath ) ) {
 			unlink( $filepath );
@@ -90,18 +84,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	}
 	
 	/*------- FUNCTIONS TO ACCESS THE POST META ----------------------------------------------------------------------*/
-
-	/**
-	 * Get the name of the file associated to the given post
-	 *
-	 * @param int $post_id
-	 * @return boolean|int
-	 */
-	public function get_file_owner_id( $post_id ) {
-		$owner_id = get_post_meta( $post_id, 'cuar_owner', true );
-		if ( !$owner_id || empty( $owner_id ) ) return false;
-		return apply_filters( 'cuar_get_file_owner_id', $owner_id );
-	}
 
 	/**
 	 * Get the name of the file associated to the given post
@@ -161,9 +143,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		$url = get_permalink( $post_id );
 		
-		cuar_log_debug( $post_id );
-		cuar_log_debug( $url );
-		
 		if ( $wp_rewrite->using_permalinks() ) {
 			$url = trailingslashit( $url );
 	
@@ -193,6 +172,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * Protect access to single pages for private files: only for author and owner.
 	 */
 	public function protect_access() {		
+		global $cuar_po_addon;
+		
 		// If not on a matching post type, we do nothing
 		if ( !is_singular('cuar_private_file') ) return;
 		
@@ -207,9 +188,9 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$author_id = $post->post_author;
 
 		$current_user_id = get_current_user_id();
-		$owner_id = $this->get_file_owner_id( $post->ID );
-		
-		if ( $owner_id!=$current_user_id && $author_id!=$current_user_id ) {
+
+		$is_current_user_owner = $cuar_po_addon->is_user_owner_of_post( $post->ID, $current_user_id );
+		if ( !( $is_current_user_owner || $author_id==$current_user_id )) {
 			wp_die( __( "You are not authorized to view this file", "cuar" ) );
 			exit();
 		}
@@ -218,7 +199,9 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	/**
 	 * Handle the actions on a private file
 	 */
-	public function handle_file_actions() {					
+	public function handle_file_actions() {			
+		global $cuar_po_addon;		
+		
 		// If not on a matching post type, we do nothing
 		if ( !is_singular('cuar_private_file') ) return;
 		
@@ -236,17 +219,11 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 
 		// If not authorized to download the file, we bail	
 		$post = get_queried_object();
-
-		$current_user_id = get_current_user_id();
-		$owner_id = $this->get_file_owner_id( $post->ID );
-		$author_id = $post->post_author;
+		$current_user_id = get_current_user_id();		
+		$author_id = $post->post_author;		
+		$is_current_user_owner = $cuar_po_addon->is_user_owner_of_post( $post->ID, $current_user_id );
 		
-		if ( $owner_id!=$current_user_id && $author_id!=$current_user_id ) {
-			wp_die( __( "You are not authorized to access this file", "cuar" ) );
-			exit();
-		}
-
-		if ( !apply_filters( 'cuar_private_file_authorize_user', true ) ) {
+		if ( !( $is_current_user_owner || $author_id==$current_user_id )) {
 			wp_die( __( "You are not authorized to access this file", "cuar" ) );
 			exit();
 		}
@@ -254,10 +231,10 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		// Seems we are all good, checkout the requested action and do something
 		$file_type = $this->get_file_type( $post->ID );
 		$file_name = $this->get_file_name( $post->ID );
-		$file_path = $this->plugin->get_user_file_path( $owner_id, $file_name );
-
+		$file_path = $cuar_po_addon->get_private_file_path( $file_name, $post->ID );
+		
 		if ( $action=='download-file' ) {			
-			if ( $owner_id==$current_user_id ) {
+			if ( $author_id!=$current_user_id ) {
 				$this->increment_file_download_count( $post->ID );
 			}
 			
@@ -265,7 +242,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 					
 			$this->output_file( $file_path, $file_name, $file_type, 'download' );
 		} else if ( $action=='view-file' ) {			
-			if ( $owner_id==$current_user_id ) {
+			if ( $author_id!=$current_user_id ) {
 				$this->increment_file_download_count( $post->ID );
 			}
 			
@@ -394,6 +371,16 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	}
 	
 	/**
+	 * Declare that our post type is owned by someone
+	 * @param unknown $types
+	 * @return string
+	 */
+	public function register_private_post_types($types) {
+		$types[] = "cuar_private_file";
+		return $types;
+	}
+	
+	/**
 	 * Register the custom post type for files and the associated taxonomies
 	 */
 	public function register_custom_types() {
@@ -513,6 +500,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @return unknown|mixed
 	 */
 	function built_post_type_permalink( $post_link, $post, $leavename ) {
+		global $cuar_po_addon;
+		
 		// Only change permalinks for private files
 		if ( $post->post_type!='cuar_private_file') return $post_link;
 	
@@ -526,14 +515,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	
 		$permalink = $wp_rewrite->get_extra_permastruct( 'cuar_private_file' );
 		$permalink = str_replace( "%cuar_private_file%", $post->post_name, $permalink );
-	
-		$owner_id = $cuar_pf_addon->get_file_owner_id( $post->ID );
-		if ( $owner_id ) {
-			$owner = get_userdata( $owner_id );
-			$owner = sanitize_title_with_dashes( $owner->user_nicename );
-		} else {
-			$owner = 'unknown';
-		}
+
+		$owner = sanitize_title_with_dashes( $cuar_po_addon->get_post_owner_displayname( $post->ID, true ));
 		$permalink = str_replace( '%owner_name%', $owner, $permalink );
 	
 		$post_date = strtotime( $post->post_date );

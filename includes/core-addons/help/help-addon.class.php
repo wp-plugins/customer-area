@@ -28,7 +28,7 @@ if (!class_exists('CUAR_HelpAddOn')) :
 class CUAR_HelpAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( __( 'Help', 'cuar' ), '1.0.0' );
+		parent::__construct( 'help', __( 'Help', 'cuar' ), '2.0.0' );
 	}
 
 	public function run_addon( $plugin ) {
@@ -40,6 +40,7 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 			add_filter( 'cuar_after_settings_side', array( &$this, 'print_addons_sidebox' ), 800 );
 			add_filter( 'cuar_after_settings_side', array( &$this, 'print_marvinlabs_sidebox' ), 1000 );
 			add_filter( 'cuar_before_settings_cuar_addons', array( &$this, 'print_addons' ) );
+			add_filter( 'cuar_before_settings_cuar_troubleshooting', array( &$this, 'print_troubleshooting' ) );
 			add_filter( 'admin_init', array( &$this, 'add_dashboard_metaboxes' ) );
 			
 			$plugin_file = 'customer-area/customer-area.php';
@@ -58,8 +59,8 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 	/*------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE --------------------------------------------------------------*/
 	
 	public function add_settings_tab( $tabs ) {
-		// $tabs[ 'cuar_help' ] = __( 'Help', 'cuar' );
 		$tabs[ 'cuar_addons' ] = __( 'Add-ons', 'cuar' );
+		$tabs[ 'cuar_troubleshooting' ] = __( 'Troubleshooting', 'cuar' );
 		return $tabs;
 	}
 	
@@ -70,6 +71,12 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 		include( dirname( __FILE__ ) . '/templates/list-addons.template.php' );
 	}
 	
+	/**
+	 * @param CUAR_Settings $cuar_settings
+	 */
+	public function print_troubleshooting( $cuar_settings ) {
+		include( dirname( __FILE__ ) . '/templates/troubleshooting.template.php' );
+	}	
 	
 	public function add_dashboard_metaboxes() {	
 		add_meta_box('cuar_dashboard_addons', __( 'Enhance your customer area', 'cuar' ), 

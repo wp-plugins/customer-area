@@ -29,7 +29,7 @@ if (!class_exists('CUAR_PostOwnerAddOn')) :
 class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( __( 'Post Owner', 'cuar' ), '2.0.0' );
+		parent::__construct( 'post-owner', __( 'Post Owner', 'cuar' ), '2.0.0' );
 	}
 
 	public function run_addon( $plugin ) {
@@ -42,7 +42,8 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			add_action('cuar_after_addons_init', array( &$this, 'customize_post_edit_pages'));
 			add_action('cuar_after_addons_init', array( &$this, 'customize_post_list_pages'));
 			
-			add_action('cuar_print_select_user_owner_id_field', array( &$this, 'print_select_user_owner_id_field'), 10, 3);
+			add_action('cuar_print_select_options_for_type_user', 
+					array( &$this, 'print_select_options_for_type_user'), 10, 3);
 		} else {
 			add_action( 'template_redirect', array( &$this, 'protect_single_post_access' ) );
 		}
@@ -57,6 +58,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 */
 	public function get_meta_query_post_owned_by( $user_id ) {
 		$base_meta_query = array(
+				'relation' => 'OR',
 				array(
 						'key' 		=> self::$META_OWNER_QUERYABLE,
 						'value' 	=> 'user_' . $user_id,
@@ -244,6 +246,24 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 				'type'	=> $this->get_post_owner_type( $post_id )
 			);
 	}
+
+	/**
+	 * Get the real user ids behind the logical owner of the post
+	 *
+	 * @return array User ids 
+	 */
+	public function get_post_owner_user_ids( $post_id ) {
+		$owner_id = $this->get_post_owner_id( $post_id );
+		$owner_type = $this->get_post_owner_type( $post_id );
+		
+		// If the owner is already a user, no worries
+		if ($owner_type=='user') {
+			return array( $owner_id );
+		}
+		
+		// Let other add-ons return what they want
+		return apply_filters('cuar_get_post_owner_user_ids_from_' . $owner_type, array(), $owner_id);
+	}
 	
 	/**
 	 * Save the owner details for the given post
@@ -397,19 +417,41 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		foreach ( $owner_types as $type_id => $type_label ) { 
 			$hidden = ( $current_owner_type==$type_id ? '' : ' style="display: none;"' );  
 ?>
-		<div id="cuar_owner_id_row_<?php echo $type_id; ?>" class="metabox-row" <?php echo $hidden; ?>>
+		<div id="cuar_owner_id_row_<?php echo $type_id; ?>" class="metabox-row owner-id-select-row" <?php echo $hidden; ?>>
 			<span class="label"><label for="cuar_owner">
 				<?php printf( __('%s owning this content', 'cuar'), $type_label ); ?></label></span> 	
 			<span class="field">
-				<?php do_action( 'cuar_print_select_' . $type_id . '_owner_id_field', 
-						'cuar_owner_' . $type_id . '_id', 
+				<?php $field_id = 'cuar_owner_' . $type_id . '_id'; ?>
+				<select id="<?php echo $field_id; ?>" name="<?php echo $field_id; ?>">
+				<?php do_action( 'cuar_print_select_options_for_type_' . $type_id, 
 						$current_owner_type, 
 						$current_owner_id ); ?>
+				</select>
 			</span>
 		</div>
 <?php
 		}
+?>
+		<script type="text/javascript">
+		<!--
+			jQuery( document ).ready( function($) {
+				$( '#cuar_owner_type' ).change(function() {
+					var type = $(this).val();
+					var newVisibleId = '#cuar_owner_' + type + '_id';
+
+					// Do nothing if already visible
+					if ( $(newVisibleId).is(":visible") ) return
+
+					// Hide previous and then show new
+					$('.owner-id-select-row:visible').fadeToggle("fast", function () {
+						$(newVisibleId).fadeToggle();
+					});
+				});
+			});
+		//-->
+		</script>
 		
+<?php 			
 		do_action( "cuar_owner_meta_box_footer" );
 	}
 	
@@ -419,7 +461,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * @param unknown $current_owner_type
 	 * @param unknown $current_owner_id
 	 */
-	public function print_select_user_owner_id_field( $field_id, $current_owner_type, $current_owner_id ) {
+	public function print_select_options_for_type_user( $current_owner_type, $current_owner_id ) {
 		echo sprintf( '<select id="%1$s" name="%1$s">', $field_id );
 		
 		$all_users = get_users();
@@ -466,6 +508,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		
 		// Other addons can do something after we save
 		do_action( "cuar_after_save_post_owner", $post_id, $post, $previous_owner, $new_owner );
+		do_action( "cuar_after_save_private_post", $post_id, $post, $previous_owner, $new_owner );
 
 		return $post_id;
 	}

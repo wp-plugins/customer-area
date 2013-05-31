@@ -215,7 +215,21 @@ class CUAR_Plugin {
 	 * @param CUAR_AddOn $addon
 	 */
 	public function register_addon( $addon ) {
-		$this->registered_addons[] = $addon;
+		$this->registered_addons[$addon->addon_id] = $addon;
+	}
+	
+	/**
+	 * Get registered add-ons
+	 */
+	public function get_registered_addons() {
+		return $this->registered_addons;
+	}
+	
+	/**
+	 * Get add-on
+	 */
+	public function get_addon($id) {
+		return $this->registered_addons[$id];
 	}
 	
 	/** @var array */

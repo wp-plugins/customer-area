@@ -27,7 +27,8 @@ if (!class_exists('CUAR_AddOn')) :
 */
 abstract class CUAR_AddOn {
 
-	public function __construct( $addon_name = null, $min_cuar_version = null ) {
+	public function __construct( $addon_id = null, $addon_name = null, $min_cuar_version = null ) {
+		$this->addon_id = $addon_id;
 		$this->addon_name = $addon_name;
 		$this->min_cuar_version = $min_cuar_version;
 
@@ -78,6 +79,9 @@ abstract class CUAR_AddOn {
 					$this->addon_name, $current_version, $this->min_cuar_version ) );
 		}
 	}
+	
+	/** @var string Id of the add-on */
+	public $addon_id;
 	
 	/** @var string Name of the add-on */
 	public $addon_name;

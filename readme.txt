@@ -53,7 +53,9 @@ customisation has been done to the plugin or to the add-ons.
 	
 == Upgrade Notice ==
 
-Nothing worth mentionning yet. 
+= Upgrading from 1.x to 2.x =
+
+You must also upgrade all the add-ons you are using.
 
 == Installation ==
 
@@ -151,11 +153,12 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 2.0.0 (2013/05/30) =
+= 2.0.0 (2013/05/31) =
 
+* Added troubleshooting information to the settings page to help support
 * Refactored all the code controlling the ownership of a post to have less crashes and more possibilities for
 extensions.
-* This update will require you to also update the Notifications Add-on if you bought it.
+* This update will require you to also update all the add-ons if you bought any.
 
 = 1.6.4 (2013/05/27) =
 

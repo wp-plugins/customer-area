@@ -30,7 +30,7 @@ if (!class_exists('CUAR_CapabilitiesAddOn')) :
 class CUAR_CapabilitiesAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( __( 'Capabilities Manager', 'cuar' ), '1.0.0' );
+		parent::__construct( 'capabilities-manager', __( 'Capabilities Manager', 'cuar' ), '2.0.0' );
 	}
 
 	public function run_addon( $plugin ) {

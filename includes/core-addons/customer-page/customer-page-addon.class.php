@@ -32,7 +32,7 @@ if (!class_exists('CUAR_CustomerPageAddOn')) :
 class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( __( 'Customer Page', 'cuar' ), '1.0.0' );
+		parent::__construct( 'customer-page', __( 'Customer Page', 'cuar' ), '2.0.0' );
 	}
 
 	public function run_addon( $cuar_plugin ) {

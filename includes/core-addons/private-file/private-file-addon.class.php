@@ -32,7 +32,7 @@ if (!class_exists('CUAR_PrivateFileAddOn')) :
 class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	
 	public function __construct() {
-		parent::__construct( __( 'Private Files', 'cuar' ), '2.0.0' );
+		parent::__construct( 'private-files', __( 'Private Files', 'cuar' ), '2.0.0' );
 	}
 
 	public function run_addon( $plugin ) {
@@ -67,15 +67,14 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * Delete the files when a post is deleted
 	 * @param int $post_id
 	 */
-	public function before_post_deleted( $post_id ) {
-		global $cuar_po_addon;
-			
+	public function before_post_deleted( $post_id ) {			
 		if ( get_post_type( $post_id )!='cuar_private_file' ) return;
 
 		$filename = $this->get_file_name( $post_id );
 		if ( empty( $filename ) ) return;
 		
-		$filepath = $cuar_po_addon->get_private_file_path( $filename, $post_id );		
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$filepath = $po_addon->get_private_file_path( $filename, $post_id );		
 		
 		if ( file_exists( $filepath ) ) {
 			unlink( $filepath );
@@ -171,9 +170,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	/**
 	 * Protect access to single pages for private files: only for author and owner.
 	 */
-	public function protect_access() {		
-		global $cuar_po_addon;
-		
+	public function protect_access() {				
 		// If not on a matching post type, we do nothing
 		if ( !is_singular('cuar_private_file') ) return;
 		
@@ -189,7 +186,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 
 		$current_user_id = get_current_user_id();
 
-		$is_current_user_owner = $cuar_po_addon->is_user_owner_of_post( $post->ID, $current_user_id );
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$is_current_user_owner = $po_addon->is_user_owner_of_post( $post->ID, $current_user_id );
 		if ( !( $is_current_user_owner || $author_id==$current_user_id )) {
 			wp_die( __( "You are not authorized to view this file", "cuar" ) );
 			exit();
@@ -200,8 +198,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * Handle the actions on a private file
 	 */
 	public function handle_file_actions() {			
-		global $cuar_po_addon;		
-		
 		// If not on a matching post type, we do nothing
 		if ( !is_singular('cuar_private_file') ) return;
 		
@@ -217,11 +213,13 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			exit;
 		}
 
+		$po_addon = $this->plugin->get_addon('post-owner');
+		
 		// If not authorized to download the file, we bail	
 		$post = get_queried_object();
 		$current_user_id = get_current_user_id();		
 		$author_id = $post->post_author;		
-		$is_current_user_owner = $cuar_po_addon->is_user_owner_of_post( $post->ID, $current_user_id );
+		$is_current_user_owner = $po_addon->is_user_owner_of_post( $post->ID, $current_user_id );
 		
 		if ( !( $is_current_user_owner || $author_id==$current_user_id )) {
 			wp_die( __( "You are not authorized to access this file", "cuar" ) );
@@ -231,7 +229,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		// Seems we are all good, checkout the requested action and do something
 		$file_type = $this->get_file_type( $post->ID );
 		$file_name = $this->get_file_name( $post->ID );
-		$file_path = $cuar_po_addon->get_private_file_path( $file_name, $post->ID );
+		$file_path = $po_addon->get_private_file_path( $file_name, $post->ID );
 		
 		if ( $action=='download-file' ) {			
 			if ( $author_id!=$current_user_id ) {
@@ -499,9 +497,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @param unknown $leavename
 	 * @return unknown|mixed
 	 */
-	function built_post_type_permalink( $post_link, $post, $leavename ) {
-		global $cuar_po_addon;
-		
+	function built_post_type_permalink( $post_link, $post, $leavename ) {		
 		// Only change permalinks for private files
 		if ( $post->post_type!='cuar_private_file') return $post_link;
 	
@@ -516,7 +512,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$permalink = $wp_rewrite->get_extra_permastruct( 'cuar_private_file' );
 		$permalink = str_replace( "%cuar_private_file%", $post->post_name, $permalink );
 
-		$owner = sanitize_title_with_dashes( $cuar_po_addon->get_post_owner_displayname( $post->ID, true ));
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$owner = sanitize_title_with_dashes( $po_addon->get_post_owner_displayname( $post->ID, true ));
 		$permalink = str_replace( '%owner_name%', $owner, $permalink );
 	
 		$post_date = strtotime( $post->post_date );

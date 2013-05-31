@@ -37,6 +37,7 @@ from [our online shop](http://www.marvinlabs.com/shop):
 
 * [Login and registration forms integration](http://www.marvinlabs.com/downloads/customer-area-login-register-forms/)
 * [Email notifications](http://www.marvinlabs.com/downloads/customer-area-notifications/)
+* [Extended Permissions](http://www.marvinlabs.com/downloads/customer-area-extended-permissions/)
 
 If you like our plugins, you might want to [check our website](http://www.marvinlabs.com) for more.
 

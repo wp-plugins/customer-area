@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 1.6.4
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,11 +153,11 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 2.0.0 (2013/05/31) =
+= 2.0.1 (2013/05/31) =
 
 * Added troubleshooting information to the settings page to help support
 * Refactored all the code controlling the ownership of a post to have less crashes and more possibilities for
-extensions.
+  extensions.
 * This update will require you to also update all the add-ons if you bought any.
 
 = 1.6.4 (2013/05/27) =

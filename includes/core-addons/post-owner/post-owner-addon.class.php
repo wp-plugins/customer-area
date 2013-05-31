@@ -43,7 +43,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			add_action('cuar_after_addons_init', array( &$this, 'customize_post_list_pages'));
 			
 			add_action('cuar_print_select_options_for_type_user', 
-					array( &$this, 'print_select_options_for_type_user'), 10, 3);
+					array( &$this, 'print_select_options_for_type_user'), 10, 2);
 		} else {
 			add_action( 'template_redirect', array( &$this, 'protect_single_post_access' ) );
 		}
@@ -183,8 +183,9 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		
 		// We take care of the single user ownership
 		$owner_type = $this->get_post_owner_type( $post_id );
+		$owner_id = $this->get_post_owner_id( $post_id );
+		
 		if ( $owner_type=='user' ) {
-			$owner_id = $this->get_post_owner_id( $post_id );
 			$result = ($owner_id==$user_id);
 		} else {
 			$result = false;
@@ -285,11 +286,11 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			$u = new WP_User($owner_id);
 			$displayname = $u->display_name;
 		} 
-		$displayname = apply_filters('save_post_owner_displayname', $displayname,
+		$displayname = apply_filters('cuar_saved_post_owner_displayname', $displayname,
 				$post_id, $owner_id, $owner_type);
 		
 		$sortable_displayname = $owner_types[$owner_type] . ' - ' . $displayname;
-		$sortable_displayname = apply_filters('save_post_owner_sortable_displayname', $sortable_displayname,
+		$sortable_displayname = apply_filters('cuar_saved_post_owner_sortable_displayname', $sortable_displayname,
 				$post_id, $owner_id, $owner_type, $displayname);
 
 		// Persist data
@@ -359,7 +360,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 
 	public function customize_post_edit_pages() {
 		add_action( 'admin_menu', array( &$this, 'register_post_edit_meta_boxes' ));
-		add_action( 'save_post', array( &$this, 'do_save_post' ));
+		add_action( 'save_post', array( &$this, 'do_save_post' ), 10, 2 );
 	}
 	
 	/**
@@ -437,7 +438,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			jQuery( document ).ready( function($) {
 				$( '#cuar_owner_type' ).change(function() {
 					var type = $(this).val();
-					var newVisibleId = '#cuar_owner_' + type + '_id';
+					var newVisibleId = '#cuar_owner_id_row_' + type;
 
 					// Do nothing if already visible
 					if ( $(newVisibleId).is(":visible") ) return
@@ -462,9 +463,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * @param unknown $current_owner_id
 	 */
 	public function print_select_options_for_type_user( $current_owner_type, $current_owner_id ) {
-		echo sprintf( '<select id="%1$s" name="%1$s">', $field_id );
-		
-		$all_users = get_users();
+		$all_users = get_users( array( 'orderby' => 'display_name' ) );
 		foreach ( $all_users as $u ) {
 			$selected =  ( $current_owner_type=='user' && $current_owner_id==$u->ID ) ? ' selected="selected"' : '';
 			echo sprintf('<option value="%1$s" %2$s>%3$s</option>',
@@ -473,8 +472,6 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 					$u->display_name
 				);
 		}
-		
-		echo '</select>';
 	}
 	
 	/**
@@ -589,7 +586,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 				// Add post meta (owner type, display names)
 				$u = new WP_User($owner_id);
 				$display_name = $u->display_name;
-				$sortable_display_name = sprintf( __('User: %s', 'cuar'), $u->display_name);
+				$sortable_display_name = sprintf( __('User - %s', 'cuar'), $u->display_name);
 
 				update_post_meta($m->post_id, self::$META_OWNER_TYPE, $owner_type );
 				update_post_meta($m->post_id, self::$META_OWNER_DISPLAYNAME, $display_name);	

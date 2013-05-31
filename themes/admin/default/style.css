@@ -7,6 +7,10 @@ span.label {
 	min-width: 33%;
 }
 
+.metabox-row input[type=text], .metabox-row select, .metabox-row text-area {
+	min-width: 200px;
+}
+
 /* -= SETTINGS PAGE */
 
 .cuar-main {

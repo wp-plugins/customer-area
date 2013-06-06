@@ -446,8 +446,9 @@ jQuery(document).ready( function($) {
 	 * Print some info about the section
 	 */
 	public function print_storage_section_info() {
-		$storage_dir = $this->plugin->get_base_upload_directory( true );
-		$sample_storage_dir = $this->plugin->get_user_storage_directory( get_current_user_id(), true, true );
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$storage_dir = $po_addon->get_base_private_storage_directory( true );
+		$sample_storage_dir = $po_addon->get_owner_storage_directory( get_current_user_id(), 'user', true, true );
 		
 		$required_perms = '705';
 		$current_perms = substr( sprintf('%o', fileperms( $storage_dir ) ), -3);

@@ -229,7 +229,7 @@ class CUAR_Plugin {
 	 * Get add-on
 	 */
 	public function get_addon($id) {
-		return $this->registered_addons[$id];
+		return isset( $this->registered_addons[$id] ) ? $this->registered_addons[$id] : null;
 	}
 	
 	/** @var array */
@@ -253,7 +253,7 @@ class CUAR_Plugin {
 	/**
 	 * Remove the notices stored in the session for save posts
 	 */
-	private function clear_admin_notices() {
+	public function clear_admin_notices() {
 		if ( isset( $_SESSION['cuar_admin_notices'] ) ) {
 			unset( $_SESSION['cuar_admin_notices'] ); 
 		}

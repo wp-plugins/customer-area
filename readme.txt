@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.0.2
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,7 @@ from [our online shop](http://www.marvinlabs.com/shop):
 * [Login and registration forms integration](http://www.marvinlabs.com/downloads/customer-area-login-register-forms/)
 * [Email notifications](http://www.marvinlabs.com/downloads/customer-area-notifications/)
 * [Extended Permissions](http://www.marvinlabs.com/downloads/customer-area-extended-permissions/)
+* [Collaboration](http://www.marvinlabs.com/downloads/customer-area-collaboration/)
 
 If you like our plugins, you might want to [check our website](http://www.marvinlabs.com) for more.
 
@@ -153,6 +154,14 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 2.1.0 (2013/06/26) =
+
+* New functions for the collaboration addon
+* Refactored a few functions from "Post Owner" and "Private Files" core add-ons to allow re-use of code
+* Added an optional action bar on top of the customer area (if any add-on wants to show actions there)
+* Refined capabilities for private files and private pages (separated "delete" and "edit" capabilities)
+* Fixed a few other minor bugs
 
 = 2.0.2 (2013/06/06) =
 

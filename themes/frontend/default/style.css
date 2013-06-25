@@ -7,6 +7,68 @@
 	line-height: 4em;
 }
 
+.cuar_content {
+	margin: 1em 0;
+}
+
+/* -= Customer Area actions */
+
+.cuar-header {
+	position: relative;
+}
+
+.cuar-menu {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.cuar-menu-button {
+	display: block;
+	float: right;
+	background: #E6402A;
+	font-weight: bold;
+	color: white;
+	width: 36px;
+	height: 36px;
+	line-height: 36px;
+	-webkit-border-radius: 18px;
+       -moz-border-radius: 18px;
+            border-radius: 18px;
+	text-align: center;
+}
+
+.cuar-actions-container {
+	position: absolute;
+	top: 36px;
+	right: 0;
+	list-style-type: none;
+	margin: 0 0 0 0;
+	padding: 0;
+	background: #fafafa;
+	min-width: 200px;
+}
+
+.cuar-actions-container li {
+	display: block;
+}
+
+.cuar-actions-container li a {
+	display: block;
+	margin: 0;
+	padding: 0.8em 1em;
+	width: 100%;
+	height: 100%;
+	text-transform: uppercase;
+	font-size: 0.9em;
+}
+
+.cuar-actions-container li a:hover {
+	color: white;
+	text-decoration: none;
+	background: #E6402A;
+}
+
 /* -= File links */
 .cuar-private-file .view-link a, .cuar-private-file .download-link a {
 	background: url('images/icons.png') top left no-repeat;
@@ -158,4 +220,12 @@
 .cuar_form_row span.hint {
 	font-size: 0.9em;
 	opacity: 0.6;
+}
+
+.cuar_form_create_content .cuar_form_row>span input,
+.cuar_form_create_content .cuar_form_row>span textarea {
+	width: 100%;
+}
+.cuar_form_create_content .cuar_form_row>span select {
+	min-width: 50%;	
 }

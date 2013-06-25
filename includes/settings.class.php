@@ -406,6 +406,48 @@ class CUAR_Settings {
 		// All good
 		$validated[ $option_id ] = intval( $input[ $option_id ] );
 	}
+	
+	/**
+	 * Validate a value which should be an owner type
+	 *
+	 * @param array $input Input array
+	 * @param array $validated Output array
+	 * @param string $option_id Key of the value to check in the input array
+	 */
+	public function validate_owner_type( $input, &$validated, $option_id ) {
+		$po_addon = $this->plugin->get_addon("post-owner");
+		
+		if ( isset( $input[ $option_id ] ) && $po_addon->is_valid_owner_type( $input[ $option_id ] ) ) {
+			$validated[ $option_id ] = $input[ $option_id ];
+		} else {
+			add_settings_error( $option_id, 'settings-errors',
+				$option_id . ': ' . $input[ $option_id ] . __( ' is not a valid owner type', 'cuar' ), 'error' );
+			
+			$validated[ $option_id ] = $this->default_options[ $option_id ];
+		}
+	}
+	
+	/**
+	 * Validate a value which should be an owner
+	 *
+	 * @param array $input Input array
+	 * @param array $validated Output array
+	 * @param string $option_id Key of the value to check in the input array
+	 */
+	public function validate_owner( $input, &$validated, $option_id, $owner_type_option_id ) {
+		$field_id = $option_id . '_' . $input[$owner_type_option_id] . '_id';
+		
+		// TODO better checks, for now, just check it is not empty
+		// $po_addon = $this->plugin->get_addon("post-owner");
+		if ( isset( $input[ $field_id ] ) ) {
+			$validated[ $option_id ] = $input[ $field_id ];
+		} else {
+			add_settings_error( $option_id, 'settings-errors',
+				$option_id . ': ' . $input[ $field_id ] . __( ' is not a valid owner', 'cuar' ), 'error' );
+			
+			$validated[ $option_id ] = $this->default_options[ $option_id ];
+		}
+	}
 
 	/* ------------ FIELDS OUTPUT ----------------------------------------------------------------------------------- */
 
@@ -533,6 +575,44 @@ class CUAR_Settings {
 		}
 		 
 		echo '</select>';
+			
+		if ( isset( $after ) ) echo $after;
+	}
+
+	/**
+	 * Output a select field for a setting
+	 *
+	 * @param string $option_id
+	 * @param array  $options
+	 * @param string $caption
+	 */
+	public function print_owner_type_select_field( $args ) {
+		extract( $args );
+		
+		if ( isset( $before ) ) echo $before;
+		 
+		$po_addon = $this->plugin->get_addon("post-owner");
+		$po_addon->print_owner_type_select_field( $option_id, self::$OPTIONS_GROUP, $this->options[ $option_id ]);
+			
+		if ( isset( $after ) ) echo $after;
+	}
+
+	/**
+	 * Output a select field for a setting
+	 *
+	 * @param string $option_id
+	 * @param array  $options
+	 * @param string $caption
+	 */
+	public function print_owner_select_field( $args ) {
+		extract( $args );
+		
+		if ( isset( $before ) ) echo $before;
+		 
+		$po_addon = $this->plugin->get_addon("post-owner");
+		$po_addon->print_owner_select_field( $owner_type_option_id, $option_id, self::$OPTIONS_GROUP,
+				$this->options[ $owner_type_option_id ], $this->options[ $option_id ]);
+		$po_addon->print_owner_select_javascript( $owner_type_option_id, $option_id);
 			
 		if ( isset( $after ) ) echo $after;
 	}

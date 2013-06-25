@@ -164,6 +164,97 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		return $url;
 	}
+	
+	/**
+	 * Handles the case when we need to change the owner of the file of an existing post
+	 * @param int $post_id
+	 * @param array $previous_owner
+	 * @param array $new_owner
+	 */
+	public function handle_private_file_owner_changed( $post_id, $previous_owner, $new_owner ) {
+		$po_addon = $this->plugin->get_addon('post-owner');
+		
+		$previous_file = get_post_meta( $post_id, 'cuar_private_file_file', true );
+		
+		if ( $previous_file ) {
+			$previous_file['path'] = $po_addon->get_owner_file_path(
+					$previous_file['file'], $previous_owner['id'], $previous_owner['type'], true );
+		
+			if ( file_exists( $previous_file['path'] ) ) {
+				$new_file_path = $po_addon->get_owner_file_path(
+						$previous_file['file'], $new_owner['id'], $new_owner['type'], true );
+				if ( copy( $previous_file['path'], $new_file_path ) ) unlink( $previous_file['path'] );
+		
+				$new_file = $previous_file;
+				$new_file['path'] = $new_file_path;
+				
+				update_post_meta( $post_id, 'cuar_private_file_file', $previous_file );
+					
+				cuar_log_debug( 'moved private file from ' . $previous_file['path'] . ' to ' . $new_file_path);
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 * @param int $post_id
+	 * @param array $previous_owner
+	 * @param array $new_owner
+	 */
+	public function handle_new_private_file_upload( $post_id, $previous_owner, $new_owner, $file ) {
+		$po_addon = $this->plugin->get_addon('post-owner');
+		
+		$previous_file = get_post_meta( $post_id, 'cuar_private_file_file', true );
+		
+		// Do some file type checking on the uploaded file if needed
+		$new_file_name = $file['name'];
+		$supported_types = apply_filters( 'cuar_private_file_supported_types', null );
+		if ( $supported_types!=null ) {
+			$arr_file_type = wp_check_filetype( basename( $file['name'] ) );
+			$uploaded_type = $arr_file_type['type'];
+				
+			if ( !in_array( $uploaded_type, $supported_types ) ) {
+				$msg =  sprintf( __("This file type is not allowed. You can only upload: %s", 'cuar',
+						implode( ', ', $supported_types ) ) );
+				cuar_log_debug( $msg );
+		
+				$this->plugin->add_admin_notice( $msg );
+				return;
+			}
+		}
+		
+		// Delete the existing file if any
+		if ( $previous_file ) {
+			$previous_file['path'] = $po_addon->get_owner_file_path(
+					$previous_file['file'], $previous_owner['id'], $previous_owner['type'], true );
+		
+			if ( $previous_file['path'] && file_exists( $previous_file['path'] ) ) {
+				unlink( $previous_file['path'] );
+				cuar_log_debug( 'deleted old private file from ' . $previous_file['path'] );
+			}
+		}
+		
+		// Use the WordPress API to upload the file
+		require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+		require_once(ABSPATH . "wp-admin" . '/includes/file.php');
+		require_once(ABSPATH . "wp-admin" . '/includes/media.php');
+		
+		$upload = wp_handle_upload( $file, array( 'test_form' => false ) );
+		
+		if ( empty( $upload ) ) {
+			$msg = sprintf( __( 'An unknown error happened while uploading your file.', 'cuar' ) );
+			cuar_log_debug( $msg );
+			$this->plugin->add_admin_notice( $msg );
+		} else if ( isset( $upload['error'] ) ) {
+			$msg = sprintf( __( 'An error happened while uploading your file: %s', 'cuar' ), $upload['error'] );
+			cuar_log_debug( $msg );
+			$this->plugin->add_admin_notice( $msg );
+		} else {
+			$upload['file'] = basename( $upload['file'] );
+			update_post_meta( $post_id, 'cuar_private_file_file', $upload );
+			cuar_log_debug( 'Uploaded new private file: ' . print_r( $upload, true ) );
+		}
+	}
 
 	/*------- HANDLE FILE VIEWING AND DOWNLOADING --------------------------------------------------------------------*/
 	
@@ -360,7 +451,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$capability_groups[] = array(
 				'group_name' => __( 'Private Files', 'cuar' ),
 				'capabilities' => array(
-						'cuar_pf_edit' 		=> 'Create/Edit/Delete files',
+						'cuar_pf_edit' 		=> 'Create/Edit files',
+						'cuar_pf_delete'	=> 'Delete files',
 						'cuar_pf_read' 		=> 'Access files'
 					)
 			);
@@ -419,7 +511,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 						'publish_posts' 		=> 'cuar_pf_edit',
 						'read_post' 			=> 'cuar_pf_read',
 						'read_private_posts' 	=> 'cuar_pf_edit',
-						'delete_post' 			=> 'cuar_pf_edit'
+						'delete_post' 			=> 'cuar_pf_delete'
 					)
 			);
 

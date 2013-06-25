@@ -196,6 +196,7 @@ jQuery(document).ready( function($) {
 		$admin_role = get_role( 'administrator' );
 		if ( $admin_role ) {
 			$admin_role->add_cap( 'cuar_pp_edit' );
+			$admin_role->add_cap( 'cuar_pp_delete' );
 			$admin_role->add_cap( 'cuar_pp_read' );
 		}
 		

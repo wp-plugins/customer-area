@@ -38,25 +38,36 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 	public function run_addon( $cuar_plugin ) {
 		$this->cuar_plugin = $cuar_plugin;
 		$this->customer_page_shortcode = new CUAR_CustomerPageShortcode( $cuar_plugin );
-		
-		if ( !is_admin() ) {
-			add_action( 'cuar_before_customer_area_template', array( &$this, 'default_welcome_message' ) );
-		}
+
+		add_filter( 'cuar_customer_page_actions', array( &$this, 'add_home_action' ), 1 );
+		add_filter( 'cuar_customer_page_actions', array( &$this, 'add_logout_action' ), 1000 );
 	}	
 	
-	/*------- DEFAULT MESSAGES --------------------------------------------------------------------------------------*/
-
-	public function default_welcome_message() {
-		global $current_user;
-		$out = sprintf( __('Hello %s,', 'cuar'), $current_user->display_name );
-		$out = sprintf( '<h2 class="cuar_page_title">%s <small><a href="%s" class="logout-link">%s</a></small></h2>', 
-				$out, wp_logout_url( get_permalink() ), __('Logout', 'cuar') );
-		
-		echo apply_filters( "cuar_default_welcome_message", $out );
+	/*------- INITIALISATIONS ---------------------------------------------------------------------------------------*/
+	
+	public function add_home_action( $actions ) {
+		if ( current_user_can( 'cuarco_add_private_files' ) ) {
+			$actions[] = apply_filters( 'cuarco_home_action', array(
+					"url"		=> get_permalink(),
+					"label"		=> __( 'Customer Area', 'cuar' ),
+					"hint"		=> __( 'Your customer area welcome page', 'cuar' )
+			) );
+		}
+		return $actions;
 	}
 	
-	/*------- INITIALISATIONS ---------------------------------------------------------------------------------------*/
-
+	public function add_logout_action( $actions ) {
+		if ( current_user_can( 'cuarco_add_private_files' ) ) {
+			$actions[] = apply_filters( 'cuar_logout_action', array(
+					"url"		=> wp_logout_url( get_permalink() ),
+					"label"		=> __( 'Logout', 'cuar' ),
+					"hint"		=> __( 'Disconnect from your customer area', 'cuar' )
+			) );
+		}
+		return $actions;
+	}
+	
+	
 	/** @var CUAR_Plugin */
 	private $cuar_plugin;
 

@@ -183,11 +183,13 @@ jQuery(document).ready( function($) {
 	 * Callback to handle saving a post
 	 *  
 	 * @param int $post_id
-	 * @param string $post
+	 * @param unknown $post
+	 * @param array $previous_owner
+	 * @param array $new_owner
 	 * @return void|unknown
 	 */
 	public function do_save_post( $post_id, $post, $previous_owner, $new_owner ) {
-		global $post, $cuar_po_addon;
+		global $post;
 		
 		// When auto-saving, we don't do anything
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
@@ -195,78 +197,18 @@ jQuery(document).ready( function($) {
 		// Only take care of our own post type
 		if ( !$post || get_post_type( $post->ID )!='cuar_private_file' ) return;
 	
-		// Save the file
+		// Security check
 		if ( !wp_verify_nonce( $_POST['wp_cuar_nonce_file'], plugin_basename(__FILE__) ) ) return $post_id;
 
 		// If nothing to upload but owner changed, we'll simply move the file
-		$has_owner_changed = ($new_owner['id']!=$previous_owner['id']) 
-								|| ($new_owner['type']!=$previous_owner['type']);
-		
-		$previous_file = get_post_meta( $post_id, 'cuar_private_file_file', true );				
-		if ( empty( $_FILES['cuar_private_file_file']['name'] ) ) {
-			if ( $previous_file ) {
-				$previous_file['path'] = $cuar_po_addon->get_owner_file_path( 
-						$previous_file['file'], $previous_owner['id'], $previous_owner['type'], true );
-				
-				if ( $has_owner_changed && file_exists( $previous_file['path'] ) ) {	
-					$new_file_path = $cuar_po_addon->get_owner_file_path( 
-							$previous_file['file'], $new_owner['id'], $new_owner['type'], true );
-					if ( copy( $previous_file['path'], $new_file_path ) ) unlink( $previous_file['path'] );
-	
-					$new_file = $previous_file;
-					$new_file['path'] = $new_file_path;
-					update_post_meta( $post_id, 'cuar_private_file_file', $previous_file );
-					
-					cuar_log_debug( 'moved private file from ' . $previous_file['path'] . ' to ' . $new_file_path);
-				}
-			}
+		$has_owner_changed = ($new_owner['id']!=$previous_owner['id']) || ($new_owner['type']!=$previous_owner['type']);
+		if ( $has_owner_changed && empty( $_FILES['cuar_private_file_file']['name'] ) ) {
+			$this->private_file_addon->handle_private_file_owner_changed($post_id, $previous_owner, $new_owner);
 			return $post_id;		
 		}
-
-		// Do some file type checking on the uploaded file if needed
-		$new_file_name = $_FILES['cuar_private_file_file']['name']; 
-		$supported_types = apply_filters( 'cuar_private_file_supported_types', null );
-		if ( $supported_types!=null ) {
-			$arr_file_type = wp_check_filetype( basename( $_FILES['cuar_private_file_file']['name'] ) );
-			$uploaded_type = $arr_file_type['type'];
-			
-			if ( !in_array( $uploaded_type, $supported_types ) ) {
-				$msg =  sprintf( __("This file type is not allowed. You can only upload: %s", 'cuar',
-							implode( ', ', $supported_types ) ) );
-				cuar_log_debug( $msg );
-				
-				$this->plugin->add_admin_notice( $msg );
-				return;
-			}
-		}
 		
-		// Delete the existing file if any
-		if ( $previous_file ) {
-			$previous_file['path'] = $cuar_po_addon->get_owner_file_path( 
-						$previous_file['file'], $previous_owner['id'], $previous_owner['type'], true );
-
-			if ( $previous_file['path'] && file_exists( $previous_file['path'] ) ) {
-				unlink( $previous_file['path'] );
-				cuar_log_debug( 'deleted old private file from ' . $previous_file['path'] );
-			}
-		}
-		
-		// Use the WordPress API to upload the file
-		$upload = wp_handle_upload( $_FILES['cuar_private_file_file'], array( 'test_form' => false ) );
-		
-		if ( empty( $upload ) ) {
-			$msg = sprintf( __( 'An unknown error happened while uploading your file.', 'cuar' ) );
-			cuar_log_debug( $msg );
-			$this->plugin->add_admin_notice( $msg );
-		} else if ( isset( $upload['error'] ) ) {
-			$msg = sprintf( __( 'An error happened while uploading your file: %s', 'cuar' ), $upload['error'] );
-			cuar_log_debug( $msg );
-			$this->plugin->add_admin_notice( $msg );
-		} else {
-			$upload['file'] = basename( $upload['file'] );
-			update_post_meta( $post_id, 'cuar_private_file_file', $upload );
-			cuar_log_debug( 'Uploaded new private file: ' . print_r( $upload, true ) );
-		}
+		$this->private_file_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner, 
+				$_FILES['cuar_private_file_file']);
 	}
 
 	/**
@@ -274,19 +216,19 @@ jQuery(document).ready( function($) {
 	 * @param unknown $default_dir
 	 * @return unknown|multitype:boolean string unknown
 	 */
-	public function custom_upload_dir( $default_dir ) {
-		global $cuar_po_addon;
-		
+	public function custom_upload_dir( $default_dir ) {		
 		if ( ! isset( $_POST['post_ID'] ) || $_POST['post_ID'] < 0 ) return $default_dir;	
 		if ( $_POST['post_type'] != 'cuar_private_file' ) return $default_dir;
 	
-		$dir = $cuar_po_addon->get_base_private_storage_directory();
-		$url = $cuar_po_addon->get_base_private_storage_url();
+		$po_addon = $this->plugin->get_addon('post-owner');
+		
+		$dir = $po_addon->get_base_private_storage_directory();
+		$url = $po_addon->get_base_private_storage_url();
 	
 		$bdir = $dir;
 		$burl = $url;
 	
-		$subdir = '/' . $cuar_po_addon->get_private_storage_directory( $_POST['post_ID'] );
+		$subdir = '/' . $po_addon->get_private_storage_directory( $_POST['post_ID'] );
 		
 		$dir .= $subdir;
 		$url .= $subdir;
@@ -429,6 +371,7 @@ jQuery(document).ready( function($) {
 		$admin_role = get_role( 'administrator' );
 		if ( $admin_role ) {
 			$admin_role->add_cap( 'cuar_pf_edit' );
+			$admin_role->add_cap( 'cuar_pf_delete' );
 			$admin_role->add_cap( 'cuar_pf_read' );
 		}
 		

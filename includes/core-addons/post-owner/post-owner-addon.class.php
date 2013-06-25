@@ -41,12 +41,12 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 
 			add_action('cuar_after_addons_init', array( &$this, 'customize_post_edit_pages'));
 			add_action('cuar_after_addons_init', array( &$this, 'customize_post_list_pages'));
-			
-			add_action('cuar_print_select_options_for_type_user', 
-					array( &$this, 'print_select_options_for_type_user'), 10, 2);
 		} else {
 			add_action( 'template_redirect', array( &$this, 'protect_single_post_access' ) );
 		}
+			
+		add_action('cuar_print_select_options_for_type_user', 
+				array( &$this, 'print_select_options_for_type_user'), 10, 2);
 	}	
 	
 	/*------- QUERY FUNCTIONS ---------------------------------------------------------------------------------------*/
@@ -157,6 +157,13 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	}
 	
 	/*------- ACCESS TO OWNER INFO ----------------------------------------------------------------------------------*/
+	
+	/** Check if the given value is a valid owner type */
+	public function is_valid_owner_type($type) {
+		$types = $this->get_owner_types();
+		return array_key_exists($type, $types);
+	}
+
 	
 	/**
 	 * Returns all the possible owner types in the form of an associative array. The key is the owner type (should
@@ -473,6 +480,90 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 				);
 		}
 	}
+
+	/**
+	 * Print the metabox to select an owner type
+	 */
+	public function print_owner_type_select_field($owner_type_field_id, $field_group=null, $selected_owner_type='user') {
+		if ($field_group!=null) {
+			$owner_type_field_name = $field_group . '[' . $owner_type_field_id . ']';
+		} else {
+			$owner_type_field_name = $owner_type_field_id;
+		}
+
+		$owner_types = $this->get_owner_types();
+		if (count($owner_types)==1) {
+			reset($owner_types);
+?>
+		<input type="hidden" name="<?php echo $owner_type_field_name; ?>" id="<?php echo $owner_type_field_id; ?>" value="<?php echo key($owner_types); ?>" />
+<?php 			
+		} else {
+?>
+			<select name="<?php echo $owner_type_field_name; ?>" id="<?php echo $owner_type_field_id; ?>" >
+<?php 		foreach ( $owner_types as $type_id => $type_label ) : 
+				$selected =  ( $selected_owner_type!=$type_id ? '' : ' selected="selected"' ); 
+?>
+				<option value="<?php echo $type_id;?>"<?php echo $selected; ?>><?php echo $type_label; ?></option>
+<?php 		endforeach; ?>				
+			</select>
+<?php 						
+		}
+	}
+	
+	/**
+	 * Print the javascript to change the owner select according to the owner type select
+	 */
+	public function print_owner_select_javascript($owner_type_field_id, $owner_field_id) {
+?>
+		<script type="text/javascript">
+		<!--
+			jQuery( document ).ready( function($) {
+				$( '#<?php echo $owner_type_field_id; ?>' ).change(function() {
+					var type = $(this).val();
+					var newVisibleId = '#<?php echo $owner_field_id ?>_' + type + '_id';
+
+					// Do nothing if already visible
+					if ( $(newVisibleId).is(":visible") ) return
+
+					// Hide previous and then show new
+					$('.<?php echo $owner_type_field_id; ?>_owner_select:visible').fadeToggle("fast", function () {
+						$(newVisibleId).fadeToggle();
+					});
+				});
+			});
+		//-->
+		</script>
+<?php 
+	}
+	
+	/**
+	 * Print the metabox to select an owner
+	 */
+	public function print_owner_select_field($owner_type_field_id, $owner_field_id, $field_group=null, 
+			$selected_owner_type='user', $selected_owner_id=0) {
+		global $post;
+		
+		$owner_types = $this->get_owner_types();
+		
+		foreach ( $owner_types as $type_id => $type_label ) { 
+			$hidden = ( $selected_owner_type==$type_id ? '' : ' style="display: none;"' );  
+			
+			$field_id = $owner_field_id . '_' . $type_id . '_id'; 
+			
+			if ($field_group!=null) {
+				$field_name = $field_group . '[' . $field_id . ']';
+			} else {
+				$field_name = $field_id;
+			}
+?>
+			<select id="<?php echo $field_id; ?>" name="<?php echo $field_name; ?>" class="<?php echo $owner_type_field_id; ?>_owner_select" <?php echo $hidden; ?>>
+			<?php do_action( 'cuar_print_select_options_for_type_' . $type_id, 
+					$selected_owner_type, 
+					$selected_owner_id ); ?>
+			</select>
+<?php
+		}			
+	}
 	
 	/**
 	 * Callback to handle saving a post
@@ -515,15 +606,15 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * 
 	 * @return NULL|array associative array with keys 'id' and 'type'
 	 */
-	public function get_owner_from_post_data() {
-		if ( !isset($_POST['cuar_owner_type']) 
-				|| !isset($_POST['cuar_owner_' . $_POST['cuar_owner_type'] . '_id']) ) {
+	public function get_owner_from_post_data( $owner_type_field_id = 'cuar_owner_type', $owner_field_id = 'cuar_owner' ) {
+		if ( !isset($_POST[ $owner_type_field_id ]) 
+				|| !isset($_POST[ $owner_field_id. '_' . $_POST[ $owner_type_field_id ] . '_id']) ) {
 			return null;
 		}
 		
 		return array(
-				'id' 	=> $_POST['cuar_owner_' . $_POST['cuar_owner_type'] . '_id'],
-				'type'	=> $_POST['cuar_owner_type']
+				'id' 	=> $_POST[ $owner_field_id . '_' . $_POST[ $owner_type_field_id ] . '_id'],
+				'type'	=> $_POST[ $owner_type_field_id ]
 			);
 	}
 

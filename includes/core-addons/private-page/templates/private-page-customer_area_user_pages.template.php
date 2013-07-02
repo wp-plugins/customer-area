@@ -1,6 +1,6 @@
 <div class="cuar-private-page-container">
 
-<h3><?php _e( 'Your pages', 'cuar' ); ?></h3>
+<h3><?php echo apply_filters( 'cuar_private_pages_section_title', __( 'Your pages', 'cuar' ) ); ?></h3>
 
 <?php 
 global $cuar_po_addon;

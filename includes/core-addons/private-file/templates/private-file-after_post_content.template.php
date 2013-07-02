@@ -1,5 +1,5 @@
 <div class="cuar-private-file-container">
-<h4><?php _e( 'Associated file', 'cuar' ); ?></h4>
+<h4><?php echo apply_filters( 'cuar_private_files_after_content_title', __( 'Associated file', 'cuar' ) ); ?></h4>
 
 <table class="cuar-private-file-list">
   <tbody>

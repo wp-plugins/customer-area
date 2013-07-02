@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -143,6 +143,28 @@ The plugin allows to customize how the information is displayed in the customer 
 * Do your changes, save the file
 * You should be able to see the changes immediatly and automatically 
 
+= How can I change the titles on the Customer Area page? =
+
+Simply add this code to your functions.php file:
+
+`function my_private_files_title( $original_title ) {
+	// Replace my_theme_domain by the proper domain for your theme
+	return __( 'Your documents', 'my_theme_domain' ); 
+}
+add_filter( 'cuar_private_files_after_content_title', 'my_private_files_title' );
+
+function my_private_files_single_title( $original_title ) {
+	// Replace my_theme_domain by the proper domain for your theme
+	return __( 'Attached documents', 'my_theme_domain' ); 
+}
+add_filter( 'cuar_private_files_section_title', 'my_private_files_single_title' );
+
+function my_private_pages_title( $original_title ) {
+	// Replace my_theme_domain by the proper domain for your theme
+	return __( 'Your documents', 'my_theme_domain' ); 
+}
+add_filter( 'cuar_private_pages_after_content_title', 'my_private_pages_title' );`
+
 = That feature is missing, will you implement it? =
 
 Open a new topic on the plugin's support forum, I will consider every feature request and all ideas are welcome.
@@ -154,6 +176,11 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 2.2.0 (2013/07/02) =
+
+* Added some filters to change the titles of the files and pages sections (see FAQ)
+* Added a FAQ entry
 
 = 2.1.0 (2013/06/26) =
 

@@ -1,6 +1,6 @@
 <div class="cuar-private-file-container">
 
-<h3><?php _e( 'Your files', 'cuar' ); ?></h3>
+<h3><?php echo apply_filters( 'cuar_private_files_section_title', __( 'Your files', 'cuar' ) ); ?></h3>
 
 <div class="accordion-container">	
 

@@ -177,6 +177,10 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
+= 2.2.1 (2013/07/08) =
+
+* Added spanish translation (Courtesy of http://e-rgonomy.com)
+
 = 2.2.0 (2013/07/02) =
 
 * Added some filters to change the titles of the files and pages sections (see FAQ)

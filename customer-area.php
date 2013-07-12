@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Customer Area
-Plugin URI: http://www.marvinlabs.com
+Plugin URI: http://customer-area.marvinlabs.com/
 Version: 2.2.0
 Description: Customer area give your customers the possibility to get a page on your site where they can access private content. 
 Author: MarvinLabs

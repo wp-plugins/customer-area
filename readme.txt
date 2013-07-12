@@ -33,7 +33,7 @@ or download them on his page.
 
 Customer Area is available for free and should cover the needs of most users. If you want to encourage us to actively 
 maintain it, or if you need a particular feature not included in the basic plugin, you can buy our premium extensions 
-from [our online shop](http://www.marvinlabs.com/shop): 
+from [our online shop](http://customer-area.marvinlabs.com/): 
 
 * [Login and registration forms integration](http://www.marvinlabs.com/downloads/customer-area-login-register-forms/)
 * [Email notifications](http://www.marvinlabs.com/downloads/customer-area-notifications/)

@@ -178,11 +178,13 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		if ( $previous_file ) {
 			$previous_file['path'] = $po_addon->get_owner_file_path(
-					$previous_file['file'], $previous_owner['id'], $previous_owner['type'], true );
+					$previous_file['file'], $previous_owner['ids'], $previous_owner['type'], true );
 		
 			if ( file_exists( $previous_file['path'] ) ) {
 				$new_file_path = $po_addon->get_owner_file_path(
-						$previous_file['file'], $new_owner['id'], $new_owner['type'], true );
+						$previous_file['file'], $new_owner['ids'], $new_owner['type'], true );
+				
+				if ( $previous_file['path']==$new_file_path ) return;				
 				if ( copy( $previous_file['path'], $new_file_path ) ) unlink( $previous_file['path'] );
 		
 				$new_file = $previous_file;
@@ -202,6 +204,8 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @param array $new_owner
 	 */
 	public function handle_new_private_file_upload( $post_id, $previous_owner, $new_owner, $file ) {
+		if ( !isset( $file ) || empty( $file ) ) return;
+		
 		$po_addon = $this->plugin->get_addon('post-owner');
 		
 		$previous_file = get_post_meta( $post_id, 'cuar_private_file_file', true );
@@ -226,7 +230,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		// Delete the existing file if any
 		if ( $previous_file ) {
 			$previous_file['path'] = $po_addon->get_owner_file_path(
-					$previous_file['file'], $previous_owner['id'], $previous_owner['type'], true );
+					$previous_file['file'], $previous_owner['ids'], $previous_owner['type'], true );
 		
 			if ( $previous_file['path'] && file_exists( $previous_file['path'] ) ) {
 				unlink( $previous_file['path'] );
@@ -387,8 +391,10 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			}
 		};
 
+		// Fix http://wordpress.org/support/topic/problems-with-image-files
 		@ob_end_clean(); //turn off output buffering to decrease cpu usage
-
+		@ob_clean();
+		
 		// required for IE, otherwise Content-Disposition may be ignored
 		if ( ini_get('zlib.output_compression') ) ini_set('zlib.output_compression', 'Off');
 
@@ -571,13 +577,12 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$pf_slug = 'private-file';
 		
 		$wp_rewrite->add_rewrite_tag('%cuar_private_file%', '([^/]+)', 'cuar_private_file=');
-		$wp_rewrite->add_rewrite_tag('%owner_name%', '([^/]+)', 'cuar_pf_owner_name=');
 		$wp_rewrite->add_rewrite_tag('%cuar_action%', '([^/]+)', 'cuar_action=');
 		$wp_rewrite->add_permastruct( 'cuar_private_file',
-				$pf_slug . '/%owner_name%/%year%/%monthnum%/%day%/%cuar_private_file%',
+				$pf_slug . '/%year%/%monthnum%/%day%/%cuar_private_file%',
 				false);
 		$wp_rewrite->add_permastruct( 'cuar_private_file',
-				$pf_slug . '/%owner_name%/%year%/%monthnum%/%day%/%cuar_private_file%/%cuar_action%',
+				$pf_slug . '/%year%/%monthnum%/%day%/%cuar_private_file%/%cuar_action%',
 				false);
 	}
 
@@ -603,10 +608,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	
 		$permalink = $wp_rewrite->get_extra_permastruct( 'cuar_private_file' );
 		$permalink = str_replace( "%cuar_private_file%", $post->post_name, $permalink );
-
-		$po_addon = $this->plugin->get_addon('post-owner');
-		$owner = sanitize_title_with_dashes( $po_addon->get_post_owner_displayname( $post->ID, true ));
-		$permalink = str_replace( '%owner_name%', $owner, $permalink );
 	
 		$post_date = strtotime( $post->post_date );
 		$permalink = str_replace( "%year%", 	date( "Y", $post_date ), $permalink );

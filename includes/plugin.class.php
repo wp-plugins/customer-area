@@ -105,9 +105,13 @@ class CUAR_Plugin {
 		$active_version = $this->get_option( CUAR_Settings::$OPTION_CURRENT_VERSION );
 		if ( !isset( $active_version ) ) $active_version = '1.4.0';
 		
-		if ( $active_version != $current_version ) {
-			do_action( 'cuar_version_upgraded', $active_version, $current_version );
-			$this->settings->update_option( CUAR_Settings::$OPTION_CURRENT_VERSION, $current_version );
+		if ( CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION!==FALSE ) {
+			do_action( 'cuar_version_upgraded', CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION, $current_version );
+		} else {
+			if ( $active_version != $current_version ) {
+				do_action( 'cuar_version_upgraded', $active_version, $current_version );
+				$this->settings->update_option( CUAR_Settings::$OPTION_CURRENT_VERSION, $current_version );
+			}
 		}		
 	}
 	
@@ -194,6 +198,14 @@ class CUAR_Plugin {
 	 */
 	public function get_option( $option_id ) {
 		return $this->settings->get_option( $option_id );
+	}
+	
+	public function update_option( $option_id, $new_value, $commit = true ) {
+		return $this->settings->update_option( $option_id, $new_value, $commit );
+	}
+	
+	public function save_options() {
+		return $this->settings->save_options();
 	}
 	
 	/** @var CUAR_Settings */

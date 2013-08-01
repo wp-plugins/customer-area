@@ -177,9 +177,8 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		$pf_slug = 'private-page';
 		
 		$wp_rewrite->add_rewrite_tag('%cuar_private_page%', '([^/]+)', 'cuar_private_page=');
-		$wp_rewrite->add_rewrite_tag('%owner_name%', '([^/]+)', 'cuar_pp_owner_name=');
 		$wp_rewrite->add_permastruct( 'cuar_private_page',
-				$pf_slug . '/%owner_name%/%cuar_private_page%',
+				$pf_slug . '/%year%/%monthnum%/%day%/%cuar_private_page%',
 				false);
 	}
 
@@ -191,9 +190,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	 * @param unknown $leavename
 	 * @return unknown|mixed
 	 */
-	function built_post_type_permalink( $post_link, $post, $leavename ) {
-		global $cuar_po_addon;
-		
+	function built_post_type_permalink( $post_link, $post, $leavename ) {		
 		// Only change permalinks for private files
 		if ( $post->post_type!='cuar_private_page') return $post_link;
 	
@@ -203,13 +200,10 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		if( $draft_or_pending and !$leavename ) return $post_link;
 	
 		// Change the permalink
-		global $wp_rewrite, $cuar_pp_addon;
+		global $wp_rewrite;
 	
 		$permalink = $wp_rewrite->get_extra_permastruct( 'cuar_private_page' );
 		$permalink = str_replace( "%cuar_private_page%", $post->post_name, $permalink );
-
-		$owner = sanitize_title_with_dashes( $cuar_po_addon->get_post_owner_displayname( $post->ID, true ));
-		$permalink = str_replace( '%owner_name%', $owner, $permalink );
 	
 		$post_date = strtotime( $post->post_date );
 		$permalink = str_replace( "%year%", 	date( "Y", $post_date ), $permalink );

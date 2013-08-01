@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Customer Area
-Plugin URI: http://customer-area.marvinlabs.com/
-Version: 2.2.0
+Plugin URI: http://customer-area.marvinlabs.com
+Version: 2.3.0
 Description: Customer area give your customers the possibility to get a page on your site where they can access private content. 
 Author: MarvinLabs
 Author URI: http://www.marvinlabs.com
@@ -38,6 +38,8 @@ define( 'CUAR_ADMIN_THEME_URL', 	CUAR_PLUGIN_URL . 'themes/admin/default' );
 define( 'CUAR_FRONTEND_THEME_URL', 	CUAR_PLUGIN_URL . 'themes/frontend/default' );
 define( 'CUAR_PLUGIN_FILE', 		'customer-area/customer-area.php' );
 
+define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', FALSE );
+//define( 'CUAR_DEBUG_UPGRADE_PROCEDURE_FROM_VERSION', '2.1.0' ); 
 
 /**
  * A function for debugging purposes

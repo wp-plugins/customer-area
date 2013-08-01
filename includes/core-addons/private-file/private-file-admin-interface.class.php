@@ -201,14 +201,21 @@ jQuery(document).ready( function($) {
 		if ( !wp_verify_nonce( $_POST['wp_cuar_nonce_file'], plugin_basename(__FILE__) ) ) return $post_id;
 
 		// If nothing to upload but owner changed, we'll simply move the file
-		$has_owner_changed = ($new_owner['id']!=$previous_owner['id']) || ($new_owner['type']!=$previous_owner['type']);
+		$has_owner_changed = false;
+		if (    ( $new_owner['type']!=$previous_owner['type'] ) 
+			|| !( array_diff( $previous_owner['ids'], $new_owner['ids']) === array_diff( $new_owner['ids'], $previous_owner['ids'] ) ) ) {
+			$has_owner_changed = true;
+		}
+		
 		if ( $has_owner_changed && empty( $_FILES['cuar_private_file_file']['name'] ) ) {
 			$this->private_file_addon->handle_private_file_owner_changed($post_id, $previous_owner, $new_owner);
 			return $post_id;		
 		}
 		
-		$this->private_file_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner, 
-				$_FILES['cuar_private_file_file']);
+		if ( !empty( $_FILES['cuar_private_file_file']['name'] ) ) {
+			$this->private_file_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner, 
+					$_FILES['cuar_private_file_file']);
+		}
 	}
 
 	/**
@@ -391,7 +398,7 @@ jQuery(document).ready( function($) {
 	public function print_storage_section_info() {
 		$po_addon = $this->plugin->get_addon('post-owner');
 		$storage_dir = $po_addon->get_base_private_storage_directory( true );
-		$sample_storage_dir = $po_addon->get_owner_storage_directory( get_current_user_id(), 'user', true, true );
+		$sample_storage_dir = $po_addon->get_owner_storage_directory( array( get_current_user_id() ), 'usr', true, true );
 		
 		$required_perms = '705';
 		$current_perms = substr( sprintf('%o', fileperms( $storage_dir ) ), -3);

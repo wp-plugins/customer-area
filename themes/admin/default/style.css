@@ -4,10 +4,15 @@
 
 span.label {
 	display: inline-block;
-	min-width: 33%;
+	min-width: 40%;
+	vertical-align: top;
 }
 
 .metabox-row input[type=text], .metabox-row select, .metabox-row text-area {
+	min-width: 200px;
+}
+
+.form-table input[type=text], .form-table select, .form-table text-area {
 	min-width: 200px;
 }
 

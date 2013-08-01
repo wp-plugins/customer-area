@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.2.1
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,9 @@ Give your customers a page on your site where they can access private content (f
 Give your customers a page on your site where they can access private content in a secure and easy way. 
 As of today, private content means files: you upload files for your customer, and only him will be able to view them
 or download them on his page. 
+
+You have more information on the [plugin website](http://customer-area.marvinlabs.com) and you can even see 
+a [live demo of the plugin and some of its extensions](http://customer-area.marvinlabs.com/demo).
 
 **Current features**
 
@@ -55,6 +58,11 @@ customisation has been done to the plugin or to the add-ons.
 	
 == Upgrade Notice ==
 
+= Upgrading from 2.x to 2.3.0 =
+
+Make sure to backup your database. Some important changes have been made to the ownership system and even though we have
+tested our upgrade script as much as we could, you might find yourself with owners of posts reset to nobody.
+
 = Upgrading from 1.x to 2.x =
 
 You must also upgrade all the add-ons you are using.
@@ -94,6 +102,10 @@ the notifications add-on.
 13. The rest of the settings screen when the notifications add-on is enabled.
 
 == Frequently Asked Questions ==
+
+= Where is the documentation / where to get support / where to see a demo ? =
+
+You have all the information on the [plugin website](http://customer-area.marvinlabs.com)
 
 = How can I forbid direct download of user files? =
 
@@ -176,6 +188,15 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 2.3.0 (2013/08/01) =
+
+* Update required for the new Extended Permissions features (multiple user selection)
+* Changed the permalink structure for private posts and pages to make it prettier and to avoid exposing who the owner is
+
+= 2.2.2 (2013/07/22) =
+
+* Fix corrupted file download on some servers (see http://wordpress.org/support/topic/problems-with-image-files)
 
 = 2.2.1 (2013/07/08) =
 

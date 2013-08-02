@@ -63,6 +63,10 @@ customisation has been done to the plugin or to the add-ons.
 Make sure to backup your database. Some important changes have been made to the ownership system and even though we have
 tested our upgrade script as much as we could, you might find yourself with owners of posts reset to nobody.
 
+1. Backup your database
+2. /!\ IMPORTANT - Update all the Customer Area extensions FIRST
+3. Update the Customer Area plugin
+
 = Upgrading from 1.x to 2.x =
 
 You must also upgrade all the add-ons you are using.

@@ -38,7 +38,8 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 		if ( is_admin() ) {
 			add_filter( 'cuar_addon_settings_tabs', array( &$this, 'add_settings_tab' ), 1000, 1 );
 			add_filter( 'cuar_after_settings_side', array( &$this, 'print_addons_sidebox' ), 800 );
-			add_filter( 'cuar_after_settings_side', array( &$this, 'print_marvinlabs_sidebox' ), 1000 );
+			add_filter( 'cuar_after_settings_side', array( &$this, 'print_marvinlabs_sidebox' ), 900 );
+			add_filter( 'cuar_after_settings_side', array( &$this, 'print_newsletter_sidebox' ), 1000 );
 			add_filter( 'cuar_before_settings_cuar_addons', array( &$this, 'print_addons' ) );
 			add_filter( 'cuar_before_settings_cuar_troubleshooting', array( &$this, 'print_troubleshooting' ) );
 			add_filter( 'admin_init', array( &$this, 'add_dashboard_metaboxes' ) );
@@ -81,6 +82,8 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 	public function add_dashboard_metaboxes() {	
 		add_meta_box('cuar_dashboard_addons', __( 'Enhance your customer area', 'cuar' ), 
 				array( &$this, 'get_addons_sidebox_content' ), 'customer-area', 'side' );
+		add_meta_box('cuar_dashboard_newletter', __( 'Subscribe to our newsletter', 'cuar' ), 
+				array( &$this, 'get_newsletter_sidebox_content' ), 'customer-area', 'side' );
 		add_meta_box('cuar_dashboard_marvinlabs', __( 'Get more from MarvinLabs', 'cuar' ), 
 				array( &$this, 'get_marvinlabs_sidebox_content' ), 'customer-area', 'side' );
 	}
@@ -93,13 +96,20 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 				$this->get_addons_sidebox_content() );
 	}
 
-
 	/**
 	 * @param CUAR_Settings $cuar_settings
 	 */
 	public function print_marvinlabs_sidebox( $cuar_settings ) {
 		$cuar_settings->print_sidebox( __( 'Get more from MarvinLabs', 'cuar' ), 
 				$this->get_marvinlabs_sidebox_content() );		
+	}
+
+	/**
+	 * @param CUAR_Settings $cuar_settings
+	 */
+	public function print_newsletter_sidebox( $cuar_settings ) {
+		$cuar_settings->print_sidebox( __( 'Subscribe to our newsletter', 'cuar' ), 
+				$this->get_newsletter_sidebox_content() );		
 	}
 	
 	/**
@@ -148,7 +158,45 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 		$content .= sprintf( '<li><a href="%2$s">%1$s</a>', 
 				__( 'Follow us on Facebook', 'cuar' ), 
 				"http://www.facebook.com/studio.marvinlabs");
-		$content .= '</ul>';
+		$content .= '</ul>';		
+		
+		if ( $echo ) echo $content;
+		
+		return $content;	
+	}
+
+
+	/**
+	 * @param CUAR_Settings $cuar_settings
+	 */
+	public function get_newsletter_sidebox_content( $args = null ) {
+		// Extract parameters and provide defaults for the missing ones
+		$args = extract( wp_parse_args( $args, array(
+				'echo'	=> false
+			) ), EXTR_SKIP );
+		
+		$content = sprintf( '<p>&raquo; ' . 
+				__( "You can also get notified when we've got something exciting to say (plugin updates, news, etc.). Simply "
+					. "subscribe to our newsletter, we won't spam, we send at most one email per month!", 'cuar' ) 
+				. '</p>', 'http://www.marvinlabs.com' );
+		
+		$content .= '<!-- Begin MailChimp Signup Form -->';
+		$content .= '<div id="mc_embed_signup">';
+		$content .= '<form action="http://marvinlabs.us7.list-manage.com/subscribe/post?u=1bbbff0bec2e3841b42494431&amp;id=4b52ced231" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>';
+	
+		$content .= '<p class="mc-field-group">';
+		$content .= '<label for="mce-EMAIL">Email Address </label>';
+		$content .= '<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" /><br/>';
+		$content .= '</p>';
+		$content .= '<div id="mce-responses" class="clear">';
+		$content .= '<div class="response" id="mce-error-response" style="display:none"></div>';
+		$content .= '<div class="response" id="mce-success-response" style="display:none"></div>';
+		$content .= '</div>	<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button button-primary"></div>';
+		$content .= '</form>';
+		$content .= '</div>';
+
+		$content .= '<!--End mc_embed_signup-->';
+		
 		
 		if ( $echo ) echo $content;
 		

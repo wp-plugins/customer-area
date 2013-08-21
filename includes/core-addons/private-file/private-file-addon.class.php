@@ -196,6 +196,40 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			}
 		}
 	}
+
+	/**
+	 * Change the upload directory on the fly when uploading our private file
+	 * @param unknown $default_dir
+	 * @return unknown|multitype:boolean string unknown
+	 */
+	public function custom_upload_dir( $default_dir ) {		
+		if ( ! isset( $_POST['post_ID'] ) || $_POST['post_ID'] < 0 ) return $default_dir;	
+		if ( $_POST['post_type'] != 'cuar_private_file' ) return $default_dir;
+	
+		$po_addon = $this->plugin->get_addon('post-owner');
+		
+		$dir = $po_addon->get_base_private_storage_directory();
+		$url = $po_addon->get_base_private_storage_url();
+	
+		$bdir = $dir;
+		$burl = $url;
+	
+		$subdir = '/' . $po_addon->get_private_storage_directory( $_POST['post_ID'] );
+		
+		$dir .= $subdir;
+		$url .= $subdir;
+	
+		$custom_dir = array( 
+			'path'    => $dir,
+			'url'     => $url, 
+			'subdir'  => $subdir, 
+			'basedir' => $bdir, 
+			'baseurl' => $burl,
+			'error'   => false, 
+		);
+	
+		return $custom_dir;
+	}
 	
 	/**
 	 * 
@@ -243,6 +277,12 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		require_once(ABSPATH . "wp-admin" . '/includes/file.php');
 		require_once(ABSPATH . "wp-admin" . '/includes/media.php');
 		
+		// We will send files to a custom directory
+		add_filter( 'upload_dir', array( &$this, 'custom_upload_dir' ));			
+		if ( ! isset( $_POST['post_ID'] ) || $_POST['post_ID'] < 0 ) $_POST['post_ID'] = $post_id;	
+		if ( ! isset( $_POST['post_type'] ) || $_POST['post_type'] != 'cuar_private_file' ) $_POST['post_type'] = 'cuar_private_file';	
+
+		// Let WP handle the rest		
 		$upload = wp_handle_upload( $file, array( 'test_form' => false ) );
 		
 		if ( empty( $upload ) ) {

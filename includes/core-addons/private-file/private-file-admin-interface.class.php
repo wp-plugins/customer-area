@@ -44,8 +44,7 @@ class CUAR_PrivateFileAdminInterface {
 			// File edit page
 			add_action( 'admin_menu', array( &$this, 'register_edit_page_meta_boxes' ) );
 			add_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ), 10, 4 );
-			
-			add_filter( 'upload_dir', array( &$this, 'custom_upload_dir' ));			
+				
 			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );			
 		}		
 	}
@@ -216,40 +215,6 @@ jQuery(document).ready( function($) {
 			$this->private_file_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner, 
 					$_FILES['cuar_private_file_file']);
 		}
-	}
-
-	/**
-	 * Change the upload directory on the fly when uploading our private file
-	 * @param unknown $default_dir
-	 * @return unknown|multitype:boolean string unknown
-	 */
-	public function custom_upload_dir( $default_dir ) {		
-		if ( ! isset( $_POST['post_ID'] ) || $_POST['post_ID'] < 0 ) return $default_dir;	
-		if ( $_POST['post_type'] != 'cuar_private_file' ) return $default_dir;
-	
-		$po_addon = $this->plugin->get_addon('post-owner');
-		
-		$dir = $po_addon->get_base_private_storage_directory();
-		$url = $po_addon->get_base_private_storage_url();
-	
-		$bdir = $dir;
-		$burl = $url;
-	
-		$subdir = '/' . $po_addon->get_private_storage_directory( $_POST['post_ID'] );
-		
-		$dir .= $subdir;
-		$url .= $subdir;
-	
-		$custom_dir = array( 
-			'path'    => $dir,
-			'url'     => $url, 
-			'subdir'  => $subdir, 
-			'basedir' => $bdir, 
-			'baseurl' => $burl,
-			'error'   => false, 
-		);
-	
-		return $custom_dir;
 	}
 
 	/*------- CUSTOMISATION OF THE PLUGIN SETTINGS PAGE --------------------------------------------------------------*/

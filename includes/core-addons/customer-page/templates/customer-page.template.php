@@ -32,8 +32,7 @@ if (!empty($actions)) :
 						? $action["url"] 
 						: trailingslashit( get_permalink() ) . '?action=' . $action["slug"];
 ?>
-			<li <?php echo $li_class; ?>><a href="<?php echo esc_attr( $href ); ?>" 
-				   title="<?php echo esc_attr( $action["hint"] ); ?>">
+			<li <?php echo $li_class; ?>><a href="<?php echo esc_attr( $href ); ?>" title="<?php echo esc_attr( $action["hint"] ); ?>">
 					<span><?php echo esc_html( $action["label"] ); ?></span>
 				</a></li>
 <?php 		endforeach; ?>

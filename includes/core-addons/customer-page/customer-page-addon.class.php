@@ -46,24 +46,20 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 	/*------- INITIALISATIONS ---------------------------------------------------------------------------------------*/
 	
 	public function add_home_action( $actions ) {
-		if ( current_user_can( 'cuarco_add_private_files' ) ) {
-			$actions[] = apply_filters( 'cuarco_home_action', array(
-					"url"		=> get_permalink(),
-					"label"		=> __( 'Customer Area', 'cuar' ),
-					"hint"		=> __( 'Your customer area welcome page', 'cuar' )
+		$actions[] = apply_filters( 'cuar_home_action', array(
+				"url"		=> get_permalink(),
+				"label"		=> __( 'Customer Area', 'cuar' ),
+				"hint"		=> __( 'Your customer area welcome page', 'cuar' )
 			) );
-		}
 		return $actions;
 	}
 	
 	public function add_logout_action( $actions ) {
-		if ( current_user_can( 'cuarco_add_private_files' ) ) {
-			$actions[] = apply_filters( 'cuar_logout_action', array(
-					"url"		=> wp_logout_url( get_permalink() ),
-					"label"		=> __( 'Logout', 'cuar' ),
-					"hint"		=> __( 'Disconnect from your customer area', 'cuar' )
-			) );
-		}
+		$actions[] = apply_filters( 'cuar_logout_action', array(
+				"url"		=> wp_logout_url( get_permalink() ),
+				"label"		=> __( 'Logout', 'cuar' ),
+				"hint"		=> __( 'Disconnect from your customer area', 'cuar' )
+		) );
 		return $actions;
 	}
 	

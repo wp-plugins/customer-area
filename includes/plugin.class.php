@@ -110,6 +110,8 @@ class CUAR_Plugin {
 		} else {
 			if ( $active_version != $current_version ) {
 				do_action( 'cuar_version_upgraded', $active_version, $current_version );
+			} 
+			if ( empty( $active_version ) || $active_version != $current_version ) {
 				$this->settings->update_option( CUAR_Settings::$OPTION_CURRENT_VERSION, $current_version );
 			}
 		}		

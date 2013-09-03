@@ -118,7 +118,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * @return boolean|string
 	 */
 	public function get_owner_file_path( $filename, $owner_ids, $owner_type, $create_dirs = false ) {
-		if ( empty( $owner_id ) || empty( $owner_type ) || empty( $filename ) ) return false;
+		if ( empty( $owner_ids ) || empty( $owner_type ) || empty( $filename ) ) return false;
 	
 		$dir = $this->get_base_private_storage_directory() . '/' . $this->get_owner_storage_directory( $owner_ids, $owner_type );
 		if ( $create_dirs && !file_exists( $dir ) ) mkdir( $dir, 0775, true );

@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.3.4
+Stable tag: 2.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -193,9 +193,10 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 2.3.4 (2013/09/03) =
+= 2.3.5 (2013/09/03) =
 
 * Fix bug: categories cannot be assigned to private files by users without admin/editor role
+* Fix file was not getting moved properly when changing an owner from an existing file 
 
 = 2.3.3 (2013/08/29) =
 

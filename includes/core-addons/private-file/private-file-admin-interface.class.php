@@ -345,6 +345,10 @@ jQuery(document).ready( function($) {
 			$admin_role->add_cap( 'cuar_pf_edit' );
 			$admin_role->add_cap( 'cuar_pf_delete' );
 			$admin_role->add_cap( 'cuar_pf_read' );
+			$admin_role->add_cap( 'cuar_pf_manage_categories' );
+			$admin_role->add_cap( 'cuar_pf_edit_categories' );
+			$admin_role->add_cap( 'cuar_pf_delete_categories' );
+			$admin_role->add_cap( 'cuar_pf_assign_categories' );
 		}
 		
 		return $defaults;

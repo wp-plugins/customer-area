@@ -497,9 +497,13 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$capability_groups[] = array(
 				'group_name' => __( 'Private Files', 'cuar' ),
 				'capabilities' => array(
-						'cuar_pf_edit' 		=> 'Create/Edit files',
-						'cuar_pf_delete'	=> 'Delete files',
-						'cuar_pf_read' 		=> 'Access files'
+						'cuar_pf_edit' 					=> 'Create/Edit files',
+						'cuar_pf_delete'				=> 'Delete files',
+						'cuar_pf_read' 					=> 'Access files',
+						'cuar_pf_manage_categories' 	=> 'Manage categories',
+						'cuar_pf_edit_categories' 		=> 'Edit categories',
+						'cuar_pf_delete_categories' 	=> 'Delete categories',
+						'cuar_pf_assign_categories' 	=> 'Assign categories',
 					)
 			);
 		
@@ -595,6 +599,12 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				'rewrite' 			=> array(
 						'slug' 				=> 'private-file-category'
 					),
+				'capabilities' 			=> array(
+						'manage_terms' 		=> 'cuar_pf_manage_categories',
+						'edit_terms' 		=> 'cuar_pf_edit_categories',
+						'delete_terms' 		=> 'cuar_pf_delete_categories',
+						'assign_terms' 		=> 'cuar_pf_assign_categories',
+					)
 			);
 	  
 		register_taxonomy( 'cuar_private_file_category', array( 'cuar_private_file' ), $args );

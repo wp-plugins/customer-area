@@ -1,0 +1,1079 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Customer Area\n"
+"POT-Creation-Date: 2013-06-25 23:04+0100\n"
+"PO-Revision-Date: 2013-09-17 09:30+0100\n"
+"Last-Translator: Paul Willems\n"
+"Language-Team: MarvinLabs\n"
+"Language: FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../includes/addon.class.php:77
+#, php-format
+msgid ""
+"The \"%1$s\" add-on requires Customer Area %3$s. You are currently using "
+"version %2$s. Please update the Customer Area plugin."
+msgstr ""
+"Voor de \"%1$s\" ad-on moet u inloggen in de Klanten Login  %3$s. U gebruikt "
+"momenteel versie %2$s. Update a.u.b. de Customer Area plugin."
+
+#: ../includes/settings.class.php:75 ../includes/settings.class.php:76
+#: ../includes/settings.class.php:89
+msgid "Settings"
+msgstr "Instellingen"
+
+#: ../includes/settings.class.php:164
+msgid "General"
+msgstr "Algemeen"
+
+#: ../includes/settings.class.php:177
+msgid "General Settings"
+msgstr "Algemene instellingen"
+
+#: ../includes/settings.class.php:184
+msgid "Include CSS"
+msgstr "Voeg CSS toe"
+
+#: ../includes/settings.class.php:191
+msgid "Include the default stylesheet."
+msgstr "Voeg de standaard stylesheet toe."
+
+#: ../includes/settings.class.php:193
+msgid "If not, you should style the plugin yourself in your theme."
+msgstr "Zo niet, dan moet u zelf de plugin opmaken in uw thema."
+
+#: ../includes/settings.class.php:200
+msgid "Admin theme"
+msgstr "Admin thema"
+
+#: ../includes/settings.class.php:212
+msgid "Frontend theme"
+msgstr "Frontend thema"
+
+#: ../includes/settings.class.php:325
+msgid " cannot be empty"
+msgstr "kan niet leeg zijn"
+
+#: ../includes/settings.class.php:343
+msgid " is not a valid email"
+msgstr "is geen geldig email adres"
+
+#: ../includes/settings.class.php:360
+msgid " is not a valid value"
+msgstr "is geen geldige waarde"
+
+#: ../includes/settings.class.php:382
+msgid "must be an integer"
+msgstr "moet een nummer zijn"
+
+#: ../includes/settings.class.php:391
+#, php-format
+msgid "must be greater than %s"
+msgstr "moet groter zijn dan %s"
+
+#: ../includes/settings.class.php:400
+#, php-format
+msgid "must be lower than %s"
+msgstr "moet kleiner zijn dan %s"
+
+#: ../includes/settings.class.php:424
+msgid " is not a valid owner type"
+msgstr "is niet een geldige type voor de eigenaar"
+
+#: ../includes/settings.class.php:446
+msgid " is not a valid owner"
+msgstr "is niet een geldige eigenaar"
+
+#: ../includes/settings.class.php:475
+msgid "Your license is active!"
+msgstr "Uw licentie is geactiveerd!"
+
+#: ../includes/settings.class.php:478
+msgid "Your license key is invalid!"
+msgstr "Uw licenciecode is onjuist!"
+
+#: ../includes/settings.class.php:481
+msgid "Your license key is expired!"
+msgstr "Uw licentie is verlopen"
+
+#: ../includes/settings.class.php:488
+msgid "Last check"
+msgstr "Laatste controle"
+
+#: ../includes/settings.class.php:489
+msgid "d/m/Y"
+msgstr "d/m/Y"
+
+#: ../includes/settings.class.php:492
+msgid ""
+"The license key you have received for this add-on. This is required in order "
+"to get automatic plugin updates."
+msgstr ""
+"The licenciecode die u heeft ontvangen voor deze ad-on. Dit is nodig om "
+"automatisch een update van deze plugin te ontvangen."
+
+#: ../includes/settings.class.php:641
+msgid "Main plugin folder"
+msgstr "Hoofdmap voor de plugin"
+
+#: ../includes/settings.class.php:646
+msgid "Current theme folder"
+msgstr "Huidige map voor het thema"
+
+#: ../includes/settings.class.php:651
+msgid "WordPress content folder"
+msgstr "WordPress inhoudsfolder"
+
+#: ../includes/core-addons/admin-area/admin-area-addon.class.php:31
+#: ../includes/core-addons/admin-area/admin-area-addon.class.php:52
+msgid "Administration Area"
+msgstr "Administratie Deel"
+
+#: ../includes/core-addons/admin-area/admin-area-addon.class.php:54
+msgid "View the menu"
+msgstr "Bekijk het menu"
+
+#: ../includes/core-addons/admin-area/admin-area-addon.class.php:67
+#: ../includes/core-addons/admin-area/admin-area-addon.class.php:68
+#: ../includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:31
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:52
+msgid "Customer Area"
+msgstr "Klantenpagina"
+
+#: ../includes/core-addons/capabilities/capabilities-addon.class.php:33
+msgid "Capabilities Manager"
+msgstr "Capaciteit Manager"
+
+#: ../includes/core-addons/capabilities/capabilities-admin-interface.class.php:41
+msgid "Capabilities"
+msgstr "Capaciteit"
+
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:35
+msgid "Customer Page"
+msgstr "Klantenpagina"
+
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:53
+msgid "Your customer area welcome page"
+msgstr "Uw klantenpagina welkomscherm"
+
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:63
+msgid "Logout"
+msgstr "Uitloggen"
+
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:64
+msgid "Disconnect from your customer area"
+msgstr "Uitgelogd van uw klantenpagina"
+
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:1
+msgid "Hello"
+msgstr "Hallo"
+
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:2
+msgid ""
+"You must login to access your own customer area. If you do not have an "
+"account yet, please register or contact us so that we can create it."
+msgstr ""
+"U moet inloggen om toegang te krijgen tot uw klantenpagina. Als u nog geen "
+"account heeft, registreert u zich dan of neem contact met ons op zodat wij "
+"voor u een account kunnen aanmaken."
+
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:7
+msgid "Login"
+msgstr "Inloggen"
+
+#: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:9
+msgid "Register"
+msgstr "Registreer"
+
+#: ../includes/core-addons/customer-page/templates/customer-page.template.php:17
+#, php-format
+msgid "Hello %s,"
+msgstr "Hallo %s,"
+
+#: ../includes/core-addons/help/help-addon.class.php:31
+msgid "Help"
+msgstr "Help"
+
+#: ../includes/core-addons/help/help-addon.class.php:54
+#: ../includes/core-addons/help/help-addon.class.php:62
+msgid "Add-ons"
+msgstr "Add-ons"
+
+#: ../includes/core-addons/help/help-addon.class.php:63
+msgid "Troubleshooting"
+msgstr "Help"
+
+#: ../includes/core-addons/help/help-addon.class.php:82
+#: ../includes/core-addons/help/help-addon.class.php:92
+msgid "Enhance your customer area"
+msgstr "Verbeter uw klantenpagina"
+
+#: ../includes/core-addons/help/help-addon.class.php:84
+#: ../includes/core-addons/help/help-addon.class.php:101
+msgid "Get more from MarvinLabs"
+msgstr "Meer MarvinLabs"
+
+#: ../includes/core-addons/help/help-addon.class.php:115
+msgid ""
+"&laquo Customer Area &raquo; is a very modular plugin. We have built it so "
+"that it can be extended in many ways. Some add-ons are presented in this "
+"page by selecting the &laquo Add-ons &raquo; tab. You can also view all "
+"extensions we have by clicking the link below."
+msgstr ""
+"&laquo Klantenpagina &raquo; is een zeer modulaire plugin. We hebben het zo "
+"gebouwd dat het uitbreidbaar is in vele manieren. Sommige add-ons zijn in "
+"deze pagina gepresenteerd door het &laquo Add-ons &raquo; tabblad aan te "
+"klikken."
+
+#: ../includes/core-addons/help/help-addon.class.php:120
+msgid "Browse all extensions"
+msgstr "Blader door al uw extensies."
+
+#: ../includes/core-addons/help/help-addon.class.php:138
+#, php-format
+msgid ""
+"If you like our plugins, you might want to <a href=\"%s\">check our website</"
+"a> for more."
+msgstr ""
+"Als u onze plugins leuk vindt wilt u wellicht ook  <a href=\"%s\">deze "
+"website</a> raadplegen."
+
+#: ../includes/core-addons/help/help-addon.class.php:141
+msgid "If you want to get updates about our plugins, you can:"
+msgstr "Als u updates wilt ontvangen over onze plugin, dan kunt u:"
+
+#: ../includes/core-addons/help/help-addon.class.php:143
+msgid "Follow us on Twitter"
+msgstr "Volg ons op Twitter"
+
+#: ../includes/core-addons/help/help-addon.class.php:146
+msgid "Follow us on Google+"
+msgstr "Volg ons op Google+"
+
+#: ../includes/core-addons/help/help-addon.class.php:149
+msgid "Follow us on Facebook"
+msgstr "Volg ons op Facebook"
+
+#: ../includes/core-addons/help/templates/list-addons.template.php:6
+msgid "Enhance your customer area with our add-ons"
+msgstr "Verbeter uw klantenpagina met onze add-ons"
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:1
+msgid "Troubleshooting information"
+msgstr "Help informatie"
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:4
+msgid "Installed add-ons"
+msgstr "Geïnstalleerde add-ons"
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:9
+msgid "Name"
+msgstr "Naam"
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:10
+msgid "Required customer area version"
+msgstr "Verplichte klantenpagina versie"
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:28
+msgid "Plugin options"
+msgstr "Plugin opties"
+
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:32
+msgid "Post Owner"
+msgstr "Bericht eigenaar"
+
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:176
+msgid "User"
+msgstr "Gebruiker"
+
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:237
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:241
+msgid "Unknown"
+msgstr "Niet bekend"
+
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:330
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:381
+msgid "Owner"
+msgstr "Eigenaar"
+
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:413
+msgid "Select the type of owner"
+msgstr "Selecteer het type eigenaar"
+
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:430
+#, php-format
+msgid "%s owning this content"
+msgstr "%s is eigenaar van deze inhoud"
+
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:647
+msgid "You are not authorized to view this page"
+msgstr "U bent niet geautoriseerd om deze pagina te zien"
+
+#: ../includes/core-addons/post-owner/post-owner-addon.class.php:680
+#, php-format
+msgid "User - %s"
+msgstr "Gebruiker - %s"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:35
+#: ../includes/core-addons/private-file/private-file-addon.class.php:452
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:100
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:101
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:251
+msgid "Private Files"
+msgstr "Prive bestanden"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:217
+#, php-format
+msgid "This file type is not allowed. You can only upload: %s"
+msgstr "Dit bestandstype is niet toegestaan. U kunt allen uploaden: %s"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:245
+msgid "An unknown error happened while uploading your file."
+msgstr "Een onbekende error trad op tijdens het uploaden van uw bestand."
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:249
+#, php-format
+msgid "An error happened while uploading your file: %s"
+msgstr "Een error trad op tijdens het uploaden van uw bestand: %s"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:283
+msgid "You are not authorized to view this file"
+msgstr "U bent niet geautoriseerd om dit bestand in te zien."
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:316
+msgid "You are not authorized to access this file"
+msgstr "U bent niet geautoriseerd om dit bestand te openen"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:478
+#: ../includes/core-addons/private-file/private-file-addon.class.php:489
+msgctxt "cuar_private_file"
+msgid "Private Files"
+msgstr "Prive bestanden"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:479
+msgctxt "cuar_private_file"
+msgid "Private File"
+msgstr "Prive bestand"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:480
+msgctxt "cuar_private_file"
+msgid "Add New"
+msgstr "Voeg een nieuwe toe"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:481
+msgctxt "cuar_private_file"
+msgid "Add New Private File"
+msgstr "Voeg een nieuw privé bestand toe"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:482
+msgctxt "cuar_private_file"
+msgid "Edit Private File"
+msgstr "Bewerk het privé bestand"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:483
+msgctxt "cuar_private_file"
+msgid "New Private File"
+msgstr "Nieuw privé bestand"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:484
+msgctxt "cuar_private_file"
+msgid "View Private File"
+msgstr "Open het privé bestand"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:485
+msgctxt "cuar_private_file"
+msgid "Search Private Files"
+msgstr "Zoek privé bestanden"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:486
+msgctxt "cuar_private_file"
+msgid "No private files found"
+msgstr "Er zijn geen privé bestanden gevonden"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:487
+msgctxt "cuar_private_file"
+msgid "No private files found in Trash"
+msgstr "Er zijn geen privé bestanden gevonden in de prullenbak"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:488
+msgctxt "cuar_private_file"
+msgid "Parent Private File:"
+msgstr "Ouder privé bestand:"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:521
+#: ../includes/core-addons/private-file/private-file-addon.class.php:537
+msgctxt "cuar_private_file_category"
+msgid "File Categories"
+msgstr "Bestandcategoriën"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:522
+msgctxt "cuar_private_file_category"
+msgid "File Category"
+msgstr "Bestandcategorie"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:523
+msgctxt "cuar_private_file_category"
+msgid "Search File Categories"
+msgstr "Doorzoek bestandcategoriën"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:524
+msgctxt "cuar_private_file_category"
+msgid "Popular File Categories"
+msgstr "Populaire bestandcategoriën"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:525
+msgctxt "cuar_private_file_category"
+msgid "All File Categories"
+msgstr "Alle bestandcategoriën"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:526
+msgctxt "cuar_private_file_category"
+msgid "Parent File Category"
+msgstr "Ouder bestandcategorie"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:527
+msgctxt "cuar_private_file_category"
+msgid "Parent File Category:"
+msgstr "Ouder bestandcategorie:"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:528
+msgctxt "cuar_private_file_category"
+msgid "Edit File Category"
+msgstr "Bewerk bestandcategorie"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:529
+msgctxt "cuar_private_file_category"
+msgid "Update File Category"
+msgstr "Vernieuw bestandcategorie"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:530
+msgctxt "cuar_private_file_category"
+msgid "Add New File Category"
+msgstr "Voeg een nieuw bestandcategorie toe"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:531
+msgctxt "cuar_private_file_category"
+msgid "New File Category"
+msgstr "Nieuwe bestandcategorie"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:532
+msgctxt "cuar_private_file_category"
+msgid "Separate file categories with commas"
+msgstr "Gescheiden bestandcategoriën met comma's"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:534
+msgctxt "cuar_private_file_category"
+msgid "Add or remove file categories"
+msgstr "Een bestandcategorie toevoegen of verwijderen"
+
+#: ../includes/core-addons/private-file/private-file-addon.class.php:535
+msgctxt "cuar_private_file_category"
+msgid "Choose from the most used file categories"
+msgstr "Kies uit de meest gebruikte bestandcategoriën"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:107
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:108
+msgid "New Private File"
+msgstr "Nieuw privé bestand"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:114
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:115
+msgid "Private File Categories"
+msgstr "Privé bestandcategoriën"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:146
+msgid "File"
+msgstr "besand"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:166
+msgid "Current file:"
+msgstr "Huidig bestand:"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:174
+msgid "Upload a file"
+msgstr "Upload een bestand"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:263
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:127
+msgid "General settings"
+msgstr "Algemene instellingen"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:270
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:134
+msgid "Enable add-on"
+msgstr "Zet de add-on aan"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:278
+msgid "Check this to enable the private files add-on."
+msgstr "Controleer dit om de privé bestanden ad-on aan te zetten"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:283
+msgid "Frontend Integration"
+msgstr "Frontend Intergratie"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:290
+msgid "Show after post"
+msgstr "Maak zichtbaar na het bericht"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:298
+msgid ""
+"Show the view and download links below the post content for a customer file."
+msgstr ""
+"Geef de \"kijk\" en \"download\" links onder het bericht voor een "
+"klantenbestand."
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:303
+msgid "File list"
+msgstr "Bestandslijst"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:310
+msgid "Don't group files"
+msgstr "Groepeer geen bestanden"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:311
+msgid "Group by year"
+msgstr "Groepeer op jaar"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:312
+msgid "Group by category"
+msgstr "Groepeer op categorie"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:314
+msgid ""
+"You can choose how files will be organized by default in the customer area."
+msgstr ""
+"U kunt kiezen hoe de bestanden standaard gesorteerd worden op de "
+"klantenpagina"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:320
+msgid "Empty categories"
+msgstr "Lege categorien"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:328
+msgid ""
+"When listing files by category, empty categories will be hidden if you check "
+"this."
+msgstr ""
+"Wanneer u bestanden sorteert op categorie dan worden de lege categorieën "
+"onzichtbaar als u deze aanklikt."
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:334
+msgid "File Storage"
+msgstr "Bestandsopslag"
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:401
+#, php-format
+msgid "The files will be stored in the following directory: <code>%s</code>."
+msgstr "De bestanden worden opgeslagen in de directory: <code>%s</code>."
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:406
+#, php-format
+msgid ""
+"Each user has his own sub-directory. For instance, yours is: <code>%s</code>."
+msgstr ""
+"Elke gebruiker heeft zijn eigen sub-map. Bijvoorbeeld, uw map is: <code>%s</"
+"code>."
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:412
+#, php-format
+msgid ""
+"That directory should at least have the permissions set to 705. Currently it "
+"is %s. You should adjust that directory permissions as upload or download "
+"might not work properly."
+msgstr ""
+"Die map moet ten minste de rechten 705 hebben. Op dit moment is het %s. Pas "
+"a.u.b. de rechten van de map aan zodat u geen problemen ondervindt met het "
+"uploden of downloaden."
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:2
+msgid "Associated file"
+msgstr "Gerelateerd bestand"
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:11
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:12
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:10
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:11
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:6
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:7
+msgid "View"
+msgstr "Open"
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:15
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:16
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:14
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:15
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:10
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:11
+msgid "Download"
+msgstr "Download"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_no_user_files.template.php:1
+msgid "You currently have no files."
+msgstr "U heeft op dit moment geen bestanden."
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:3
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-plain.template.php:3
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:3
+msgid "Your files"
+msgstr "Uw bestanden"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:39
+msgid "Clic to show the files in this category"
+msgstr "Klik om de bestanden in deze categoriën in te zien"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:54
+msgid "No files in this category"
+msgstr "Er zijn geen bestanden in deze categorie"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:40
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:49
+#, php-format
+msgid "Clic to show the files published in %s"
+msgstr "Klik om de bestanden in te zien die gepubliceerd zijn in %s"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:2
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:6
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:2
+#: ../includes/core-addons/private-page/templates/private-page-customer_area_user_page_item.template.php:2
+#, php-format
+msgid "Added on %s"
+msgstr "Toegevoegd op %s"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:34
+#: ../includes/core-addons/private-page/private-page-addon.class.php:102
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:59
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:60
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:115
+msgid "Private Pages"
+msgstr "Privé pagina's"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:128
+#: ../includes/core-addons/private-page/private-page-addon.class.php:139
+msgctxt "cuar_private_page"
+msgid "Private Pages"
+msgstr "Privé pagina's"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:129
+msgctxt "cuar_private_page"
+msgid "Private Page"
+msgstr "Privé Pagina's"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:130
+msgctxt "cuar_private_page"
+msgid "Add New"
+msgstr "Nieuwe toevoegen"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:131
+msgctxt "cuar_private_page"
+msgid "Add New Private Page"
+msgstr "Voeg een nieuwe privé pagina toe"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:132
+msgctxt "cuar_private_page"
+msgid "Edit Private Page"
+msgstr "Bewerk de privé pagina"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:133
+msgctxt "cuar_private_page"
+msgid "New Private Page"
+msgstr "Nieuwe privé pagina"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:134
+msgctxt "cuar_private_page"
+msgid "View Private Page"
+msgstr "Open de privé pagina"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:135
+msgctxt "cuar_private_page"
+msgid "Search Private Pages"
+msgstr "Zoek privé pagina's"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:136
+msgctxt "cuar_private_page"
+msgid "No private pages found"
+msgstr "Er zijn geen privé pagina's gevonden"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:137
+msgctxt "cuar_private_page"
+msgid "No private pages found in Trash"
+msgstr "Er zijn geen privé pagina's gevonden in de prullenbak"
+
+#: ../includes/core-addons/private-page/private-page-addon.class.php:138
+msgctxt "cuar_private_page"
+msgid "Parent Private Page:"
+msgstr "Ouder privé pagina:"
+
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:66
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:67
+msgid "New Private Page"
+msgstr "Nieuwe privé pagina"
+
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:142
+msgid "Check this to enable the private pages add-on."
+msgstr "Selecteer dit om de privé pagina add-on te activeren."
+
+#: ../includes/core-addons/private-page/templates/private-page-customer_area_no_user_pages.template.php:1
+msgid "You currently have no pages."
+msgstr "U heeft op dit moment geen pagina's."
+
+#: ../includes/core-addons/private-page/templates/private-page-customer_area_user_pages.template.php:3
+msgid "Your pages"
+msgstr "Uw pagina's"
+
+#~ msgid "Nobody"
+#~ msgstr "Personne"
+
+#~ msgid "Select the owner of this page"
+#~ msgstr "Sélectionner le propriétaire de cette page"
+
+#~ msgid "Customer Files"
+#~ msgstr "Fichiers clients"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "Customer Files"
+#~ msgstr "Fichiers clients"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "Customer File"
+#~ msgstr "Fichier client"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "Add New Customer File"
+#~ msgstr "Ajouter un fichier client"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "Edit Customer File"
+#~ msgstr "Editer un fichier client"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "New Customer File"
+#~ msgstr "Nouveau fichier client"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "View Customer File"
+#~ msgstr "Voir le fichier client"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "Search Customer Files"
+#~ msgstr "Chercher des fichiers privés"
+
+#~ msgctxt "cuar_private_file"
+#~ msgid "Parent Customer File:"
+#~ msgstr "Fichier client parent :"
+
+#~ msgctxt "URL slug"
+#~ msgid "download-file"
+#~ msgstr "télécharger-fichier"
+
+#~ msgctxt "URL slug"
+#~ msgid "view-file"
+#~ msgstr "voir-fichier"
+
+#~ msgctxt "URL slug"
+#~ msgid "private-file-category"
+#~ msgstr "catégorie-fichier-privé"
+
+#~ msgctxt "URL slug"
+#~ msgid "private-file"
+#~ msgstr "fichier-privé"
+
+#~ msgid "Your files grouped by category"
+#~ msgstr "Vos fichiers groupés par catégorie"
+
+#~ msgid "Your files grouped by year"
+#~ msgstr "Vos fichiers groupés par année"
+
+#~ msgid "Category"
+#~ msgstr "Catégorie"
+
+#~ msgid "Houston&hellip; we have a problem!"
+#~ msgstr "Houston&hellip; on a un problème !"
+
+#~ msgid ""
+#~ "We have not found what you are looking for. You could simply close this "
+#~ "window out of rage, but you might also want to have a look at the rest of "
+#~ "the website. I am sure you won' be disappointed again. Promise."
+#~ msgstr ""
+#~ "Nous n'avons pas trouvé ce que vous cherchiez. Pour sûr, vous devez être "
+#~ "en pétard, mais vous devriez parcourir le reste du site, vous ne serez "
+#~ "pas déçu de nouveau, promis."
+
+#~ msgid "See our work"
+#~ msgstr "Voir nos projets"
+
+#~ msgid "Browse our blog"
+#~ msgstr "Parcourir le blog"
+
+#~ msgid "By Date"
+#~ msgstr "Par date"
+
+#~ msgid "By Tag"
+#~ msgstr "Par étiquette"
+
+#~ msgid "Filter our work"
+#~ msgstr "Filtrer les projets"
+
+#~ msgid "All projects"
+#~ msgstr "Tous les projets"
+
+#~ msgid "By date"
+#~ msgstr "Par date"
+
+#~ msgid "By type"
+#~ msgstr "Par type"
+
+#~ msgid "Browse our archives"
+#~ msgstr "Parcourez nos archives"
+
+#~ msgid "Daily Archives: %s"
+#~ msgstr "Archives du jour : %s"
+
+#~ msgid "Monthly Archives: %s"
+#~ msgstr "Archives du mois : %s"
+
+#~ msgid "F Y"
+#~ msgstr "F Y"
+
+#~ msgid "Yearly Archives: %s"
+#~ msgstr "Archives de l'année : %s"
+
+#~ msgid "Y"
+#~ msgstr "Y"
+
+#~ msgid "Archives"
+#~ msgstr "Archives"
+
+#~ msgid "Category Archives: %s"
+#~ msgstr "Archives de la catégorie : %s"
+
+#~ msgid "Comment navigation"
+#~ msgstr "Navigation"
+
+#~ msgid "&laquo; Older Comments"
+#~ msgstr "Commentaires plus anciens &laquo;"
+
+#~ msgid "Newer Comments &raquo;"
+#~ msgstr "Commentaires plus récents &raquo;"
+
+#~ msgid "Comments are closed."
+#~ msgstr "Les commentaires ne sont plus possibles."
+
+#~ msgid "Leave a comment"
+#~ msgstr "Laisser un commentaire"
+
+#~ msgid "Learn more about &laquo; %s &raquo;"
+#~ msgstr "En savoir plus sur &laquo; %s &raquo;"
+
+#~ msgid "Filed under: "
+#~ msgstr "Classé dans : "
+
+#~ msgid "<li>&raquo; Tagged: "
+#~ msgstr "<li>&raquo; Etiqueté : "
+
+#~ msgid "Permalink to %s"
+#~ msgstr "Lien permanent vers %s"
+
+#~ msgid "Read more"
+#~ msgstr "En savoir plus"
+
+#~ msgid "Edit this post"
+#~ msgstr "Editer ce post"
+
+#~ msgid "Get in touch"
+#~ msgstr "Contactez-nous"
+
+#~ msgid "+33 6 50 21 23 94"
+#~ msgstr "06 50 21 23 94"
+
+#~ msgid "hello@marvinlabs.com"
+#~ msgstr "bonjour@marvinlabs.com"
+
+#~ msgid "Use our code from GitHub"
+#~ msgstr "Utilisez notre code publié sur GitHub"
+
+#~ msgid "We help fellow developers on StackOverflow"
+#~ msgstr "Nous aidons nos collègues développeurs sur StackOverflow"
+
+#~ msgid "Get our free WordPress plugins & themes"
+#~ msgstr "Téléchargez nos plugins et thèmes gratuits pour WordPress"
+
+#~ msgid "Main navigation menu"
+#~ msgstr "Menu de navigation principal"
+
+#~ msgid "Work"
+#~ msgstr "Projet"
+
+#~ msgid "work"
+#~ msgstr "projet"
+
+#~ msgid "Type"
+#~ msgstr "Type"
+
+#~ msgid "Types"
+#~ msgstr "Types"
+
+#~ msgid "work-type"
+#~ msgstr "type-de-projet"
+
+#~ msgid "Skill"
+#~ msgstr "Compétence"
+
+#~ msgid "Skills"
+#~ msgstr "Compétences"
+
+#~ msgid "work-skill"
+#~ msgstr "competence"
+
+#~ msgid "Technology"
+#~ msgstr "Technologie"
+
+#~ msgid "Technologies"
+#~ msgstr "Technologies"
+
+#~ msgid "work-technology"
+#~ msgstr "technologie"
+
+#~ msgid "Single blog post"
+#~ msgstr "Post de blog unique"
+
+#~ msgid "Blog archive page"
+#~ msgstr "Archive du blog"
+
+#~ msgid "Footer, #getintouch"
+#~ msgstr "Footer, #getintouch"
+
+#~ msgid "Footer, #bottom"
+#~ msgstr "Footer, #bottom"
+
+#~ msgid "Page %s"
+#~ msgstr "Page %s"
+
+#~ msgid "About this project"
+#~ msgstr "A propos de ce projet"
+
+#~ msgid "Project launched in %s"
+#~ msgstr "Projet lancé en %s"
+
+#~ msgid "View the live website"
+#~ msgstr "Visiter le site en ligne"
+
+#~ msgid "Get the app on Google Play"
+#~ msgstr "Télécharger l'application sur GooglePlay"
+
+#~ msgid "Get the app on Apple's AppStore"
+#~ msgstr "Télécharger l'application sur l'AppStore d'Apple"
+
+#~ msgid "Get the WordPress plugin"
+#~ msgstr "Téléchargez le plugin WordPress"
+
+#~ msgid "Project type: "
+#~ msgstr "Type de projet : "
+
+#~ msgid "Skills: "
+#~ msgstr "Compétences : "
+
+#~ msgid "Technologies: "
+#~ msgstr "Technologies : "
+
+#~ msgid "You like this project and think we can do a good job with yours?"
+#~ msgstr ""
+#~ "Vous aimez ce projet et pensez que nous pourrions faire du bon travail "
+#~ "pour le votre ?"
+
+#~ msgid "Request a quote"
+#~ msgstr "Demandez un devis"
+
+#~ msgid "About this post"
+#~ msgstr "A propos de cet article"
+
+#~ msgid "Posted on: "
+#~ msgstr "Posté le :"
+
+#~ msgid "Tag Archives: %s"
+#~ msgstr "Archives d'étiquette : %s"
+
+#~ msgid "Our projects of type: %s"
+#~ msgstr "Nos projets de type : %s"
+
+#~ msgid "%1$s on %2$s"
+#~ msgstr "%1$s sur %2$s"
+
+#~ msgid "Posts navigation"
+#~ msgstr "Navigation"
+
+#~ msgid "<span class=\"meta-nav\">&laquo;</span> Older posts"
+#~ msgstr "<span class=\"meta-nav\">&laquo;</span> Articles plus anciens"
+
+#~ msgid "Newer posts <span class=\"meta-nav\">&raquo;</span>"
+#~ msgstr "Articles plus récents <span class=\"meta-nav\">&raquo;</span>"
+
+#~ msgid "show details"
+#~ msgstr "afficher les détails"
+
+#~ msgid "See all of our work"
+#~ msgstr "Voir tous nos projets"
+
+#~ msgid ""
+#~ "All content on this website is the property of &laquo;Constant le "
+#~ "jardinier&raquo; and may not be used without permission"
+#~ msgstr ""
+#~ "Tout le contenu sur ce site est la propriété exclusive de &laquo;Constant "
+#~ "le jardinier&raquo; et ne peut être utilisé sans permission"
+
+#~ msgid "&copy; Constant le jardinier"
+#~ msgstr "&copy; Constant le jardinier"
+
+#~ msgid ""
+#~ "Designed and carried out by MarvinLabs, digital creation studio in Basque "
+#~ "country, France (Biarritz, Anglet, Bayonne)"
+#~ msgstr ""
+#~ "Imaginé et réalisé par MarvinLabs, studio de création numérique au pays "
+#~ "basque (Biarritz, Anglet, Bayonne)"
+
+#~ msgid "A website planted with care by MarvinLabs"
+#~ msgstr "Un site délicatement planté par MarvinLabs"
+
+#~ msgid "and"
+#~ msgstr "et"
+
+#~ msgid "Paintings by Marilou Laure"
+#~ msgstr "Peintures par Marilou Laure"
+
+#~ msgid "illustrated with taste by Marilou Laure"
+#~ msgstr "illustré avec goût par Marilou Laure"
+
+#~ msgid "Left footer navigation"
+#~ msgstr "Navigation bas gauche"
+
+#~ msgid "Right footer navigation"
+#~ msgstr "Navigation bas droite"
+
+#~ msgid "Services"
+#~ msgstr "Services"
+
+#~ msgid "Service"
+#~ msgstr "Service"
+
+#~ msgid "Footer Widgets 1 (Left)"
+#~ msgstr "Footer Widgets 1 (Left)"
+
+#~ msgid "Footer Widgets 2 (Middle)"
+#~ msgstr "Footer Widgets 2 (Middle)"
+
+#~ msgid "Footer Widgets 3 (Right)"
+#~ msgstr "Footer Widgets 3 (Right)"
+
+#~ msgid "Nothing here"
+#~ msgstr "Rien ici"
+
+#~ msgid "You should not even be on this page!"
+#~ msgstr "Vous ne devriez même pas vous retrouver sur cette page !"

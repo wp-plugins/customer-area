@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 <?php endforeach; ?>
 	</h2>
 	
-	<div class="cuar-main">
+	<div class="cuar-main cuar-settings">
 	
 <?php do_action( 'cuar_before_settings', $this ); ?>
 <?php do_action( 'cuar_before_settings_' . $this->current_tab, $this ); ?>

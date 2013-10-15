@@ -46,7 +46,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		}
 			
 		add_action('cuar_print_select_options_for_type_usr', 
-				array( &$this, 'print_select_options_for_type_usr'), 10, 2);
+				array( &$this, 'print_select_options_for_type_usr'), 10, 2);		
 	}	
 	
 	/*------- QUERY FUNCTIONS ---------------------------------------------------------------------------------------*/
@@ -425,8 +425,11 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		$current_owner_type = $this->get_post_owner_type( $post->ID );		
 		
 		do_action( "cuar_owner_meta_box_header" );
-		
-		$owner_types = $this->get_owner_types();
+
+		$owner_types = apply_filters( 'cuar_get_selectable_owner_types', null );
+		if ( null===$owner_types ) {
+			$owner_types = $this->get_owner_types();
+		}
 		
 		if (count($owner_types)==1) {
 			reset($owner_types);
@@ -449,8 +452,15 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 <?php 						
 		}
 		
+		if ( array_key_exists( $current_owner_type, $owner_types ) ) {
+			$visible_owner_select = $current_owner_type;
+		} else {
+			reset( $owner_types );
+			$visible_owner_select = key( $owner_types ); 
+		}
+		
 		foreach ( $owner_types as $type_id => $type_label ) { 
-			$hidden = ( $current_owner_type==$type_id ? '' : ' style="display: none;"' );  
+			$hidden = ( $visible_owner_select==$type_id ? '' : ' style="display: none;"' );  
 			$enable_multiple_selection = apply_filters( 'cuar_enable_multiple_select_for_type_' . $type_id, false );
 ?>
 		<div id="cuar_owner_id_row_<?php echo $type_id; ?>" class="metabox-row owner-id-select-row" <?php echo $hidden; ?>>
@@ -501,7 +511,15 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * @param unknown $current_owner_id
 	 */
 	public function print_select_options_for_type_usr( $current_owner_type, $current_owner_ids ) {
-		$all_users = get_users( array( 'orderby' => 'display_name' ) );
+		$all_users = apply_filters( 'cuar_get_selectable_owners_for_type_usr', null );		
+		if ( null===$all_users ) {
+			$all_users = get_users( array( 'orderby' => 'display_name' ) );
+		}
+		
+		if (!is_array( $current_owner_ids ) ) {
+			$current_owner_ids = array( $current_owner_ids );
+		}		
+		
 		foreach ( $all_users as $u ) {
 			$selected =  ( $current_owner_type=='usr' && in_array( $u->ID, $current_owner_ids ) ) 
 					? ' selected="selected"' 
@@ -524,12 +542,16 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			$owner_type_field_name = $owner_type_field_id;
 		}
 
-		$owner_types = $this->get_owner_types();
+		$owner_types = apply_filters( 'cuar_get_selectable_owner_types', null );
+		if ( null===$owner_types ) {
+			$owner_types = $this->get_owner_types();
+		}
+		
 		if (count($owner_types)==1) {
 			reset($owner_types);
 ?>
 		<input type="hidden" name="<?php echo $owner_type_field_name; ?>" id="<?php echo $owner_type_field_id; ?>" value="<?php echo key($owner_types); ?>" />
-<?php 			
+<?php
 		} else {
 ?>
 			<select name="<?php echo $owner_type_field_name; ?>" id="<?php echo $owner_type_field_id; ?>" >
@@ -580,10 +602,20 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			$selected_owner_type='usr', $selected_owner_ids=array()) {
 		global $post;
 
-		$owner_types = $this->get_owner_types();
+		$owner_types = apply_filters( 'cuar_get_selectable_owner_types', null );
+		if ( null===$owner_types ) {
+			$owner_types = $this->get_owner_types();
+		}
+		
+		if ( array_key_exists( $selected_owner_type, $owner_types ) ) {
+			$visible_owner_select = $selected_owner_type;
+		} else {
+			reset( $owner_types );
+			$visible_owner_select = key( $owner_types ); 
+		}
 		
 		foreach ( $owner_types as $type_id => $type_label ) { 
-			$hidden = ( $selected_owner_type==$type_id ? '' : ' style="display: none;"' );  
+			$hidden = ( $visible_owner_select==$type_id ? '' : ' style="display: none;"' );  
 			$enable_multiple_selection = apply_filters( 'cuar_enable_multiple_select_for_type_' . $type_id, false );
 			$multiple = $enable_multiple_selection ? ' multiple="multiple" size="8"' : '';
 			

@@ -100,6 +100,14 @@ class CUAR_WordPressHelper {
 		if ( $html_format ) return sprintf( '<time datetime="%1$s" title="%1$s">%2$s</time>', $myDateTime->format( 'c' ), $myDateTime->format( $dest_format ) );
 		else return $myDateTime->format( $dest_format );
 	}
+	
+	public static function ellipsis($text, $max=100, $append='&hellip;')
+	{
+		if (strlen($text) <= $max) return $text;
+		$out = substr($text,0,$max);
+		if (strpos($text,' ') === FALSE) return $out.$append;
+		return preg_replace('/\w+$/','',$out).$append;
+	}
 }
 
 endif; // class_exists CUAR_WordPressHelper

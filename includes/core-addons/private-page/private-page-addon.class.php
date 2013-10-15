@@ -101,9 +101,10 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 		$capability_groups[] = array(
 				'group_name' => __( 'Private Pages', 'cuar' ),
 				'capabilities' => array(
-						'cuar_pp_edit' 		=> 'Create/Edit pages',
-						'cuar_pp_delete'	=> 'Delete pages',
-						'cuar_pp_read' 		=> 'Access pages'
+						'cuar_pp_list_all' 	=> __( 'List all pages', 'cuar' ),
+						'cuar_pp_edit' 		=> __( 'Create/Edit pages', 'cuar' ),
+						'cuar_pp_delete'	=> __( 'Delete pages', 'cuar' ),
+						'cuar_pp_read' 		=> __( 'Access pages', 'cuar' ),
 					)
 			);
 		

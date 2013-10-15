@@ -46,6 +46,8 @@ class CUAR_PrivateFileAdminInterface {
 			add_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ), 10, 4 );
 				
 			add_action( 'post_edit_form_tag' , array( &$this, 'post_edit_form_tag' ) );			
+
+			add_action( 'parse_query' , array( &$this, 'restrict_edit_post_listing' ) );
 		}		
 	}
 			
@@ -114,7 +116,7 @@ jQuery(document).ready( function($) {
 					'title'			=> __( 'Private File Categories', 'cuar' ),
 					'slug'			=> "edit-tags.php?taxonomy=cuar_private_file_category",
 					'function' 		=> null,
-					'capability'	=> 'cuar_pf_edit'
+					'capability'	=> 'cuar_pf_manage_categories'
 				)
 			); 
 	
@@ -126,6 +128,21 @@ jQuery(document).ready( function($) {
 	}
 	
 	/*------- CUSTOMISATION OF THE EDIT PAGE OF A PRIVATE FILES ------------------------------------------------------*/
+
+	/**
+	 * @param WP_Query $query
+	 */
+	public function restrict_edit_post_listing( $query ) {
+		global $pagenow;
+		if ( !is_admin() || $pagenow!='edit.php' ) return;
+	
+		$post_type = $query->get( 'post_type' );
+		if ( $post_type!='cuar_private_file' ) return;
+		
+		if ( !current_user_can( 'cuar_pf_list_all' ) ) {
+			$query->set( 'author', get_current_user_id() );
+		}
+	}
 
 	/**
 	 * Alter the edit form tag to say we have files to upload
@@ -160,7 +177,7 @@ jQuery(document).ready( function($) {
 		do_action( "cuar_private_file_upload_meta_box_header" );
 ?>
 		
-<?php	if ( !empty( $current_file ) && isset( $current_file['url'] ) ) : ?>
+<?php	if ( !empty( $current_file ) && isset( $current_file['file'] ) ) : ?>
 		<div id="cuar-current-file" class="metabox-row">
 			<p><?php _e('Current file:', 'cuar');?> 
 				<a href="<?php CUAR_PrivateFileThemeUtils::the_file_link( $post->ID, 'view' ); ?>" target="_blank">
@@ -349,6 +366,7 @@ jQuery(document).ready( function($) {
 			$admin_role->add_cap( 'cuar_pf_edit_categories' );
 			$admin_role->add_cap( 'cuar_pf_delete_categories' );
 			$admin_role->add_cap( 'cuar_pf_assign_categories' );
+			$admin_role->add_cap( 'cuar_pf_list_all' );
 		}
 		
 		return $defaults;

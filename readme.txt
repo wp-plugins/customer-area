@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.3.6
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,20 +28,32 @@ a [live demo of the plugin and some of its extensions](http://customer-area.marv
 * Comments on private files and pages: the customer/user can send some feedback/observations about it
 * Customize the plugin appearance using your own themes and templates 
  
-**Coming soon**
-
-* More private content type (messages/...)
-
 **Extensions are now available!**
 
 Customer Area is available for free and should cover the needs of most users. If you want to encourage us to actively 
 maintain it, or if you need a particular feature not included in the basic plugin, you can buy our premium extensions 
-from [our online shop](http://www.marvinlabs.com/shop): 
+from [our online shop](http://www.marvinlabs.com/downloads/category/customer-area): 
 
 * [Login and registration forms integration](http://www.marvinlabs.com/downloads/customer-area-login-register-forms/)
 * [Email notifications](http://www.marvinlabs.com/downloads/customer-area-notifications/)
 * [Extended Permissions](http://www.marvinlabs.com/downloads/customer-area-extended-permissions/)
 * [Collaboration](http://www.marvinlabs.com/downloads/customer-area-collaboration/)
+* [Managed Groups](http://www.marvinlabs.com/downloads/customer-area-managed-groups/)
+* [Messenger](http://www.marvinlabs.com/downloads/customer-area-messenger/)
+* [Owner Restriction](http://www.marvinlabs.com/downloads/customer-area-owner-restriction/)
+
+**Included translations**
+
+* Dutch by [Paul Willems](http://wi4.nl)
+* English by [MarvinLabs](http://www.marvinlabs.com)
+* French by [MarvinLabs](http://www.marvinlabs.com)
+* German by [Benjamin Oechsler](http://benlocal.de)
+* Spanish by [e-rgonomy](http://e-rgonomy.com)
+
+If you translate the plugin to your language, feel free to send us the translation files, we will include them and give
+you the credit for it on this page.
+
+**About us**
 
 If you like our plugins, you might want to [check our website](http://www.marvinlabs.com) for more.
 
@@ -193,22 +205,35 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
+= 2.4.0 (2013/10/15) =
+
+* Added a way to restrict listing of private content in the administration area (if user does not have the capability
+to list all the content, he will only see the content he authored) 
+* Support for 3 new add-ons: Managed Groups, Owner Restrictions and Messenger 
+* Allowing to scroll the capabilities table (see http://wordpress.org/support/topic/cant-access-capabilities)
+* Added German translation by Benjamin Oechsler (http://benlocal.de/)
+* Added a warning if permalinks are disabled
+* Fixed a bug causing warnings to show up on the Collaborations add-on page
+* Fixed a bug showing the file categories to user who did not necessarly have access to it 
+* Fixed a few untranslatable messages
+* Fixed an error on the embedded add-ons page on some servers
+
 = 2.3.6 (2013/09/17) =
 
 * Added Dutch translation by Paul Willems
 
 = 2.3.5 (2013/09/03) =
 
-* Fix bug: categories cannot be assigned to private files by users without admin/editor role
-* Fix file was not getting moved properly when changing an owner from an existing file 
+* Fixed categories cannot be assigned to private files by users without admin/editor role
+* Fixed file was not getting moved properly when changing an owner from an existing file 
 
 = 2.3.3 (2013/08/29) =
 
-* Fix a regression that removed the links to logout or to come back to the customer area main page
+* Fixed a regression that removed the links to logout or to come back to the customer area main page
 
 = 2.3.2 (2013/08/21) =
 
-* Fix a bug causing the collaboration add-on not to upload files properly
+* Fixed a bug causing the collaboration add-on not to upload files properly
 
 = 2.3.1 (2013/08/20) =
 

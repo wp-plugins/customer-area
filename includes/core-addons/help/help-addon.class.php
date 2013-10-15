@@ -126,7 +126,7 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 							. 'extended in many ways. Some add-ons are presented in this page by selecting the '
 							. '&laquo Add-ons &raquo; tab. You can also view all extensions we have by clicking the '
 							. 'link below.' , 'cuar' ),
-						"http://www.marvinlabs.com/shop/",
+						"http://www.marvinlabs.com/downloads/category/customer-area/",
 						__( 'Browse all extensions', 'cuar' ) );
 		
 		if ( $echo ) echo $content;
@@ -185,7 +185,7 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 		$content .= '<form action="http://marvinlabs.us7.list-manage.com/subscribe/post?u=1bbbff0bec2e3841b42494431&amp;id=4b52ced231" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>';
 	
 		$content .= '<p class="mc-field-group">';
-		$content .= '<label for="mce-EMAIL">Email Address </label>';
+		$content .= '<label for="mce-EMAIL">' . __('Email Address', 'cuar' ) . ' </label>';
 		$content .= '<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" /><br/>';
 		$content .= '</p>';
 		$content .= '<div id="mce-responses" class="clear">';

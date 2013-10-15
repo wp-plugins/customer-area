@@ -229,3 +229,66 @@
 .cuar_form_create_content .cuar_form_row>span select {
 	min-width: 50%;	
 }
+
+/* -= Messenger */
+
+.cuar_conv_reply.even {
+	background: #f0f0f0;
+}
+
+.cuar_conversation .entry-meta, .cuar_conv_reply .entry-meta {
+	color: #666;
+}
+
+.cuar_conversation .entry-meta em, .cuar_conv_reply .entry-meta em {
+	color: #333;
+}
+
+.cuar-conversation-list .meta {
+	width: 33%;
+}
+
+.cuar-conversation-list .updated {
+	font-weight: bold;
+}
+
+.cuar-conversation-list .cuar-section td {
+	border-top: none;
+	text-transform: uppercase;
+	background: #ededed;
+	text-align: center;
+}
+
+.cuar-conversation-list .date {
+	opacity: 0.8;
+	font-size: 90%;
+}
+
+.cuar-conversation-list .sender, .cuar-conversation-list .recipient {
+	opacity: 0.7;
+	font-size: 90%;
+}
+
+.cuar-paging {
+	border: none;
+}
+
+.cuar-paging td {
+	border-top: none;
+	width: 50%;
+}
+
+.cuar-paging td.newer {
+	text-align: right;
+}
+.cuar-paging td.older {
+	text-align: left;
+}
+
+table.entry-meta {
+	border: none;
+}
+
+table.entry-meta td {
+	border: none;
+}

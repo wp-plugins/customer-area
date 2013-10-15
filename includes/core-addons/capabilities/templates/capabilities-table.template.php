@@ -3,6 +3,7 @@ require_once( CUAR_INCLUDES_DIR . '/helpers/wordpress-helper.class.php' );
 $column_count = 1; // We got an empty column on the left
 ?>
 <p>&nbsp;</p>
+<div style="overflow-x: scroll; overflow-y: visible;">
 <table class="widefat">
 	<thead>
 		<tr>
@@ -64,4 +65,4 @@ foreach ( $all_capability_groups as $group ) :
 endforeach; // Plugins
 ?>
 </table>
-
+</div>

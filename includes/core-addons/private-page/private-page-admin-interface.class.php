@@ -40,6 +40,8 @@ class CUAR_PrivatePageAdminInterface {
 			// Admin menu
 			add_action('cuar_admin_submenu_pages', array( &$this, 'add_menu_items' ), 11 );			
 			add_action( "admin_footer", array( &$this, 'highlight_menu_item' ) );
+
+			add_action( 'parse_query' , array( &$this, 'restrict_edit_post_listing' ) );
 		}		
 	}
 
@@ -106,6 +108,23 @@ jQuery(document).ready( function($) {
 });     
 </script>
 <?php
+		}
+	}
+	
+	/*------- CUSTOMISATION OF THE EDIT PAGE OF A PRIVATE PAGES ------------------------------------------------------*/
+
+	/**
+	 * @param WP_Query $query
+	 */
+	public function restrict_edit_post_listing( $query ) {
+		global $pagenow;
+		if ( !is_admin() || $pagenow!='edit.php' ) return;
+	
+		$post_type = $query->get( 'post_type' );
+		if ( $post_type!='cuar_private_page' ) return;
+		
+		if ( !current_user_can( 'cuar_pp_list_all' ) ) {
+			$query->set( 'author', get_current_user_id() );
 		}
 	}
 
@@ -198,6 +217,7 @@ jQuery(document).ready( function($) {
 			$admin_role->add_cap( 'cuar_pp_edit' );
 			$admin_role->add_cap( 'cuar_pp_delete' );
 			$admin_role->add_cap( 'cuar_pp_read' );
+			$admin_role->add_cap( 'cuar_pp_list_all' );
 		}
 		
 		return $defaults;

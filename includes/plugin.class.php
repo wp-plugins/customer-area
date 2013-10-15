@@ -255,7 +255,12 @@ class CUAR_Plugin {
 	 * Print the eventual errors that occured during a post save/update
 	 */
 	public function print_admin_notices() {
+		if ( !get_option('permalink_structure') ) { 
+			$this->add_admin_notice( __( 'Permalinks are disabled, Customer Area will not work properly. Please enable them in the WordPress settings.', 'cuar' ) );
+		}
+		
 		$notices = $this->get_admin_notices();
+		
 		if ( $notices ) {
 			foreach ( $notices as $n ) {
 				echo sprintf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $n['type'] ), esc_html( $n['msg'] ) );

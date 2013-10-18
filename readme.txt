@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.5.0
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -217,13 +217,15 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 3.0.0 (2013/10/18) =
+= 3.0.1 (2013/10/18) =
 
 * Updated the way the action menu is displayed (no more button, just a simple list of actions)
 * Better layout for the customer area: private content is now displayed in its own content type page and the customer area
 only shows the most recent content (like a dashboard)
 * As a consequence of the above, and for naming consistency, the templates have been renamed for private files and pages 
 * Added Brazilian Portuguese translation by Ricardo Silva (http://walbatroz.com)
+* Add link to main Customer Area page (Dashboard) in the menu
+* Added more details to the list of files and pages 
 
 = 2.4.0 (2013/10/15) =
 
@@ -234,7 +236,7 @@ to list all the content, he will only see the content he authored)
 * Added German translation by Benjamin Oechsler (http://benlocal.de/)
 * Added a warning if permalinks are disabled
 * Fixed a bug causing warnings to show up on the Collaborations add-on page
-* Fixed a bug showing the file categories to user who did not necessarly have access to it 
+* Fixed a bug showing the file categories to user who did not necessarily have access to it 
 * Fixed a few untranslatable messages
 * Fixed an error on the embedded add-ons page on some servers
 

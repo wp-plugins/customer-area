@@ -160,6 +160,20 @@ h4.cuar-private-file-section.ui-accordion-header-active {
 	cursor: pointer;
 }
 
+.cuar-item {	
+}
+
+.cuar-item {	
+}
+
+.cuar-item .links {
+	width: 15%;
+}
+
+.cuar-item .meta {
+	width: 33%;
+}
+
 /* -= File after post */
 .cuar-private-file-container {
 	margin-top: 4em;
@@ -266,10 +280,6 @@ h4.cuar-private-file-section.ui-accordion-header-active {
 
 .cuar_conversation .entry-meta em, .cuar_conv_reply .entry-meta em {
 	color: #333;
-}
-
-.cuar-conversation-list .meta {
-	width: 33%;
 }
 
 .cuar-conversation-list .updated {

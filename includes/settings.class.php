@@ -601,6 +601,41 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @param array $options        	
 		 * @param string $caption        	
 		 */
+		public function print_page_select_field($args) {
+			extract ( $args );
+
+			$args = array(
+					'post_type' 		=> 'page',
+					'posts_per_page' 	=> -1,
+					'orderby' 			=> 'title',
+					'order' 			=> 'ASC'
+				);
+			$pages_query = new WP_Query( $args );
+			
+			if (isset ( $before ))
+				echo $before;
+			
+			echo sprintf ( '<select id="%s" name="%s[%s]">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
+			
+			foreach ( $options as $value => $label ) {
+				$selected = ($this->options [$option_id] == $value) ? 'selected="selected"' : '';
+				
+				echo sprintf ( '<option value="%s" %s>%s</option>', esc_attr ( $value ), $selected, $label );
+			}
+			
+			echo '</select>';
+			
+			if (isset ( $after ))
+				echo $after;
+		}
+		
+		/**
+		 * Output a select field for a setting
+		 *
+		 * @param string $option_id        	
+		 * @param array $options        	
+		 * @param string $caption        	
+		 */
 		public function print_owner_type_select_field($args) {
 			extract ( $args );
 			

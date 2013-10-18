@@ -1,5 +1,6 @@
 <?php 
-	global $current_user; 
+	global $current_user, $cuar_plugin;
+	$cp_addon = $cuar_plugin->get_addon('customer-page');
 
 	$current_action = isset( $_GET['action'] ) ? $_GET['action'] : '';
 	$title = '';
@@ -28,7 +29,7 @@
 if (!empty($actions)) :
 	$is_last = count($actions);
 	$separator = apply_filters( 'cuar_customer_page_actions_separator', '&bull;' );
-	$base_url = trailingslashit( get_permalink() );
+	$base_url = trailingslashit( $cp_addon->get_customer_page_url() );
 ?>	
 	<nav class="cuar-menu">
 		<ul class="cuar-actions-container"><?php 		
@@ -40,6 +41,8 @@ if (!empty($actions)) :
 					$top_level_action = $action;
 				} else if ( isset( $action['children'] ) && array_key_exists( $current_action, $action['children'] ) ) {
 					$li_class .= 'current-parent';
+				} else if ( isset( $action['slug'] ) && empty( $current_action ) && $action['slug']=='show-dashboard' ) {
+					$li_class .= 'current';
 				}
 				
 				$href = isset( $action["url"] ) ? $action["url"] : $base_url . '?action=' . $action["slug"];

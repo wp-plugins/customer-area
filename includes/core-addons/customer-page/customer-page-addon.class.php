@@ -39,28 +39,34 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		$this->cuar_plugin = $cuar_plugin;
 		$this->customer_page_shortcode = new CUAR_CustomerPageShortcode( $cuar_plugin );
 
-		// add_filter( 'cuar_customer_page_actions', array( &$this, 'add_home_action' ), 1 );
+		add_filter( 'cuar_customer_page_actions', array( &$this, 'add_home_action' ), 1 );
 		add_filter( 'cuar_customer_page_actions', array( &$this, 'add_logout_action' ), 1000 );
 	}	
 	
 	/*------- INITIALISATIONS ---------------------------------------------------------------------------------------*/
 	
 	public function add_home_action( $actions ) {
-		$actions[] = apply_filters( 'cuar_home_action', array(
-				"url"		=> get_permalink(),
-				"label"		=> __( 'Customer Area', 'cuar' ),
+		$actions['show-dashboard'] = apply_filters( 'cuar_home_action', array(
+				"slug"		=> 'show-dashboard',
+				"url"		=> $this->get_customer_page_url(),
+				"label"		=> __( 'Dashboard', 'cuar' ),
 				"hint"		=> __( 'Your customer area welcome page', 'cuar' )
 			) );
 		return $actions;
 	}
 	
 	public function add_logout_action( $actions ) {
-		$actions[] = apply_filters( 'cuar_logout_action', array(
-				"url"		=> wp_logout_url( get_permalink() ),
+		$actions['logout'] = apply_filters( 'cuar_logout_action', array(
+				"url"		=> wp_logout_url( $this->get_customer_page_url() ),
 				"label"		=> __( 'Logout', 'cuar' ),
 				"hint"		=> __( 'Disconnect from your customer area', 'cuar' )
 		) );
 		return $actions;
+	}
+	
+	public function get_customer_page_url() {
+		// $post_id = $this->cuar_plugin->get_option(  )
+		return get_permalink();
 	}
 	
 	

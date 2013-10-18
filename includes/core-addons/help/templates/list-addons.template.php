@@ -7,7 +7,12 @@
 <h1><?php _e( 'Enhance your customer area with our add-ons', 'cuar' ); ?></h1>
 
 <?php  	if ( is_wp_error( $feed ) ) : ?>
-<p><?php printf( __('There has been an error while getting the list of add-ons, please <a href="%s">visit our shop directly</a>.', 'cuar' ), 'http://www.marvinlabs.com/downloads/category/customer-area/' ); ?></p>
+
+<p><?php 
+	printf( __('There has been an error while getting the list of add-ons, please <a href="%s">visit our shop directly</a>.', 'cuar' ), 
+			'http://www.marvinlabs.com/downloads/category/customer-area/' ); ?></p>
+<p class="description"><?php echo $feed->get_error_message(); ?></p>
+			
 <?php 	else : ?>
 	
 <div class="cuar-add-ons">

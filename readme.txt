@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.4.0
+Stable tag: 2.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,7 @@ from [our online shop](http://www.marvinlabs.com/downloads/category/customer-are
 * French by [MarvinLabs](http://www.marvinlabs.com)
 * German by [Benjamin Oechsler](http://benlocal.de)
 * Spanish by [e-rgonomy](http://e-rgonomy.com)
+* Brazilian Portuguese by [Ricardo Silva](http://walbatroz.com)
 
 If you translate the plugin to your language, feel free to send us the translation files, we will include them and give
 you the credit for it on this page.
@@ -69,6 +70,17 @@ customisation has been done to the plugin or to the add-ons.
 	
 	
 == Upgrade Notice ==
+
+= Upgrading from 2.x to 3.0.0 =
+
+Because version 3 introduces a new layout for the customer area, template files for displaying files and pages 
+have been renamed and reorganised. If you have customized them, be warned that you will need to change your 
+customized files to reflect the changes! In that case, first do the upgrade on a development site, not on your live 
+website. And as always:
+
+1. Backup your database
+2. /!\ IMPORTANT - Update all the Customer Area extensions FIRST
+3. Update the Customer Area plugin
 
 = Upgrading from 2.x to 2.3.0 =
 
@@ -204,6 +216,14 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 3.0.0 (2013/10/18) =
+
+* Updated the way the action menu is displayed (no more button, just a simple list of actions)
+* Better layout for the customer area: private content is now displayed in its own content type page and the customer area
+only shows the most recent content (like a dashboard)
+* As a consequence of the above, and for naming consistency, the templates have been renamed for private files and pages 
+* Added Brazilian Portuguese translation by Ricardo Silva (http://walbatroz.com)
 
 = 2.4.0 (2013/10/15) =
 

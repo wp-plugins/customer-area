@@ -34,7 +34,10 @@ class CUAR_PrivateFileFrontendInterface {
 			if ( $this->plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_SHOW_AFTER_POST_CONTENT ) ) {
 				add_filter( 'the_content', array( &$this, 'after_post_content' ), 3000 );
 			}		
-			
+		
+			add_filter( 'cuar_customer_page_actions', array( &$this, 'add_actions' ), 20 );
+			add_action( 'cuar_customer_area_content_show-private-files', array( &$this, 'handle_show_private_files_actions' ) );
+
 			add_action( 'cuar_customer_area_content', array( &$this, 'print_customer_area_content' ), 10 );
 	
 			add_filter( "get_previous_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
@@ -45,6 +48,80 @@ class CUAR_PrivateFileFrontendInterface {
 	}
 
 	/*------- FUNCTIONS TO PRINT IN THE FRONTEND ---------------------------------------------------------------------*/
+	
+	public function add_actions( $actions ) {		
+		$actions[ "show-private-files" ] = apply_filters( 'cuar_show_private_files_action', array(
+				"slug"		=> "show-private-files",
+				"label"		=> __( 'Files', 'cuar' ),
+				"hint"		=> __( 'Create a new private file', 'cuar' ),
+				"children"	=> array()
+			) );
+			
+		return $actions;
+	}
+	
+	public function handle_show_private_files_actions() {
+		$display_mode = $this->plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_FILE_LIST_MODE );
+
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$current_user_id = get_current_user_id();
+		
+		if ( $display_mode=='category' ) {			
+			$file_categories = get_terms( 'cuar_private_file_category', array(
+					'parent'		=> 0,
+					'hide_empty'	=> 0
+				) );			
+		} else if ( $display_mode=='year' ) {
+			// Get user files
+			$args = array(
+					'post_type' 		=> 'cuar_private_file',
+					'posts_per_page' 	=> -1,
+					'orderby' 			=> 'date',
+					'order' 			=> 'DESC',
+					'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )
+				);			
+			
+			$files_query = new WP_Query( apply_filters( 'cuar_user_files_query_parameters', $args ) );
+		} else {
+			// Get user files
+			$args = array(
+					'post_type' 		=> 'cuar_private_file',
+					'posts_per_page' 	=> -1,
+					'orderby' 			=> 'title',
+					'order' 			=> 'ASC',
+					'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )
+				);			
+				
+			$files_query = new WP_Query( apply_filters( 'cuar_user_files_query_parameters', $args ) );
+		}		
+			
+		include( $this->plugin->get_template_file_path(
+				CUAR_INCLUDES_DIR . '/core-addons/private-file',
+				"list_private_files-by-{$display_mode}.template.php",
+				'templates',
+				"list_private_files.template.php" ));
+	}
+
+	public function print_customer_area_content() {
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$current_user_id = get_current_user_id();
+		
+		// Get user files
+		$args = array(
+				'post_type' 		=> 'cuar_private_file',
+				'posts_per_page' 	=> 5,
+				'orderby' 			=> 'modified',
+				'order' 			=> 'DESC',
+				'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )
+			);
+		
+		$files_query = new WP_Query( apply_filters( 'cuar_user_files_query_parameters', $args ) );
+		
+		include( $this->plugin->get_template_file_path(
+				CUAR_INCLUDES_DIR . '/core-addons/private-file',
+				"list_latest_private_files.template.php",
+				'templates' ));
+	}
 	
 	public function after_post_content( $content ) {
 		// If not on a matching post type, we do nothing
@@ -61,15 +138,46 @@ class CUAR_PrivateFileFrontendInterface {
   		return $content . $out;
 	}
 
-	public function print_customer_area_content() {
-		$display_mode = $this->plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_FILE_LIST_MODE );
-		
+	public function print_category_files( $category, $item_template, $current_user_id, $breadcrumb_sep, $breadcrumb = "", $parent = null ) {
+		if ( !$category ) return;
+
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$hide_empty_categories = $this->plugin->get_option( CUAR_PrivateFileAdminInterface::$OPTION_HIDE_EMPTY_CATEGORIES );
+
+		$args = array(
+				'post_type' 		=> 'cuar_private_file',
+				'posts_per_page' 	=> -1,
+				'orderby' 			=> 'title',
+				'order' 			=> 'ASC',
+				'tax_query'			=> array( array(
+						'taxonomy' 			=> 'cuar_private_file_category',
+						'include_children'	=> false,
+						'field'				=> 'slug',
+						'terms'				=> $category->slug,
+						'operator'			=> 'IN'
+					) ),
+				'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )
+			);
+
+		$files_query = new WP_Query( apply_filters( 'cuar_user_files_query_parameters', $args ) );
+
 		include( $this->plugin->get_template_file_path(
 				CUAR_INCLUDES_DIR . '/core-addons/private-file',
-				"private-file-customer_area_user_files-{$display_mode}.template.php",
+				"list_private_files-in-category.template.php",
 				'templates' ));
+		
+		// Output children
+		$children = get_terms( 'cuar_private_file_category', array(
+				'parent'		=> $category->term_id,
+				'hide_empty'	=> 0
+			) );
+		
+		if ( empty( $children ) ) return;		
+		foreach ( $children as $child ) {
+			$this->print_category_files( $child, $item_template, $current_user_id, $breadcrumb_sep, $heading, $category );
+		}
 	}
-
+	
 	/**
 	 * Disable the navigation on the single page templates for private files
 	 */

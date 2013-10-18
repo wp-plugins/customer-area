@@ -39,7 +39,7 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		$this->cuar_plugin = $cuar_plugin;
 		$this->customer_page_shortcode = new CUAR_CustomerPageShortcode( $cuar_plugin );
 
-		add_filter( 'cuar_customer_page_actions', array( &$this, 'add_home_action' ), 1 );
+		// add_filter( 'cuar_customer_page_actions', array( &$this, 'add_home_action' ), 1 );
 		add_filter( 'cuar_customer_page_actions', array( &$this, 'add_logout_action' ), 1000 );
 	}	
 	

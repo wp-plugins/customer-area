@@ -31,7 +31,10 @@ class CUAR_PrivatePageFrontendInterface {
 
 		if ( $plugin->get_option( CUAR_PrivatePageAdminInterface::$OPTION_ENABLE_ADDON ) ) {			
 			add_action( 'cuar_customer_area_content', array( &$this, 'print_customer_area_content' ), 10 );
-	
+
+			add_filter( 'cuar_customer_page_actions', array( &$this, 'add_actions' ), 10 );
+			add_action( 'cuar_customer_area_content_show-private-pages', array( &$this, 'handle_show_private_pages_actions' ) );
+			
 			add_filter( "get_previous_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
 			add_filter( "get_next_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
 		}
@@ -39,10 +42,54 @@ class CUAR_PrivatePageFrontendInterface {
 
 	/*------- FUNCTIONS TO PRINT IN THE FRONTEND ---------------------------------------------------------------------*/
 	
-	public function print_customer_area_content() {		
+	public function add_actions( $actions ) {		
+		$actions[ "show-private-pages" ] = apply_filters( 'cuar_show_private_pages_action', array(
+				"slug"		=> "show-private-pages",
+				"label"		=> __( 'Pages', 'cuar' ),
+				"hint"		=> __( 'Create a new private page', 'cuar' ),
+				"children"	=> array()
+			) );
+			
+		return $actions;
+	}
+	
+	public function handle_show_private_pages_actions() {		
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$current_user_id = get_current_user_id();
+		
+		// Get user pages
+		$args = array(
+				'post_type' 		=> 'cuar_private_page',
+				'posts_per_page' 	=> -1,
+				'orderby' 			=> 'date',
+				'order' 			=> 'DESC',
+				'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )
+			);		
+		$pages_query = new WP_Query( apply_filters( 'cuar_user_pages_query_parameters', $args ) );
+				
 		include( $this->plugin->get_template_file_path(
 				CUAR_INCLUDES_DIR . '/core-addons/private-page',
-				"private-page-customer_area_user_pages.template.php",
+				"list_private_pages.template.php",
+				'templates' ));
+	}
+	
+	public function print_customer_area_content() {			
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$current_user_id = get_current_user_id();
+		
+		// Get user pages
+		$args = array(
+				'post_type' 		=> 'cuar_private_page',
+				'posts_per_page' 	=> 5,
+				'orderby' 			=> 'modified',
+				'order' 			=> 'DESC',
+				'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )
+			);		
+		$pages_query = new WP_Query( apply_filters( 'cuar_user_pages_query_parameters', $args ) );
+				
+		include( $this->plugin->get_template_file_path(
+				CUAR_INCLUDES_DIR . '/core-addons/private-page',
+				"list_latest_private_pages.template.php",
 				'templates' ));
 	}
 

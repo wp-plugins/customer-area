@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-10-17 16:13+0100\n"
-"PO-Revision-Date: 2013-10-17 16:13+0100\n"
-"Last-Translator: \n"
-"Language-Team: MarvinLabs\n"
-"Language: FR\n"
+"POT-Creation-Date: 2013-10-15 17:21+0100\n"
+"PO-Revision-Date: 2013-10-15 17:21+0100\n"
+"Last-Translator: Rics <rics@walbatroz.com>\n"
+"Language-Team: e-rgonomy.com <info@e-rgonomy.com>\n"
+"Language: ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,104 +23,101 @@ msgid ""
 "The \"%1$s\" add-on requires Customer Area %3$s. You are currently using "
 "version %2$s. Please update the Customer Area plugin."
 msgstr ""
-"L'extension \"%1$s\" nécessite Espace Client %3$s. Vous utilisez "
-"actuellement la version %2$s. Veuillez mettre à jour le plugin Espace Client."
+"O add-on \"%1$s\" requer Área do Cliente %3$s. Sua versão atual é %2$s. Por "
+"favor, atualize a Área do Cliente."
 
 #: ../includes/plugin.class.php:259
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please enable "
 "them in the WordPress settings."
 msgstr ""
-"Les permaliens sont désactivés, Customer Area ne peut pas fonctionner "
-"correctement. Veuillez les activer dans les réglages WordPress."
 
 #: ../includes/settings.class.php:81 ../includes/settings.class.php:82
 #: ../includes/settings.class.php:96
 msgid "Settings"
-msgstr "Réglages"
+msgstr "Configurações"
 
 #: ../includes/settings.class.php:177
 msgid "General"
-msgstr "Réglages généraux"
+msgstr "Geral"
 
 #: ../includes/settings.class.php:189
 msgid "General Settings"
-msgstr "Réglages généraux"
+msgstr "Configurações Gerais"
 
 #: ../includes/settings.class.php:194
 msgid "Include CSS"
-msgstr "Inclure le CSS"
+msgstr "Incluir CSS"
 
 #: ../includes/settings.class.php:200
 msgid "Include the default stylesheet."
-msgstr "Inclure la feuille de style par défaut"
+msgstr "Incluir folha de estilo padrão"
 
 #: ../includes/settings.class.php:200
 msgid "If not, you should style the plugin yourself in your theme."
-msgstr ""
-"Si non, vous devrez mettre en forme le plugin par vous-même dans votre thème."
+msgstr "Se não, você pode configurar o plugin diretamente no seu tema."
 
 #: ../includes/settings.class.php:203
 msgid "Admin theme"
-msgstr "Thème d'administration"
+msgstr "Tema do Administrador"
 
 #: ../includes/settings.class.php:211
 msgid "Frontend theme"
-msgstr "Thème du site"
+msgstr "Tema do Frontend"
 
 #: ../includes/settings.class.php:283
 msgid " is not a valid role"
-msgstr "n'est pas un rôle valide"
+msgstr "não é uma função válida"
 
 #: ../includes/settings.class.php:350
 msgid " cannot be empty"
-msgstr " ne peut pas être vide"
+msgstr "não pode estar vazio"
 
 #: ../includes/settings.class.php:370
 msgid " is not a valid email"
-msgstr "n'est pas une addresse mel valide"
+msgstr "não é um email válido"
 
 #: ../includes/settings.class.php:390
 msgid " is not a valid value"
-msgstr "n'est pas une valeur valide"
+msgstr "não é um valor válido"
 
 #: ../includes/settings.class.php:416
 msgid "must be an integer"
-msgstr "doit être un entier"
+msgstr "precisa ser um inteiro"
 
 #: ../includes/settings.class.php:424
 #, php-format
 msgid "must be greater than %s"
-msgstr "doit être plus grand que %s"
+msgstr "precisa ser maior que %s"
 
 #: ../includes/settings.class.php:432
 #, php-format
 msgid "must be lower than %s"
-msgstr "doit être plus petit que %s"
+msgstr "precisa ser menor que %s"
 
 #: ../includes/settings.class.php:458
 msgid " is not a valid owner type"
-msgstr "n'est pas un type de propriétaire valide"
+msgstr "não é um tipo de proprietário válido"
 
 #: ../includes/settings.class.php:482
 msgid " is not a valid owner"
-msgstr "n'est pas un propriétaire valide"
+msgstr "não é um proprietário válido"
 
 #: ../includes/settings.class.php:506
 msgid "Your license is active!"
-msgstr "Votre license est active !"
+msgstr "Sua licença está ativa!"
 
 #: ../includes/settings.class.php:508
 msgid "Your license key is invalid!"
-msgstr "Votre licence est invalide !"
+msgstr "Sua chave de licença é inválida!"
 
 #: ../includes/settings.class.php:510
 msgid "Your license key is expired!"
-msgstr "Votre licence est expirée !"
+msgstr "Sua chave de licença expirou!"
 
 #: ../includes/settings.class.php:516
 msgid "Last check"
-msgstr "Dernière vérification"
+msgstr "Última verificação"
 
 #: ../includes/settings.class.php:516
 msgid "d/m/Y"
@@ -131,118 +128,118 @@ msgid ""
 "The license key you have received for this add-on. This is required in order "
 "to get automatic plugin updates."
 msgstr ""
-"La clé de licence que vous avez reçu avec cette extension. Cette clé est "
-"nécessaire pour obtenir des mises à jour automatiquement."
+"A chave de licença que você recebeu por esse add-on. Isso é necessário para "
+"permitir atualizações automáticas do plugin."
 
 #: ../includes/settings.class.php:658
 msgid "Any Role"
-msgstr "N'importe quel rôle"
+msgstr "Qualquer Função"
 
 #: ../includes/settings.class.php:697
 msgid "Main plugin folder"
-msgstr "Répertoire principale du plugin"
+msgstr "Pasta principal do plugin"
 
 #: ../includes/settings.class.php:702
 msgid "Current theme folder"
-msgstr "Répertoire du thème actuel"
+msgstr "Pasta do tema atual"
 
 #: ../includes/settings.class.php:707
 msgid "WordPress content folder"
-msgstr "Répertoire de contenu WordPress"
+msgstr "Pasta content do WordPress"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:31
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:52
 msgid "Administration Area"
-msgstr "Zone d'administration"
+msgstr "Área Administrativa"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:54
 msgid "View the menu"
-msgstr "Voir le menu"
+msgstr "Ver o menu"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:67
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:68
 #: ../includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:31
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:51
 msgid "Customer Area"
-msgstr "Espace Client"
+msgstr "Área do Cliente"
 
 #: ../includes/core-addons/capabilities/capabilities-addon.class.php:33
 msgid "Capabilities Manager"
-msgstr "Gestion des Permissions"
+msgstr "Gerenciamento de Permissões"
 
 #: ../includes/core-addons/capabilities/capabilities-admin-interface.class.php:41
 msgid "Capabilities"
-msgstr "Permissions"
+msgstr "Permissões"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:35
 msgid "Customer Page"
-msgstr "Page Client"
+msgstr "Página do Cliente"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:52
 msgid "Your customer area welcome page"
-msgstr "Votre page espace client"
+msgstr "Sua página de boas vindas ao cliente"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:60
 msgid "Logout"
-msgstr "Déconnexion"
+msgstr "Sair"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:61
 msgid "Disconnect from your customer area"
-msgstr "Se déconnecter de l'espace client"
-
-#: ../includes/core-addons/customer-page/templates/customer-page-header.template.php:18
-#, php-format
-msgid "Hello %s,"
-msgstr "Bonjour %s,"
+msgstr "Desconectar da sua área do cliente"
 
 #: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:1
 msgid "Hello"
-msgstr "Bonjour"
+msgstr "Olá"
 
 #: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:2
 msgid ""
 "You must login to access your own customer area. If you do not have an "
 "account yet, please register or contact us so that we can create it."
 msgstr ""
-"Vous devez être connecté pour avoir accès à votre zone client. Si vous "
-"n'avez pas encore de compte utilisateur, merci de vous enregistrer ou de "
-"nous contacter pour que nous puissions le créer."
+"Você precisa fazer login para acessar sua área de cliente. Se você ainda não "
+"tem uma conta, por favor, registre-se ou entre em contato conosco para "
+"providenciarmos uma nova conta para você."
 
 #: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:7
 msgid "Login"
-msgstr "Connexion"
+msgstr "Entrar"
 
 #: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:9
 msgid "Register"
-msgstr "S'enregistrer"
+msgstr "Registrar"
+
+#: ../includes/core-addons/customer-page/templates/customer-page.template.php:17
+#, php-format
+msgid "Hello %s,"
+msgstr "Olá %s,"
 
 #: ../includes/core-addons/help/help-addon.class.php:31
 msgid "Help"
-msgstr "Aide"
+msgstr "Ajuda"
 
 #: ../includes/core-addons/help/help-addon.class.php:55
 #: ../includes/core-addons/help/help-addon.class.php:63
 msgid "Add-ons"
-msgstr "Extensions"
+msgstr "Add-ons"
 
 #: ../includes/core-addons/help/help-addon.class.php:64
 msgid "Troubleshooting"
-msgstr "Dépannage"
+msgstr "Solução de problemas"
 
 #: ../includes/core-addons/help/help-addon.class.php:83
 #: ../includes/core-addons/help/help-addon.class.php:95
 msgid "Enhance your customer area"
-msgstr "Améliorez votre espace client"
+msgstr "Melhore sua área do cliente"
 
 #: ../includes/core-addons/help/help-addon.class.php:85
 #: ../includes/core-addons/help/help-addon.class.php:111
 msgid "Subscribe to our newsletter"
-msgstr "S'inscrire à notre liste de diffusion"
+msgstr "Inscreva-se na nossa newsletter"
 
 #: ../includes/core-addons/help/help-addon.class.php:87
 #: ../includes/core-addons/help/help-addon.class.php:103
 msgid "Get more from MarvinLabs"
-msgstr "Plus de MarvinLabs"
+msgstr "Consiga mais da MarvinLabs"
 
 #: ../includes/core-addons/help/help-addon.class.php:125
 msgid ""
@@ -251,15 +248,14 @@ msgid ""
 "page by selecting the &laquo Add-ons &raquo; tab. You can also view all "
 "extensions we have by clicking the link below."
 msgstr ""
-"&laquo Espace Client &raquo; est une extension très modulable. Nous l'avons "
-"construite de manière à pouvoir l'étendre dans de nombreuses directions. "
-"Quelques extensions sont présentées dans cette page en sélectionnant "
-"l'onglet &laquo Extensions &raquo;. Vous pouvez aussi voir toutes les "
-"extensions que nous tenons à votre disposition en suivant le lien ci-dessous."
+"&laquo Área do Cliente &raquo; é um plugin modular. Nós desenvolvemos ele de "
+"forma que possa ser melhorado de várias maneiras. Alguns add-ons estão "
+"presentes em nossa página. Você também pode ver todas as extensões que nós "
+"temos clicando no link abaixo."
 
 #: ../includes/core-addons/help/help-addon.class.php:130
 msgid "Browse all extensions"
-msgstr "Voir toutes les extensions"
+msgstr "Ver todas as extensões"
 
 #: ../includes/core-addons/help/help-addon.class.php:148
 #, php-format
@@ -267,26 +263,24 @@ msgid ""
 "If you like our plugins, you might want to <a href=\"%s\">check our website</"
 "a> for more."
 msgstr ""
-"Si vous aimez nos plugins, vous devriez <a href=\"%s\">jeter un oeil sur "
-"notre site</a> pour voir les autres."
+"Se você gostou do nosso plugin, talvez você queira visitar <a href=\"%s"
+"\">nosso website</a> para mais."
 
 #: ../includes/core-addons/help/help-addon.class.php:151
 msgid "If you want to get updates about our plugins, you can:"
-msgstr ""
-"Si vous souhaitez rester au courant des actualités de nos plugins, vous "
-"pouvez :"
+msgstr "Se você quiser receber atualizações sobre nossos plugins, você pode:"
 
 #: ../includes/core-addons/help/help-addon.class.php:153
 msgid "Follow us on Twitter"
-msgstr "Nous suivre sur Twitter"
+msgstr "Seguir-nos no Twitter"
 
 #: ../includes/core-addons/help/help-addon.class.php:156
 msgid "Follow us on Google+"
-msgstr "Nous mettre +1 sur Google+"
+msgstr "Seguir-nos no Google+"
 
 #: ../includes/core-addons/help/help-addon.class.php:159
 msgid "Follow us on Facebook"
-msgstr "Nous suivre sur Facebook"
+msgstr "Seguir-nos no Facebook"
 
 #: ../includes/core-addons/help/help-addon.class.php:179
 msgid ""
@@ -294,18 +288,17 @@ msgid ""
 "updates, news, etc.). Simply subscribe to our newsletter, we won't spam, we "
 "send at most one email per month!"
 msgstr ""
-"Vous pouvez être tenu au courant quand nous avons quelque chose qui vaut le "
-"coup (mise à jour de plugins, nouvelles, etc.). Inscrivez-vous simplement à "
-"notre liste de diffusion, aucun spam - promis, nous envoyons au maximum un "
-"courriel par mois !"
+"Você também pode ser notificado quando tivermos algo interessante a dizer "
+"(atualizações, novidades, etc). Basta se inscrever em nossa newsletter, nós "
+"não vamos enviar spam. Enviamos no máximo um email por mês!"
 
 #: ../includes/core-addons/help/help-addon.class.php:188
 msgid "Email Address"
-msgstr "Adresse email"
+msgstr ""
 
 #: ../includes/core-addons/help/templates/list-addons.template.php:7
 msgid "Enhance your customer area with our add-ons"
-msgstr "Améliorez votre espace client avec nos extensions"
+msgstr "Melhore sua área do cliente com nossos add-ons"
 
 #: ../includes/core-addons/help/templates/list-addons.template.php:12
 #, php-format
@@ -313,64 +306,62 @@ msgid ""
 "There has been an error while getting the list of add-ons, please <a href="
 "\"%s\">visit our shop directly</a>."
 msgstr ""
-"Il y a eu une erreur lors de la récupération de la liste des extensions. "
-"Vous pouvez les <a href=\"%s\">voir directement sur notre boutique</a>."
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:1
 msgid "Troubleshooting information"
-msgstr "Information de dépannage"
+msgstr "Informação para Resolução de Problemas"
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:4
 msgid "Installed add-ons"
-msgstr "Extension installées"
+msgstr "Add-ons instalados"
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:9
 msgid "Name"
-msgstr "Nom"
+msgstr "Nome"
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:10
 msgid "Required customer area version"
-msgstr "Version espace client requise"
+msgstr "Versão da área do cliente requerida"
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:28
 msgid "Plugin options"
-msgstr "Options de l'extension"
+msgstr "Opções do plugin"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:32
 msgid "Post Owner"
-msgstr "Propriétaire"
+msgstr "Dono do Post"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:180
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Usuário"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:242
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:246
 msgid "Unknown"
-msgstr "inconnu"
+msgstr "Desconhecido"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:357
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:408
 msgid "Owner"
-msgstr "Propriétaire"
+msgstr "Dono"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:443
 msgid "Select the type of owner"
-msgstr "Sélectionner le type de propriétaire"
+msgstr "Selecione o tipo do dono"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:468
 #, php-format
 msgid "%s owning this content"
-msgstr "%s propriétaire de ce contenu"
+msgstr "%s é dono desse conteúdo"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:721
 msgid "You are not authorized to view this page"
-msgstr "Vous n'êtes pas autorisé à voir cette page"
+msgstr "Você não está autorizado a visualizar essa página"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:754
 #, php-format
 msgid "User - %s"
-msgstr "Utilisateur - %s"
+msgstr "Usuário - %s"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:35
 #: ../includes/core-addons/private-file/private-file-addon.class.php:495
@@ -378,294 +369,289 @@ msgstr "Utilisateur - %s"
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:102
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:240
 msgid "Private Files"
-msgstr "Fichiers privés"
+msgstr "Arquivos Privados"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:251
 #, php-format
 msgid "This file type is not allowed. You can only upload: %s"
-msgstr ""
-"Ce type de fichier n'est pas autorisé. Vous pouvez seulement téléverser : %s"
+msgstr "Esse tipo de arquivo não é permitido. Você só pode fazer upload de: %s"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:285
 msgid "An unknown error happened while uploading your file."
-msgstr ""
-"Une erreur inconnue est survenue lors du téléversement de votre fichier."
+msgstr "Um erro desconhecido aconteceu ao enviar seu arquivo."
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:289
 #, php-format
 msgid "An error happened while uploading your file: %s"
-msgstr "Une erreur est survenue lors du téléversement de votre fichier : %s"
+msgstr "Um erro aconteceu ao enviar seu arquivo: %s"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:324
 msgid "You are not authorized to view this file"
-msgstr "Vous n'êtes pas autorisé à voir ce fichier"
+msgstr "Você não está autorizado a visualizar esse arquivo"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:357
 msgid "You are not authorized to access this file"
-msgstr "Vous n'êtes pas autorisé à accéder à ce fichier"
+msgstr "Você não está autorizado a acessar esse arquivo"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:497
 msgid "List all files"
-msgstr "Lister tous les fichiers"
+msgstr "Lista de arquivos"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:498
 msgid "Create/Edit files"
-msgstr "Créer/éditer des fichiers"
+msgstr "Criar/Editar arquivos"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:499
 msgid "Delete files"
-msgstr "Supprimer des fichiers"
+msgstr "Arquivos apagados"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:500
 msgid "Access files"
-msgstr "Voir les fichiers"
+msgstr "Acessar arquivos"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:501
 msgid "Manage categories"
-msgstr "Gérer les catégories"
+msgstr "Gerenciar categorias"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:502
 msgid "Edit categories"
-msgstr "Editer les catégories"
+msgstr "Editar categorias"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:503
 msgid "Delete categories"
-msgstr "Supprimer des catégories"
+msgstr "Apagar categorias"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:504
 msgid "Assign categories"
-msgstr "Assigner des catégories"
+msgstr "Atribuir categoria"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:526
 #: ../includes/core-addons/private-file/private-file-addon.class.php:537
 msgctxt "cuar_private_file"
 msgid "Private Files"
-msgstr "Fichiers privés"
+msgstr "Arquivos Privados"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:527
 msgctxt "cuar_private_file"
 msgid "Private File"
-msgstr "Fichier privé"
+msgstr "Arquivo Privado"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:528
 msgctxt "cuar_private_file"
 msgid "Add New"
-msgstr "Ajouter un nouveau"
+msgstr "Adicionar Novo"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:529
 msgctxt "cuar_private_file"
 msgid "Add New Private File"
-msgstr "Nouveau fichier privé"
+msgstr "Adicionar Novo Arquivo Privado"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:530
 msgctxt "cuar_private_file"
 msgid "Edit Private File"
-msgstr "Modifier le fichier privé"
+msgstr "Editar Arquivo Privado"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:531
 msgctxt "cuar_private_file"
 msgid "New Private File"
-msgstr "Nouveau fichier privé"
+msgstr "Novo Arquivo Privado"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:532
 msgctxt "cuar_private_file"
 msgid "View Private File"
-msgstr "Voir le fichier privé"
+msgstr "Ver Arquivo Privado"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:533
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
-msgstr "Chercher dans les fichiers privés"
+msgstr "Procurar Arquivos Privados"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:534
 msgctxt "cuar_private_file"
 msgid "No private files found"
-msgstr "Aucun fichier privé trouvé"
+msgstr "Nenhum arquivo privado encontrado"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:535
 msgctxt "cuar_private_file"
 msgid "No private files found in Trash"
-msgstr "Aucun fichier privé trouvé dans la corbeille"
+msgstr "Nenhum arquivo privado encontrado na Lixeira"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:536
 msgctxt "cuar_private_file"
 msgid "Parent Private File:"
-msgstr "Fichier privé parent :"
+msgstr "Arquivo Privado Pai:"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:569
 #: ../includes/core-addons/private-file/private-file-addon.class.php:585
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
-msgstr "Catégories de fichier"
+msgstr "Categorias de Arquivos"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:570
 msgctxt "cuar_private_file_category"
 msgid "File Category"
-msgstr "Catégorie de fichier"
+msgstr "Categoria de Arquivo"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:571
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
-msgstr "Chercher des catégories de fichier"
+msgstr "Procurar Categorias de Arquivos"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:572
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
-msgstr "Catégories de fichier populaires"
+msgstr "Categorias de Arquivo Populares"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:573
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
-msgstr "Toutes les catégories de fichier"
+msgstr "Todas Categorias de Arquivos"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:574
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
-msgstr "Catégorie de fichier parente"
+msgstr "Categoria de Arquivo Pai"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:575
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
-msgstr "Catégorie de fichier parente :"
+msgstr "Categoria de Arquivo Pai:"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:576
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
-msgstr "Modifier la catégorie de fichier"
+msgstr "Editar Categoria de Arquivo"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:577
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
-msgstr "Mettre à jour la catégorie de fichier"
+msgstr "Atualizar Arquivo de Categoria"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:578
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
-msgstr "Ajouter une catégorie de fichier"
+msgstr "Adicionar Nova Categoria de Arquivo"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:579
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
-msgstr "Nouvelle catégorie de fichier"
+msgstr "Nova Categoria de Arquivo"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:580
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
-msgstr "Séparez les catégories de fichier avec des virgules"
+msgstr "Separe as categorias de arquivo com vírgulas"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:582
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
-msgstr "Ajouter ou enlever des catégories de fichier"
+msgstr "Adicionar ou remover categorias de arquivo"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:583
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
-msgstr "Choisir parmi les catégories de fichier les plus courantes"
+msgstr "Escolha entre as categorias de arquivo mais usadas"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:108
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:109
 msgid "New Private File"
-msgstr "Nouveau fichier privé"
+msgstr "Novo Arquivo Privado"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:115
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:116
 msgid "Private File Categories"
-msgstr "Catégories de fichier"
+msgstr "Categorias de Arquivo Privadas"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:162
 msgid "File"
-msgstr "Fichier"
+msgstr "Arquivo"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:182
 msgid "Current file:"
-msgstr "Fichier actuel :"
+msgstr "Arquivo atual:"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:190
 msgid "Upload a file"
-msgstr "Téléverser un fichier"
+msgstr "Fazer Upload de um arquivo"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:252
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:146
 msgid "General settings"
-msgstr "Réglages généraux"
+msgstr "Configurações gerais"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:259
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:153
 msgid "Enable add-on"
-msgstr "Activer l'extension"
+msgstr "Ativar add-on"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:267
 msgid "Check this to enable the private files add-on."
-msgstr "Cochez cette case pour activer l'extension des fichiers privés."
+msgstr "Marque essa opção para ativar o add-on de arquivos privados."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:272
 msgid "Frontend Integration"
-msgstr "Intégration au site"
+msgstr "Integração com Frontend"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:279
 msgid "Show after post"
-msgstr "Après l'article"
+msgstr "Mostrar depois do post"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:287
 msgid ""
 "Show the view and download links below the post content for a customer file."
 msgstr ""
-"Afficher les liens pour voir ou télécharger un fichier sous le contenu d'un "
-"article représentant un fichier client."
+"Mostrar a visualização e os links de download abaixo do conteúdo do post "
+"para um arquivo de cliente."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:292
 msgid "File list"
-msgstr "Liste de fichiers"
+msgstr "Lista de arquivos"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:299
 msgid "Don't group files"
-msgstr "Ne pas grouper les fichiers"
+msgstr "Não agrupe arquivos"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:300
 msgid "Group by year"
-msgstr "Grouper par année"
+msgstr "Agrupar por ano"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:301
 msgid "Group by category"
-msgstr "Grouper par catégorie"
+msgstr "Agrupar por categoria"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:303
 msgid ""
 "You can choose how files will be organized by default in the customer area."
 msgstr ""
-"Vous pouvez choisir la manière par défaut dont seront groupés le fichiers "
-"dans la zone client."
+"Você pode escolher como os arquivos serão organizados por padrão na área do "
+"cliente."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:309
 msgid "Empty categories"
-msgstr "Catégories vides"
+msgstr "Categorias vaizas"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:317
 msgid ""
 "When listing files by category, empty categories will be hidden if you check "
 "this."
 msgstr ""
-"Si les fichiers sont groupés par catégorie, les catégories vides seront "
-"ignorées si vous cochez cette case."
+"Quando listar arquivos por categoria, as categorias vazias não serão "
+"mostradas se você marcar essa opção."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:323
 msgid "File Storage"
-msgstr "Stockage des fichiers"
+msgstr "Armazenamento de Arquivo"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:395
 #, php-format
 msgid "The files will be stored in the following directory: <code>%s</code>."
-msgstr ""
-"Les fichiers seront stockés dans le répertoire suivant : <code>%s</code>."
+msgstr "Os arquivos serão armazenados no seguinte diretório: <code>%s</code>."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:400
 #, php-format
 msgid ""
 "Each user has his own sub-directory. For instance, yours is: <code>%s</code>."
-msgstr ""
-"Chaque utilisateur a son propre sous-répertoire. Par exemple, le votre "
-"est  : <code>%s</code>."
+msgstr "Cada usuário tem seu próprio sub-diretório. O seu é: <code>%s</code>."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:406
 #, php-format
@@ -674,64 +660,63 @@ msgid ""
 "is %s. You should adjust that directory permissions as upload or download "
 "might not work properly."
 msgstr ""
-"Ce répertoire doit avoir au moins les permissions fixées à 705. Actuellement "
-"c'est %s. Vous devez ajuster les permissions du répertoire sinon les "
-"téléchargements ou les créations de fichiers pourraient ne pas marcher "
-"correctement."
-
-#: ../includes/core-addons/private-file/private-file-frontend-interface.class.php:55
-msgid "Files"
-msgstr "Fichiers"
-
-#: ../includes/core-addons/private-file/private-file-frontend-interface.class.php:56
-msgid "Create a new private file"
-msgstr "Nouveau fichier privé"
-
-#: ../includes/core-addons/private-file/templates/list_latest_private_files.template.php:3
-msgid "Latest Files"
-msgstr "Fichiers Récents"
-
-#: ../includes/core-addons/private-file/templates/list_private_files-by-year.template.php:19
-#: ../includes/core-addons/private-file/templates/list_private_files-by-year.template.php:28
-#, php-format
-msgid "Clic to show the files published in %s"
-msgstr "Cliquez pour afficher les fichiers publiés en %s"
-
-#: ../includes/core-addons/private-file/templates/list_private_files-empty.template.php:1
-msgid "You currently have no files."
-msgstr "Vous n'avez aucun fichier actuellement."
-
-#: ../includes/core-addons/private-file/templates/list_private_files-in-category.template.php:9
-msgid "Clic to show the files in this category"
-msgstr "Cliquer pour afficher les fichiers dans cette catégorie"
-
-#: ../includes/core-addons/private-file/templates/list_private_files-in-category.template.php:24
-msgid "No files in this category"
-msgstr "Aucun fichier dans cette catégorie"
-
-#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:3
-#: ../includes/core-addons/private-page/templates/list_private_pages-item.template.php:3
-#, php-format
-msgid "Added on %s"
-msgstr "Ajouté le %s"
-
-#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:7
-#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:8
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:11
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:12
-msgid "View"
-msgstr "Voir"
-
-#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:11
-#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:12
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:15
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:16
-msgid "Download"
-msgstr "Télécharger"
+"Esse diretório precisa ter ao menos permissões 705. Atualmente elas são %s. "
+"Você deve ajustar estas permissões, senão o upload ou o download podem não "
+"funcionar corretamente."
 
 #: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:2
 msgid "Associated file"
-msgstr "Fichier associé"
+msgstr "Arquivo associado"
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:11
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:12
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:10
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:11
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:6
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:7
+msgid "View"
+msgstr "Ver"
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:15
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:16
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:14
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:15
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:10
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:11
+msgid "Download"
+msgstr "Download"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_no_user_files.template.php:1
+msgid "You currently have no files."
+msgstr "Você atualmente não tem arquivos."
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:3
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-plain.template.php:3
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:3
+msgid "Your files"
+msgstr "Seus arquivos"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:39
+msgid "Clic to show the files in this category"
+msgstr "Cliqueu para mostrar os arquivos nesta categoria"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:54
+msgid "No files in this category"
+msgstr "Nenhum arquivo nessa categoria"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:40
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:49
+#, php-format
+msgid "Clic to show the files published in %s"
+msgstr "Clique para mostrar os arquivos publicados em %s"
+
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:2
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:6
+#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:2
+#: ../includes/core-addons/private-page/templates/private-page-customer_area_user_page_item.template.php:2
+#, php-format
+msgid "Added on %s"
+msgstr "Adicionado em %s"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:34
 #: ../includes/core-addons/private-page/private-page-addon.class.php:102
@@ -739,111 +724,96 @@ msgstr "Fichier associé"
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:62
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:134
 msgid "Private Pages"
-msgstr "Pages privées"
+msgstr "Páginas Privadas"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:104
 msgid "List all pages"
-msgstr "Voir toutes les pages"
+msgstr "Listar todas as páginas"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:105
 msgid "Create/Edit pages"
-msgstr "Créer/éditer des pages"
+msgstr "Criar/Editar páginas"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:106
 msgid "Delete pages"
-msgstr "Supprimer des pages"
+msgstr "Apagar páginas"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:107
 msgid "Access pages"
-msgstr "Voir les pages"
+msgstr "Acessar páginas"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:129
 #: ../includes/core-addons/private-page/private-page-addon.class.php:140
 msgctxt "cuar_private_page"
 msgid "Private Pages"
-msgstr "Pages privées"
+msgstr "Páginas Privadas"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:130
 msgctxt "cuar_private_page"
 msgid "Private Page"
-msgstr "Page privée"
+msgstr "Página Privada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:131
 msgctxt "cuar_private_page"
 msgid "Add New"
-msgstr "Ajouter"
+msgstr "Adicionar Nova"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:132
 msgctxt "cuar_private_page"
 msgid "Add New Private Page"
-msgstr "Nouvelle page privée"
+msgstr "Adicionar Nova Página Privada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:133
 msgctxt "cuar_private_page"
 msgid "Edit Private Page"
-msgstr "Modifier la page privée"
+msgstr "Editar Página Privada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:134
 msgctxt "cuar_private_page"
 msgid "New Private Page"
-msgstr "Nouvelle page privée"
+msgstr "Nova Página Privada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:135
 msgctxt "cuar_private_page"
 msgid "View Private Page"
-msgstr "Voir la page privée"
+msgstr "Ver Página Privada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:136
 msgctxt "cuar_private_page"
 msgid "Search Private Pages"
-msgstr "Chercher dans les pages privées"
+msgstr "Procurar Páginas Privadas"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:137
 msgctxt "cuar_private_page"
 msgid "No private pages found"
-msgstr "Aucune page privée trouvée"
+msgstr "Nenhuma página privada encontrada"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:138
 msgctxt "cuar_private_page"
 msgid "No private pages found in Trash"
-msgstr "Aucune page privée trouvée dans la corbeille"
+msgstr "Nenhuma página privada encontrada na Lixeira"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:139
 msgctxt "cuar_private_page"
 msgid "Parent Private Page:"
-msgstr "Page privée parente :"
+msgstr "Página Privada Pai:"
 
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:68
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:69
 msgid "New Private Page"
-msgstr "Nouvelle page privée"
+msgstr "Nova Página Privada"
 
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:161
 msgid "Check this to enable the private pages add-on."
-msgstr "Cochez cette case pour activer l'extension des pages privées."
+msgstr "Marque esta opção para ativar o add-on de páginas privadas."
 
-#: ../includes/core-addons/private-page/private-page-frontend-interface.class.php:48
-msgid "Pages"
-msgstr "Pages"
-
-#: ../includes/core-addons/private-page/private-page-frontend-interface.class.php:49
-#, fuzzy
-msgid "Create a new private page"
-msgstr "Nouvelle page privée"
-
-#: ../includes/core-addons/private-page/templates/list_latest_private_pages.template.php:3
-msgid "Latest Pages"
-msgstr "Pages Récentes"
-
-#: ../includes/core-addons/private-page/templates/list_private_pages-empty.template.php:1
+#: ../includes/core-addons/private-page/templates/private-page-customer_area_no_user_pages.template.php:1
 msgid "You currently have no pages."
-msgstr "Vous n'avez aucune page actuellement."
+msgstr "Você atualmente não tem páginas."
 
-#~ msgid "Your files"
-#~ msgstr "Vos fichiers"
-
-#~ msgid "Your pages"
-#~ msgstr "Vos pages"
+#: ../includes/core-addons/private-page/templates/private-page-customer_area_user_pages.template.php:3
+msgid "Your pages"
+msgstr "Suas páginas"
 
 #~ msgid "Nobody"
 #~ msgstr "Personne"
@@ -1069,6 +1039,9 @@ msgstr "Vous n'avez aucune page actuellement."
 
 #~ msgid "Footer, #bottom"
 #~ msgstr "Footer, #bottom"
+
+#~ msgid "Page %s"
+#~ msgstr "Page %s"
 
 #~ msgid "About this project"
 #~ msgstr "A propos de ce projet"

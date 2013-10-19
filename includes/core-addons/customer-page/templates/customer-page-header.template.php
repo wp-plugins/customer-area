@@ -5,12 +5,19 @@
 	$current_action = isset( $_GET['action'] ) ? $_GET['action'] : '';
 	$title = '';
 	$actions = apply_filters( 'cuar_customer_page_actions', array() );
+	$base_url = trailingslashit( $cp_addon->get_customer_page_url() );
 	
 	if (!empty($actions)) {
 		foreach ($actions as $action) {
 			if ( (isset( $action["slug"] ) && $current_action==$action['slug']) ) {
 				$title = $action["label"];
 				$top_level_action = $action;
+				break;
+			} else if ( isset( $action['children'] ) && array_key_exists( $current_action, $action['children'] ) ) {
+				$href = isset( $action["url"] ) ? $action["url"] : $base_url . '?action=' . $action["slug"];
+				$title = sprintf( '<a href="%1$s">%2$s</a> &raquo; %3$s',  
+					esc_attr( $href ), $action["label"], $action['children'][ $current_action ]['label'] );
+				break;
 			}
 		}
 	} 
@@ -29,7 +36,6 @@
 if (!empty($actions)) :
 	$is_last = count($actions);
 	$separator = apply_filters( 'cuar_customer_page_actions_separator', '&bull;' );
-	$base_url = trailingslashit( $cp_addon->get_customer_page_url() );
 ?>	
 	<nav class="cuar-menu">
 		<ul class="cuar-actions-container"><?php 		

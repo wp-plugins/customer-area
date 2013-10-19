@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-10-10 18:08+0100\n"
-"PO-Revision-Date: 2013-10-10 18:08+0100\n"
+"POT-Creation-Date: 2013-10-19 11:37+0100\n"
+"PO-Revision-Date: 2013-10-19 11:37+0100\n"
 "Last-Translator: Rait Huusmann <rait@huusmann.eu>\n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -25,6 +25,12 @@ msgid ""
 msgstr ""
 "Laiendus \"%1$s\" vajab Kliendi Ala %3$s. Sina kasutad versiooni %2$s. Palun "
 "uuenda Kliendi Ala pluginat."
+
+#: ../includes/plugin.class.php:259
+msgid ""
+"Permalinks are disabled, Customer Area will not work properly. Please enable "
+"them in the WordPress settings."
+msgstr ""
 
 #: ../includes/settings.class.php:81 ../includes/settings.class.php:82
 #: ../includes/settings.class.php:96
@@ -126,19 +132,19 @@ msgstr ""
 "Selle lisa jaoks Sulle saadetud võti. See on vajalik automaatsete "
 "pluginauuenduste tarbeks."
 
-#: ../includes/settings.class.php:658
+#: ../includes/settings.class.php:693
 msgid "Any Role"
 msgstr ""
 
-#: ../includes/settings.class.php:697
+#: ../includes/settings.class.php:732
 msgid "Main plugin folder"
 msgstr "Peamine pluginakaust"
 
-#: ../includes/settings.class.php:702
+#: ../includes/settings.class.php:737
 msgid "Current theme folder"
 msgstr "Praeguse teema kaust"
 
-#: ../includes/settings.class.php:707
+#: ../includes/settings.class.php:742
 msgid "WordPress content folder"
 msgstr "WordPressi sisu kaust"
 
@@ -154,7 +160,6 @@ msgstr "Vaata menüüd"
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:67
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:68
 #: ../includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:31
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:51
 msgid "Customer Area"
 msgstr "Kliendiala"
 
@@ -171,16 +176,25 @@ msgid "Customer Page"
 msgstr "Kliendi leht"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:52
+msgid "Dashboard"
+msgstr ""
+
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:53
 msgid "Your customer area welcome page"
 msgstr "Sinu kliendiala tervitus lehekülg"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:60
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:61
 msgid "Logout"
 msgstr "Logi välja"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:61
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:62
 msgid "Disconnect from your customer area"
 msgstr "Katkesta ühendus oma kliendialaga"
+
+#: ../includes/core-addons/customer-page/templates/customer-page-header.template.php:26
+#, php-format
+msgid "Hello %s,"
+msgstr "Tere %s,"
 
 #: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:1
 msgid "Hello"
@@ -202,11 +216,6 @@ msgstr "Logi sisse"
 #: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:9
 msgid "Register"
 msgstr "Registreeru"
-
-#: ../includes/core-addons/customer-page/templates/customer-page.template.php:17
-#, php-format
-msgid "Hello %s,"
-msgstr "Tere %s,"
 
 #: ../includes/core-addons/help/help-addon.class.php:31
 msgid "Help"
@@ -283,9 +292,20 @@ msgid ""
 "send at most one email per month!"
 msgstr ""
 
-#: ../includes/core-addons/help/templates/list-addons.template.php:6
+#: ../includes/core-addons/help/help-addon.class.php:188
+msgid "Email Address"
+msgstr ""
+
+#: ../includes/core-addons/help/templates/list-addons.template.php:7
 msgid "Enhance your customer area with our add-ons"
 msgstr "Täiusta oma kliendiala meie lisadega"
+
+#: ../includes/core-addons/help/templates/list-addons.template.php:12
+#, php-format
+msgid ""
+"There has been an error while getting the list of add-ons, please <a href="
+"\"%s\">visit our shop directly</a>."
+msgstr ""
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:1
 msgid "Troubleshooting information"
@@ -574,45 +594,52 @@ msgid "Check this to enable the private files add-on."
 msgstr "Märgi privaatfailide lisa aktiveerimiseks.."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:272
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:166
 msgid "Frontend Integration"
 msgstr "Front-endi integratsioon"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:279
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:173
 msgid "Show after post"
 msgstr "Näita peale postitust"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:287
-msgid ""
-"Show the view and download links below the post content for a customer file."
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:181
+msgid "Show additional information after the post in the single post view."
 msgstr ""
-"Näita kliendi faili vaatamise ja allalaadimise linke postituse sisu all."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:292
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:289
+msgid ""
+"You can disable this if you have your own \"single-cuar_private_file.php\" "
+"template file."
+msgstr ""
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:295
 msgid "File list"
 msgstr "Failide nimekiri"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:299
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:302
 msgid "Don't group files"
 msgstr "Ära grupeeri faile"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:300
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:303
 msgid "Group by year"
 msgstr "Grupeeri aastate kaupa"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:301
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:304
 msgid "Group by category"
 msgstr "Grupeeri kategooriate kaupa"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:303
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:306
 msgid ""
 "You can choose how files will be organized by default in the customer area."
 msgstr "Saad valida kuidas kliendialas faile vaikimisi grupeerida."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:309
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:312
 msgid "Empty categories"
 msgstr "Tühjad kategooriad"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:317
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:320
 msgid ""
 "When listing files by category, empty categories will be hidden if you check "
 "this."
@@ -620,16 +647,16 @@ msgstr ""
 "Märgi see, et varjata tühjad kategooriad, kui need on grupeeritud "
 "kategooriate kaupa."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:323
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:326
 msgid "File Storage"
 msgstr "Failide salvestuskoht"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:395
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:398
 #, php-format
 msgid "The files will be stored in the following directory: <code>%s</code>."
 msgstr "Failid salvestatakse kataloogi : <code>%s</code>."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:400
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:403
 #, php-format
 msgid ""
 "Each user has his own sub-directory. For instance, yours is: <code>%s</code>."
@@ -637,7 +664,7 @@ msgstr ""
 "Igal kasutajal on oma alamkataloog. Näiteks Sinu kataloog on : <code>%s</"
 "code>."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:406
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:409
 #, php-format
 msgid ""
 "That directory should at least have the permissions set to 705. Currently it "
@@ -648,59 +675,72 @@ msgstr ""
 "%s. Sa peaksid selle kataloogi õigused ümberseadistma, muidu ei pruugi üles- "
 "ja allalaadimine toimida."
 
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:2
-msgid "Associated file"
-msgstr "Seotud fail"
+#: ../includes/core-addons/private-file/private-file-frontend-interface.class.php:55
+#, fuzzy
+msgid "Files"
+msgstr "Fail"
 
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:11
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:12
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:10
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:11
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:6
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:7
-msgid "View"
-msgstr "Vaata"
+#: ../includes/core-addons/private-file/private-file-frontend-interface.class.php:56
+#, fuzzy
+msgid "Create a new private file"
+msgstr "Uus privaatfail"
 
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:15
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:16
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:14
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:15
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:10
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:11
-msgid "Download"
-msgstr "Lae alla"
+#: ../includes/core-addons/private-file/templates/list_latest_private_files.template.php:3
+#, fuzzy
+msgid "Latest Files"
+msgstr "Privaatfailid"
 
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_no_user_files.template.php:1
-msgid "You currently have no files."
-msgstr "Sul ei ole faile."
-
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:3
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-plain.template.php:3
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:3
-msgid "Your files"
-msgstr "Sinu failid"
-
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:39
-msgid "Clic to show the files in this category"
-msgstr "Kliki selle kategooria failide vaatamiseks"
-
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:54
-msgid "No files in this category"
-msgstr "Selles kategoorias ei ole faile"
-
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:40
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:49
+#: ../includes/core-addons/private-file/templates/list_private_files-by-year.template.php:19
+#: ../includes/core-addons/private-file/templates/list_private_files-by-year.template.php:28
 #, php-format
 msgid "Clic to show the files published in %s"
 msgstr "Kliki %s avaldatud failide vaatamiseks"
 
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:2
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:6
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:2
-#: ../includes/core-addons/private-page/templates/private-page-customer_area_user_page_item.template.php:2
+#: ../includes/core-addons/private-file/templates/list_private_files-empty.template.php:1
+msgid "You currently have no files."
+msgstr "Sul ei ole faile."
+
+#: ../includes/core-addons/private-file/templates/list_private_files-in-category.template.php:9
+msgid "Clic to show the files in this category"
+msgstr "Kliki selle kategooria failide vaatamiseks"
+
+#: ../includes/core-addons/private-file/templates/list_private_files-in-category.template.php:24
+msgid "No files in this category"
+msgstr "Selles kategoorias ei ole faile"
+
+#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:5
+#: ../includes/core-addons/private-page/templates/list_private_pages-item.template.php:5
+#, php-format
+msgid "From: %s"
+msgstr ""
+
+#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:8
+#: ../includes/core-addons/private-page/templates/list_private_pages-item.template.php:8
 #, php-format
 msgid "Added on %s"
 msgstr "Lisatud %s"
+
+#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:11
+#: ../includes/core-addons/private-page/templates/list_private_pages-item.template.php:11
+#, php-format
+msgid "To: %s"
+msgstr ""
+
+#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:14
+#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:15
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:21
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:22
+msgid "Download"
+msgstr "Lae alla"
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:2
+msgid "More information about this file"
+msgstr ""
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:12
+#, php-format
+msgid "File created on %1$s by %2$s for %3$s"
+msgstr ""
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:34
 #: ../includes/core-addons/private-page/private-page-addon.class.php:102
@@ -792,13 +832,57 @@ msgstr "Uus privaatleht"
 msgid "Check this to enable the private pages add-on."
 msgstr "Märgi privaatlehtede lisa aktiveerimiseks."
 
-#: ../includes/core-addons/private-page/templates/private-page-customer_area_no_user_pages.template.php:1
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:183
+msgid ""
+"You can disable this if you have your own \"single-cuar_private_page.php\" "
+"template file."
+msgstr ""
+
+#: ../includes/core-addons/private-page/private-page-frontend-interface.class.php:53
+#, fuzzy
+msgid "Pages"
+msgstr "Page %s"
+
+#: ../includes/core-addons/private-page/private-page-frontend-interface.class.php:54
+#, fuzzy
+msgid "Create a new private page"
+msgstr "Uus privaatleht"
+
+#: ../includes/core-addons/private-page/templates/list_latest_private_pages.template.php:3
+#, fuzzy
+msgid "Latest Pages"
+msgstr "Privaatlehed"
+
+#: ../includes/core-addons/private-page/templates/list_private_pages-empty.template.php:1
 msgid "You currently have no pages."
 msgstr "Sul ei ole hetkel lehti."
 
-#: ../includes/core-addons/private-page/templates/private-page-customer_area_user_pages.template.php:3
-msgid "Your pages"
-msgstr "Sinu lehed"
+#: ../includes/core-addons/private-page/templates/private-page-after_post_content.template.php:2
+msgid "More information about this page"
+msgstr ""
+
+#: ../includes/core-addons/private-page/templates/private-page-after_post_content.template.php:12
+#, php-format
+msgid "Page created on %1$s by %2$s for %3$s"
+msgstr ""
+
+#~ msgid ""
+#~ "Show the view and download links below the post content for a customer "
+#~ "file."
+#~ msgstr ""
+#~ "Näita kliendi faili vaatamise ja allalaadimise linke postituse sisu all."
+
+#~ msgid "Associated file"
+#~ msgstr "Seotud fail"
+
+#~ msgid "View"
+#~ msgstr "Vaata"
+
+#~ msgid "Your files"
+#~ msgstr "Sinu failid"
+
+#~ msgid "Your pages"
+#~ msgstr "Sinu lehed"
 
 #~ msgid "Nobody"
 #~ msgstr "Personne"
@@ -1024,9 +1108,6 @@ msgstr "Sinu lehed"
 
 #~ msgid "Footer, #bottom"
 #~ msgstr "Footer, #bottom"
-
-#~ msgid "Page %s"
-#~ msgstr "Page %s"
 
 #~ msgid "About this project"
 #~ msgstr "A propos de ce projet"

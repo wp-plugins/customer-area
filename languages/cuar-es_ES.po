@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-10-10 18:08+0100\n"
-"PO-Revision-Date: 2013-10-10 18:08+0100\n"
+"POT-Creation-Date: 2013-10-19 11:37+0100\n"
+"PO-Revision-Date: 2013-10-19 11:37+0100\n"
 "Last-Translator: Danilo Casati <info@e-rgonomy.com>\n"
 "Language-Team: e-rgonomy.com <info@e-rgonomy.com>\n"
 "Language: ES\n"
@@ -25,6 +25,12 @@ msgid ""
 msgstr ""
 "La extensión \"%1$s\" necesita Customer Area %3$s. Usted está usando la "
 "versión %2$s. Por favor, actualice el plugin Customer Area."
+
+#: ../includes/plugin.class.php:259
+msgid ""
+"Permalinks are disabled, Customer Area will not work properly. Please enable "
+"them in the WordPress settings."
+msgstr ""
 
 #: ../includes/settings.class.php:81 ../includes/settings.class.php:82
 #: ../includes/settings.class.php:96
@@ -126,19 +132,19 @@ msgstr ""
 "La clave de licencia recibida para esta extensión. Es imprescindible para "
 "obtener actualizaciones automáticas."
 
-#: ../includes/settings.class.php:658
+#: ../includes/settings.class.php:693
 msgid "Any Role"
 msgstr ""
 
-#: ../includes/settings.class.php:697
+#: ../includes/settings.class.php:732
 msgid "Main plugin folder"
 msgstr "Carpeta principal del plugin"
 
-#: ../includes/settings.class.php:702
+#: ../includes/settings.class.php:737
 msgid "Current theme folder"
 msgstr "Carpeta del tema actual"
 
-#: ../includes/settings.class.php:707
+#: ../includes/settings.class.php:742
 msgid "WordPress content folder"
 msgstr "Carpeta de contenido de Wordpress"
 
@@ -154,7 +160,6 @@ msgstr "Ver el menú"
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:67
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:68
 #: ../includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:31
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:51
 msgid "Customer Area"
 msgstr "Customer Area"
 
@@ -171,16 +176,25 @@ msgid "Customer Page"
 msgstr "Página del Cliente"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:52
+msgid "Dashboard"
+msgstr ""
+
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:53
 msgid "Your customer area welcome page"
 msgstr "La página de bienvenida del cliente"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:60
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:61
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:61
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:62
 msgid "Disconnect from your customer area"
 msgstr "Desconecta la sesión de cliente"
+
+#: ../includes/core-addons/customer-page/templates/customer-page-header.template.php:26
+#, php-format
+msgid "Hello %s,"
+msgstr "Hola %s,"
 
 #: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:1
 msgid "Hello"
@@ -201,11 +215,6 @@ msgstr "Identificarse"
 #: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:9
 msgid "Register"
 msgstr "Registrarse"
-
-#: ../includes/core-addons/customer-page/templates/customer-page.template.php:17
-#, php-format
-msgid "Hello %s,"
-msgstr "Hola %s,"
 
 #: ../includes/core-addons/help/help-addon.class.php:31
 msgid "Help"
@@ -283,9 +292,20 @@ msgid ""
 "send at most one email per month!"
 msgstr ""
 
-#: ../includes/core-addons/help/templates/list-addons.template.php:6
+#: ../includes/core-addons/help/help-addon.class.php:188
+msgid "Email Address"
+msgstr ""
+
+#: ../includes/core-addons/help/templates/list-addons.template.php:7
 msgid "Enhance your customer area with our add-ons"
 msgstr "Mejorar el área de clientes con extensiones"
+
+#: ../includes/core-addons/help/templates/list-addons.template.php:12
+#, php-format
+msgid ""
+"There has been an error while getting the list of add-ons, please <a href="
+"\"%s\">visit our shop directly</a>."
+msgstr ""
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:1
 msgid "Troubleshooting information"
@@ -574,47 +594,54 @@ msgid "Check this to enable the private files add-on."
 msgstr "Marcar para activar la extensión de archivos privados."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:272
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:166
 msgid "Frontend Integration"
 msgstr "Integración Parte Pública"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:279
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:173
 msgid "Show after post"
 msgstr "Mostrar después de la entrada"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:287
-msgid ""
-"Show the view and download links below the post content for a customer file."
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:181
+msgid "Show additional information after the post in the single post view."
 msgstr ""
-"Muestra la vista y descarga de archivos debajo del contenido de la entrada."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:292
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:289
+msgid ""
+"You can disable this if you have your own \"single-cuar_private_file.php\" "
+"template file."
+msgstr ""
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:295
 msgid "File list"
 msgstr "Lista de archivos"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:299
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:302
 msgid "Don't group files"
 msgstr "No agrupar los archivos"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:300
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:303
 msgid "Group by year"
 msgstr "Agrupar por año"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:301
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:304
 msgid "Group by category"
 msgstr "Agrupar por categoría"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:303
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:306
 msgid ""
 "You can choose how files will be organized by default in the customer area."
 msgstr ""
 "Puede seleccionar qué archivos estém organizados por defecto en el área de "
 "clientes"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:309
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:312
 msgid "Empty categories"
 msgstr "Categorías vacías"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:317
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:320
 msgid ""
 "When listing files by category, empty categories will be hidden if you check "
 "this."
@@ -622,16 +649,16 @@ msgstr ""
 "Al marcar esta opcíon, las categorías vacías no se mostrarán al mostrar "
 "archivos por categoría."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:323
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:326
 msgid "File Storage"
 msgstr "Almacenamiento de archivos"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:395
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:398
 #, php-format
 msgid "The files will be stored in the following directory: <code>%s</code>."
 msgstr "Los archivos se almacenarán en la siguiente carpeta: <code>%s</code>."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:400
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:403
 #, php-format
 msgid ""
 "Each user has his own sub-directory. For instance, yours is: <code>%s</code>."
@@ -639,7 +666,7 @@ msgstr ""
 "Cada usuario tiene su propia sub-carpeta. Por ejemplo, la suya es: <code>%s</"
 "code>."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:406
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:409
 #, php-format
 msgid ""
 "That directory should at least have the permissions set to 705. Currently it "
@@ -650,59 +677,72 @@ msgstr ""
 "ajusta este parámetro, la carga y descarga de los archivos no funcionará "
 "correctamente."
 
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:2
-msgid "Associated file"
-msgstr "Archivos asociados"
+#: ../includes/core-addons/private-file/private-file-frontend-interface.class.php:55
+#, fuzzy
+msgid "Files"
+msgstr "Archivo"
 
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:11
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:12
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:10
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:11
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:6
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:7
-msgid "View"
-msgstr "Ver"
+#: ../includes/core-addons/private-file/private-file-frontend-interface.class.php:56
+#, fuzzy
+msgid "Create a new private file"
+msgstr "Nuevo archivo privado"
 
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:15
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:16
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:14
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:15
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:10
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:11
-msgid "Download"
-msgstr "Descargar"
+#: ../includes/core-addons/private-file/templates/list_latest_private_files.template.php:3
+#, fuzzy
+msgid "Latest Files"
+msgstr "Archivos privados"
 
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_no_user_files.template.php:1
-msgid "You currently have no files."
-msgstr "No hay archivos."
-
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:3
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-plain.template.php:3
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:3
-msgid "Your files"
-msgstr "Archivos disponibles"
-
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:39
-msgid "Clic to show the files in this category"
-msgstr "Clic para mostrar los archivos en esta categoría"
-
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-category.template.php:54
-msgid "No files in this category"
-msgstr "No hay archivos en esta categoría"
-
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:40
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_files-year.template.php:49
+#: ../includes/core-addons/private-file/templates/list_private_files-by-year.template.php:19
+#: ../includes/core-addons/private-file/templates/list_private_files-by-year.template.php:28
 #, php-format
 msgid "Clic to show the files published in %s"
 msgstr "Clic para mostrar los archivos publicados en %s"
 
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:2
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item-plain.template.php:6
-#: ../includes/core-addons/private-file/templates/private-file-customer_area_user_file_item.template.php:2
-#: ../includes/core-addons/private-page/templates/private-page-customer_area_user_page_item.template.php:2
+#: ../includes/core-addons/private-file/templates/list_private_files-empty.template.php:1
+msgid "You currently have no files."
+msgstr "No hay archivos."
+
+#: ../includes/core-addons/private-file/templates/list_private_files-in-category.template.php:9
+msgid "Clic to show the files in this category"
+msgstr "Clic para mostrar los archivos en esta categoría"
+
+#: ../includes/core-addons/private-file/templates/list_private_files-in-category.template.php:24
+msgid "No files in this category"
+msgstr "No hay archivos en esta categoría"
+
+#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:5
+#: ../includes/core-addons/private-page/templates/list_private_pages-item.template.php:5
+#, php-format
+msgid "From: %s"
+msgstr ""
+
+#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:8
+#: ../includes/core-addons/private-page/templates/list_private_pages-item.template.php:8
 #, php-format
 msgid "Added on %s"
 msgstr "Agregado en %s"
+
+#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:11
+#: ../includes/core-addons/private-page/templates/list_private_pages-item.template.php:11
+#, php-format
+msgid "To: %s"
+msgstr ""
+
+#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:14
+#: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:15
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:21
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:22
+msgid "Download"
+msgstr "Descargar"
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:2
+msgid "More information about this file"
+msgstr ""
+
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:12
+#, php-format
+msgid "File created on %1$s by %2$s for %3$s"
+msgstr ""
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:34
 #: ../includes/core-addons/private-page/private-page-addon.class.php:102
@@ -794,13 +834,58 @@ msgstr "Nueva página privada"
 msgid "Check this to enable the private pages add-on."
 msgstr "Clic para activar la extensión de páginas privadas."
 
-#: ../includes/core-addons/private-page/templates/private-page-customer_area_no_user_pages.template.php:1
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:183
+msgid ""
+"You can disable this if you have your own \"single-cuar_private_page.php\" "
+"template file."
+msgstr ""
+
+#: ../includes/core-addons/private-page/private-page-frontend-interface.class.php:53
+#, fuzzy
+msgid "Pages"
+msgstr "Page %s"
+
+#: ../includes/core-addons/private-page/private-page-frontend-interface.class.php:54
+#, fuzzy
+msgid "Create a new private page"
+msgstr "Nueva página privada"
+
+#: ../includes/core-addons/private-page/templates/list_latest_private_pages.template.php:3
+#, fuzzy
+msgid "Latest Pages"
+msgstr "Páginas privadas"
+
+#: ../includes/core-addons/private-page/templates/list_private_pages-empty.template.php:1
 msgid "You currently have no pages."
 msgstr "No hay páginas disponibles."
 
-#: ../includes/core-addons/private-page/templates/private-page-customer_area_user_pages.template.php:3
-msgid "Your pages"
-msgstr "Páginas disponibles"
+#: ../includes/core-addons/private-page/templates/private-page-after_post_content.template.php:2
+msgid "More information about this page"
+msgstr ""
+
+#: ../includes/core-addons/private-page/templates/private-page-after_post_content.template.php:12
+#, php-format
+msgid "Page created on %1$s by %2$s for %3$s"
+msgstr ""
+
+#~ msgid ""
+#~ "Show the view and download links below the post content for a customer "
+#~ "file."
+#~ msgstr ""
+#~ "Muestra la vista y descarga de archivos debajo del contenido de la "
+#~ "entrada."
+
+#~ msgid "Associated file"
+#~ msgstr "Archivos asociados"
+
+#~ msgid "View"
+#~ msgstr "Ver"
+
+#~ msgid "Your files"
+#~ msgstr "Archivos disponibles"
+
+#~ msgid "Your pages"
+#~ msgstr "Páginas disponibles"
 
 #~ msgid "Nobody"
 #~ msgstr "Personne"
@@ -1026,9 +1111,6 @@ msgstr "Páginas disponibles"
 
 #~ msgid "Footer, #bottom"
 #~ msgstr "Footer, #bottom"
-
-#~ msgid "Page %s"
-#~ msgstr "Page %s"
 
 #~ msgid "About this project"
 #~ msgstr "A propos de ce projet"

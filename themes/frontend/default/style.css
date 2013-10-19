@@ -103,6 +103,11 @@ table.entry-meta td {
 	background-position: 0px -19px;
 }
 
+.private-content-information {
+	font-size: 0.9em;
+	opacity: 0.9;
+}
+
 /* -= File list */
 h4.cuar-private-file-section {
 	margin: 20px 0;

@@ -29,7 +29,12 @@ class CUAR_PrivatePageFrontendInterface {
 		$this->plugin = $plugin;
 		$this->private_page_addon = $private_page_addon;
 
-		if ( $plugin->get_option( CUAR_PrivatePageAdminInterface::$OPTION_ENABLE_ADDON ) ) {			
+		if ( $plugin->get_option( CUAR_PrivatePageAdminInterface::$OPTION_ENABLE_ADDON ) ) {	
+			// Optionally output the file links in the post footer area
+			if ( $this->plugin->get_option( CUAR_PrivatePageAdminInterface::$OPTION_SHOW_AFTER_POST_CONTENT ) ) {
+				add_filter( 'the_content', array( &$this, 'after_post_content' ), 3000 );
+			}		
+					
 			add_action( 'cuar_customer_area_content', array( &$this, 'print_customer_area_content' ), 10 );
 
 			add_filter( 'cuar_customer_page_actions', array( &$this, 'add_actions' ), 10 );
@@ -71,6 +76,21 @@ class CUAR_PrivatePageFrontendInterface {
 				CUAR_INCLUDES_DIR . '/core-addons/private-page',
 				"list_private_pages.template.php",
 				'templates' ));
+	}
+	
+	public function after_post_content( $content ) {
+		// If not on a matching post type, we do nothing
+		if ( !is_singular('cuar_private_page') ) return $content;		
+
+		ob_start();
+		include( $this->plugin->get_template_file_path(
+				CUAR_INCLUDES_DIR . '/core-addons/private-page',
+				'private-page-after_post_content.template.php',
+				'templates' ));	
+  		$out = ob_get_contents();
+  		ob_end_clean(); 
+  		
+  		return $content . $out;
 	}
 	
 	public function print_customer_area_content() {			

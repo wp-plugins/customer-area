@@ -284,7 +284,10 @@ jQuery(document).ready( function($) {
 					'option_id' => self::$OPTION_SHOW_AFTER_POST_CONTENT,
 					'type' 		=> 'checkbox',
 					'after'		=> 
-						__( 'Show the view and download links below the post content for a customer file.', 'cuar' ) )
+							__( 'Show additional information after the post in the single post view.', 'cuar' )
+							. '<p class="description">' 
+							. __( 'You can disable this if you have your own "single-cuar_private_file.php" template file.', 'cuar' )
+							. '</p>' )
 			);
 		
 		add_settings_field(

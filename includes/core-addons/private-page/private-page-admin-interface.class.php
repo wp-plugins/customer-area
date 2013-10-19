@@ -160,6 +160,29 @@ jQuery(document).ready( function($) {
 					'after'		=> 
 						__( 'Check this to enable the private pages add-on.', 'cuar' ) )
 			);
+		
+		add_settings_section(
+				'cuar_private_pages_addon_frontend',
+				__('Frontend Integration', 'cuar'),
+				array( &$this, 'print_frontend_section_info' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG
+			);
+
+		add_settings_field(
+				self::$OPTION_SHOW_AFTER_POST_CONTENT,
+				__('Show after post', 'cuar'),
+				array( &$cuar_settings, 'print_input_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_private_pages_addon_frontend',
+				array(
+					'option_id' => self::$OPTION_SHOW_AFTER_POST_CONTENT,
+					'type' 		=> 'checkbox',
+					'after'		=> 
+							__( 'Show additional information after the post in the single post view.', 'cuar' )
+							. '<p class="description">' 
+							. __( 'You can disable this if you have your own "single-cuar_private_page.php" template file.', 'cuar' )
+							. '</p>' )
+			);
 /*		
 		add_settings_section(
 				'cuar_private_pages_addon_frontend',
@@ -196,6 +219,7 @@ jQuery(document).ready( function($) {
 	 */
 	public function validate_options( $validated, $cuar_settings, $input ) {		
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_ENABLE_ADDON );
+		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_SHOW_AFTER_POST_CONTENT );
 //		$cuar_settings->validate_enum( $input, $validated, self::$OPTION_FILE_LIST_MODE, 
 //				array( 'plain', 'year', 'category' ) );
 		
@@ -210,6 +234,7 @@ jQuery(document).ready( function($) {
 	 */
 	public static function set_default_options( $defaults ) {
 		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
+		$defaults[ self::$OPTION_SHOW_AFTER_POST_CONTENT ] = true;
 		// $defaults[ self::$OPTION_FILE_LIST_MODE ] = 'year';
 
 		$admin_role = get_role( 'administrator' );
@@ -232,6 +257,7 @@ jQuery(document).ready( function($) {
 
 	// General options
 	public static $OPTION_ENABLE_ADDON					= 'enable_private_pages';
+	public static $OPTION_SHOW_AFTER_POST_CONTENT		= 'pf_frontend_show_after_post_content';
 
 	// Frontend options
 	// public static $OPTION_FILE_LIST_MODE				= 'frontend_page_list_mode';

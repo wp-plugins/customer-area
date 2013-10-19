@@ -11,6 +11,15 @@
 	margin: 1em 0;
 }
 
+table.entry-meta {
+	border: none;
+}
+
+table.entry-meta td {
+	border: none;
+}
+
+
 /* -= Customer Area actions */
 
 .cuar-header {
@@ -283,7 +292,6 @@ h4.cuar-private-file-section.ui-accordion-header-active {
 }
 
 .cuar-conversation-list .updated {
-	font-weight: bold;
 }
 
 .cuar-conversation-list .cuar-section td {
@@ -303,6 +311,36 @@ h4.cuar-private-file-section.ui-accordion-header-active {
 	font-size: 90%;
 }
 
+.cuar-conversation .replies-link {
+	width: 30px;
+	text-align: right;
+}
+
+.cuar-conversation .replies-link span {
+	background: url('images/icons.png') top left no-repeat;
+	
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	
+	text-decoration: none;
+	
+	text-indent: 100%;
+  	white-space: nowrap;
+  	overflow: hidden;
+  	
+  	-webkit-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+       -moz-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+         -o-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+            transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0; 
+}
+
+.cuar-conversation .replies-link span {
+	background-position: -40px 0px;
+}
+
+/* -= Paging */
+
 .cuar-paging {
 	border: none;
 }
@@ -317,12 +355,4 @@ h4.cuar-private-file-section.ui-accordion-header-active {
 }
 .cuar-paging td.older {
 	text-align: left;
-}
-
-table.entry-meta {
-	border: none;
-}
-
-table.entry-meta td {
-	border: none;
 }

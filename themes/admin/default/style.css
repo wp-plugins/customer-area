@@ -190,7 +190,7 @@ span.label {
 	max-width: 600px;
 }
 
-.cuar-wizard ul, .cuar-settings ul {
+.cuar-wizard ul, .cuar-settings ul:not(.tab-wrapper) {
 	list-style-type: disc;
 	padding-left: 2em;
 	max-width: 600px;

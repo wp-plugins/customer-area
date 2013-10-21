@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-10-21 12:57+0100\n"
-"PO-Revision-Date: 2013-10-21 13:12+0100\n"
+"POT-Creation-Date: 2013-10-21 18:37+0100\n"
+"PO-Revision-Date: 2013-10-21 18:39+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -353,29 +353,31 @@ msgstr "Page Client"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:50
 msgid ""
-"There is no Customer Area page on your site. If you already have one, just "
-"visit the plugin settings to set it. "
+"We could not detect the Customer Area page on your site. This may be because "
+"you have not yet setup the plugin, or because you are upgrading from an "
+"older version."
 msgstr ""
-"Il n'y a aucune page Customer Area sur votre site. Si vous en avez déjà créé "
-"une, indiquez-la dans les options du plugin."
+"Nous n'avons pas pu détecter la page Espace Client sur votre site. C'est "
+"peut-être du au fait que vous n'ayez pas encore configuré le plugin ou bien "
+"que vous le mettiez à jour depuis une version plus ancienne."
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:52
 #, php-format
 msgid ""
-"If you have not yet created one, we can do it automatically: <a href=\"%s"
-"\">create this page now</a>"
+"If you already have this page, just visit the <a href=\"%s\">plugin "
+"settings</a> to set it manually."
 msgstr ""
-"Si vous n'en avez pas encore créé, nous pouvons le faire pour vous : <a href="
-"\"%s\">créer cette page maintenant</a>"
+"Si vous avez déjà cette page, rendez-vous sur <a href=\"%s\">les options du "
+"plugin</a> pour indiquer laquelle c'est."
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:54
 #, php-format
 msgid ""
-"If you already have one, just visit the <a href=\"%s\">plugin settings</a> "
-"to set it."
+"If you have not yet setup the plugin, we have a <a href=\"%s\">quick setup "
+"wizard</a>"
 msgstr ""
-"Si vous en avez déjà une, rendez-vous sur <a href=\"%s\">les options du "
-"plugin</a> pour indiquer laquelle c'est."
+"Si vous n'avez pas encore configuré le plugin, nous avons une <a href=\"%s"
+"\">procédure d'installation rapide</a>"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:67
 msgid "Dashboard"
@@ -1075,6 +1077,13 @@ msgstr "Plus d'information sur cette page"
 #, php-format
 msgid "Page created on %1$s by %2$s for %3$s"
 msgstr "Page créée le %1$s par %2$s pour %3$s"
+
+#~ msgid ""
+#~ "There is no Customer Area page on your site. If you already have one, "
+#~ "just visit the plugin settings to set it. "
+#~ msgstr ""
+#~ "Il n'y a aucune page Customer Area sur votre site. Si vous en avez déjà "
+#~ "créé une, indiquez-la dans les options du plugin."
 
 #~ msgid "Troubleshooting"
 #~ msgstr "Dépannage"

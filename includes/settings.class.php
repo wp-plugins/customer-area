@@ -874,6 +874,13 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		}
 		
 		/**
+		 * Persist the current plugin options to DB
+		 */
+		public function get_default_options() {
+			return $this->default_options;
+		}
+		
+		/**
 		 * Load the options (and defaults if the options do not exist yet
 		 */
 		private function reload_options() {

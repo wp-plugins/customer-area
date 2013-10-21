@@ -210,6 +210,10 @@ class CUAR_Plugin {
 		return $this->settings->save_options();
 	}
 	
+	public function get_default_options() {
+		return $this->settings->get_default_options();
+	}
+	
 	/** @var CUAR_Settings */
 	private $settings;
 

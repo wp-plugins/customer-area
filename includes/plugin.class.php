@@ -263,7 +263,7 @@ class CUAR_Plugin {
 		
 		if ( $notices ) {
 			foreach ( $notices as $n ) {
-				echo sprintf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $n['type'] ), esc_html( $n['msg'] ) );
+				echo sprintf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $n['type'] ), $n['msg'] );
 			}
 		}
 		$this->clear_admin_notices();

@@ -46,6 +46,11 @@ class CUAR_CustomerPageShortcode {
 	 * @param string $content
 	 */
 	public function process_shortcode( $params = array(), $content = null ) {
+		$cp_addon = $this->plugin->get_addon('customer-page');
+		if ( $cp_addon->get_customer_page_id() <= 0 ) {
+			$cp_addon->set_customer_page_id( get_the_ID() );
+		}
+		
 		// If not logged-in, we should do so.
 		if ( !is_user_logged_in() ) {
 	  		ob_start();

@@ -54,15 +54,15 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				add_filter ( 'cuar_addon_settings_tabs', array (
 						&$this,
 						'add_core_settings_tab' 
-				), 10, 1 );
+					), 10, 1 );
 				add_action ( 'cuar_addon_print_settings_cuar_core', array (
 						&$this,
 						'print_core_settings' 
-				), 10, 2 );
+					), 10, 2 );
 				add_filter ( 'cuar_addon_validate_options_cuar_core', array (
 						&$this,
 						'validate_core_settings' 
-				), 10, 3 );
+					), 10, 3 );
 			}
 		}
 		
@@ -102,7 +102,47 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * Output the settings page
 		 */
 		public function print_settings_page() {
-			include (CUAR_INCLUDES_DIR . '/settings.view.php');
+			if ( isset( $_GET['run-setup-wizard'] ) ) {
+				$success = false;
+				
+				if ( isset( $_POST['submit'] ) ) {
+					$errors = array();
+					if ( !isset( $_POST["cuar_page_title"] ) || empty( $_POST["cuar_page_title"] ) ) {
+						$errors[] = __( 'The page title cannot be empty', 'cuar');
+					}
+					
+					if ( empty($errors) ) {
+						$post_data = array(
+								'post_content' 		=> '[customer-area /]',
+								'post_title' 		=> $_POST["cuar_page_title"], 
+								'post_status' 		=> 'publish',
+								'post_type' 		=> 'page', 
+								'comment_status' 	=> 'closed', 
+								'ping_status' 		=> 'closed'
+							);						
+						$page_id = wp_insert_post($post_data);
+						if ( is_wp_error( $page_id ) ) {
+							$errors[] = $page_id->get_error_message();
+						} else {
+							$this->plugin->get_addon('customer-page')->set_customer_page_id( $page_id );
+						}
+						
+						if ( empty($errors) ) $success = true;
+					}
+				}
+				
+				if ( $_GET['run-setup-wizard']==1664 ) {
+					$success = true;
+				}
+				
+				if ( $success ) {
+					include (CUAR_INCLUDES_DIR . '/setup-wizard-done.view.php');
+				} else {
+					include (CUAR_INCLUDES_DIR . '/setup-wizard.view.php');
+				}
+			} else {
+				include (CUAR_INCLUDES_DIR . '/settings.view.php');
+			}
 		}
 		
 		/**
@@ -115,11 +155,11 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			register_setting ( self::$OPTIONS_GROUP, self::$OPTIONS_GROUP, array (
 					&$this,
 					'validate_options' 
-			) );
+				) );
 			register_setting ( self::$OPTIONS_GROUP . '_' . $this->current_tab, self::$OPTIONS_GROUP, array (
 					&$this,
 					'validate_options' 
-			) );
+				) );
 			
 			// Let the current tab add its own settings to the page
 			do_action ( "cuar_addon_print_settings_{$this->current_tab}", $this, self::$OPTIONS_GROUP . '_' . $this->current_tab );
@@ -250,6 +290,24 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		}
 		
 		/* ------------ VALIDATION HELPERS ------------------------------------------------------------------------------ */
+		
+		/**
+		 * Validate a page
+		 *
+		 * @param array $input
+		 *        	Input array
+		 * @param array $validated
+		 *        	Output array
+		 * @param string $option_id
+		 *        	Key of the value to check in the input array
+		 */
+		public function validate_post_id($input, &$validated, $option_id) {
+			if ( $input[$option_id]==-1 || get_post( $input[$option_id] ) ) {
+				$validated [$option_id] = $input[$option_id];
+			} else {
+				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input [$option_id] . __ ( ' is not a valid post', 'cuar' ), 'error' );
+			}
+		}
 		
 		/**
 		 * Validate a boolean value within an array
@@ -601,29 +659,40 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 * @param array $options        	
 		 * @param string $caption        	
 		 */
-		public function print_page_select_field($args) {
+		public function print_post_select_field($args) {
 			extract ( $args );
 
-			$args = array(
-					'post_type' 		=> 'page',
+			$query_args = array(
+					'post_type' 		=> $post_type,
 					'posts_per_page' 	=> -1,
 					'orderby' 			=> 'title',
 					'order' 			=> 'ASC'
 				);
-			$pages_query = new WP_Query( $args );
+			$pages_query = new WP_Query( $query_args );
 			
 			if (isset ( $before ))
 				echo $before;
 			
 			echo sprintf ( '<select id="%s" name="%s[%s]">', esc_attr ( $option_id ), self::$OPTIONS_GROUP, esc_attr ( $option_id ) );
+
+			$value = -1;
+			$label = __( 'None', 'cuar' );
+			$selected = ($this->options[$option_id] == $value) ? 'selected="selected"' : '';
+			echo sprintf ( '<option value="%s" %s>%s</option>', esc_attr ( $value ), $selected, $label );
 			
-			foreach ( $options as $value => $label ) {
-				$selected = ($this->options [$option_id] == $value) ? 'selected="selected"' : '';
+			while ( $pages_query->have_posts() ) {
+				$pages_query->the_post();				
+				$value = get_the_ID();
+				$label = get_the_title();
+				
+				$selected = ($this->options[$option_id] == $value) ? 'selected="selected"' : '';
 				
 				echo sprintf ( '<option value="%s" %s>%s</option>', esc_attr ( $value ), $selected, $label );
 			}
 			
 			echo '</select>';
+
+			wp_reset_postdata();
 			
 			if (isset ( $after ))
 				echo $after;
@@ -751,9 +820,6 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					$label = $theme_location ['label'] . ' - ' . $theme_name;
 					$value = esc_attr ( $theme_location ['url'] . '/' . $theme_name );
 					$selected = ($this->options [$option_id] == $value) ? 'selected="selected"' : '';
-					
-					var_dump ( $this->options [$option_id] );
-					var_dump ( $value );
 					
 					echo sprintf ( '<option value="%s" %s>%s</option>', esc_attr ( $value ), $selected, $label );
 				}

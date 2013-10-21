@@ -61,7 +61,7 @@ class CUAR_HelpAddOn extends CUAR_AddOn {
 	
 	public function add_settings_tab( $tabs ) {
 		$tabs[ 'cuar_addons' ] = __( 'Add-ons', 'cuar' );
-		$tabs[ 'cuar_troubleshooting' ] = __( 'Troubleshooting', 'cuar' );
+		$tabs[ 'cuar_troubleshooting' ] = __( 'Support', 'cuar' );
 		return $tabs;
 	}
 	

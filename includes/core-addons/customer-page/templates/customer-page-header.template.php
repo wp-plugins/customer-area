@@ -22,7 +22,7 @@
 		}
 	} 
 	
-	if (empty($title)) {
+	if ( empty( $title ) ) {
 		$title = sprintf( __('Hello %s,', 'cuar'), $current_user->display_name );
 	} 
 ?>

@@ -41,6 +41,21 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 
 		add_filter( 'cuar_customer_page_actions', array( &$this, 'add_home_action' ), 1 );
 		add_filter( 'cuar_customer_page_actions', array( &$this, 'add_logout_action' ), 1000 );
+
+		// Settings
+		add_action( 'cuar_addon_print_settings_cuar_core', array( &$this, 'print_settings' ), 50, 2 );
+		add_filter( 'cuar_addon_validate_options_cuar_core', array( &$this, 'validate_settings' ), 50, 3 );
+
+		if ( $this->get_customer_page_id() < 0 && !isset( $_GET['run-setup-wizard'] )) {
+			$warning = __( 'There is no Customer Area page on your site. If you already have one, just visit the plugin settings to set it. ', 'cuar' );
+			$warning .= '<ul><li>&raquo; ';
+			$warning .= sprintf( __( 'If you have not yet created one, we can do it automatically: <a href="%s">create this page now</a>', 'cuar' ), admin_url( 'admin.php?page=' .  CUAR_Settings::$OPTIONS_PAGE_SLUG . '&run-setup-wizard=1' ) );
+			$warning .= '</li><li>&raquo; ';
+			$warning .= sprintf( __( 'If you already have one, just visit the <a href="%s">plugin settings</a> to set it.', 'cuar' ), admin_url( 'admin.php?page=' .  CUAR_Settings::$OPTIONS_PAGE_SLUG ) );
+			$warning .= '</li></ul>';
+			
+			$cuar_plugin->add_admin_notice( $warning );
+		}
 	}	
 	
 	/*------- INITIALISATIONS ---------------------------------------------------------------------------------------*/
@@ -64,11 +79,64 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		return $actions;
 	}
 	
-	public function get_customer_page_url() {
-		// $post_id = $this->cuar_plugin->get_option(  )
-		return get_permalink();
+	public function get_customer_page_id() {
+		return $this->cuar_plugin->get_option( self::$OPTION_CUSTOMER_PAGE_POST_ID );
 	}
 	
+	public function set_customer_page_id( $post_id ) {
+		return $this->cuar_plugin->update_option( self::$OPTION_CUSTOMER_PAGE_POST_ID, $post_id );
+	}
+	
+	public function get_customer_page_url() {
+		return get_permalink( $this->get_customer_page_id() );
+	}
+
+
+	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
+
+	
+	public function print_settings($cuar_settings, $options_group) {
+		add_settings_section(
+				'cuar_core_frontend',
+				__('Frontend Integration', 'cuar'),
+				array( &$this, 'print_empty_settings_section_info' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG
+			);
+
+		add_settings_field(
+				self::$OPTION_CUSTOMER_PAGE_POST_ID,
+				__('Customer Page', 'cuar'),
+				array( &$cuar_settings, 'print_post_select_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_core_frontend',
+				array(
+					'option_id' => self::$OPTION_CUSTOMER_PAGE_POST_ID,
+					'post_type' => 'page',
+					'after'		=> 
+							'<p class="description">' 
+							. __( 'This page is the one where you have inserted the [customer-area] shortcode. This should be set automatically when you first visit that page. '
+									. 'If for any reason it is not correct, you can change it though.', 'cuar' )
+							. '</p>' )
+			);
+	}
+	
+	public function print_empty_settings_section_info() {
+	}
+	
+	public function validate_settings($validated, $cuar_settings, $input) {
+		$cuar_settings->validate_post_id( $input, $validated, self::$OPTION_CUSTOMER_PAGE_POST_ID );
+			
+		return $validated;
+	}
+	
+	public static function set_default_options($defaults) {
+		$defaults [self::$OPTION_CUSTOMER_PAGE_POST_ID] = -1;
+			
+		return $defaults;
+	}
+	
+	// Frontend options
+	public static $OPTION_CUSTOMER_PAGE_POST_ID		= 'customer_page_post_id';
 	
 	/** @var CUAR_Plugin */
 	private $cuar_plugin;
@@ -80,5 +148,8 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 // Make sure the addon is loaded
 global $cuar_cp_addon;
 $cuar_cp_addon = new CUAR_CustomerPageAddOn();
+	
+// This filter needs to be executed too early to be registered in the constructor
+add_filter( 'cuar_default_options', array( 'CUAR_CustomerPageAddOn', 'set_default_options' ) );
 
 endif; // if (!class_exists('CUAR_CustomerPageAddOn')) :

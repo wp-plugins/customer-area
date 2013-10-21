@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-10-19 11:38+0100\n"
-"PO-Revision-Date: 2013-10-19 11:38+0100\n"
+"POT-Creation-Date: 2013-10-21 13:13+0100\n"
+"PO-Revision-Date: 2013-10-21 13:13+0100\n"
 "Last-Translator: Rics <rics@walbatroz.com>\n"
 "Language-Team: e-rgonomy.com <info@e-rgonomy.com>\n"
 "Language: ES\n"
@@ -37,93 +37,103 @@ msgstr ""
 msgid "Settings"
 msgstr "Configurações"
 
-#: ../includes/settings.class.php:177
+#: ../includes/settings.class.php:111
+#, fuzzy
+msgid "The page title cannot be empty"
+msgstr "não pode estar vazio"
+
+#: ../includes/settings.class.php:217
 msgid "General"
 msgstr "Geral"
 
-#: ../includes/settings.class.php:189
+#: ../includes/settings.class.php:229
 msgid "General Settings"
 msgstr "Configurações Gerais"
 
-#: ../includes/settings.class.php:194
+#: ../includes/settings.class.php:234
 msgid "Include CSS"
 msgstr "Incluir CSS"
 
-#: ../includes/settings.class.php:200
+#: ../includes/settings.class.php:240
 msgid "Include the default stylesheet."
 msgstr "Incluir folha de estilo padrão"
 
-#: ../includes/settings.class.php:200
+#: ../includes/settings.class.php:240
 msgid "If not, you should style the plugin yourself in your theme."
 msgstr "Se não, você pode configurar o plugin diretamente no seu tema."
 
-#: ../includes/settings.class.php:203
+#: ../includes/settings.class.php:243
 msgid "Admin theme"
 msgstr "Tema do Administrador"
 
-#: ../includes/settings.class.php:211
+#: ../includes/settings.class.php:251
 msgid "Frontend theme"
 msgstr "Tema do Frontend"
 
-#: ../includes/settings.class.php:283
+#: ../includes/settings.class.php:308
+#, fuzzy
+msgid " is not a valid post"
+msgstr "não é uma função válida"
+
+#: ../includes/settings.class.php:341
 msgid " is not a valid role"
 msgstr "não é uma função válida"
 
-#: ../includes/settings.class.php:350
+#: ../includes/settings.class.php:408
 msgid " cannot be empty"
 msgstr "não pode estar vazio"
 
-#: ../includes/settings.class.php:370
+#: ../includes/settings.class.php:428
 msgid " is not a valid email"
 msgstr "não é um email válido"
 
-#: ../includes/settings.class.php:390
+#: ../includes/settings.class.php:448
 msgid " is not a valid value"
 msgstr "não é um valor válido"
 
-#: ../includes/settings.class.php:416
+#: ../includes/settings.class.php:474
 msgid "must be an integer"
 msgstr "precisa ser um inteiro"
 
-#: ../includes/settings.class.php:424
+#: ../includes/settings.class.php:482
 #, php-format
 msgid "must be greater than %s"
 msgstr "precisa ser maior que %s"
 
-#: ../includes/settings.class.php:432
+#: ../includes/settings.class.php:490
 #, php-format
 msgid "must be lower than %s"
 msgstr "precisa ser menor que %s"
 
-#: ../includes/settings.class.php:458
+#: ../includes/settings.class.php:516
 msgid " is not a valid owner type"
 msgstr "não é um tipo de proprietário válido"
 
-#: ../includes/settings.class.php:482
+#: ../includes/settings.class.php:540
 msgid " is not a valid owner"
 msgstr "não é um proprietário válido"
 
-#: ../includes/settings.class.php:506
+#: ../includes/settings.class.php:564
 msgid "Your license is active!"
 msgstr "Sua licença está ativa!"
 
-#: ../includes/settings.class.php:508
+#: ../includes/settings.class.php:566
 msgid "Your license key is invalid!"
 msgstr "Sua chave de licença é inválida!"
 
-#: ../includes/settings.class.php:510
+#: ../includes/settings.class.php:568
 msgid "Your license key is expired!"
 msgstr "Sua chave de licença expirou!"
 
-#: ../includes/settings.class.php:516
+#: ../includes/settings.class.php:574
 msgid "Last check"
 msgstr "Última verificação"
 
-#: ../includes/settings.class.php:516
+#: ../includes/settings.class.php:574
 msgid "d/m/Y"
 msgstr "d/m/Y"
 
-#: ../includes/settings.class.php:519
+#: ../includes/settings.class.php:577
 msgid ""
 "The license key you have received for this add-on. This is required in order "
 "to get automatic plugin updates."
@@ -131,21 +141,171 @@ msgstr ""
 "A chave de licença que você recebeu por esse add-on. Isso é necessário para "
 "permitir atualizações automáticas do plugin."
 
-#: ../includes/settings.class.php:693
+#: ../includes/settings.class.php:679
+msgid "None"
+msgstr ""
+
+#: ../includes/settings.class.php:762
 msgid "Any Role"
 msgstr "Qualquer Função"
 
-#: ../includes/settings.class.php:732
+#: ../includes/settings.class.php:801
 msgid "Main plugin folder"
 msgstr "Pasta principal do plugin"
 
-#: ../includes/settings.class.php:737
+#: ../includes/settings.class.php:806
 msgid "Current theme folder"
 msgstr "Pasta do tema atual"
 
-#: ../includes/settings.class.php:742
+#: ../includes/settings.class.php:811
 msgid "WordPress content folder"
 msgstr "Pasta content do WordPress"
+
+#: ../includes/setup-wizard-done.view.php:25
+msgid "Well done!"
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:29
+#, fuzzy
+msgid "Your Customer Area is ready"
+msgstr "Sua página de boas vindas ao cliente"
+
+#: ../includes/setup-wizard-done.view.php:31
+msgid ""
+"A page has been published on your site and will display the private content "
+"for the user who is logged-in. If you want, you can:"
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:36
+#, php-format
+msgid "<a href=\"%1$s\" target=\"_blank\">See how it looks</a> on your site."
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:39
+#, php-format
+msgid ""
+"<a href=\"%1$s\" target=\"_blank\">Edit the page</a> if you want to change "
+"the title or maybe make it a child page of another one. "
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:44
+msgid ""
+"Of course, because the plugin has just been setup, you will not see any "
+"private content in there. A good way to get started is to create a few "
+"private files and private pages owned by yourself. This way, you will be "
+"able to see how it looks in your site and no one else but you will be able "
+"to see it."
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:47
+msgid "What's next?"
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:50
+#, php-format
+msgid ""
+"You should have a look at the <a href=\"%1$s\" target=\"_blank\">plugin "
+"settings</a> to adjust a few things."
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:54
+#: ../includes/core-addons/help/help-addon.class.php:179
+msgid ""
+"You can also get notified when we've got something exciting to say (plugin "
+"updates, news, etc.). Simply subscribe to our newsletter, we won't spam, we "
+"send at most one email per month!"
+msgstr ""
+"Você também pode ser notificado quando tivermos algo interessante a dizer "
+"(atualizações, novidades, etc). Basta se inscrever em nossa newsletter, nós "
+"não vamos enviar spam. Enviamos no máximo um email por mês!"
+
+#: ../includes/setup-wizard-done.view.php:61
+#: ../includes/core-addons/help/help-addon.class.php:188
+msgid "Email Address"
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:75
+#, fuzzy
+msgid "Getting help"
+msgstr "Configurações"
+
+#: ../includes/setup-wizard-done.view.php:77
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:4
+msgid "If you have any problem, we have some resources that could help you:"
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:81
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:8
+#, php-format
+msgid ""
+"<a href=\"%1$s\" target=\"_blank\">Documentation</a> for the main plugin and "
+"for the add-ons."
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:84
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:11
+#, php-format
+msgid "<a href=\"%1$s\" target=\"_blank\">Frequently Asked Questions</a>. "
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:87
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:14
+#, php-format
+msgid ""
+"A dedicated <a href=\"%1$s\" target=\"_blank\">wordpress.org support forum</"
+"a>, only for the main plugin (English only as per the wordpress.org rules)."
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:90
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:17
+#, php-format
+msgid ""
+"<a href=\"%1$s\" target=\"_blank\">Support forums</a> on our website for the "
+"main plugin as well as for the add-ons (English, French and Spanish are ok "
+"there). "
+msgstr ""
+
+#: ../includes/setup-wizard-done.view.php:94
+#, fuzzy
+msgid "Improving your Customer Area"
+msgstr "Melhore sua área do cliente"
+
+#: ../includes/setup-wizard-done.view.php:103
+#: ../includes/core-addons/help/templates/list-addons.template.php:12
+#, php-format
+msgid ""
+"There has been an error while getting the list of add-ons, please <a href="
+"\"%s\">visit our shop directly</a>."
+msgstr ""
+
+#: ../includes/setup-wizard.view.php:23
+#, fuzzy
+msgid "Setup your Customer Area in seconds"
+msgstr "Melhore sua área do cliente com nossos add-ons"
+
+#: ../includes/setup-wizard.view.php:29
+msgid ""
+"Thanks for using our Customer Area plugin. It will be just a few seconds "
+"before the plugin is ready to work."
+msgstr ""
+
+#: ../includes/setup-wizard.view.php:38
+#: ../includes/core-addons/admin-area/admin-area-addon.class.php:67
+#: ../includes/core-addons/admin-area/admin-area-addon.class.php:68
+#: ../includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:31
+msgid "Customer Area"
+msgstr "Área do Cliente"
+
+#: ../includes/setup-wizard.view.php:39
+#, fuzzy
+msgid "You can give any title you want to the customer area"
+msgstr ""
+"Você pode escolher como os arquivos serão organizados por padrão na área do "
+"cliente."
+
+#: ../includes/setup-wizard.view.php:46
+msgid "Go, set it up!"
+msgstr ""
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:31
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:52
@@ -156,12 +316,6 @@ msgstr "Área Administrativa"
 msgid "View the menu"
 msgstr "Ver o menu"
 
-#: ../includes/core-addons/admin-area/admin-area-addon.class.php:67
-#: ../includes/core-addons/admin-area/admin-area-addon.class.php:68
-#: ../includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:31
-msgid "Customer Area"
-msgstr "Área do Cliente"
-
 #: ../includes/core-addons/capabilities/capabilities-addon.class.php:33
 msgid "Capabilities Manager"
 msgstr "Gerenciamento de Permissões"
@@ -171,24 +325,58 @@ msgid "Capabilities"
 msgstr "Permissões"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:35
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:108
 msgid "Customer Page"
 msgstr "Página do Cliente"
 
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:50
+msgid ""
+"There is no Customer Area page on your site. If you already have one, just "
+"visit the plugin settings to set it. "
+msgstr ""
+
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:52
+#, php-format
+msgid ""
+"If you have not yet created one, we can do it automatically: <a href=\"%s"
+"\">create this page now</a>"
+msgstr ""
+
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:54
+#, php-format
+msgid ""
+"If you already have one, just visit the <a href=\"%s\">plugin settings</a> "
+"to set it."
+msgstr ""
+
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:67
 msgid "Dashboard"
 msgstr ""
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:53
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:68
 msgid "Your customer area welcome page"
 msgstr "Sua página de boas vindas ao cliente"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:61
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:76
 msgid "Logout"
 msgstr "Sair"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:62
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:77
 msgid "Disconnect from your customer area"
 msgstr "Desconectar da sua área do cliente"
+
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:101
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:272
+#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:166
+msgid "Frontend Integration"
+msgstr "Integração com Frontend"
+
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:117
+msgid ""
+"This page is the one where you have inserted the [customer-area] shortcode. "
+"This should be set automatically when you first visit that page. If for any "
+"reason it is not correct, you can change it though."
+msgstr ""
 
 #: ../includes/core-addons/customer-page/templates/customer-page-header.template.php:26
 #, php-format
@@ -226,8 +414,8 @@ msgid "Add-ons"
 msgstr "Add-ons"
 
 #: ../includes/core-addons/help/help-addon.class.php:64
-msgid "Troubleshooting"
-msgstr "Solução de problemas"
+msgid "Support"
+msgstr ""
 
 #: ../includes/core-addons/help/help-addon.class.php:83
 #: ../includes/core-addons/help/help-addon.class.php:95
@@ -285,48 +473,36 @@ msgstr "Seguir-nos no Google+"
 msgid "Follow us on Facebook"
 msgstr "Seguir-nos no Facebook"
 
-#: ../includes/core-addons/help/help-addon.class.php:179
-msgid ""
-"You can also get notified when we've got something exciting to say (plugin "
-"updates, news, etc.). Simply subscribe to our newsletter, we won't spam, we "
-"send at most one email per month!"
-msgstr ""
-"Você também pode ser notificado quando tivermos algo interessante a dizer "
-"(atualizações, novidades, etc). Basta se inscrever em nossa newsletter, nós "
-"não vamos enviar spam. Enviamos no máximo um email por mês!"
-
-#: ../includes/core-addons/help/help-addon.class.php:188
-msgid "Email Address"
-msgstr ""
-
 #: ../includes/core-addons/help/templates/list-addons.template.php:7
 msgid "Enhance your customer area with our add-ons"
 msgstr "Melhore sua área do cliente com nossos add-ons"
 
-#: ../includes/core-addons/help/templates/list-addons.template.php:12
-#, php-format
-msgid ""
-"There has been an error while getting the list of add-ons, please <a href="
-"\"%s\">visit our shop directly</a>."
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:1
+#, fuzzy
+msgid "Getting support"
+msgstr "Configurações"
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:3
+msgid "Please note that we do not reply to support requests sent by email."
 msgstr ""
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:1
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:21
 msgid "Troubleshooting information"
 msgstr "Informação para Resolução de Problemas"
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:4
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:23
 msgid "Installed add-ons"
 msgstr "Add-ons instalados"
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:9
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:28
 msgid "Name"
 msgstr "Nome"
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:10
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:29
 msgid "Required customer area version"
 msgstr "Versão da área do cliente requerida"
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:28
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:47
 msgid "Plugin options"
 msgstr "Opções do plugin"
 
@@ -590,11 +766,6 @@ msgstr "Ativar add-on"
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:267
 msgid "Check this to enable the private files add-on."
 msgstr "Marque essa opção para ativar o add-on de arquivos privados."
-
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:272
-#: ../includes/core-addons/private-page/private-page-admin-interface.class.php:166
-msgid "Frontend Integration"
-msgstr "Integração com Frontend"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:279
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:173
@@ -862,6 +1033,9 @@ msgstr ""
 #, php-format
 msgid "Page created on %1$s by %2$s for %3$s"
 msgstr ""
+
+#~ msgid "Troubleshooting"
+#~ msgstr "Solução de problemas"
 
 #~ msgid ""
 #~ "Show the view and download links below the post content for a customer "

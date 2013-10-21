@@ -183,3 +183,19 @@ span.label {
 	font-weight: 600;
 	color: #333;
 }
+
+.cuar-settings p, .cuar-settings h2, .cuar-settings h3, .cuar-settings h4,
+.cuar-wizard p, .cuar-wizard h1, .cuar-wizard h2, .cuar-wizard h3, .cuar-wizard h4 {
+	line-height: 1.6em;
+	max-width: 600px;
+}
+
+.cuar-wizard ul, .cuar-settings ul {
+	list-style-type: disc;
+	padding-left: 2em;
+	max-width: 600px;
+}
+
+.cuar-wizard ul li {
+	
+}

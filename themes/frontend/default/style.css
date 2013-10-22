@@ -250,6 +250,12 @@ h4.cuar-private-file-section.ui-accordion-header-active {
 	margin-bottom: 12px;
 }
 
+.cuar_form_create_content .single-owner, .cuar_form_create_content .no-owner {
+	display: block;
+	min-width: 50%;	
+	margin-bottom: 12px;
+}
+
 .cuar_small_button, .entry-content .cuar_small_button {
 	background: #e05d22; /* Old browsers */
 	background: -webkit-linear-gradient(top, #e05d22 0%, #d94412 100%); /* Chrome 10+, Safari 5.1+ */

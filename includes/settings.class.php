@@ -226,35 +226,59 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 */
 		public function print_core_settings($cuar_settings, $options_group) {
 			// General settings
-			add_settings_section ( 'cuar_general_settings', __ ( 'General Settings', 'cuar' ), array (
-					&$cuar_settings,
-					'print_core_settings_general_section_info' 
-			), self::$OPTIONS_PAGE_SLUG );
+			add_settings_section ( 'cuar_general_settings', 
+					__ ( 'General Settings', 'cuar' ), 
+					array ( &$cuar_settings, 'print_core_settings_general_section_info' ), 
+					self::$OPTIONS_PAGE_SLUG );
 			
-			add_settings_field ( self::$OPTION_INCLUDE_CSS, __ ( 'Include CSS', 'cuar' ), array (
-					&$cuar_settings,
-					'print_input_field' 
-			), self::$OPTIONS_PAGE_SLUG, 'cuar_general_settings', array (
-					'option_id' => self::$OPTION_INCLUDE_CSS,
-					'type' => 'checkbox',
-					'after' => __ ( 'Include the default stylesheet.', 'cuar' ) . '<p class="description">' . __ ( 'If not, you should style the plugin yourself in your theme.', 'cuar' ) . '</p>' 
-			) );
+			add_settings_field ( self::$OPTION_INCLUDE_CSS, 
+					__ ( 'Include CSS', 'cuar' ), 
+					array( &$cuar_settings,	'print_input_field'	), 
+					self::$OPTIONS_PAGE_SLUG, 
+					'cuar_general_settings', 
+					array (
+							'option_id' => self::$OPTION_INCLUDE_CSS,
+							'type' => 'checkbox',
+							'after' => __ ( 'Include the default stylesheet.', 'cuar' ) . '<p class="description">' . __ ( 'If not, you should style the plugin yourself in your theme.', 'cuar' ) . '</p>' 
+						) 
+				);
 			
-			add_settings_field ( self::$OPTION_ADMIN_THEME_URL, __ ( 'Admin theme', 'cuar' ), array (
-					&$cuar_settings,
-					'print_theme_select_field' 
-			), self::$OPTIONS_PAGE_SLUG, 'cuar_general_settings', array (
-					'option_id' => self::$OPTION_ADMIN_THEME_URL,
-					'theme_type' => 'admin' 
-			) );
+			add_settings_field ( self::$OPTION_ADMIN_THEME_URL, 
+					__ ( 'Admin theme', 'cuar' ), 
+					array ( &$cuar_settings, 'print_theme_select_field' ), 
+					self::$OPTIONS_PAGE_SLUG, 
+					'cuar_general_settings', 
+					array (
+							'option_id' => self::$OPTION_ADMIN_THEME_URL,
+							'theme_type' => 'admin' 
+						)
+				);
 			
-			add_settings_field ( self::$OPTION_FRONTEND_THEME_URL, __ ( 'Frontend theme', 'cuar' ), array (
-					&$cuar_settings,
-					'print_theme_select_field' 
-			), self::$OPTIONS_PAGE_SLUG, 'cuar_general_settings', array (
-					'option_id' => self::$OPTION_FRONTEND_THEME_URL,
-					'theme_type' => 'frontend' 
-			) );
+			add_settings_field ( self::$OPTION_FRONTEND_THEME_URL, 
+					__ ( 'Frontend theme', 'cuar' ), 
+					array ( &$cuar_settings, 'print_theme_select_field' ), 
+					self::$OPTIONS_PAGE_SLUG, 
+					'cuar_general_settings', 
+					array (
+							'option_id' => self::$OPTION_FRONTEND_THEME_URL,
+							'theme_type' => 'frontend' 
+						) 
+				);
+			
+			add_settings_field ( self::$OPTION_HIDE_SINGLE_OWNER_SELECT, 
+					__ ( 'Hide owner selection', 'cuar' ), 
+					array ( &$cuar_settings, 'print_input_field' ), 
+					self::$OPTIONS_PAGE_SLUG, 
+					'cuar_general_settings', 
+					array (
+							'option_id' => self::$OPTION_HIDE_SINGLE_OWNER_SELECT,
+							'type' => 'checkbox',
+							'after' => __ ( 'Hide the owner selection field when a single owner is possible.', 'cuar' ) 
+									. '<p class="description">' 
+									. __ ( 'The owner will not be displayed but included directly if a single owner type is available to the current user and if within that owner type, a single owner is available.', 'cuar' ) 
+									. '</p>' 
+						) 
+				);
 		}
 		public function print_core_settings_general_section_info() {
 			// echo '<p>' . __( 'General plugin options.', 'cuar' ) . '</p>';
@@ -271,6 +295,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_INCLUDE_CSS );
 			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_ADMIN_THEME_URL );
 			$cuar_settings->validate_not_empty ( $input, $validated, self::$OPTION_FRONTEND_THEME_URL );
+			$cuar_settings->validate_boolean ( $input, $validated, self::$OPTION_HIDE_SINGLE_OWNER_SELECT );
 			
 			return $validated;
 		}
@@ -285,6 +310,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			$defaults [self::$OPTION_INCLUDE_CSS] = true;
 			$defaults [self::$OPTION_ADMIN_THEME_URL] = CUAR_ADMIN_THEME_URL;
 			$defaults [self::$OPTION_FRONTEND_THEME_URL] = CUAR_FRONTEND_THEME_URL;
+			$defaults [self::$OPTION_HIDE_SINGLE_OWNER_SELECT] = false;
 			
 			return $defaults;
 		}
@@ -902,6 +928,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public static $OPTION_INCLUDE_CSS = 'cuar_include_css';
 		public static $OPTION_ADMIN_THEME_URL = 'cuar_admin_theme_url';
 		public static $OPTION_FRONTEND_THEME_URL = 'cuar_frontend_theme_url';
+		public static $OPTION_HIDE_SINGLE_OWNER_SELECT = 'cuar_hide_single_owner_select';
 		
 		/**
 		 * @var CUAR_Plugin The plugin instance

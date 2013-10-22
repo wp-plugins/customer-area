@@ -45,8 +45,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			add_action( 'template_redirect', array( &$this, 'protect_single_post_access' ) );
 		}
 			
-		add_action('cuar_print_select_options_for_type_usr', 
-				array( &$this, 'print_select_options_for_type_usr'), 10, 2);		
+		add_action('cuar_get_printable_owners_for_type_usr', array( &$this, 'get_printable_owners_for_type_usr'), 10 );		
 	}	
 	
 	/*------- QUERY FUNCTIONS ---------------------------------------------------------------------------------------*/
@@ -426,81 +425,24 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		
 		do_action( "cuar_owner_meta_box_header" );
 
-		$owner_types = apply_filters( 'cuar_get_selectable_owner_types', null );
-		if ( null===$owner_types ) {
-			$owner_types = $this->get_owner_types();
-		}
-		
-		if (count($owner_types)==1) {
-			reset($owner_types);
-?>
-		<input type="hidden" name="cuar_owner_type" id="cuar_owner_type" value="<?php echo key($owner_types); ?>" />
-<?php 			
-		} else {
-?>
-		<div id="cuar_owner_type_row" class="metabox-row">
-			<span class="label"><label for="cuar_owner_type">
-				<?php _e('Select the type of owner', 'cuar');?></label></span> 	
-			<select name="cuar_owner_type" id="cuar_owner_type" >
-<?php 		foreach ( $owner_types as $type_id => $type_label ) : 
-				$selected =  ( $current_owner_type!=$type_id ? '' : ' selected="selected"' ); 
-?>
-				<option value="<?php echo $type_id;?>"<?php echo $selected; ?>><?php echo $type_label; ?></option>
-<?php 		endforeach; ?>				
-			</select>
-		</div>
-<?php 						
-		}
-		
-		if ( array_key_exists( $current_owner_type, $owner_types ) ) {
-			$visible_owner_select = $current_owner_type;
-		} else {
-			reset( $owner_types );
-			$visible_owner_select = key( $owner_types ); 
-		}
-		
-		foreach ( $owner_types as $type_id => $type_label ) { 
-			$hidden = ( $visible_owner_select==$type_id ? '' : ' style="display: none;"' );  
-			$enable_multiple_selection = apply_filters( 'cuar_enable_multiple_select_for_type_' . $type_id, false );
-?>
-		<div id="cuar_owner_id_row_<?php echo $type_id; ?>" class="metabox-row owner-id-select-row" <?php echo $hidden; ?>>
-			<span class="label"><label for="cuar_owner">
-				<?php printf( __('%s owning this content', 'cuar'), $type_label ); ?></label></span> 	
-			<span class="field">
-				<?php			
-					$multiple = $enable_multiple_selection ? ' multiple="multiple" size="8"' : ''; 
-					$field_id = 'cuar_owner_' . $type_id . '_id';	
-				?>
-				<select id="<?php echo $field_id; ?>" name="<?php echo $enable_multiple_selection ? $field_id . '[]' : $field_id; ?>"<?php echo $multiple; ?>>
-				<?php do_action( 'cuar_print_select_options_for_type_' . $type_id, 
-						$current_owner_type, 
-						$current_owner_ids ); ?>
-				</select>
-			</span>
-		</div>
-<?php
-		}
-?>
-		<script type="text/javascript">
-		<!--
-			jQuery( document ).ready( function($) {
-				$( '#cuar_owner_type' ).change(function() {
-					var type = $(this).val();
-					var newVisibleId = '#cuar_owner_id_row_' + type;
+		// $owner_type_field_id = 'cuar_owner_type', $owner_field_id = 'cuar_owner'
 
-					// Do nothing if already visible
-					if ( $(newVisibleId).is(":visible") ) return
-
-					// Hide previous and then show new
-					$('.owner-id-select-row:visible').fadeToggle("fast", function () {
-						$(newVisibleId).fadeToggle();
-					});
-				});
-			});
-		//-->
-		</script>
+		echo '<div id="cuar_owner_type_row" class="metabox-row">';
+		echo '<span class="label"><label for="cuar_owner_type">' . __('Select the type of owner', 'cuar') . '</label></span><span class="field">';
 		
-<?php 			
+		$this->print_owner_type_select_field( 'cuar_owner_type', null, $current_owner_type );
+
+		echo '</span></div>';
+		
+		echo '<div id="cuar_owner_type_row" class="metabox-row">';
+		echo '<span class="label"><label></label></span><span class="field">';
+		
+		$this->print_owner_select_field( 'cuar_owner_type', 'cuar_owner', null, $current_owner_type, $current_owner_ids );
+				
+		echo '</span></div>';
+
+		$this->print_owner_select_javascript( 'cuar_owner_type', 'cuar_owner' );
+		
 		do_action( "cuar_owner_meta_box_footer" );
 	}
 	
@@ -510,32 +452,25 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * @param unknown $current_owner_type
 	 * @param unknown $current_owner_id
 	 */
-	public function print_select_options_for_type_usr( $current_owner_type, $current_owner_ids ) {
+	public function get_printable_owners_for_type_usr( $in ) {
 		$all_users = apply_filters( 'cuar_get_selectable_owners_for_type_usr', null );		
 		if ( null===$all_users ) {
 			$all_users = get_users( array( 'orderby' => 'display_name' ) );
-		}
+		}	
 		
-		if (!is_array( $current_owner_ids ) ) {
-			$current_owner_ids = array( $current_owner_ids );
-		}		
+		$out = $in;
 		
 		foreach ( $all_users as $u ) {
-			$selected =  ( $current_owner_type=='usr' && in_array( $u->ID, $current_owner_ids ) ) 
-					? ' selected="selected"' 
-					: '';
-			echo sprintf('<option value="%1$s" %2$s>%3$s</option>',
-					$u->ID,
-					$selected,
-					$u->display_name
-				);
+			$out[ $u->ID ] = $u->display_name;
 		}
+		
+		return $out;
 	}
 
 	/**
 	 * Print the metabox to select an owner type
 	 */
-	public function print_owner_type_select_field($owner_type_field_id, $field_group=null, $selected_owner_type='usr') {
+	public function print_owner_type_select_field( $owner_type_field_id, $field_group=null, $selected_owner_type='usr' ) {
 		if ($field_group!=null) {
 			$owner_type_field_name = $field_group . '[' . $owner_type_field_id . ']';
 		} else {
@@ -598,10 +533,11 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	/**
 	 * Print the metabox to select an owner
 	 */
-	public function print_owner_select_field($owner_type_field_id, $owner_field_id, $field_group=null, 
-			$selected_owner_type='usr', $selected_owner_ids=array()) {
+	public function print_owner_select_field($owner_type_field_id, $owner_field_id, $field_group=null, $selected_owner_type='usr', $selected_owner_ids=array()) {
 		global $post;
 
+		$hide_if_single_owner = $this->plugin->get_option( CUAR_Settings::$OPTION_HIDE_SINGLE_OWNER_SELECT );
+		
 		$owner_types = apply_filters( 'cuar_get_selectable_owner_types', null );
 		if ( null===$owner_types ) {
 			$owner_types = $this->get_owner_types();
@@ -614,25 +550,54 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			$visible_owner_select = key( $owner_types ); 
 		}
 		
-		foreach ( $owner_types as $type_id => $type_label ) { 
-			$hidden = ( $visible_owner_select==$type_id ? '' : ' style="display: none;"' );  
-			$enable_multiple_selection = apply_filters( 'cuar_enable_multiple_select_for_type_' . $type_id, false );
-			$multiple = $enable_multiple_selection ? ' multiple="multiple" size="8"' : '';
-			
-			$field_id = $owner_field_id . '_' . $type_id . '_id'; 
-					
+		// Don't hide if we can select
+		if ( count( $owner_types )!=1 ) {
+			$hide_if_single_owner = false;
+		}
+		
+		foreach ( $owner_types as $type_id => $type_label ) { 			
+			$field_id = $owner_field_id . '_' . $type_id . '_id'; 					
 			if ($field_group!=null) {
 				$field_name = $field_group . '[' . $field_id . ']';
 			} else {
 				$field_name = $field_id;
 			}
-?>
-			<select id="<?php echo $field_id; ?>" name="<?php echo $enable_multiple_selection ? $field_name . '[]' : $field_name; ?>" class="<?php echo $owner_type_field_id; ?>_owner_select" <?php echo $hidden; ?> <?php echo $multiple; ?>>
-			<?php do_action( 'cuar_print_select_options_for_type_' . $type_id, 
-					$selected_owner_type, 
-					$selected_owner_ids ); ?>
-			</select>
-<?php
+			
+			$owners = apply_filters( 'cuar_get_printable_owners_for_type_' . $type_id, array() );
+
+			$hidden = ( $visible_owner_select==$type_id ? '' : ' style="display: none;"' );
+						
+			if ( count( $owners )==0 )	{
+				printf( '<span class="no-owner %s" %s><em>%s</em></span>', $owner_type_field_id . '_owner_select', $hidden, __( 'It seems you cannot select any owner.', 'cuar' ) );
+			} else if ( count( $owners )==1 )	{
+				foreach ( $owners as $id => $name ) {
+					printf( '<input type="hidden" name="%s" value="%s" />', $field_name, $id );
+										
+					if ( $hide_if_single_owner ) {
+						printf( '<span id="%s" class="single-owner hidden-message %s" %s><em>%s</em></span>', $field_id, $owner_type_field_id . '_owner_select', $hidden, __( 'The owner is hidden', 'cuar' ) );
+					} else {
+						printf( '<span id="%s" class="single-owner %s" %s><em>%s</em></span>', $field_id, $owner_type_field_id . '_owner_select', $hidden, $name );
+					}
+				}
+			} else {	
+				$enable_multiple_selection = apply_filters( 'cuar_enable_multiple_select_for_type_' . $type_id, false );
+				$multiple = $enable_multiple_selection ? ' multiple="multiple" size="8"' : '';
+				
+				printf( '<select id="%s" name="%s" class="%s" %s %s>',
+						$field_id,
+						$enable_multiple_selection ? $field_name . '[]' : $field_name,
+						$owner_type_field_id . '_owner_select',
+						$hidden, 
+						$multiple
+					);
+	
+				foreach ( $owners as $id => $name ) {
+					$selected =  ( $selected_owner_type==$type_id && in_array( $id, $selected_owner_ids ) ) ? ' selected="selected"' : '';					
+					printf('<option value="%1$s" %2$s>%3$s</option>', $id, $selected, $name );
+				}
+				
+				echo '</select>';
+			}
 		}			
 	}
 	

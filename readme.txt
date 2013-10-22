@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 3.1.3
+Stable tag: 3.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -217,8 +217,10 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 3.1.3 (2013/10/22) =
+= 3.2.0 (2013/10/22) =
 
+* Added a way to hide the owner when only a single owner is selectable when creating private content (requested by 2 users). This
+is disabled by default and enabled by a checkbox in the general plugin settings. 
 * Fixed bug when accessing a private file/page/conversation directly:  if the user follows a link directly to a private
 page, this presents the standard wordpress login and not the plugin login page.
 

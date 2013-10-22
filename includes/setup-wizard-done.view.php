@@ -107,17 +107,26 @@ $cp_addon = $this->plugin->get_addon('customer-page');
 	else : ?>
 			
 		<div class="cuar-add-ons">
-		<?php foreach ( $feed->get_items() as $item ) : ?>
+		<?php 
+			$force_line_break = false; 
+			foreach ( $feed->get_items() as $item ) : ?>
 			<div class="cuar-addon">
 				<?php if ( $enclosure = $item->get_enclosure() ) : ?>
 				<a href="<?php echo $item->get_permalink(); ?>">
 					<img src="<?php echo $enclosure->get_link(); ?>" />
 				</a>
 				<?php endif; ?>
-				<h2><a href="<?php echo $item->get_permalink(); ?>"><?php echo str_replace( 'Customer Area – ', '', $item->get_title() ); ?></a></h2>
-				<p><?php echo $item->get_description(); ?></p>
+				<div class="meta">
+					<h2><a href="<?php echo $item->get_permalink(); ?>"><?php echo str_replace( 'Customer Area – ', '', $item->get_title() ); ?></a></h2>
+					<?php echo $item->get_description(); ?>
+				</div>
 			</div>	
-		<?php endforeach; ?>
+			
+		<?php 	if ($force_line_break) echo '<p class="forcelinebreak">&nbsp;</p>'; ?>
+			
+		<?php
+				$force_line_break = !$force_line_break;
+			endforeach; ?>
 		</div>
 
 <?php 

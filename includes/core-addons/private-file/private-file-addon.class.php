@@ -298,34 +298,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	}
 
 	/*------- HANDLE FILE VIEWING AND DOWNLOADING --------------------------------------------------------------------*/
-	
-	/**
-	 * Protect access to single pages for private files: only for author and owner.
-	 */
-	public function protect_access() {				
-		// If not on a matching post type, we do nothing
-		if ( !is_singular('cuar_private_file') ) return;
 		
-		// If not logged-in, we ask for details
-		if ( !is_user_logged_in() ) {
-			wp_redirect( wp_login_url( $_SERVER['REQUEST_URI'] ) );
-			exit;
-		}
-
-		// If not authorized to download the file, we bail	
-		$post = get_queried_object();
-		$author_id = $post->post_author;
-
-		$current_user_id = get_current_user_id();
-
-		$po_addon = $this->plugin->get_addon('post-owner');
-		$is_current_user_owner = $po_addon->is_user_owner_of_post( $post->ID, $current_user_id );
-		if ( !( $is_current_user_owner || $author_id==$current_user_id )) {
-			wp_die( __( "You are not authorized to view this file", "cuar" ) );
-			exit();
-		}
-	}
-	
 	/**
 	 * Handle the actions on a private file
 	 */
@@ -341,7 +314,9 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		
 		// If not logged-in, we ask for details
 		if ( !is_user_logged_in() ) {
-			wp_redirect( wp_login_url( $_SERVER['REQUEST_URI'] ) );
+			$cp_addon = $this->plugin->get_addon( 'customer-page' );
+			$url = $cp_addon->get_customer_page_url( '', $_SERVER['REQUEST_URI'] );
+			wp_redirect( $url );
 			exit;
 		}
 

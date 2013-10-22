@@ -87,8 +87,18 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		return $this->cuar_plugin->update_option( self::$OPTION_CUSTOMER_PAGE_POST_ID, $post_id );
 	}
 	
-	public function get_customer_page_url() {
-		return get_permalink( $this->get_customer_page_id() );
+	public function get_customer_page_url( $action = '', $redirect = '' ) {
+		$url = trailingslashit( get_permalink( $this->get_customer_page_id() ) );
+		
+		if ( !empty( $action ) && !empty( $redirect ) ) {
+			$url .= '?action=' . $action . '&redirect=' . $redirect; 
+		} else if ( !empty( $redirect ) ) {
+			$url .= '?redirect=' . $redirect; 
+		} else if ( !empty( $action ) ) {
+			$url .= '?action=' . $action; 
+		} 
+		
+		return $url;
 	}
 
 

@@ -705,8 +705,9 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	
 		// If not logged-in, we ask for details
 		if ( !is_user_logged_in() ) {
-			// TODO SHOW LOGIN LINKS INSTEAD!!!
-			wp_redirect( wp_login_url( $_SERVER['REQUEST_URI'] ) );
+			$cp_addon = $this->plugin->get_addon( 'customer-page' );
+			$url = $cp_addon->get_customer_page_url( '', get_permalink() );
+			wp_redirect( $url );
 			exit;
 		}
 	

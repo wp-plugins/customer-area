@@ -53,6 +53,12 @@ class CUAR_CustomerPageShortcode {
 		
 		// If not logged-in, we should do so.
 		if ( !is_user_logged_in() ) {
+			if ( isset( $_GET['redirect'] ) ) {
+				$redirect_to_url = $_GET['redirect']; 
+			} else {
+				$redirect_to_url = $cp_addon->get_customer_page_url();
+			}
+			
 	  		ob_start();
 	  		
 	  		do_action( 'cuar_before_login_required_template' );

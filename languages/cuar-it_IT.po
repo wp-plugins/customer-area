@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
 "POT-Creation-Date: 2013-10-22 19:29+0100\n"
-"PO-Revision-Date: 2013-10-22 19:30+0100\n"
+"PO-Revision-Date: 2013-10-24 18:35+0100\n"
 "Last-Translator: Andrea Starz <info@work-on-web.it>\n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -31,6 +31,8 @@ msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please enable "
 "them in the WordPress settings."
 msgstr ""
+"I permalink sono disabilitati, l'Area Cliente potrebbe non funzionare "
+"correttamente. Si prega di abilitarli nelle impostazioni di Wordpress."
 
 #: ../includes/settings.class.php:81 ../includes/settings.class.php:82
 #: ../includes/settings.class.php:96
@@ -38,9 +40,8 @@ msgid "Settings"
 msgstr "Impostazioni"
 
 #: ../includes/settings.class.php:111
-#, fuzzy
 msgid "The page title cannot be empty"
-msgstr " non può essere vuoto"
+msgstr "Il titolo della pagina non può essere vuoto"
 
 #: ../includes/settings.class.php:217
 msgid "General"
@@ -72,11 +73,13 @@ msgstr "Tema del sito"
 
 #: ../includes/settings.class.php:269
 msgid "Hide owner selection"
-msgstr ""
+msgstr "Nascondi la selezione del proprietario"
 
 #: ../includes/settings.class.php:276
 msgid "Hide the owner selection field when a single owner is possible."
 msgstr ""
+"Nascondi il campo di selezione del proprietario quando è possibile un solo "
+"proprietario."
 
 #: ../includes/settings.class.php:278
 msgid ""
@@ -84,11 +87,13 @@ msgid ""
 "is available to the current user and if within that owner type, a single "
 "owner is available."
 msgstr ""
+"Il proprietario non viene visualizzato ma incluso direttamente quando "
+"all'utente corrente è possibile la selezione di un solo tipo di proprietario "
+"e se per questo tipo è selezionabile un solo proprietario."
 
 #: ../includes/settings.class.php:334
-#, fuzzy
 msgid " is not a valid post"
-msgstr " non è un ruolo valido"
+msgstr " non è un articolo valido"
 
 #: ../includes/settings.class.php:367
 msgid " is not a valid role"
@@ -158,7 +163,7 @@ msgstr ""
 
 #: ../includes/settings.class.php:705
 msgid "None"
-msgstr ""
+msgstr "Nessuno"
 
 #: ../includes/settings.class.php:788
 msgid "Any Role"
@@ -178,23 +183,25 @@ msgstr "Cartella di WordPress"
 
 #: ../includes/setup-wizard-done.view.php:25
 msgid "Well done!"
-msgstr ""
+msgstr "Fatto!"
 
 #: ../includes/setup-wizard-done.view.php:29
-#, fuzzy
 msgid "Your Customer Area is ready"
-msgstr "La vostra pagina di benvenuto nell'Area Clienti"
+msgstr "La vostra Area Cliente è pronta"
 
 #: ../includes/setup-wizard-done.view.php:31
 msgid ""
 "A page has been published on your site and will display the private content "
 "for the user who is logged-in. If you want, you can:"
 msgstr ""
+"La pagina è stata pubblicata nel tuo sito e può mostrare il contenuto "
+"riservato agli utenti che sono loggiati. Se vuoi puoi:"
 
 #: ../includes/setup-wizard-done.view.php:36
 #, php-format
 msgid "<a href=\"%1$s\" target=\"_blank\">See how it looks</a> on your site."
 msgstr ""
+"<a href=\"%1$s\" target=\"_blank\">Vedere come compare</a> nel tuo sito."
 
 #: ../includes/setup-wizard-done.view.php:39
 #, php-format
@@ -202,6 +209,8 @@ msgid ""
 "<a href=\"%1$s\" target=\"_blank\">Edit the page</a> if you want to change "
 "the title or maybe make it a child page of another one. "
 msgstr ""
+"<a href=\"%1$s\" target=\"_blank\">Modificare la pagina</a> se vuoi cambiare "
+"il titolo o farla diventare pagina figlia di un'altra. "
 
 #: ../includes/setup-wizard-done.view.php:44
 msgid ""
@@ -211,10 +220,14 @@ msgid ""
 "able to see how it looks in your site and no one else but you will be able "
 "to see it."
 msgstr ""
+"Naturalmente, poiché il plugin è appena stato impostato, non riesci a vedere "
+"nessun contenuto riservato. Una buona idea per iniziare è di creare alcuni "
+"file privati e delle pagine riservate a te. In questo modo, adesso solo tu "
+"potrai vedere come appare nel tuo sito e come si sarà in grado di vederlo."
 
 #: ../includes/setup-wizard-done.view.php:47
 msgid "What's next?"
-msgstr ""
+msgstr "Quali sono le prospettive?"
 
 #: ../includes/setup-wizard-done.view.php:50
 #, php-format
@@ -222,6 +235,8 @@ msgid ""
 "You should have a look at the <a href=\"%1$s\" target=\"_blank\">plugin "
 "settings</a> to adjust a few things."
 msgstr ""
+"Dovresti dare un'occhiata alle <a href=\"%1$s\" target=\"_blank"
+"\">impostazioni plugin</a> per correggere alcune cose."
 
 #: ../includes/setup-wizard-done.view.php:54
 #: ../includes/core-addons/help/help-addon.class.php:179
@@ -240,14 +255,13 @@ msgid "Email Address"
 msgstr "Indirizzo email"
 
 #: ../includes/setup-wizard-done.view.php:75
-#, fuzzy
 msgid "Getting help"
-msgstr "Impostazioni"
+msgstr "Aiuto"
 
 #: ../includes/setup-wizard-done.view.php:77
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:4
 msgid "If you have any problem, we have some resources that could help you:"
-msgstr ""
+msgstr "Se hai dei problemi, abbiamo alcune risorse che ti potrebbero aiutare:"
 
 #: ../includes/setup-wizard-done.view.php:81
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:8
@@ -256,12 +270,14 @@ msgid ""
 "<a href=\"%1$s\" target=\"_blank\">Documentation</a> for the main plugin and "
 "for the add-ons."
 msgstr ""
+"<a href=\"%1$s\" target=\"_blank\">Documentazione</a> del plugin principale "
+"e delle estensioni."
 
 #: ../includes/setup-wizard-done.view.php:84
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:11
 #, php-format
 msgid "<a href=\"%1$s\" target=\"_blank\">Frequently Asked Questions</a>. "
-msgstr ""
+msgstr "<a href=\"%1$s\" target=\"_blank\">Domande Frequenti</a>. "
 
 #: ../includes/setup-wizard-done.view.php:87
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:14
@@ -270,6 +286,9 @@ msgid ""
 "A dedicated <a href=\"%1$s\" target=\"_blank\">wordpress.org support forum</"
 "a>, only for the main plugin (English only as per the wordpress.org rules)."
 msgstr ""
+"Un <a href=\"%1$s\" target=\"_blank\">forum di supporto su wordpress.org</a> "
+"dedicato, solo per il plugin principale (Solo in Inglese English, come da "
+"norme di wordpress.org)."
 
 #: ../includes/setup-wizard-done.view.php:90
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:17
@@ -279,11 +298,13 @@ msgid ""
 "main plugin as well as for the add-ons (English, French and Spanish are ok "
 "there). "
 msgstr ""
+"<a href=\"%1$s\" target=\"_blank\">Forum di Supporto</a> sul nostro sito web "
+"per il plugin principale e per le estensioni (in Inglese, Francese e "
+"Spagnolo). "
 
 #: ../includes/setup-wizard-done.view.php:94
-#, fuzzy
 msgid "Improving your Customer Area"
-msgstr "Migliorate la vostra area clienti"
+msgstr "Migliorate la vostra Area Cliente"
 
 #: ../includes/setup-wizard-done.view.php:103
 #: ../includes/core-addons/help/templates/list-addons.template.php:12
@@ -292,17 +313,20 @@ msgid ""
 "There has been an error while getting the list of add-ons, please <a href="
 "\"%s\">visit our shop directly</a>."
 msgstr ""
+"Si è verificato un errore nella ricezione della lista delle estensioni, si "
+"prega di <a href=\"%s\">visitare direttamente il nostro shop</a>."
 
 #: ../includes/setup-wizard.view.php:23
-#, fuzzy
 msgid "Setup your Customer Area in seconds"
-msgstr "Migliorate il vostro spazio clienti con le nostre estensioni"
+msgstr "Pochi secondi per impostare la vostra Area Cliente"
 
 #: ../includes/setup-wizard.view.php:29
 msgid ""
 "Thanks for using our Customer Area plugin. It will be just a few seconds "
 "before the plugin is ready to work."
 msgstr ""
+"Grazie per aver scelto il nostro plugin Area Cliente. Sono necessari solo "
+"alcuni secondi prima che il plugin sia pronto a lavorare."
 
 #: ../includes/setup-wizard.view.php:38
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:67
@@ -312,15 +336,12 @@ msgid "Customer Area"
 msgstr "Area Clienti"
 
 #: ../includes/setup-wizard.view.php:39
-#, fuzzy
 msgid "You can give any title you want to the customer area"
-msgstr ""
-"Puoi scegliere in che modo saranno organizzati per default i files nell'area "
-"cliente."
+msgstr "Puoi assegnare qualsiasi titolo vuoi all'area cliente"
 
 #: ../includes/setup-wizard.view.php:46
 msgid "Go, set it up!"
-msgstr ""
+msgstr "Vai alla configurazione!"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:31
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:52
@@ -350,6 +371,9 @@ msgid ""
 "you have not yet setup the plugin, or because you are upgrading from an "
 "older version."
 msgstr ""
+"Non riusciamo a rilevare la pagina dell'Area Cliente nel tuo sito. Ciò è "
+"possibile se non è stato installato il plugin, oppure lo state aggiornando "
+"da una versione più vecchia. "
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:52
 #, php-format
@@ -357,6 +381,8 @@ msgid ""
 "If you already have this page, just visit the <a href=\"%s\">plugin "
 "settings</a> to set it manually."
 msgstr ""
+"Se già possiedi questa pagina, via alle <a href=\"%s\">impostazioni plugin</"
+"a> per impostarla manualmente."
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:54
 #, php-format
@@ -364,10 +390,12 @@ msgid ""
 "If you have not yet setup the plugin, we have a <a href=\"%s\">quick setup "
 "wizard</a>"
 msgstr ""
+"Se non hai ancora installato il plugin, puoi usare la nostra <a href=\"%s"
+"\">Installazione Rapida Guidata</a>"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:67
 msgid "Dashboard"
-msgstr ""
+msgstr "Cruscotto"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:68
 msgid "Your customer area welcome page"
@@ -393,6 +421,10 @@ msgid ""
 "This should be set automatically when you first visit that page. If for any "
 "reason it is not correct, you can change it though."
 msgstr ""
+"Questa pagina è quello in cui si è inserito lo shortcode [customer-area]. "
+"Questo dovrebbe essere impostato automaticamente la prima volta che visiti "
+"la pagina. Se per qualsiasi motivo non è corretto, è però possibile "
+"modificarlo."
 
 #: ../includes/core-addons/customer-page/templates/customer-page-header.template.php:26
 #, php-format
@@ -431,7 +463,7 @@ msgstr "Estensioni"
 
 #: ../includes/core-addons/help/help-addon.class.php:64
 msgid "Support"
-msgstr ""
+msgstr "Supporto"
 
 #: ../includes/core-addons/help/help-addon.class.php:83
 #: ../includes/core-addons/help/help-addon.class.php:95
@@ -495,13 +527,14 @@ msgid "Enhance your customer area with our add-ons"
 msgstr "Migliorate il vostro spazio clienti con le nostre estensioni"
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:1
-#, fuzzy
 msgid "Getting support"
-msgstr "Impostazioni"
+msgstr "Ottieni Assistenza"
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:3
 msgid "Please note that we do not reply to support requests sent by email."
 msgstr ""
+"Si prega di notare che non risponderemo a richieste di supporto inviate per "
+"email."
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:21
 msgid "Troubleshooting information"
@@ -547,11 +580,11 @@ msgstr "Selezionare il tipo di proprietario"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:571
 msgid "It seems you cannot select any owner."
-msgstr ""
+msgstr "Sembra non sia possibile selezionare alcun proprietario."
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:577
 msgid "The owner is hidden"
-msgstr ""
+msgstr "Il proprietario è nascosto"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:687
 msgid "You are not authorized to view this page"
@@ -793,12 +826,16 @@ msgstr "Mostra dopo l'articolo"
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:181
 msgid "Show additional information after the post in the single post view."
 msgstr ""
+"Mostra le informazioni aggiuntive dopo l'articolo nella visualizzazione ad "
+"articolo singolo. "
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:289
 msgid ""
 "You can disable this if you have your own \"single-cuar_private_file.php\" "
 "template file."
 msgstr ""
+"Si può disabilitare questa opzione se avete il vostro file modello \"single-"
+"cuar_private_file.php\"."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:295
 msgid "File list"
@@ -865,19 +902,16 @@ msgstr ""
 "scarico di file potrebbero non funzionare correttamente."
 
 #: ../includes/core-addons/private-file/private-file-frontend-interface.class.php:55
-#, fuzzy
 msgid "Files"
-msgstr "Archivio"
+msgstr "Archivi"
 
 #: ../includes/core-addons/private-file/private-file-frontend-interface.class.php:56
-#, fuzzy
 msgid "Create a new private file"
-msgstr "Nuovo file privato"
+msgstr "Crea un nuovo file privato"
 
 #: ../includes/core-addons/private-file/templates/list_latest_private_files.template.php:3
-#, fuzzy
 msgid "Latest Files"
-msgstr "Archivio Privato"
+msgstr "File Recenti"
 
 #: ../includes/core-addons/private-file/templates/list_private_files-by-year.template.php:19
 #: ../includes/core-addons/private-file/templates/list_private_files-by-year.template.php:28
@@ -901,7 +935,7 @@ msgstr "Non ci sono files in questa categoria"
 #: ../includes/core-addons/private-page/templates/list_private_pages-item.template.php:5
 #, php-format
 msgid "From: %s"
-msgstr ""
+msgstr "Da: %s"
 
 #: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:8
 #: ../includes/core-addons/private-page/templates/list_private_pages-item.template.php:8
@@ -913,7 +947,7 @@ msgstr "Aggiunto a %s"
 #: ../includes/core-addons/private-page/templates/list_private_pages-item.template.php:11
 #, php-format
 msgid "To: %s"
-msgstr ""
+msgstr "A: %s"
 
 #: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:14
 #: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:15
@@ -924,12 +958,12 @@ msgstr "Scarica"
 
 #: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:2
 msgid "More information about this file"
-msgstr ""
+msgstr "Più informazioni su questo file"
 
 #: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:12
 #, php-format
 msgid "File created on %1$s by %2$s for %3$s"
-msgstr ""
+msgstr "File creato il %1$s da %2$s per %3$s"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:34
 #: ../includes/core-addons/private-page/private-page-addon.class.php:102
@@ -1026,21 +1060,20 @@ msgid ""
 "You can disable this if you have your own \"single-cuar_private_page.php\" "
 "template file."
 msgstr ""
+"Si può disabilitare questa opzione se avete il vostro file modello \"single-"
+"cuar_private_page.php\"."
 
 #: ../includes/core-addons/private-page/private-page-frontend-interface.class.php:53
-#, fuzzy
 msgid "Pages"
-msgstr "Page %s"
+msgstr "Pagine"
 
 #: ../includes/core-addons/private-page/private-page-frontend-interface.class.php:54
-#, fuzzy
 msgid "Create a new private page"
-msgstr "Nuova Pagina Privata"
+msgstr "Crea una nuova pagina privata"
 
 #: ../includes/core-addons/private-page/templates/list_latest_private_pages.template.php:3
-#, fuzzy
 msgid "Latest Pages"
-msgstr "Pagine private"
+msgstr "Pagine Recenti"
 
 #: ../includes/core-addons/private-page/templates/list_private_pages-empty.template.php:1
 msgid "You currently have no pages."
@@ -1048,12 +1081,12 @@ msgstr "Al momento non ci sono pagine."
 
 #: ../includes/core-addons/private-page/templates/private-page-after_post_content.template.php:2
 msgid "More information about this page"
-msgstr ""
+msgstr "Più informazioni su questa pagina"
 
 #: ../includes/core-addons/private-page/templates/private-page-after_post_content.template.php:12
 #, php-format
 msgid "Page created on %1$s by %2$s for %3$s"
-msgstr ""
+msgstr "Pagina creata il %1$s da %2$s per %3$s"
 
 #~ msgid "Troubleshooting"
 #~ msgstr "Risoluzione dei Problemi"

@@ -16,6 +16,30 @@ span.label {
 	min-width: 200px;
 }
 
+/* -= CONVERSATIONS ADMIN */
+
+.column-cuar_reply_count {
+	width: 5em;
+}
+
+.conversation-reply {
+	border-bottom: 1px solid #999;
+}
+
+.conversation-reply:last-child {
+	border-bottom: none;
+}
+
+.conversation-reply .meta {
+	font-weight: bold;
+}
+
+.conversation-reply .content {
+	padding: 10px;
+	margin-left: 10px;
+	border-left: 1px solid #ccc;
+}
+
 /* -= SETTINGS PAGE */
 
 .cuar-main {

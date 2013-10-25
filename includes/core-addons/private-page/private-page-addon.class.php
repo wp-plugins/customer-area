@@ -99,7 +99,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 	
 	public function declare_configurable_capabilities( $capability_groups ) {
 		$capability_groups[] = array(
-				'group_name' => __( 'Private Pages', 'cuar' ),
+				'group_name' => __( 'Private Pages (back-office)', 'cuar' ),
 				'capabilities' => array(
 						'cuar_pp_list_all' 	=> __( 'List all pages', 'cuar' ),
 						'cuar_pp_edit' 		=> __( 'Create/Edit pages', 'cuar' ),

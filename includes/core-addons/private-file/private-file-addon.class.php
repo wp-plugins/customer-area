@@ -467,7 +467,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	
 	public function declare_configurable_capabilities( $capability_groups ) {
 		$capability_groups[] = array(
-				'group_name' => __( 'Private Files', 'cuar' ),
+				'group_name' => __( 'Private Files (back-office)', 'cuar' ),
 				'capabilities' => array(
 						'cuar_pf_list_all'				=> __( 'List all files', 'cuar' ),
 						'cuar_pf_edit' 					=> __( 'Create/Edit files', 'cuar' ),

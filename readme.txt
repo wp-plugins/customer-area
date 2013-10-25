@@ -218,6 +218,10 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
+=  (2013/10/) =
+
+* Refined capabilities for the back-office
+
 = 3.2.3 (2013/10/24) =
 
 * Updated italian translation

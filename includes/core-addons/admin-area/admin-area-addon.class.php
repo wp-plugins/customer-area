@@ -49,7 +49,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 	 */
 	public function declare_configurable_capabilities( $groups ) {
 		$group = array(
-				'group_name' => __( 'Administration Area', 'cuar' ), 
+				'group_name' => __( 'Back-office', 'cuar' ), 
 				'capabilities' => array( 
 						'view-customer-area-menu' => __( 'View the menu', 'cuar' ) 
 					) 

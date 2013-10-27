@@ -328,7 +328,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 		$author_id = $post->post_author;		
 		$is_current_user_owner = $po_addon->is_user_owner_of_post( $post->ID, $current_user_id );
 		
-		if ( !( $is_current_user_owner || $author_id==$current_user_id )) {
+		if ( !( $is_current_user_owner || $author_id==$current_user_id || current_user_can('cuar_view_any_cuar_private_file'))) {
 			wp_die( __( "You are not authorized to access this file", "cuar" ) );
 			exit();
 		}
@@ -479,6 +479,13 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 						'cuar_pf_assign_categories' 	=> __( 'Assign categories', 'cuar' ),
 					)
 			);
+
+		$capability_groups[] = array(
+				'group_name' => __( 'Private Files', 'cuar' ),
+				'capabilities' => array(
+						'cuar_view_any_cuar_private_file' 		=> __( 'View any private file', 'cuar' ),
+				)
+		);
 		
 		return $capability_groups;
 	}

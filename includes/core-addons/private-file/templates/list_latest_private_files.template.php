@@ -15,6 +15,10 @@
 <?php 	endwhile; ?>
 </tbody></table>
 
+<?php else : ?>
+
+<?php do_action( 'cuar_dashboard_no_latest_files' ); ?>
+
 <?php endif; ?>
 
 <?php wp_reset_postdata(); ?>

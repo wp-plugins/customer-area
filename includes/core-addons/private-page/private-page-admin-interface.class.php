@@ -243,6 +243,7 @@ jQuery(document).ready( function($) {
 			$admin_role->add_cap( 'cuar_pp_delete' );
 			$admin_role->add_cap( 'cuar_pp_read' );
 			$admin_role->add_cap( 'cuar_pp_list_all' );
+			$admin_role->add_cap( 'cuar_view_any_cuar_private_page' );
 		}
 		
 		return $defaults;

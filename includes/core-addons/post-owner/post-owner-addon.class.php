@@ -568,15 +568,26 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			$hidden = ( $visible_owner_select==$type_id ? '' : ' style="display: none;"' );
 						
 			if ( count( $owners )==0 )	{
-				printf( '<span class="no-owner %s" %s><em>%s</em></span>', $owner_type_field_id . '_owner_select', $hidden, __( 'It seems you cannot select any owner.', 'cuar' ) );
+				printf( '<span class="no-owner %s" %s><em>%s</em></span>', 
+						$owner_type_field_id . '_owner_select', 
+						$hidden, 
+						__( 'It seems you cannot select any owner.', 'cuar' ) );
 			} else if ( count( $owners )==1 )	{
 				foreach ( $owners as $id => $name ) {
 					printf( '<input type="hidden" name="%s" value="%s" />', $field_name, $id );
 										
 					if ( $hide_if_single_owner ) {
-						printf( '<span id="%s" class="single-owner hidden-message %s" %s><em>%s</em></span>', $field_id, $owner_type_field_id . '_owner_select', $hidden, __( 'The owner is hidden', 'cuar' ) );
+						printf( '<span id="%s" class="single-owner hidden-message %s" %s><em>%s</em></span>', 
+								$field_id, 
+								$owner_type_field_id . '_owner_select', 
+								$hidden, 
+								apply_filter( 'cuar_select_owner_text_hidden', __( 'The owner is hidden', 'cuar' ) ) );
 					} else {
-						printf( '<span id="%s" class="single-owner %s" %s><em>%s</em></span>', $field_id, $owner_type_field_id . '_owner_select', $hidden, $name );
+						printf( '<span id="%s" class="single-owner %s" %s><em>%s</em></span>', 
+								$field_id, 
+								$owner_type_field_id . '_owner_select', 
+								$hidden, 
+								apply_filter( 'cuar_select_owner_text_single', $name ) );
 					}
 				}
 			} else {	
@@ -683,7 +694,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		$current_user_id = get_current_user_id();
 	
 		$is_current_user_owner = $this->is_user_owner_of_post( $post->ID, $current_user_id );
-		if ( !( $is_current_user_owner || $author_id==$current_user_id )) {
+		if ( !( $is_current_user_owner || $author_id==$current_user_id || current_user_can('cuar_view_any_' . get_post_type()) )) {
 			wp_die( __( "You are not authorized to view this page", "cuar" ) );
 			exit();
 		}

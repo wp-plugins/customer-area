@@ -107,6 +107,13 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 						'cuar_pp_read' 		=> __( 'Access pages', 'cuar' ),
 					)
 			);
+
+		$capability_groups[] = array(
+				'group_name' => __( 'Private Pages', 'cuar' ),
+				'capabilities' => array(
+						'cuar_view_any_cuar_private_page' 		=> __( 'View any private page', 'cuar' ),
+				)
+		);
 		
 		return $capability_groups;
 	}

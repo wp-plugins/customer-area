@@ -180,7 +180,7 @@ jQuery(document).ready( function($) {
 <?php	if ( !empty( $current_file ) && isset( $current_file['file'] ) ) : ?>
 		<div id="cuar-current-file" class="metabox-row">
 			<p><?php _e('Current file:', 'cuar');?> 
-				<a href="<?php CUAR_PrivateFileThemeUtils::the_file_link( $post->ID, 'view' ); ?>" target="_blank">
+				<a href="<?php CUAR_PrivateFileThemeUtils::the_file_link( $post->ID, 'download' ); ?>" target="_blank">
 					<?php echo basename($current_file['file']); ?></a>
 			</p>
 		</div>		
@@ -370,6 +370,7 @@ jQuery(document).ready( function($) {
 			$admin_role->add_cap( 'cuar_pf_delete_categories' );
 			$admin_role->add_cap( 'cuar_pf_assign_categories' );
 			$admin_role->add_cap( 'cuar_pf_list_all' );
+			$admin_role->add_cap( 'cuar_view_any_cuar_private_file' );
 		}
 		
 		return $defaults;

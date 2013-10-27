@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 3.2.3
+Stable tag: 3.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -218,8 +218,10 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-=  (2013/10/) =
+= 3.3.0 (2013/10/27) =
 
+* Added actions and filters to allow more customisation without having to change the templates 
+* Added a new capability for private content to allow some role to be able to view any private content (useful for admins/moderators)
 * Refined capabilities for the back-office
 
 = 3.2.3 (2013/10/24) =

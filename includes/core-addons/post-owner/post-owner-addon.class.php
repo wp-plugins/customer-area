@@ -581,13 +581,13 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 								$field_id, 
 								$owner_type_field_id . '_owner_select', 
 								$hidden, 
-								apply_filter( 'cuar_select_owner_text_hidden', __( 'The owner is hidden', 'cuar' ) ) );
+								apply_filters( 'cuar_select_owner_text_hidden', __( 'The owner is hidden', 'cuar' ) ) );
 					} else {
 						printf( '<span id="%s" class="single-owner %s" %s><em>%s</em></span>', 
 								$field_id, 
 								$owner_type_field_id . '_owner_select', 
 								$hidden, 
-								apply_filter( 'cuar_select_owner_text_single', $name ) );
+								apply_filters( 'cuar_select_owner_text_single', $name ) );
 					}
 				}
 			} else {	

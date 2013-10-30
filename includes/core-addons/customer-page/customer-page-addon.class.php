@@ -35,9 +35,9 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		parent::__construct( 'customer-page', __( 'Customer Page', 'cuar' ), '2.0.0' );
 	}
 
-	public function run_addon( $cuar_plugin ) {
-		$this->cuar_plugin = $cuar_plugin;
-		$this->customer_page_shortcode = new CUAR_CustomerPageShortcode( $cuar_plugin );
+	public function run_addon( $plugin ) {
+		$this->plugin = $plugin;
+		$this->customer_page_shortcode = new CUAR_CustomerPageShortcode( $plugin );
 
 		add_filter( 'cuar_customer_page_actions', array( &$this, 'add_home_action' ), 1 );
 		add_filter( 'cuar_customer_page_actions', array( &$this, 'add_logout_action' ), 1000 );
@@ -54,7 +54,11 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 			$warning .= sprintf( __( 'If you have not yet setup the plugin, we have a <a href="%s">quick setup wizard</a>', 'cuar' ), admin_url( 'admin.php?page=' .  CUAR_Settings::$OPTIONS_PAGE_SLUG . '&run-setup-wizard=1' ) );
 			$warning .= '</li></ul>';
 			
-			$cuar_plugin->add_admin_notice( $warning );
+			$plugin->add_admin_notice( $warning );
+		}
+		
+		if ( $plugin->get_option( self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT ) ) {
+			add_filter( 'the_content', array( &$this, 'get_main_menu_for_single_private_content' ), 50 );
 		}
 	}	
 	
@@ -80,11 +84,11 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 	}
 	
 	public function get_customer_page_id() {
-		return $this->cuar_plugin->get_option( self::$OPTION_CUSTOMER_PAGE_POST_ID );
+		return $this->plugin->get_option( self::$OPTION_CUSTOMER_PAGE_POST_ID );
 	}
 	
 	public function set_customer_page_id( $post_id ) {
-		return $this->cuar_plugin->update_option( self::$OPTION_CUSTOMER_PAGE_POST_ID, $post_id );
+		return $this->plugin->update_option( self::$OPTION_CUSTOMER_PAGE_POST_ID, $post_id );
 	}
 	
 	public function get_customer_page_url( $action = '', $redirect = '' ) {
@@ -101,6 +105,128 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		return $url;
 	}
 
+	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/
+	
+	public function print_customer_area() {
+		$cp_addon = $this->plugin->get_addon('customer-page');
+		if ( $cp_addon->get_customer_page_id() <= 0 ) {
+			$cp_addon->set_customer_page_id( get_the_ID() );
+		}
+		
+		// If not logged-in, we should do so.
+		if ( !is_user_logged_in() ) {
+			$this->print_customer_area_for_guest();
+		} else {
+			$this->print_customer_area_for_user();
+		}
+	}
+
+	// Build the HTML output for a guest user
+	private function print_customer_area_for_guest() {
+		if ( isset( $_GET['redirect'] ) ) {
+			$redirect_to_url = $_GET['redirect'];
+		} else {
+			$redirect_to_url = $cp_addon->get_customer_page_url();
+		}
+		 
+		do_action( 'cuar_before_login_required_template' );
+		 
+		include( $this->plugin->get_template_file_path(
+				CUAR_INCLUDES_DIR . '/core-addons/customer-page',
+				'customer-page-login-required.template.php',
+				'templates' ));
+	
+		do_action( 'cuar_after_login_required_template' );
+	}
+
+	// Build the HTML output for a logged-in user.
+	private function print_customer_area_for_user() {	
+		$this->prepare_main_menu();
+		
+		do_action( 'cuar_before_customer_area_template' );
+
+		$this->print_header();
+
+		do_action( 'cuar_before_customer_area_content' ); 
+
+		if ( isset( $this->top_level_action ) ) {
+			do_action( 'cuar_customer_area_content_' . $this->top_level_action['slug'] ); 
+		} else if ( !empty( $this->current_action ) ) {
+			do_action( 'cuar_customer_area_content_' . $this->current_action );
+		} else{
+			do_action( 'cuar_customer_area_content' );
+		}
+		
+		do_action( 'cuar_after_customer_area_content' ); 		 
+		do_action( 'cuar_after_customer_area_template' );
+	}
+	
+	private function prepare_main_menu() {
+		global $current_user;
+		
+		if ( !empty( $this->actions ) ) return;
+		
+		$post_types = $this->plugin->get_private_post_types();
+		$is_viewing_single_type = ( is_singular() && in_array( get_post_type(), $post_types ) ) ? get_post_type() : null;
+		
+		$this->current_action = isset( $_GET['action'] ) ? $_GET['action'] : '';
+		$this->top_level_action = null;
+		$this->title = '';
+		$this->actions = apply_filters( 'cuar_customer_page_actions', array() );
+		
+		$base_url = trailingslashit( $this->get_customer_page_url() );		
+		if (!empty($this->actions)) {
+			foreach ($this->actions as $action) {
+				if ( (isset( $action["slug"] ) && $this->current_action==$action['slug']) ) {
+					$this->title = $action["label"];
+					$this->top_level_action = $action;
+					break;
+				} else if ( isset( $action['children'] ) && array_key_exists( $this->current_action, $action['children'] ) ) {
+					$this->title = sprintf( '<a href="%1$s">%2$s</a> &raquo; %3$s',
+							esc_attr( $href ), $action["label"], $action['children'][ $this->current_action ]['label'] );
+					break;
+				} else if ( isset( $action["highlight_on_single_post"] ) && $is_viewing_single_type!=null && $is_viewing_single_type==$action["highlight_on_single_post"] ) {
+					$this->current_action = $action["slug"];
+				}
+			}
+		}
+		
+		if ( empty( $this->title ) ) {
+			$this->title = sprintf( __('Hello %s,', 'cuar'), $current_user->display_name );
+		}
+		
+	}
+	
+	public function print_main_menu() {
+		$this->prepare_main_menu();
+		
+		include( $this->plugin->get_template_file_path(
+				CUAR_INCLUDES_DIR . '/core-addons/customer-page',
+				'customer-page-menu.template.php',
+				'templates' ));
+	}
+
+	public function print_header() {
+		include( $this->plugin->get_template_file_path(
+				CUAR_INCLUDES_DIR . '/core-addons/customer-page',
+				'customer-page-header.template.php',
+				'templates' ));
+	}
+
+	public function get_main_menu_for_single_private_content( $content ) {
+		// Only on single private content pages
+		$post_types = $this->plugin->get_private_post_types();
+		if ( !is_singular() || !in_array( get_post_type(), $post_types ) ) return $content;
+
+		ob_start();		
+		$this->print_main_menu();
+		$menu = ob_get_contents();
+		ob_end_clean();
+		
+		$content = '<div class="cuar-menu-single-container">' . $menu . '</div>' . $content;
+		
+		return $content;
+	}
 
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
 
@@ -128,6 +254,23 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 									. 'If for any reason it is not correct, you can change it though.', 'cuar' )
 							. '</p>' )
 			);
+
+		add_settings_field(
+				self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT,
+				__('Customer Area Menu', 'cuar'),
+				array( &$cuar_settings, 'print_input_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_core_frontend',
+				array(
+					'option_id' => self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT,
+					'type' 		=> 'checkbox',
+					'after'		=>  __( 'Automatically print the Customer Area menu on single private content pages.', 'cuar' )
+							. '<p class="description">' 
+							. __( 'By default, you will only see the Customer Area menu everywhere but on the pages displaying a single private content (a private page or a private file for example). '
+								. 'By checking this box, the menu will automatically be shown on those pages, but it might however not appear where you want it. If you are not happy with it, you can '
+								. 'refer to our documentation to see how to change the place where it gets displayed.', 'cuar' )
+							. '</p>' )
+			);
 	}
 	
 	public function print_empty_settings_section_info() {
@@ -135,21 +278,29 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 	
 	public function validate_settings($validated, $cuar_settings, $input) {
 		$cuar_settings->validate_post_id( $input, $validated, self::$OPTION_CUSTOMER_PAGE_POST_ID );
+		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT );
 			
 		return $validated;
 	}
 	
 	public static function set_default_options($defaults) {
 		$defaults [self::$OPTION_CUSTOMER_PAGE_POST_ID] = -1;
+		$defaults [self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT] = false;
 			
 		return $defaults;
 	}
 	
+	private $title;
+	private $actions;
+	private $current_action;
+	private $top_level_action;	
+	
 	// Frontend options
-	public static $OPTION_CUSTOMER_PAGE_POST_ID		= 'customer_page_post_id';
+	public static $OPTION_CUSTOMER_PAGE_POST_ID					= 'customer_page_post_id';
+	public static $OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT	= 'customer_page_auto_menu_on_single_content';
 	
 	/** @var CUAR_Plugin */
-	private $cuar_plugin;
+	private $plugin;
 
 	/** @var CUAR_CustomerPageShortcode */
 	private $customer_page_shortcode;

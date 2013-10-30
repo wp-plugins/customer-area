@@ -47,46 +47,10 @@ class CUAR_CustomerPageShortcode {
 	 */
 	public function process_shortcode( $params = array(), $content = null ) {
 		$cp_addon = $this->plugin->get_addon('customer-page');
-		if ( $cp_addon->get_customer_page_id() <= 0 ) {
-			$cp_addon->set_customer_page_id( get_the_ID() );
-		}
-		
-		// If not logged-in, we should do so.
-		if ( !is_user_logged_in() ) {
-			if ( isset( $_GET['redirect'] ) ) {
-				$redirect_to_url = $_GET['redirect']; 
-			} else {
-				$redirect_to_url = $cp_addon->get_customer_page_url();
-			}
-			
-	  		ob_start();
-	  		
-	  		do_action( 'cuar_before_login_required_template' );
-	  		
-	  		include( $this->plugin->get_template_file_path(
-	  				CUAR_INCLUDES_DIR . '/core-addons/customer-page',
-	  				'customer-page-login-required.template.php',
-	  				'templates' ));
 
-	  		do_action( 'cuar_after_login_required_template' );
-	  		
-	  		$out = ob_get_contents();
-	  		ob_end_clean(); 
-	  		
-			return $out;
-		} 
+		ob_start();
 		
-		// Build the HTML output for a logged-in user. 
-  		ob_start();
-	  		
-	  	do_action( 'cuar_before_customer_area_template' );
-	  		
-  		include( $this->plugin->get_template_file_path(
-  				CUAR_INCLUDES_DIR . '/core-addons/customer-page',
-  				'customer-page.template.php',
-  				'templates' ));	  	
-	  		
-	  	do_action( 'cuar_after_customer_area_template' );
+		$cp_addon->print_customer_area();
 	  	
   		$out = ob_get_contents();
   		ob_end_clean(); 

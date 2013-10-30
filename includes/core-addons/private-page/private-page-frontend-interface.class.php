@@ -49,10 +49,11 @@ class CUAR_PrivatePageFrontendInterface {
 	
 	public function add_actions( $actions ) {		
 		$actions[ "show-private-pages" ] = apply_filters( 'cuar_show_private_pages_action', array(
-				"slug"		=> "show-private-pages",
-				"label"		=> __( 'Pages', 'cuar' ),
-				"hint"		=> __( 'Create a new private page', 'cuar' ),
-				"children"	=> array()
+				"slug"						=> "show-private-pages",
+				"label"						=> __( 'Pages', 'cuar' ),
+				"hint"						=> __( 'Show all private pages', 'cuar' ),
+				"highlight_on_single_post"	=> 'cuar_private_page',
+				"children"					=> array()
 			) );
 			
 		return $actions;

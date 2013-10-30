@@ -51,10 +51,11 @@ class CUAR_PrivateFileFrontendInterface {
 	
 	public function add_actions( $actions ) {		
 		$actions[ "show-private-files" ] = apply_filters( 'cuar_show_private_files_action', array(
-				"slug"		=> "show-private-files",
-				"label"		=> __( 'Files', 'cuar' ),
-				"hint"		=> __( 'Create a new private file', 'cuar' ),
-				"children"	=> array()
+				"slug"						=> "show-private-files",
+				"label"						=> __( 'Files', 'cuar' ),
+				"hint"						=> __( 'Show all private files', 'cuar' ),
+				"highlight_on_single_post"	=> 'cuar_private_file',
+				"children"					=> array()
 			) );
 			
 		return $actions;

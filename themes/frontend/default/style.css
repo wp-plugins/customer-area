@@ -28,6 +28,10 @@ table.entry-meta td {
 .cuar-menu {
 }
 
+.cuar-menu-single-container {
+	margin-bottom: 2em;
+}
+
 .cuar-actions-container {
 	list-style-type: none;
 	margin: 0;

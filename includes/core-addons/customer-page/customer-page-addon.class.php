@@ -126,7 +126,7 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		if ( isset( $_GET['redirect'] ) ) {
 			$redirect_to_url = $_GET['redirect'];
 		} else {
-			$redirect_to_url = $cp_addon->get_customer_page_url();
+			$redirect_to_url = $this->get_customer_page_url();
 		}
 		 
 		do_action( 'cuar_before_login_required_template' );

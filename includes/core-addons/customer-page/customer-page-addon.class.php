@@ -182,6 +182,7 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 					$this->top_level_action = $action;
 					break;
 				} else if ( isset( $action['children'] ) && array_key_exists( $this->current_action, $action['children'] ) ) {
+					$href = $this->get_customer_page_url( $action["slug"] );
 					$this->title = sprintf( '<a href="%1$s">%2$s</a> &raquo; %3$s',
 							esc_attr( $href ), $action["label"], $action['children'][ $this->current_action ]['label'] );
 					break;

@@ -11,6 +11,7 @@
 	
 <?php if ( isset( $this->top_level_action ) && isset( $this->top_level_action['children'] ) && !empty( $this->top_level_action['children'] ) ) : ?>
 	<p class="cuar-action-children-container">
+<?php 	$base_url = $this->get_customer_page_url(); ?>
 <?php 	foreach ( $this->top_level_action['children'] as $action ) :
 			$li_class = '';
 			if ( isset( $this->top_level_action['slug'] ) && $this->top_level_action['slug']==$action['slug'] ) $li_class .= 'current';

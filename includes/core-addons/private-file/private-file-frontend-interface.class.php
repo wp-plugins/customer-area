@@ -72,7 +72,7 @@ class CUAR_PrivateFileFrontendInterface {
 					'parent'		=> 0,
 					'hide_empty'	=> 0
 				) );			
-		} else if ( $display_mode=='year' ) {
+		} else if ( $display_mode=='year' || $display_mode=='month' ) {
 			// Get user files
 			$args = array(
 					'post_type' 		=> 'cuar_private_file',

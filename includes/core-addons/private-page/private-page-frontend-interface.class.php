@@ -96,12 +96,13 @@ class CUAR_PrivatePageFrontendInterface {
 	
 	public function print_customer_area_content() {			
 		$po_addon = $this->plugin->get_addon('post-owner');
+		$cp_addon = $this->plugin->get_addon('customer-page');
 		$current_user_id = get_current_user_id();
 		
 		// Get user pages
 		$args = array(
 				'post_type' 		=> 'cuar_private_page',
-				'posts_per_page' 	=> 5,
+				'posts_per_page' 	=> $cp_addon->get_dashboard_item_limit(),
 				'orderby' 			=> 'modified',
 				'order' 			=> 'DESC',
 				'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )

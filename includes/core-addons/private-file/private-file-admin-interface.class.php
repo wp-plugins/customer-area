@@ -300,6 +300,7 @@ jQuery(document).ready( function($) {
 					'option_id' => self::$OPTION_FILE_LIST_MODE, 
 					'options'	=> array( 
 						'plain' 	=> __( "Don't group files", 'cuar' ),
+						'month'		=> __( 'Group by month', 'cuar' ),
 						'year' 		=> __( 'Group by year', 'cuar' ),
 						'category' 	=> __( 'Group by category', 'cuar' ) ),
 	    			'after'	=> '<p class="description">'
@@ -342,7 +343,7 @@ jQuery(document).ready( function($) {
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_ENABLE_ADDON );
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_SHOW_AFTER_POST_CONTENT );
 		$cuar_settings->validate_enum( $input, $validated, self::$OPTION_FILE_LIST_MODE, 
-				array( 'plain', 'year', 'category' ) );
+				array( 'plain', 'year', 'month', 'category' ) );
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_HIDE_EMPTY_CATEGORIES );
 		
 		return $validated;

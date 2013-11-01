@@ -231,6 +231,9 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
 
+	public function get_dashboard_item_limit() {
+		return $this->plugin->get_option( self::$OPTION_DASHBOARD_CONTENT_LIMIT );
+	}
 	
 	public function print_settings($cuar_settings, $options_group) {
 		add_settings_section(
@@ -272,6 +275,20 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 								. 'refer to our documentation to see how to change the place where it gets displayed.', 'cuar' )
 							. '</p>' )
 			);
+
+		add_settings_field(
+				self::$OPTION_DASHBOARD_CONTENT_LIMIT,
+				__('Number of items on dashboard', 'cuar'),
+				array( &$cuar_settings, 'print_input_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_core_frontend',
+				array(
+					'option_id' => self::$OPTION_DASHBOARD_CONTENT_LIMIT,
+					'type' 		=> 'text',
+					'after'		=> '<p class="description">' 
+							. __( 'Sets the number of items to be display in each "latest" section of the dashboard (-1 will make it show all items).', 'cuar' )
+							. '</p>' )
+			);
 	}
 	
 	public function print_empty_settings_section_info() {
@@ -280,6 +297,7 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 	public function validate_settings($validated, $cuar_settings, $input) {
 		$cuar_settings->validate_post_id( $input, $validated, self::$OPTION_CUSTOMER_PAGE_POST_ID );
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT );
+		$cuar_settings->validate_int( $input, $validated, self::$OPTION_DASHBOARD_CONTENT_LIMIT, -1 );
 			
 		return $validated;
 	}
@@ -287,6 +305,7 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 	public static function set_default_options($defaults) {
 		$defaults [self::$OPTION_CUSTOMER_PAGE_POST_ID] = -1;
 		$defaults [self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT] = false;
+		$defaults [self::$OPTION_DASHBOARD_CONTENT_LIMIT] = 5;
 			
 		return $defaults;
 	}
@@ -299,6 +318,7 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 	// Frontend options
 	public static $OPTION_CUSTOMER_PAGE_POST_ID					= 'customer_page_post_id';
 	public static $OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT	= 'customer_page_auto_menu_on_single_content';
+	public static $OPTION_DASHBOARD_CONTENT_LIMIT				= 'customer_page_dashboard_limit';
 	
 	/** @var CUAR_Plugin */
 	private $plugin;

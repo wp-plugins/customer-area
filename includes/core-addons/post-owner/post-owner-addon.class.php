@@ -56,6 +56,8 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	 * @return array See the meta query documentation on WP codex
 	 */
 	public function get_meta_query_post_owned_by( $user_id ) {
+		$user_id = apply_filters( 'cuar_user_id_for_meta_query_post_owned_by', $user_id );
+		
 		$base_meta_query = array(
 				'relation' => 'OR',
 				array(
@@ -689,15 +691,16 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	
 		// If not authorized to view the page, we bail
 		$post = get_queried_object();
-		$author_id = $post->post_author;
-	
-		$current_user_id = get_current_user_id();
+		$author_id = $post->post_author;	
+		$current_user_id = apply_filters( 'cuar_user_id_for_protect_single_post_access', get_current_user_id() );
 	
 		$is_current_user_owner = $this->is_user_owner_of_post( $post->ID, $current_user_id );
 		if ( !( $is_current_user_owner || $author_id==$current_user_id || current_user_can('cuar_view_any_' . get_post_type()) )) {
 			wp_die( __( "You are not authorized to view this page", "cuar" ) );
 			exit();
 		}
+		
+		do_action( 'cuar_single_post_access_granted', $post );
 	}
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/

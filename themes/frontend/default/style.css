@@ -100,7 +100,7 @@ h4.cuar-section.ui-accordion-header-active {
 }
 
 /* -= File links */
-.cuar-private-file .view-link a, .cuar-private-file .download-link a {
+.cuar-private-file .view-link a, .cuar-private-file .download-link a, .cuar-private-file .view-link span, .cuar-private-file .download-link span {
 	background: url('images/icons.png') top left no-repeat;
 	
 	display: inline-block;
@@ -204,6 +204,11 @@ h4.cuar-private-file-section.ui-accordion-header-active {
 .cuar-private-file .view-link, .cuar-private-file .download-link {
 	width: 30px;
 	text-align: right;
+	vertical-align: middle;
+}
+
+.cuar-private-file .view-link span, .cuar-private-file .download-link span {
+	vertical-align: middle;
 }
 	
 .cuar-private-file-list .cuar-private-file {
@@ -399,4 +404,33 @@ h4.cuar-private-file-section.ui-accordion-header-active {
 }
 .cuar-paging td.older {
 	text-align: left;
+}
+
+/* -= Switch User */
+#cuarsu_identity_selection {
+	text-align: right;
+	margin-bottom: 15px;
+	margin-top: 15px;
+	opacity: 0.6;
+  	-webkit-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+       -moz-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+         -o-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+            transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0; 
+}
+#cuarsu_identity_selection:hover {
+	opacity: 1;
+}
+
+#cuarsu_identity_selection .cuarsu-message {
+	margin-right: 15px;
+	font-style: italic;
+}
+
+#cuarsu_identity_selection #cuarsu_fake_id {
+	margin-right: 15px;
+	height: 24px;
+}
+
+#cuarsu_identity_selection #cuarsu_do_switch_identity {
+	padding: 3px 15px 2px;
 }

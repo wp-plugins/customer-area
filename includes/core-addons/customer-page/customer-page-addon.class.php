@@ -193,7 +193,7 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		}
 		
 		if ( empty( $this->title ) ) {
-			$this->title = sprintf( __('Hello %s,', 'cuar'), $current_user->display_name );
+			$this->title = apply_filters( 'cuar_customer_page_default_title', sprintf( __('Hello %s,', 'cuar'), $current_user->display_name ) );
 		}
 		
 	}

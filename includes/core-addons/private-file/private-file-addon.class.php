@@ -183,8 +183,6 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				$new_file_path = $po_addon->get_owner_file_path(
 						$previous_file['file'], $new_owner['ids'], $new_owner['type'], true );
 					
-				var_dump($new_file_path);
-				
 				if ( $previous_file['path']==$new_file_path ) return;				
 				if ( copy( $previous_file['path'], $new_file_path ) ) unlink( $previous_file['path'] );
 					

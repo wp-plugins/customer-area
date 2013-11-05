@@ -1,4 +1,9 @@
-<tr class="cuar-private-page cuar-item">
+<?php 
+	global $post;	
+	$extra_class = ' ' . get_post_type();
+	$extra_class = apply_filters( get_post_type() . '_item_extraclass', $extra_class, $post );
+?>
+<tr class="cuar-private-page cuar-item<?php echo $extra_class; ?>">
 	<td class="meta">
 		<span class="date"><?php the_modified_time(get_option('date_format')); ?></span>
 		<br/>
@@ -10,4 +15,7 @@
 		<br/>
 		<span class="recipient"><?php echo CUAR_WordPressHelper::ellipsis( sprintf( __('To: %s', 'cuar' ), $po_addon->get_post_owner_displayname( get_the_ID() ) ), 53 ); ?></span>
 	</td>
+	<td class="links">
+		<?php do_action( get_post_type() . '_item_additional_links', $post ); ?>	
+	</td> 
 </tr>

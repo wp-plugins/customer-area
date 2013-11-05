@@ -1,4 +1,9 @@
-<tr class="cuar-private-file cuar-item">
+<?php 
+	global $post;	
+	$extra_class = ' ' . get_post_type();
+	$extra_class = apply_filters( get_post_type() . '_item_extraclass', $extra_class, $post );
+?>
+<tr class="cuar-private-file cuar-item<?php echo $extra_class; ?>">
 	<td class="meta">
 		<span class="date"><?php the_modified_time(get_option('date_format')); ?></span>
 		<br/>
@@ -13,5 +18,6 @@
 	<td class="links download-link">
 		<a href="<?php CUAR_PrivateFileThemeUtils::the_file_link( get_the_ID(), 'download' ); ?>" title="<?php esc_attr_e( 'Download', 'cuar' ); ?>">
 			<?php _e( 'Download', 'cuar' ); ?></a>
+		<?php do_action( get_post_type() . '_item_additional_links', $post ); ?>	
 	</td> 
 </tr>

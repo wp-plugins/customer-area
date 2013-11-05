@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 3.5.0
+Stable tag: 3.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,7 @@ from [our online shop](http://www.marvinlabs.com/downloads/category/customer-are
 * [Managed Groups](http://www.marvinlabs.com/downloads/customer-area-managed-groups/)
 * [Conversations](http://www.marvinlabs.com/downloads/customer-area-conversations/)
 * [Owner Restriction](http://www.marvinlabs.com/downloads/customer-area-owner-restriction/)
+* [Switch Users](http://www.marvinlabs.com/downloads/customer-area-switch-users/)
 
 **Included translations**
 
@@ -217,6 +218,12 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 3.6.0 (2013/11/05) =
+
+* Added POT file to easy translation work
+* Added some handy actions and filters
+* Added compatibility with the new add-on to view another Customer Area easily
 
 = 3.5.0 (2013/11/01) =
 

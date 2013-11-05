@@ -3,8 +3,8 @@ Contributors: vprat, marvinlabs
 Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
-Tested up to: 3.6
-Stable tag: 3.6.0
+Tested up to: 3.7.1
+Stable tag: 3.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -219,7 +219,7 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 3.6.0 (2013/11/05) =
+= 3.6.1 (2013/11/05) =
 
 * Added POT file to easy translation work
 * Added some handy actions and filters

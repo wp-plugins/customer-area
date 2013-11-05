@@ -241,12 +241,12 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 		if ($prefix_with_type) {
 			$name = get_post_meta( $post_id, self::$META_OWNER_SORTABLE_DISPLAYNAME, true );
 			if ( !$name || empty( $name ) ) $name = __( 'Unknown', 'cuar' );
-			return apply_filters( 'cuar_get_post_owner_sortable_displayname', $name );
+			return apply_filters( 'cuar_get_post_owner_sortable_displayname', $name, $post_id );
 		} else {
 			$name = get_post_meta( $post_id, self::$META_OWNER_DISPLAYNAME, true );
 			if ( !$name || empty( $name ) ) $name = __( 'Unknown', 'cuar' );
-			return apply_filters( 'cuar_get_post_owner_displayname', $name );
-		}
+			return apply_filters( 'cuar_get_post_owner_displayname', $name, $post_id );
+		} 
 	}
 	
 	/**
@@ -365,8 +365,9 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	public function owner_column_display( $column_name, $post_id ) {
 		if ( 'cuar_owner' != $column_name )
 			return;
-
-		echo $this->get_post_owner_displayname( $post_id, true );
+		
+		$txt = apply_filters( 'cuar_owner_column_text', null, $post_id );
+		echo $txt!=null ? $txt : $this->get_post_owner_displayname( $post_id, true );
 	}
 	
 	/**

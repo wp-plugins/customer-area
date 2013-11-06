@@ -294,6 +294,46 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			cuar_log_debug( 'Uploaded new private file: ' . print_r( $upload, true ) );
 		}
 	}
+	
+	/**
+	 * Handle the assignment and move of the private file from the FTP upload
+	 * folder and into the user's private folder
+	 * drsprite
+	 */
+	 public function handle_copy_private_file_from_ftp_folder( $post_id, $previous_owner, $new_owner, $ftp_file ) {
+		if ( !isset( $ftp_file ) || empty( $ftp_file ) ) return;
+		
+		$po_addon = $this->plugin->get_addon('post-owner');
+		
+		// Delete the existing file if any
+		$previous_file = get_post_meta( $post_id, 'cuar_private_file_file', true );
+		if ( $previous_file ) {
+			$previous_file['path'] = $po_addon->get_owner_file_path(
+					$previous_file['file'], $previous_owner['ids'], $previous_owner['type'], true );
+		
+			if ( $previous_file['path'] && file_exists( $previous_file['path'] ) ) {
+				unlink( $previous_file['path'] );
+				cuar_log_debug( 'deleted old private file from ' . $previous_file['path'] );
+			}
+		}
+
+	  	// copy from ftp_file to dest_folder
+	  	$dest_folder = trailingslashit( $po_addon->get_private_storage_directory( $post_id, true, true ) );
+	  	$dest_file = $dest_folder . wp_unique_filename( $dest_folder, basename( $ftp_file ), null );	  	
+	  	$delete_after_copy = isset( $_POST['cuar_ftp_delete_file_after_copy'] );
+	  	
+	  	if ( copy( $ftp_file, $dest_file ) ) {
+	  		if ( $delete_after_copy ) {
+	  			unlink( $ftp_file );
+	  		}
+			$upload = array( 'file' => basename( $dest_file ) );
+			update_post_meta( $post_id, 'cuar_private_file_file', $upload );
+	  	} else {
+			$msg = __( 'An error happened while copying your file from the FTP folder', 'cuar' );
+			cuar_log_debug( $msg );
+			$this->plugin->add_admin_notice( $msg );
+	  	}
+	}
 
 	/*------- HANDLE FILE VIEWING AND DOWNLOADING --------------------------------------------------------------------*/
 		

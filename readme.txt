@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.7.1
-Stable tag: 3.6.2
+Stable tag: 3.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -218,6 +218,10 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 3.7.0 (2013/11/06) =
+
+* Allow to copy files from an FTP folder rather than directly uploading them from the browser. Handy for big files! Thanks to Pat O'Brien for his work on this feature.
 
 = 3.6.2 (2013/11/05) =
 

@@ -179,6 +179,7 @@ jQuery(document).ready( function($) {
 		
 <?php	if ( !empty( $current_file ) && isset( $current_file['file'] ) ) : ?>
 		<div id="cuar-current-file" class="metabox-row">
+			<h4><?php _e('File currently associated to this post', 'cuar');?></h4>
 			<p><?php _e('Current file:', 'cuar');?> 
 				<a href="<?php CUAR_PrivateFileThemeUtils::the_file_link( $post->ID, 'download' ); ?>" target="_blank">
 					<?php echo basename($current_file['file']); ?></a>
@@ -186,13 +187,92 @@ jQuery(document).ready( function($) {
 		</div>		
 <?php 	endif; ?> 
 
-		<div id="cuar-upload-file" class="metabox-row">
-			<span class="label"><label for="cuar_private_file_file"><?php _e('Upload a file', 'cuar');?></label></span> 	
+		<div>
+			<hr>
+			<h4><?php _e('Change the associated file', 'cuar');?></h4>
+			<span class="label"><label for="cuar_file_select_method"><?php _e('How to add the file?', 'cuar');?></label></span> 	
+			<span class="field">
+				<select id="cuar_file_select_method" name="cuar_file_select_method">
+					<option value="cuar_direct_upload"><?php _e( 'Direct upload', 'cuar' ); ?>&nbsp;&nbsp;</option>
+					<option value="cuar_from_ftp_folder"><?php _e( 'Copy from FTP folder', 'cuar' ); ?>&nbsp;&nbsp;</option>
+				</select>
+			</span>
+		</div>
+
+		<div id="cuar_direct_upload" class="metabox-row file-select-method">
+			<span class="label"><label for="cuar_private_file_file"><?php _e('Pick a file', 'cuar');?></label></span> 	
 			<span class="field"><input type="file" name="cuar_private_file_file" id="cuar_private_file_file" /></span>
+		</div>		
+<?php 
+		$ftp_dir = trailingslashit( $this->plugin->get_option( self::$OPTION_FTP_PATH ) );
+		$ftp_files = scandir( $ftp_dir );
+?>
+		<div id="cuar_from_ftp_folder" class="metabox-row file-select-method" style="display: none;">
+			<span class="label"><label for="cuar_selected_ftp_file"><?php _e('Pick a file', 'cuar');?></label></span> 	
+			<span class="field">
+<?php 		if ( $this->is_dir_empty( $ftp_dir ) ) {
+				_e( "The FTP upload folder is empty.", 'cuar' ); 
+			} else {
+				echo '<select id="cuar_selected_ftp_file" name="cuar_selected_ftp_file">';
+				echo '<option value="">' . __( 'Select a file', 'cuar' ) . '</option>';
+				foreach ( $ftp_files as $filename ) {
+					$filepath = $ftp_dir . '/' . $filename;
+					if ( is_file( $filepath ) ) { 
+						echo '<option value="' . esc_attr( $filename ) . '">' . esc_html( $filename ) . '</option>';
+					} 
+				}
+				echo '</select>';
+			} ?>
+			</span>
+			<br/>
+			<br/>
+			<span class="label"><label for="cuar_selected_ftp_file"><?php _e('Copy file or move it?', 'cuar');?></label></span>	
+			<span class="field">
+				<input id="cuar_ftp_delete_file_after_copy" name="cuar_ftp_delete_file_after_copy" type="checkbox" value="1" /> &nbsp;
+				<span><?php _e("If checked, the file will be deleted after it has been copied to the owner's private storage directory", "cuar" )?></span>
+			</span>
 		</div>
 				
+		<script type="text/javascript">
+		<!--
+			jQuery( document ).ready( function($) {
+				$( '#cuar_file_select_method' ).change(function() {
+					var selection = $(this).val();
+
+					// Do nothing if already visible
+					if ( $( '#' + selection ).is(":visible") ) return;
+
+					// Hide previous and then show new
+					if ( $('.file-select-method:visible').length<=0 ) {
+						$( '#' + selection ).fadeToggle();
+					} else {
+						$('.file-select-method:visible').fadeToggle("fast", function () {
+							$( '#' + selection ).fadeToggle();
+						});
+					}
+				});
+			});
+		//-->
+		</script>
 <?php 
 		do_action( "cuar_private_file_upload_meta_box_footer" );
+	}
+	
+	/** 
+	 * Supporting function for displaying the dropdown select box 
+	 * for empty FTP upload directory or not. 
+	 * Adapted from http://stackoverflow.com/a/7497848/1177153
+	 */
+	 
+	public function is_dir_empty($dir) {
+	if (!is_readable($dir)) return NULL; 
+		$handle = opendir($dir);
+		while (false !== ($entry = readdir($handle))) {
+			if ($entry != "." && $entry != "..") {
+				return FALSE;
+			}
+		}
+		return TRUE;
 	}
 	
 	/**
@@ -223,14 +303,28 @@ jQuery(document).ready( function($) {
 			$has_owner_changed = true;
 		}
 		
-		if ( $has_owner_changed && empty( $_FILES['cuar_private_file_file']['name'] ) ) {
-			$this->private_file_addon->handle_private_file_owner_changed($post_id, $previous_owner, $new_owner);
-			return $post_id;		
-		}
-		
-		if ( !empty( $_FILES['cuar_private_file_file']['name'] ) ) {
-			$this->private_file_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner, 
-					$_FILES['cuar_private_file_file']);
+		if ( isset( $_POST['cuar_file_select_method'] ) && $_POST['cuar_file_select_method']=='cuar_from_ftp_folder' ) {
+			if ( $has_owner_changed && empty( $_POST['cuar_selected_ftp_file'] ) ) {
+				$this->private_file_addon->handle_private_file_owner_changed($post_id, $previous_owner, $new_owner);
+				return $post_id;
+			}
+			
+			if ( !empty( $_POST['cuar_selected_ftp_file'] ) ) {
+				$ftp_dir = trailingslashit( $this->plugin->get_option( self::$OPTION_FTP_PATH ) );
+
+				$this->private_file_addon->handle_copy_private_file_from_ftp_folder( $post_id, $previous_owner, $new_owner,
+						$ftp_dir . $_POST['cuar_selected_ftp_file']);
+			}
+		} else {
+			if ( $has_owner_changed && empty( $_FILES['cuar_private_file_file']['name'] ) ) {
+				$this->private_file_addon->handle_private_file_owner_changed($post_id, $previous_owner, $new_owner);
+				return $post_id;
+			}
+			
+			if ( !empty( $_FILES['cuar_private_file_file']['name'] ) ) {
+				$this->private_file_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner,
+						$_FILES['cuar_private_file_file']);
+			}
 		}
 	}
 
@@ -266,6 +360,28 @@ jQuery(document).ready( function($) {
 					'after'		=> 
 						__( 'Check this to enable the private files add-on.', 'cuar' ) )
 			);
+		
+		if ( !file_exists( $this->plugin->get_option( self::$OPTION_FTP_PATH ) ) ) {
+			$folder_exists_message = '<span style="color: #c33;">' . __('This folder does not exist, please create it if you want to copy files from the FTP folder. Otherwise, you need not do anything.', 'cuar' ) . '</span>';
+		} else {
+			$folder_exists_message = "";
+		}
+		 
+		add_settings_field(
+				self::$OPTION_FTP_PATH,
+				__('FTP uploads folder', 'cuar'),
+				array( &$cuar_settings, 'print_input_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_private_files_addon_general',
+				array(
+					'option_id' => self::$OPTION_FTP_PATH,
+					'type' 		=> 'text',
+					'is_large'	=> true,
+					'after'		=> '<p class="description">' 
+							. __( 'This folder can be used when you want to use files uploaded with FTP. This is handy when direct upload is failing for big files for instance.', 'cuar' )
+							. $folder_exists_message
+							. '</p>' ) 
+				);
 		
 		add_settings_section(
 				'cuar_private_files_addon_frontend',
@@ -345,7 +461,10 @@ jQuery(document).ready( function($) {
 		$cuar_settings->validate_enum( $input, $validated, self::$OPTION_FILE_LIST_MODE, 
 				array( 'plain', 'year', 'month', 'category' ) );
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_HIDE_EMPTY_CATEGORIES );
-		
+
+		// TODO: Would be good to have a validate_valid_folder function in CUAR_Settings class.
+		$cuar_settings->validate_not_empty( $input, $validated, self::$OPTION_FTP_PATH);
+				
 		return $validated;
 	}
 	
@@ -360,6 +479,7 @@ jQuery(document).ready( function($) {
 		$defaults[ self::$OPTION_SHOW_AFTER_POST_CONTENT ] = true;
 		$defaults[ self::$OPTION_FILE_LIST_MODE ] = 'year';
 		$defaults[ self::$OPTION_HIDE_EMPTY_CATEGORIES ] = true;
+		$defaults[ self::$OPTION_FTP_PATH] = WP_CONTENT_DIR . '/customer-area/ftp-uploads';
 
 		$admin_role = get_role( 'administrator' );
 		if ( $admin_role ) {
@@ -423,6 +543,7 @@ jQuery(document).ready( function($) {
 	public static $OPTION_SHOW_AFTER_POST_CONTENT		= 'frontend_show_after_post_content';
 	public static $OPTION_FILE_LIST_MODE				= 'frontend_file_list_mode';
 	public static $OPTION_HIDE_EMPTY_CATEGORIES			= 'frontend_hide_empty_file_categories';
+	public static $OPTION_FTP_PATH 						= 'frontend_ftp_upload_path';
 		
 	/** @var CUAR_Plugin */
 	private $plugin;

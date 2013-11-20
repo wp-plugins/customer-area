@@ -186,7 +186,10 @@ jQuery(document).ready( function($) {
 			</p>
 		</div>		
 <?php 	endif; ?> 
-
+	
+<?php 
+		$ftp_dir = trailingslashit( $this->plugin->get_option( self::$OPTION_FTP_PATH ) );
+?>
 		<div>
 			<hr>
 			<h4><?php _e('Change the associated file', 'cuar');?></h4>
@@ -202,15 +205,19 @@ jQuery(document).ready( function($) {
 		<div id="cuar_direct_upload" class="metabox-row file-select-method">
 			<span class="label"><label for="cuar_private_file_file"><?php _e('Pick a file', 'cuar');?></label></span> 	
 			<span class="field"><input type="file" name="cuar_private_file_file" id="cuar_private_file_file" /></span>
-		</div>		
+		</div>	
+			
 <?php 
-		$ftp_dir = trailingslashit( $this->plugin->get_option( self::$OPTION_FTP_PATH ) );
-		$ftp_files = scandir( $ftp_dir );
+		if ( file_exists( $ftp_dir ) ) {
+			$ftp_files = scandir( $ftp_dir );
+		}
 ?>
 		<div id="cuar_from_ftp_folder" class="metabox-row file-select-method" style="display: none;">
 			<span class="label"><label for="cuar_selected_ftp_file"><?php _e('Pick a file', 'cuar');?></label></span> 	
 			<span class="field">
-<?php 		if ( $this->is_dir_empty( $ftp_dir ) ) {
+<?php 		if ( !file_exists( $ftp_dir ) ) {
+				_e( "The FTP upload folder does not exist.", 'cuar' ); 
+			} else if ( $this->is_dir_empty( $ftp_dir ) ) {
 				_e( "The FTP upload folder is empty.", 'cuar' ); 
 			} else {
 				echo '<select id="cuar_selected_ftp_file" name="cuar_selected_ftp_file">';
@@ -222,15 +229,18 @@ jQuery(document).ready( function($) {
 					} 
 				}
 				echo '</select>';
-			} ?>
+			} 
+?>
 			</span>
 			<br/>
 			<br/>
+<?php if ( file_exists( $ftp_dir ) ) : ?>
 			<span class="label"><label for="cuar_selected_ftp_file"><?php _e('Copy file or move it?', 'cuar');?></label></span>	
 			<span class="field">
 				<input id="cuar_ftp_delete_file_after_copy" name="cuar_ftp_delete_file_after_copy" type="checkbox" value="1" /> &nbsp;
 				<span><?php _e("If checked, the file will be deleted after it has been copied to the owner's private storage directory", "cuar" )?></span>
 			</span>
+<?php endif; ?>
 		</div>
 				
 		<script type="text/javascript">

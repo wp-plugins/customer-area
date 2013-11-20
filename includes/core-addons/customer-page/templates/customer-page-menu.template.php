@@ -20,9 +20,9 @@ if (!empty($this->actions)) :
 				$href = isset( $action["url"] ) ? $action["url"] : $base_url . '?action=' . $action["slug"];
 				$label = esc_html( $action["label"] ); 
 				$hint = esc_attr( $action["hint"] );
-			?><li class="<?php echo $li_class; ?>"><a href="<?php echo esc_attr( $href ); ?>" title="<?php echo $hint; ?>">
-					<span><?php echo $label; ?></span>
-				</a><?php $is_last--; if ( $is_last!=0 ) { echo $separator; } ?></li><?php 		
+			?><li class="<?php echo $li_class; ?>">
+				<a href="<?php echo esc_attr( $href ); ?>" title="<?php echo $hint; ?>"><span><?php echo $label; ?></span></a>
+				<?php $is_last--; if ( $is_last!=0 ) { echo $separator; } ?></li><?php 		
 			endforeach; 
 		?></ul>
 	</nav>

@@ -45,7 +45,7 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 		// Settings
 		add_action( 'cuar_addon_print_settings_cuar_core', array( &$this, 'print_settings' ), 50, 2 );
 		add_filter( 'cuar_addon_validate_options_cuar_core', array( &$this, 'validate_settings' ), 50, 3 );
-
+		
 		if ( $this->get_customer_page_id() < 0 && !isset( $_GET['run-setup-wizard'] )) {
 			$warning = __( 'We could not detect the Customer Area page on your site. This may be because you have not yet setup the plugin, or because you are upgrading from an older version.', 'cuar' );
 			$warning .= '<ul><li>&raquo; ';
@@ -54,7 +54,8 @@ class CUAR_CustomerPageAddOn extends CUAR_AddOn {
 			$warning .= sprintf( __( 'If you have not yet setup the plugin, we have a <a href="%s">quick setup wizard</a>', 'cuar' ), admin_url( 'admin.php?page=' .  CUAR_Settings::$OPTIONS_PAGE_SLUG . '&run-setup-wizard=1' ) );
 			$warning .= '</li></ul>';
 			
-			$plugin->add_admin_notice( $warning );
+			$this->plugin->add_admin_notice( $warning );
+			$this->plugin->print_admin_notices();
 		}
 		
 		if ( $plugin->get_option( self::$OPTION_AUTO_MENU_ON_SINGLE_PRIVATE_CONTENT ) ) {

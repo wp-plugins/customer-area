@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.7.1
-Stable tag: 3.7.0
+Stable tag: 3.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,8 +16,11 @@ Give your customers a page on your site where they can access private content in
 As of today, private content means files: you upload files for your customer, and only him will be able to view them
 or download them on his page. 
 
-You have more information on the [plugin website](http://customer-area.marvinlabs.com) and you can even see 
-a [live demo of the plugin and some of its extensions](http://customer-area.marvinlabs.com/demo).
+* [Documentation](http://customer-area.marvinlabs.com/documentation)
+* [FAQ](http://customer-area.marvinlabs.com/category/faq/)
+* [Support](http://customer-area.marvinlabs.com/support)
+* [Demo](http://customer-area.marvinlabs.com/demo)
+* [Add-ons](http://www.marvinlabs.com/downloads/category/customer-area)
 
 **Current features**
 
@@ -133,79 +136,14 @@ the notifications add-on.
 
 == Frequently Asked Questions ==
 
-= Where is the documentation / where to get support / where to see a demo ? =
+= Getting help / documentation / support / demo / ... =
 
-You have all the information on the [plugin website](http://customer-area.marvinlabs.com)
+You have all the information on the [plugin website](http://customer-area.marvinlabs.com):
 
-= How can I forbid direct download of user files? =
-
-If someone knows the URL of a particular user file, he can download it without restriction. You can however secure this
-by copying the file "protect-downloads.htaccess" included in our plugin's extras folder to the plugin's upload folder
-(it should be /wp-content/customer-area). Then you will need to rename that file ".htaccess" so that your server takes
-it into account.
-
-= How do I create a private file? =
-
-1. Log in the WordPress admin panel
-1. Go to Customer Area
-1. Select Private Files > Add new
-1. Give it a title
-1. (optional) write a description
-1. (optional) assign a category to it
-1. Choose the file owner (the user who will see it in his customer area)
-1. Upload the associated file (box below the description)
-
-= How can I create my own theme? =
-
-The plugin allows you to create your own theme. The easiest way to start is to copy the default themes folder to either
-your theme's folder or your WordPress' content folder. You should endup with a folder structure similar to:
-
-* wp-content/customer-area/themes/admin/default
-* wp-content/customer-area/themes/frontend/default
-
-or if you chose to copy to the WordPress TwentyThirteen's theme folder:
-
-* wp-content/themes/twentythirteen/customer-area/themes/admin/default
-* wp-content/themes/twentythirteen/customer-area/themes/frontend/default
-
-Once you have copied the folders, you simply need to rename the default folder to a name of your choice, and start 
-editing the style.css stylesheet. 
- 
-> *Hint: If you are using a theme that could be upgraded in the future, we recommend to put your customer area themes in 
-the WordPress content directory.*
-
-= How can I customize the templates? =
-
-The plugin allows to customize how the information is displayed in the customer area. To change that:
-
-* Create a folder in your theme named "customer-area"
-* Create a subfolder in that folder named "templates" 
-* Locate the template file you want to change (hint: look in the plugin folders, they are all named .template.php)
-* Copy that file to your theme's "customer-area/templates" folder
-* Do your changes, save the file
-* You should be able to see the changes immediatly and automatically 
-
-= How can I change the titles on the Customer Area page? =
-
-Simply add this code to your functions.php file:
-
-`function my_private_files_title( $original_title ) {
-	// Replace my_theme_domain by the proper domain for your theme
-	return __( 'Your documents', 'my_theme_domain' ); 
-}
-add_filter( 'cuar_private_files_after_content_title', 'my_private_files_title' );
-
-function my_private_files_single_title( $original_title ) {
-	// Replace my_theme_domain by the proper domain for your theme
-	return __( 'Attached documents', 'my_theme_domain' ); 
-}
-add_filter( 'cuar_private_files_section_title', 'my_private_files_single_title' );
-
-function my_private_pages_title( $original_title ) {
-	// Replace my_theme_domain by the proper domain for your theme
-	return __( 'Your documents', 'my_theme_domain' ); 
-}
-add_filter( 'cuar_private_pages_after_content_title', 'my_private_pages_title' );`
+* [Documentation](http://customer-area.marvinlabs.com/documentation)
+* [FAQ](http://customer-area.marvinlabs.com/category/faq/)
+* [Support](http://customer-area.marvinlabs.com/support)
+* [Demo](http://customer-area.marvinlabs.com/demo)
 
 = That feature is missing, will you implement it? =
 
@@ -218,6 +156,13 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 3.7.1 (2013/11/22) =
+
+* Added the setup wizard (was not showing up anymore)
+* Remove a PHP warning in the new private file screen when the FTP upload folder does not exist  
+* Fixed a bug when setting a default owner with Collaboration add-on active and without Extended Permissions add-on active
+* Optimised a lot of pages that were slow, in particular on sites with lots of users
 
 = 3.7.0 (2013/11/06) =
 

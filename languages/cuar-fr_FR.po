@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-11-06 20:18+0100\n"
-"PO-Revision-Date: 2013-11-06 20:23+0100\n"
+"POT-Creation-Date: 2013-11-22 11:15+0100\n"
+"PO-Revision-Date: 2013-11-22 11:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -186,11 +186,11 @@ msgstr "Répertoire de contenu WordPress"
 msgid "Well done!"
 msgstr "Félicitations !"
 
-#: ../includes/setup-wizard-done.view.php:29
+#: ../includes/setup-wizard-done.view.php:30
 msgid "Your Customer Area is ready"
 msgstr "Votre espace client est prêt"
 
-#: ../includes/setup-wizard-done.view.php:31
+#: ../includes/setup-wizard-done.view.php:34
 msgid ""
 "A page has been published on your site and will display the private content "
 "for the user who is logged-in. If you want, you can:"
@@ -198,14 +198,14 @@ msgstr ""
 "Une page a été publiée sur votre site et affiche les contenus privés de "
 "l'utilisateur connecté. Si vous le souhaitez, vous pouvez :"
 
-#: ../includes/setup-wizard-done.view.php:36
+#: ../includes/setup-wizard-done.view.php:39
 #, php-format
 msgid "<a href=\"%1$s\" target=\"_blank\">See how it looks</a> on your site."
 msgstr ""
 "<a href=\"%1$s\" target=\"_blank\">Voir à quoi elle ressemble</a> sur votre "
 "site."
 
-#: ../includes/setup-wizard-done.view.php:39
+#: ../includes/setup-wizard-done.view.php:42
 #, php-format
 msgid ""
 "<a href=\"%1$s\" target=\"_blank\">Edit the page</a> if you want to change "
@@ -214,7 +214,7 @@ msgstr ""
 "<a href=\"%1$s\" target=\"_blank\">Modifier la page</a> si vous voulez "
 "changer le titre ou peut-être en faire une page enfant d'une autre page. "
 
-#: ../includes/setup-wizard-done.view.php:44
+#: ../includes/setup-wizard-done.view.php:47
 msgid ""
 "Of course, because the plugin has just been setup, you will not see any "
 "private content in there. A good way to get started is to create a few "
@@ -228,23 +228,15 @@ msgstr ""
 "vous-même. Ainsi, vous pourrez voir à quoi ça ressemble sur votre site sans "
 "que personne d'autre ne puisse voir ces contenus."
 
-#: ../includes/setup-wizard-done.view.php:47
-msgid "What's next?"
-msgstr "Et ensuite ?"
+#: ../includes/setup-wizard-done.view.php:52
+#: ../includes/core-addons/help/help-addon.class.php:85
+#: ../includes/core-addons/help/help-addon.class.php:111
+msgid "Subscribe to our newsletter"
+msgstr "S'inscrire à notre liste de diffusion"
 
-#: ../includes/setup-wizard-done.view.php:50
-#, php-format
+#: ../includes/setup-wizard-done.view.php:56
 msgid ""
-"You should have a look at the <a href=\"%1$s\" target=\"_blank\">plugin "
-"settings</a> to adjust a few things."
-msgstr ""
-"Vous devriez jeter un oeil aux <a href=\"%1$s\" target=\"_blank\">réglages "
-"du plugin</a> pour ajuster quelques bricoles."
-
-#: ../includes/setup-wizard-done.view.php:54
-#: ../includes/core-addons/help/help-addon.class.php:179
-msgid ""
-"You can also get notified when we've got something exciting to say (plugin "
+"You can get notified when we've got something exciting to say (plugin "
 "updates, news, etc.). Simply subscribe to our newsletter, we won't spam, we "
 "send at most one email per month!"
 msgstr ""
@@ -253,23 +245,23 @@ msgstr ""
 "notre liste de diffusion, aucun spam - promis, nous envoyons au maximum un "
 "courriel par mois !"
 
-#: ../includes/setup-wizard-done.view.php:61
+#: ../includes/setup-wizard-done.view.php:63
 #: ../includes/core-addons/help/help-addon.class.php:188
 msgid "Email Address"
 msgstr "Adresse email"
 
-#: ../includes/setup-wizard-done.view.php:75
+#: ../includes/setup-wizard-done.view.php:79
 msgid "Getting help"
 msgstr "Obtenir de l'aide"
 
-#: ../includes/setup-wizard-done.view.php:77
+#: ../includes/setup-wizard-done.view.php:83
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:4
 msgid "If you have any problem, we have some resources that could help you:"
 msgstr ""
 "Si vous avez un souci, nous avons quelques ressources qui pourraient vous "
 "aider :"
 
-#: ../includes/setup-wizard-done.view.php:81
+#: ../includes/setup-wizard-done.view.php:87
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:8
 #, php-format
 msgid ""
@@ -279,13 +271,13 @@ msgstr ""
 "<a href=\"%1$s\" target=\"_blank\">Documentation</a> pour le plugin "
 "principal et pour les extensions."
 
-#: ../includes/setup-wizard-done.view.php:84
+#: ../includes/setup-wizard-done.view.php:90
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:11
 #, php-format
 msgid "<a href=\"%1$s\" target=\"_blank\">Frequently Asked Questions</a>. "
 msgstr "<a href=\"%1$s\" target=\"_blank\">Foire Aux Questions</a>. "
 
-#: ../includes/setup-wizard-done.view.php:87
+#: ../includes/setup-wizard-done.view.php:93
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:14
 #, php-format
 msgid ""
@@ -296,7 +288,7 @@ msgstr ""
 "seulement pour le plugin principal (en anglais seulement à cause des règles "
 "de wordpress.org)."
 
-#: ../includes/setup-wizard-done.view.php:90
+#: ../includes/setup-wizard-done.view.php:96
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:17
 #, php-format
 msgid ""
@@ -308,11 +300,7 @@ msgstr ""
 "pour le plugin principal et pour chaque extension (anglais, français et "
 "espagnol accepté). "
 
-#: ../includes/setup-wizard-done.view.php:94
-msgid "Improving your Customer Area"
-msgstr "Améliorez votre espace client"
-
-#: ../includes/setup-wizard-done.view.php:103
+#: ../includes/setup-wizard-done.view.php:108
 #: ../includes/core-addons/help/templates/list-addons.template.php:12
 #, php-format
 msgid ""
@@ -321,6 +309,14 @@ msgid ""
 msgstr ""
 "Il y a eu une erreur lors de la récupération de la liste des extensions. "
 "Vous pouvez les <a href=\"%s\">voir directement sur notre boutique</a>."
+
+#: ../includes/setup-wizard-done.view.php:115
+msgid "Save money with our add-on bundles"
+msgstr "Economisez avec nos packs d'extensions"
+
+#: ../includes/setup-wizard-done.view.php:144
+msgid "Get our add-ons individually"
+msgstr "Nos extensions"
 
 #: ../includes/setup-wizard.view.php:23
 msgid "Setup your Customer Area in seconds"
@@ -370,7 +366,7 @@ msgid "Capabilities"
 msgstr "Permissions"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:35
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:248
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:249
 msgid "Customer Page"
 msgstr "Page Client"
 
@@ -402,34 +398,34 @@ msgstr ""
 "Si vous n'avez pas encore configuré le plugin, nous avons une <a href=\"%s"
 "\">procédure d'installation rapide</a>"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:71
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:72
 msgid "Dashboard"
 msgstr "Accueil"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:72
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:73
 msgid "Your customer area welcome page"
 msgstr "Votre page espace client"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:80
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:81
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:81
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:82
 msgid "Disconnect from your customer area"
 msgstr "Se déconnecter de l'espace client"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:196
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:197
 #, php-format
 msgid "Hello %s,"
 msgstr "Bonjour %s,"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:241
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:388
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:242
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:398
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:166
 msgid "Frontend Integration"
 msgstr "Intégration au site"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:257
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:258
 msgid ""
 "This page is the one where you have inserted the [customer-area] shortcode. "
 "This should be set automatically when you first visit that page. If for any "
@@ -440,18 +436,18 @@ msgstr ""
 "visitez cette page. Si pour une raison quelconque ce n'est pas correct, vous "
 "pouvez la modifier."
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:264
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:265
 msgid "Customer Area Menu"
 msgstr "Menu Espace Client"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:271
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:272
 msgid ""
 "Automatically print the Customer Area menu on single private content pages."
 msgstr ""
 "Afficher automatiquement le menu de l'espace client sur les pages de détail "
 "de contenu privé."
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:273
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:274
 msgid ""
 "By default, you will only see the Customer Area menu everywhere but on the "
 "pages displaying a single private content (a private page or a private file "
@@ -468,11 +464,11 @@ msgstr ""
 "emplacement, vous pouvez vous référer à la documentation pour voir comment "
 "modifier l'endroit où il apparaitra."
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:281
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:282
 msgid "Number of items on dashboard"
 msgstr "Nombre d'items dans l'accueil"
 
-#: ../includes/core-addons/customer-page/customer-page-addon.class.php:289
+#: ../includes/core-addons/customer-page/customer-page-addon.class.php:290
 msgid ""
 "Sets the number of items to be display in each \"latest\" section of the "
 "dashboard (-1 will make it show all items)."
@@ -516,13 +512,9 @@ msgstr "Assistance"
 
 #: ../includes/core-addons/help/help-addon.class.php:83
 #: ../includes/core-addons/help/help-addon.class.php:95
+#: ../includes/core-addons/help/templates/list-addons.template.php:7
 msgid "Enhance your customer area"
 msgstr "Améliorez votre espace client"
-
-#: ../includes/core-addons/help/help-addon.class.php:85
-#: ../includes/core-addons/help/help-addon.class.php:111
-msgid "Subscribe to our newsletter"
-msgstr "S'inscrire à notre liste de diffusion"
 
 #: ../includes/core-addons/help/help-addon.class.php:87
 #: ../includes/core-addons/help/help-addon.class.php:103
@@ -573,9 +565,24 @@ msgstr "Nous mettre +1 sur Google+"
 msgid "Follow us on Facebook"
 msgstr "Nous suivre sur Facebook"
 
-#: ../includes/core-addons/help/templates/list-addons.template.php:7
-msgid "Enhance your customer area with our add-ons"
-msgstr "Améliorez votre espace client avec nos extensions"
+#: ../includes/core-addons/help/help-addon.class.php:179
+msgid ""
+"You can also get notified when we've got something exciting to say (plugin "
+"updates, news, etc.). Simply subscribe to our newsletter, we won't spam, we "
+"send at most one email per month!"
+msgstr ""
+"Vous pouvez être tenu au courant quand nous avons quelque chose qui vaut le "
+"coup (mise à jour de plugins, nouvelles, etc.). Inscrivez-vous simplement à "
+"notre liste de diffusion, aucun spam - promis, nous envoyons au maximum un "
+"courriel par mois !"
+
+#: ../includes/core-addons/help/templates/list-addons.template.php:18
+msgid "Save money with our bundles"
+msgstr "Economisez avec nos packs d'extensions"
+
+#: ../includes/core-addons/help/templates/list-addons.template.php:45
+msgid "Our add-ons"
+msgstr "Nos extensions"
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:1
 msgid "Getting support"
@@ -650,7 +657,7 @@ msgstr "Utilisateur - %s"
 #: ../includes/core-addons/private-file/private-file-addon.class.php:522
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:101
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:102
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:334
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:344
 msgid "Private Files"
 msgstr "Fichiers privés"
 
@@ -869,40 +876,44 @@ msgstr "Fichier actuellement associé à ce contenu"
 msgid "Current file:"
 msgstr "Fichier actuel :"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:192
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:195
 msgid "Change the associated file"
 msgstr "Modifier le fichier associé"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:193
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:196
 msgid "How to add the file?"
 msgstr "Comment ajouter le fichier ?"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:196
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:199
 msgid "Direct upload"
 msgstr "Téléversement direct"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:197
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:200
 msgid "Copy from FTP folder"
 msgstr "Copier depuis le dossier FTP"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:203
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:211
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:206
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:216
 msgid "Pick a file"
 msgstr "Sélectionner un fichier"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:214
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:219
+msgid "The FTP upload folder does not exist."
+msgstr "Le dossier FTP n'existe pas."
+
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:221
 msgid "The FTP upload folder is empty."
 msgstr "Le dossier FTP est vide."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:217
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:224
 msgid "Select a file"
 msgstr "Sélectionnez un fichier"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:229
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:238
 msgid "Copy file or move it?"
 msgstr "Copier le fichier ou le déplacer ?"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:232
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:241
 msgid ""
 "If checked, the file will be deleted after it has been copied to the owner's "
 "private storage directory"
@@ -910,21 +921,21 @@ msgstr ""
 "Si cochée, le fichier sera effacé du dossier FTP après avoir été copié vers "
 "le dossier de stockage privé du propriétaire"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:346
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:356
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:146
 msgid "General settings"
 msgstr "Réglages généraux"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:353
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:363
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:153
 msgid "Enable add-on"
 msgstr "Activer l'extension"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:361
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:371
 msgid "Check this to enable the private files add-on."
 msgstr "Cochez cette case pour activer l'extension des fichiers privés."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:365
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:375
 msgid ""
 "This folder does not exist, please create it if you want to copy files from "
 "the FTP folder. Otherwise, you need not do anything."
@@ -933,11 +944,11 @@ msgstr ""
 "fichiers depuis le dossier FTP. Sinon, vous n'avez pas besoin de vous en "
 "préoccuper."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:372
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:382
 msgid "FTP uploads folder"
 msgstr "Dossier FTP"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:381
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:391
 msgid ""
 "This folder can be used when you want to use files uploaded with FTP. This "
 "is handy when direct upload is failing for big files for instance."
@@ -946,19 +957,19 @@ msgstr ""
 "téléversés par FTP. C'est pratique quand le téléversement direct échoue pour "
 "les gros fichiers par exemple."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:395
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:405
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:173
 msgid "Show after post"
 msgstr "Après l'article"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:403
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:413
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:181
 msgid "Show additional information after the post in the single post view."
 msgstr ""
 "Voir des informations supplémentaires après l'article dans la vue article "
 "unique."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:405
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:415
 msgid ""
 "You can disable this if you have your own \"single-cuar_private_file.php\" "
 "template file."
@@ -966,38 +977,38 @@ msgstr ""
 "Vous pouvez désactiver ceci si vous avez votre propre fichier de thème "
 "\"single-cuar_private_file.php\""
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:411
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:421
 msgid "File list"
 msgstr "Liste de fichiers"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:418
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:428
 msgid "Don't group files"
 msgstr "Ne pas grouper les fichiers"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:419
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:429
 msgid "Group by month"
 msgstr "Grouper par mois"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:420
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:430
 msgid "Group by year"
 msgstr "Grouper par année"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:421
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:431
 msgid "Group by category"
 msgstr "Grouper par catégorie"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:423
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:433
 msgid ""
 "You can choose how files will be organized by default in the customer area."
 msgstr ""
 "Vous pouvez choisir la manière par défaut dont seront groupés le fichiers "
 "dans la zone client."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:429
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:439
 msgid "Empty categories"
 msgstr "Catégories vides"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:437
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:447
 msgid ""
 "When listing files by category, empty categories will be hidden if you check "
 "this."
@@ -1005,17 +1016,17 @@ msgstr ""
 "Si les fichiers sont groupés par catégorie, les catégories vides seront "
 "ignorées si vous cochez cette case."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:443
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:453
 msgid "File Storage"
 msgstr "Stockage des fichiers"
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:520
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:530
 #, php-format
 msgid "The files will be stored in the following directory: <code>%s</code>."
 msgstr ""
 "Les fichiers seront stockés dans le répertoire suivant : <code>%s</code>."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:525
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:535
 #, php-format
 msgid ""
 "Each user has his own sub-directory. For instance, yours is: <code>%s</code>."
@@ -1023,7 +1034,7 @@ msgstr ""
 "Chaque utilisateur a son propre sous-répertoire. Par exemple, le votre "
 "est  : <code>%s</code>."
 
-#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:531
+#: ../includes/core-addons/private-file/private-file-admin-interface.class.php:541
 #, php-format
 msgid ""
 "That directory should at least have the permissions set to 705. Currently it "
@@ -1230,6 +1241,22 @@ msgstr "Plus d'information sur cette page"
 #, php-format
 msgid "Page created on %1$s by %2$s for %3$s"
 msgstr "Page créée le %1$s par %2$s pour %3$s"
+
+#~ msgid "What's next?"
+#~ msgstr "Et ensuite ?"
+
+#~ msgid ""
+#~ "You should have a look at the <a href=\"%1$s\" target=\"_blank\">plugin "
+#~ "settings</a> to adjust a few things."
+#~ msgstr ""
+#~ "Vous devriez jeter un oeil aux <a href=\"%1$s\" target=\"_blank"
+#~ "\">réglages du plugin</a> pour ajuster quelques bricoles."
+
+#~ msgid "Improving your Customer Area"
+#~ msgstr "Améliorez votre espace client"
+
+#~ msgid "Enhance your customer area with our add-ons"
+#~ msgstr "Améliorez votre espace client avec nos extensions"
 
 #~ msgid "Upload a file"
 #~ msgstr "Téléverser un fichier"

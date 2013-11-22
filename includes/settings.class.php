@@ -561,11 +561,11 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			// TODO better checks, for now, just check it is not empty
 			// $po_addon = $this->plugin->get_addon("post-owner");
 			if (isset ( $input [$field_id] )) {
-				$validated [$option_id] = $input [$field_id];
+				$validated[$option_id] = is_array( $input[$field_id] ) ? $input[$field_id] : array( $input[$field_id] );
 			} else {
 				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input [$field_id] . __ ( ' is not a valid owner', 'cuar' ), 'error' );
 				
-				$validated [$option_id] = $this->default_options [$option_id];
+				$validated[$option_id] = $this->default_options [$option_id];
 			}
 		}
 		

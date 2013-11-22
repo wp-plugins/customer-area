@@ -458,7 +458,7 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	public function get_printable_owners_for_type_usr( $in ) {
 		$all_users = apply_filters( 'cuar_get_selectable_owners_for_type_usr', null );		
 		if ( null===$all_users ) {
-			$all_users = get_users( array( 'orderby' => 'display_name' ) );
+			$all_users = get_users( array( 'orderby' => 'display_name', 'fields' => 'all_with_meta' ) );
 		}	
 		
 		$out = $in;

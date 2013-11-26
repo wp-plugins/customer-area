@@ -2,8 +2,8 @@
 
 <?php 
 	$item_template = $this->plugin->get_template_file_path(
-			CUAR_INCLUDES_DIR . '/core-addons/private-page',
-			"list_private_pages-item.template.php",
+			CUAR_INCLUDES_DIR . '/core-addons/private-file',
+			"list_private_files-item.template.php",
 			'templates'); 
 	
 	$current_year = '';
@@ -50,8 +50,8 @@ jQuery(document).ready(function($) {
 
 <?php else : ?>
 <?php 	include( $this->plugin->get_template_file_path(
-					CUAR_INCLUDES_DIR . '/core-addons/private-page',
-					'list_private_pages-empty.template.php',
+					CUAR_INCLUDES_DIR . '/core-addons/private-file',
+					'list_private_files-empty.template.php',
 					'templates' ));	?>
 <?php endif; ?>
 

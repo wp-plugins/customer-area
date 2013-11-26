@@ -17,6 +17,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 require_once( CUAR_INCLUDES_DIR . '/addon.class.php' );
+require_once( CUAR_INCLUDES_DIR . '/helpers/template-functions.class.php' );
 
 require_once( dirname(__FILE__) . '/private-file-admin-interface.class.php' );
 require_once( dirname(__FILE__) . '/private-file-frontend-interface.class.php' );

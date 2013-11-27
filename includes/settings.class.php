@@ -329,9 +329,9 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 */
 		public function validate_post_id($input, &$validated, $option_id) {
 			if ( $input[$option_id]==-1 || get_post( $input[$option_id] ) ) {
-				$validated [$option_id] = $input[$option_id];
+				$validated[$option_id] = $input[$option_id];
 			} else {
-				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input [$option_id] . __ ( ' is not a valid post', 'cuar' ), 'error' );
+				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input[$option_id] . __ ( ' is not a valid post', 'cuar' ), 'error' );
 			}
 		}
 		
@@ -346,7 +346,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 *        	Key of the value to check in the input array
 		 */
 		public function validate_boolean($input, &$validated, $option_id) {
-			$validated [$option_id] = isset ( $input [$option_id] ) ? true : false;
+			$validated[$option_id] = isset ( $input[$option_id] ) ? true : false;
 		}
 		
 		/**
@@ -360,11 +360,11 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 *        	Key of the value to check in the input array
 		 */
 		public function validate_role($input, &$validated, $option_id) {
-			$role = $input [$option_id];			
-			if ( isset( $role ) && ( $role=="cuar_any" || null!=get_role( $input [$option_id] ) ) ) {
-				$validated [$option_id] = $input [$option_id];
+			$role = $input[$option_id];			
+			if ( isset( $role ) && ( $role=="cuar_any" || null!=get_role( $input[$option_id] ) ) ) {
+				$validated[$option_id] = $input[$option_id];
 			} else {
-				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input [$option_id] . __ ( ' is not a valid role', 'cuar' ), 'error' );
+				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input[$option_id] . __ ( ' is not a valid role', 'cuar' ), 'error' );
 			}
 		}
 		
@@ -379,7 +379,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 *        	Key of the value to check in the input array
 		 */
 		public function validate_license_key($input, &$validated, $option_id, $store_url, $product_name) {
-			$validated [$option_id] = trim ( $input [$option_id] );
+			$validated[$option_id] = trim ( $input[$option_id] );
 			
 			// Only validate on license change or every N days
 			$last_check = $this->get_option ( $option_id . '_lastcheck' );
@@ -390,11 +390,11 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				$days_since_lastcheck = 99999;
 			}
 			
-			if ($days_since_lastcheck > 2 || $input [$option_id] != $this->get_option ( $option_id )) {
+			if ($days_since_lastcheck > 2 || $input[$option_id] != $this->get_option ( $option_id )) {
 				// data to send in our API request
 				$api_params = array (
 						'edd_action' => 'activate_license',
-						'license' => $validated [$option_id],
+						'license' => $validated[$option_id],
 						'item_name' => urlencode ( $product_name ) 
 				);
 				
@@ -412,8 +412,8 @@ if (! class_exists ( 'CUAR_Settings' )) :
 					// $license_data->license will be either "active" or "inactive"
 				$license_data = json_decode ( wp_remote_retrieve_body ( $response ) );
 				
-				$validated [$option_id . '_status'] = $license_data->license;
-				$validated [$option_id . '_lastcheck'] = time ();
+				$validated[$option_id . '_status'] = $license_data->license;
+				$validated[$option_id . '_lastcheck'] = time ();
 			}
 		}
 		
@@ -428,12 +428,12 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 *        	Key of the value to check in the input array
 		 */
 		public function validate_not_empty($input, &$validated, $option_id) {
-			if (isset ( $input [$option_id] ) && ! empty ( $input [$option_id] )) {
-				$validated [$option_id] = $input [$option_id];
+			if (isset ( $input[$option_id] ) && ! empty ( $input[$option_id] )) {
+				$validated[$option_id] = $input[$option_id];
 			} else {
-				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input [$option_id] . __ ( ' cannot be empty', 'cuar' ), 'error' );
+				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input[$option_id] . __ ( ' cannot be empty', 'cuar' ), 'error' );
 				
-				$validated [$option_id] = $this->default_options [$option_id];
+				$validated[$option_id] = $this->default_options [$option_id];
 			}
 		}
 		
@@ -448,12 +448,12 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 *        	Key of the value to check in the input array
 		 */
 		public function validate_email($input, &$validated, $option_id) {
-			if (isset ( $input [$option_id] ) && is_email ( $input [$option_id] )) {
-				$validated [$option_id] = $input [$option_id];
+			if (isset ( $input[$option_id] ) && is_email ( $input[$option_id] )) {
+				$validated[$option_id] = $input[$option_id];
 			} else {
-				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input [$option_id] . __ ( ' is not a valid email', 'cuar' ), 'error' );
+				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input[$option_id] . __ ( ' is not a valid email', 'cuar' ), 'error' );
 				
-				$validated [$option_id] = $this->default_options [$option_id];
+				$validated[$option_id] = $this->default_options [$option_id];
 			}
 		}
 		
@@ -470,14 +470,14 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 *        	Array of possible values
 		 */
 		public function validate_enum($input, &$validated, $option_id, $enum_values) {
-			if (! in_array ( $input [$option_id], $enum_values )) {
-				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input [$option_id] . __ ( ' is not a valid value', 'cuar' ), 'error' );
+			if (! in_array ( $input[$option_id], $enum_values )) {
+				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input[$option_id] . __ ( ' is not a valid value', 'cuar' ), 'error' );
 				
-				$validated [$option_id] = $this->default_options [$option_id];
+				$validated[$option_id] = $this->default_options [$option_id];
 				return;
 			}
 			
-			$validated [$option_id] = $input [$option_id];
+			$validated[$option_id] = $input[$option_id];
 		}
 		
 		/**
@@ -496,31 +496,31 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 */
 		public function validate_int($input, &$validated, $option_id, $min = null, $max = null) {
 			// Must be an int
-			if (! is_int ( intval ( $input [$option_id] ) )) {
+			if (! is_int ( intval ( $input[$option_id] ) )) {
 				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . __ ( 'must be an integer', 'cuar' ), 'error' );
 				
-				$validated [$option_id] = $this->default_options [$option_id];
+				$validated[$option_id] = $this->default_options [$option_id];
 				return;
 			}
 			
 			// Must be > min
-			if ($min !== null && $input [$option_id] < $min) {
+			if ($min !== null && $input[$option_id] < $min) {
 				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . sprintf ( __ ( 'must be greater than %s', 'cuar' ), $min ), 'error' );
 				
-				$validated [$option_id] = $this->default_options [$option_id];
+				$validated[$option_id] = $this->default_options [$option_id];
 				return;
 			}
 			
 			// Must be < max
-			if ($max !== null && $input [$option_id] > $max) {
+			if ($max !== null && $input[$option_id] > $max) {
 				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . sprintf ( __ ( 'must be lower than %s', 'cuar' ), $max ), 'error' );
 				
-				$validated [$option_id] = $this->default_options [$option_id];
+				$validated[$option_id] = $this->default_options [$option_id];
 				return;
 			}
 			
 			// All good
-			$validated [$option_id] = intval ( $input [$option_id] );
+			$validated[$option_id] = intval ( $input[$option_id] );
 		}
 		
 		/**
@@ -536,12 +536,12 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		public function validate_owner_type($input, &$validated, $option_id) {
 			$po_addon = $this->plugin->get_addon ( "post-owner" );
 			
-			if (isset ( $input [$option_id] ) && $po_addon->is_valid_owner_type ( $input [$option_id] )) {
-				$validated [$option_id] = $input [$option_id];
+			if (isset ( $input[$option_id] ) && $po_addon->is_valid_owner_type ( $input[$option_id] )) {
+				$validated[$option_id] = $input[$option_id];
 			} else {
-				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input [$option_id] . __ ( ' is not a valid owner type', 'cuar' ), 'error' );
+				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input[$option_id] . __ ( ' is not a valid owner type', 'cuar' ), 'error' );
 				
-				$validated [$option_id] = $this->default_options [$option_id];
+				$validated[$option_id] = $this->default_options [$option_id];
 			}
 		}
 		
@@ -556,16 +556,35 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 *        	Key of the value to check in the input array
 		 */
 		public function validate_owner($input, &$validated, $option_id, $owner_type_option_id) {
-			$field_id = $option_id . '_' . $input [$owner_type_option_id] . '_id';
+			$field_id = $option_id . '_' . $input[$owner_type_option_id] . '_id';
 			
 			// TODO better checks, for now, just check it is not empty
 			// $po_addon = $this->plugin->get_addon("post-owner");
-			if (isset ( $input [$field_id] )) {
+			if (isset ( $input[$field_id] )) {
 				$validated[$option_id] = is_array( $input[$field_id] ) ? $input[$field_id] : array( $input[$field_id] );
 			} else {
-				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input [$field_id] . __ ( ' is not a valid owner', 'cuar' ), 'error' );
+				add_settings_error ( $option_id, 'settings-errors', $option_id . ': ' . $input[$field_id] . __ ( ' is not a valid owner', 'cuar' ), 'error' );
 				
 				$validated[$option_id] = $this->default_options [$option_id];
+			}
+		}
+		
+		/**
+		 * Validate a term id (for now, we just check it is not empty and strictly positive)
+		 *
+		 * @param array $input
+		 *        	Input array
+		 * @param array $validated
+		 *        	Output array
+		 * @param string $option_id
+		 *        	Key of the value to check in the input array
+		 */
+		public function validate_term( $input, &$validated, $option_id, $taxonomy ) {			
+			// TODO better checks, for now, we just check it is not empty and strictly positive
+			if (isset( $input[$option_id] ) && $input[$option_id] > 0 ) {
+				$validated[$option_id] = $input[$option_id];
+			} else {
+				$validated[$option_id] = -1;
 			}
 		}
 		
@@ -800,6 +819,34 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			}
 			
 			echo '</select>';
+			
+			if (isset ( $after ))
+				echo $after;
+		}
+		
+		/**
+		 * Output a select field for a term
+		 *
+		 * @param string $option_id        	
+		 * @param array $options        	
+		 * @param string $caption        	
+		 */
+		public function print_term_select_field($args) {
+			extract ( $args );
+			
+			if (isset ( $before ))
+				echo $before;
+			
+			wp_dropdown_categories( array(
+					'taxonomy'			=> $taxonomy,
+					'name' 				=> self::$OPTIONS_GROUP . '[' . esc_attr ( $option_id ) . ']',
+					'id' 				=> esc_attr ( $option_id ),
+					'selected'			=> $this->options [$option_id],
+					'hide_empty'    	=> 0,
+					'hierarchical'  	=> 1,
+					'show_option_none' 	=> __('None', 'cuar'),
+					'orderby'       	=> 'NAME',
+				) );
 			
 			if (isset ( $after ))
 				echo $after;

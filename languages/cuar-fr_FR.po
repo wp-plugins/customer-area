@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-11-22 11:15+0100\n"
-"PO-Revision-Date: 2013-11-22 11:16+0100\n"
+"POT-Creation-Date: 2013-11-27 16:05+0100\n"
+"PO-Revision-Date: 2013-11-27 16:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -134,27 +134,27 @@ msgstr "n'est pas un type de propriétaire valide"
 msgid " is not a valid owner"
 msgstr "n'est pas un propriétaire valide"
 
-#: ../includes/settings.class.php:590
+#: ../includes/settings.class.php:609
 msgid "Your license is active!"
 msgstr "Votre license est active !"
 
-#: ../includes/settings.class.php:592
+#: ../includes/settings.class.php:611
 msgid "Your license key is invalid!"
 msgstr "Votre licence est invalide !"
 
-#: ../includes/settings.class.php:594
+#: ../includes/settings.class.php:613
 msgid "Your license key is expired!"
 msgstr "Votre licence est expirée !"
 
-#: ../includes/settings.class.php:600
+#: ../includes/settings.class.php:619
 msgid "Last check"
 msgstr "Dernière vérification"
 
-#: ../includes/settings.class.php:600
+#: ../includes/settings.class.php:619
 msgid "d/m/Y"
 msgstr "d/m/Y"
 
-#: ../includes/settings.class.php:603
+#: ../includes/settings.class.php:622
 msgid ""
 "The license key you have received for this add-on. This is required in order "
 "to get automatic plugin updates."
@@ -162,23 +162,23 @@ msgstr ""
 "La clé de licence que vous avez reçu avec cette extension. Cette clé est "
 "nécessaire pour obtenir des mises à jour automatiquement."
 
-#: ../includes/settings.class.php:705
+#: ../includes/settings.class.php:724 ../includes/settings.class.php:847
 msgid "None"
 msgstr "Aucune"
 
-#: ../includes/settings.class.php:788
+#: ../includes/settings.class.php:807
 msgid "Any Role"
 msgstr "N'importe quel rôle"
 
-#: ../includes/settings.class.php:827
+#: ../includes/settings.class.php:874
 msgid "Main plugin folder"
 msgstr "Répertoire principale du plugin"
 
-#: ../includes/settings.class.php:832
+#: ../includes/settings.class.php:879
 msgid "Current theme folder"
 msgstr "Répertoire du thème actuel"
 
-#: ../includes/settings.class.php:837
+#: ../includes/settings.class.php:884
 msgid "WordPress content folder"
 msgstr "Répertoire de contenu WordPress"
 
@@ -653,203 +653,203 @@ msgstr "Vous n'êtes pas autorisé à voir cette page"
 msgid "User - %s"
 msgstr "Utilisateur - %s"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:35
-#: ../includes/core-addons/private-file/private-file-addon.class.php:522
+#: ../includes/core-addons/private-file/private-file-addon.class.php:36
+#: ../includes/core-addons/private-file/private-file-addon.class.php:523
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:101
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:102
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:344
 msgid "Private Files"
 msgstr "Fichiers privés"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:249
+#: ../includes/core-addons/private-file/private-file-addon.class.php:250
 #, php-format
 msgid "This file type is not allowed. You can only upload: %s"
 msgstr ""
 "Ce type de fichier n'est pas autorisé. Vous pouvez seulement téléverser : %s"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:283
+#: ../includes/core-addons/private-file/private-file-addon.class.php:284
 msgid "An unknown error happened while uploading your file."
 msgstr ""
 "Une erreur inconnue est survenue lors du téléversement de votre fichier."
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:287
+#: ../includes/core-addons/private-file/private-file-addon.class.php:288
 #, php-format
 msgid "An error happened while uploading your file: %s"
 msgstr "Une erreur est survenue lors du téléversement de votre fichier : %s"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:332
+#: ../includes/core-addons/private-file/private-file-addon.class.php:333
 msgid "An error happened while copying your file from the FTP folder"
 msgstr ""
 "Une erreur est survenue lors de la copie de votre fichier depuis le dossier "
 "FTP"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:370
+#: ../includes/core-addons/private-file/private-file-addon.class.php:371
 msgid "You are not authorized to access this file"
 msgstr "Vous n'êtes pas autorisé à accéder à ce fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:508
+#: ../includes/core-addons/private-file/private-file-addon.class.php:509
 msgid "Private Files (back-office)"
 msgstr "Fichiers Privés (Zone admin.)"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:510
+#: ../includes/core-addons/private-file/private-file-addon.class.php:511
 msgid "List all files"
 msgstr "Lister tous les fichiers"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:511
+#: ../includes/core-addons/private-file/private-file-addon.class.php:512
 msgid "Create/Edit files"
 msgstr "Créer/éditer des fichiers"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:512
+#: ../includes/core-addons/private-file/private-file-addon.class.php:513
 msgid "Delete files"
 msgstr "Supprimer des fichiers"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:513
+#: ../includes/core-addons/private-file/private-file-addon.class.php:514
 msgid "Access files"
 msgstr "Voir les fichiers"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:514
+#: ../includes/core-addons/private-file/private-file-addon.class.php:515
 msgid "Manage categories"
 msgstr "Gérer les catégories"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:515
+#: ../includes/core-addons/private-file/private-file-addon.class.php:516
 msgid "Edit categories"
 msgstr "Editer les catégories"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:516
+#: ../includes/core-addons/private-file/private-file-addon.class.php:517
 msgid "Delete categories"
 msgstr "Supprimer des catégories"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:517
+#: ../includes/core-addons/private-file/private-file-addon.class.php:518
 msgid "Assign categories"
 msgstr "Assigner des catégories"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:524
+#: ../includes/core-addons/private-file/private-file-addon.class.php:525
 msgid "View any private file"
 msgstr "Voir n'importe quel fichier privé"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:546
-#: ../includes/core-addons/private-file/private-file-addon.class.php:557
+#: ../includes/core-addons/private-file/private-file-addon.class.php:547
+#: ../includes/core-addons/private-file/private-file-addon.class.php:558
 msgctxt "cuar_private_file"
 msgid "Private Files"
 msgstr "Fichiers privés"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:547
+#: ../includes/core-addons/private-file/private-file-addon.class.php:548
 msgctxt "cuar_private_file"
 msgid "Private File"
 msgstr "Fichier privé"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:548
+#: ../includes/core-addons/private-file/private-file-addon.class.php:549
 msgctxt "cuar_private_file"
 msgid "Add New"
 msgstr "Ajouter un nouveau"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:549
+#: ../includes/core-addons/private-file/private-file-addon.class.php:550
 msgctxt "cuar_private_file"
 msgid "Add New Private File"
 msgstr "Nouveau fichier privé"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:550
+#: ../includes/core-addons/private-file/private-file-addon.class.php:551
 msgctxt "cuar_private_file"
 msgid "Edit Private File"
 msgstr "Modifier le fichier privé"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:551
+#: ../includes/core-addons/private-file/private-file-addon.class.php:552
 msgctxt "cuar_private_file"
 msgid "New Private File"
 msgstr "Nouveau fichier privé"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:552
+#: ../includes/core-addons/private-file/private-file-addon.class.php:553
 msgctxt "cuar_private_file"
 msgid "View Private File"
 msgstr "Voir le fichier privé"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:553
+#: ../includes/core-addons/private-file/private-file-addon.class.php:554
 msgctxt "cuar_private_file"
 msgid "Search Private Files"
 msgstr "Chercher dans les fichiers privés"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:554
+#: ../includes/core-addons/private-file/private-file-addon.class.php:555
 msgctxt "cuar_private_file"
 msgid "No private files found"
 msgstr "Aucun fichier privé trouvé"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:555
+#: ../includes/core-addons/private-file/private-file-addon.class.php:556
 msgctxt "cuar_private_file"
 msgid "No private files found in Trash"
 msgstr "Aucun fichier privé trouvé dans la corbeille"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:556
+#: ../includes/core-addons/private-file/private-file-addon.class.php:557
 msgctxt "cuar_private_file"
 msgid "Parent Private File:"
 msgstr "Fichier privé parent :"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:589
-#: ../includes/core-addons/private-file/private-file-addon.class.php:605
+#: ../includes/core-addons/private-file/private-file-addon.class.php:590
+#: ../includes/core-addons/private-file/private-file-addon.class.php:606
 msgctxt "cuar_private_file_category"
 msgid "File Categories"
 msgstr "Catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:590
+#: ../includes/core-addons/private-file/private-file-addon.class.php:591
 msgctxt "cuar_private_file_category"
 msgid "File Category"
 msgstr "Catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:591
+#: ../includes/core-addons/private-file/private-file-addon.class.php:592
 msgctxt "cuar_private_file_category"
 msgid "Search File Categories"
 msgstr "Chercher des catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:592
+#: ../includes/core-addons/private-file/private-file-addon.class.php:593
 msgctxt "cuar_private_file_category"
 msgid "Popular File Categories"
 msgstr "Catégories de fichier populaires"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:593
+#: ../includes/core-addons/private-file/private-file-addon.class.php:594
 msgctxt "cuar_private_file_category"
 msgid "All File Categories"
 msgstr "Toutes les catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:594
+#: ../includes/core-addons/private-file/private-file-addon.class.php:595
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category"
 msgstr "Catégorie de fichier parente"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:595
+#: ../includes/core-addons/private-file/private-file-addon.class.php:596
 msgctxt "cuar_private_file_category"
 msgid "Parent File Category:"
 msgstr "Catégorie de fichier parente :"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:596
+#: ../includes/core-addons/private-file/private-file-addon.class.php:597
 msgctxt "cuar_private_file_category"
 msgid "Edit File Category"
 msgstr "Modifier la catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:597
+#: ../includes/core-addons/private-file/private-file-addon.class.php:598
 msgctxt "cuar_private_file_category"
 msgid "Update File Category"
 msgstr "Mettre à jour la catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:598
+#: ../includes/core-addons/private-file/private-file-addon.class.php:599
 msgctxt "cuar_private_file_category"
 msgid "Add New File Category"
 msgstr "Ajouter une catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:599
+#: ../includes/core-addons/private-file/private-file-addon.class.php:600
 msgctxt "cuar_private_file_category"
 msgid "New File Category"
 msgstr "Nouvelle catégorie de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:600
+#: ../includes/core-addons/private-file/private-file-addon.class.php:601
 msgctxt "cuar_private_file_category"
 msgid "Separate file categories with commas"
 msgstr "Séparez les catégories de fichier avec des virgules"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:602
+#: ../includes/core-addons/private-file/private-file-addon.class.php:603
 msgctxt "cuar_private_file_category"
 msgid "Add or remove file categories"
 msgstr "Ajouter ou enlever des catégories de fichier"
 
-#: ../includes/core-addons/private-file/private-file-addon.class.php:603
+#: ../includes/core-addons/private-file/private-file-addon.class.php:604
 msgctxt "cuar_private_file_category"
 msgid "Choose from the most used file categories"
 msgstr "Choisir parmi les catégories de fichier les plus courantes"
@@ -1098,8 +1098,8 @@ msgstr "A : %s"
 
 #: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:19
 #: ../includes/core-addons/private-file/templates/list_private_files-item.template.php:20
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:21
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:22
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:18
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:19
 msgid "Download"
 msgstr "Télécharger"
 
@@ -1107,95 +1107,95 @@ msgstr "Télécharger"
 msgid "More information about this file"
 msgstr "Plus d'information sur ce fichier"
 
-#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:12
+#: ../includes/core-addons/private-file/templates/private-file-after_post_content.template.php:9
 #, php-format
 msgid "File created on %1$s by %2$s for %3$s"
 msgstr "Fichier créé le %1$s par %2$s pour %3$s"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:34
-#: ../includes/core-addons/private-page/private-page-addon.class.php:112
+#: ../includes/core-addons/private-page/private-page-addon.class.php:35
+#: ../includes/core-addons/private-page/private-page-addon.class.php:113
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:61
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:62
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:134
 msgid "Private Pages"
 msgstr "Pages privées"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:102
+#: ../includes/core-addons/private-page/private-page-addon.class.php:103
 msgid "Private Pages (back-office)"
 msgstr "Pages Privées (Zone admin.)"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:104
+#: ../includes/core-addons/private-page/private-page-addon.class.php:105
 msgid "List all pages"
 msgstr "Voir toutes les pages"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:105
+#: ../includes/core-addons/private-page/private-page-addon.class.php:106
 msgid "Create/Edit pages"
 msgstr "Créer/éditer des pages"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:106
+#: ../includes/core-addons/private-page/private-page-addon.class.php:107
 msgid "Delete pages"
 msgstr "Supprimer des pages"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:107
+#: ../includes/core-addons/private-page/private-page-addon.class.php:108
 msgid "Access pages"
 msgstr "Voir les pages"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:114
+#: ../includes/core-addons/private-page/private-page-addon.class.php:115
 msgid "View any private page"
 msgstr "Voir n'importe quelle page privée"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:136
-#: ../includes/core-addons/private-page/private-page-addon.class.php:147
+#: ../includes/core-addons/private-page/private-page-addon.class.php:137
+#: ../includes/core-addons/private-page/private-page-addon.class.php:148
 msgctxt "cuar_private_page"
 msgid "Private Pages"
 msgstr "Pages privées"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:137
+#: ../includes/core-addons/private-page/private-page-addon.class.php:138
 msgctxt "cuar_private_page"
 msgid "Private Page"
 msgstr "Page privée"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:138
+#: ../includes/core-addons/private-page/private-page-addon.class.php:139
 msgctxt "cuar_private_page"
 msgid "Add New"
 msgstr "Ajouter"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:139
+#: ../includes/core-addons/private-page/private-page-addon.class.php:140
 msgctxt "cuar_private_page"
 msgid "Add New Private Page"
 msgstr "Nouvelle page privée"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:140
+#: ../includes/core-addons/private-page/private-page-addon.class.php:141
 msgctxt "cuar_private_page"
 msgid "Edit Private Page"
 msgstr "Modifier la page privée"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:141
+#: ../includes/core-addons/private-page/private-page-addon.class.php:142
 msgctxt "cuar_private_page"
 msgid "New Private Page"
 msgstr "Nouvelle page privée"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:142
+#: ../includes/core-addons/private-page/private-page-addon.class.php:143
 msgctxt "cuar_private_page"
 msgid "View Private Page"
 msgstr "Voir la page privée"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:143
+#: ../includes/core-addons/private-page/private-page-addon.class.php:144
 msgctxt "cuar_private_page"
 msgid "Search Private Pages"
 msgstr "Chercher dans les pages privées"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:144
+#: ../includes/core-addons/private-page/private-page-addon.class.php:145
 msgctxt "cuar_private_page"
 msgid "No private pages found"
 msgstr "Aucune page privée trouvée"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:145
+#: ../includes/core-addons/private-page/private-page-addon.class.php:146
 msgctxt "cuar_private_page"
 msgid "No private pages found in Trash"
 msgstr "Aucune page privée trouvée dans la corbeille"
 
-#: ../includes/core-addons/private-page/private-page-addon.class.php:146
+#: ../includes/core-addons/private-page/private-page-addon.class.php:147
 msgctxt "cuar_private_page"
 msgid "Parent Private Page:"
 msgstr "Page privée parente :"
@@ -1237,7 +1237,7 @@ msgstr "Vous n'avez aucune page actuellement."
 msgid "More information about this page"
 msgstr "Plus d'information sur cette page"
 
-#: ../includes/core-addons/private-page/templates/private-page-after_post_content.template.php:12
+#: ../includes/core-addons/private-page/templates/private-page-after_post_content.template.php:9
 #, php-format
 msgid "Page created on %1$s by %2$s for %3$s"
 msgstr "Page créée le %1$s par %2$s pour %3$s"

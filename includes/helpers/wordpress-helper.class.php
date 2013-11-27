@@ -52,7 +52,6 @@ class CUAR_WordPressHelper {
 	 * @return string
 	 */
 	public static function getSelectUserDropdown( $html_select_id, $hint, $all_users, $selected_users = array(), $multiple = true, $echo = true ) {
-
 		$multiple = $multiple ? ' multiple="true"' : '';
 		$sel = ' selected="selected"';
 		
@@ -74,6 +73,27 @@ class CUAR_WordPressHelper {
 			
 		return $dropdown;
 	}
+	
+// 	function getSelectTermDropdown( $html_select_id, $hint, $taxonomies, $get_terms_args, $selected_terms = array(), $multiple = true, $echo = true ){
+// 		$multiple = $multiple ? ' multiple="true"' : '';
+// 		$sel = ' selected="selected"';
+
+// 		$options = array( '<option></option>' );
+
+// 		$myterms = get_terms( $taxonomies, $get_terms_args );
+// 		foreach ( $myterms as $term ) {
+// 			$options[] = sprintf( '<option value="%s"%s>%s</option>', $term->ID, in_array( $term->ID, $selected_terms ) ? $sel : '', $term->name );
+// 		}
+
+// 		$dropdown = '<select name="' . $html_select_id . '[]" id="' . $html_select_id . '" data-placeholder="' . $hint . '" ' . $multiple . '>';
+// 		$dropdown .= implode("\n", $options );
+// 		$dropdown .= '</select>';
+
+// 		if ( $echo ) echo $dropdown;
+			
+// 		return $dropdown;
+// 	}
+	
 	
 	/**
 	 * Convert a normal date string to unix date/time string

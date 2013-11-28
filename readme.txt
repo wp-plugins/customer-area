@@ -4,7 +4,7 @@ Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
 Tested up to: 3.7.1
-Stable tag: 3.7.3
+Stable tag: 3.7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,13 +48,14 @@ from [our online shop](http://www.marvinlabs.com/downloads/category/customer-are
 
 **Included translations**
 
-* Dutch by [Paul Willems](http://wi4.nl)
+* Dutch by [Paul Willems](http://wi4.nl) and [Peter Massar](http://profiles.wordpress.org/yourdigihands/)
 * English by [MarvinLabs](http://www.marvinlabs.com)
 * French by [MarvinLabs](http://www.marvinlabs.com)
 * German by [Benjamin Oechsler](http://benlocal.de)
 * Spanish by [e-rgonomy](http://e-rgonomy.com)
 * Brazilian Portuguese by [Ricardo Silva](http://walbatroz.com)
 * Italian by [Andrea Starz](http://www.work-on-web.it)
+* Swedish by [Patric Liljestrand](http://www.work-on-web.it)
 
 If you translate the plugin to your language, feel free to send us the translation files, we will include them and give
 you the credit for it on this page.
@@ -156,6 +157,11 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 3.7.4 (2013/11/28) =
+
+* Updated Dutch translation
+* Added Swedish translation
 
 = 3.7.3 (2013/11/27) =
 

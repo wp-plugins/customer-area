@@ -619,7 +619,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 				printf ( '&nbsp;&nbsp;<span>(%s: %s)</span>', __ ( 'Last check', 'cuar' ), date ( __ ( 'd/m/Y', 'cuar' ), $last_check ) );
 			}
 			
-			printf ( '<p class="description">%s</p>', __ ( 'The license key you have received for this add-on. ' . 'This is required in order to get automatic plugin updates.', 'cuarlf' ) );
+			printf ( '<p class="description">%s</p>', __ ( 'The license key you have received for this add-on. ' . 'This is required in order to get automatic plugin updates.', 'cuar' ) );
 			
 			if (isset ( $after ))
 				echo $after;
@@ -804,7 +804,7 @@ if (! class_exists ( 'CUAR_Settings' )) :
 			
 			if ($show_any_option) {
 				$value = 'cuar_any';
-				$label = __ ( 'Any Role', 'cuarmg' );
+				$label = __ ( 'Any Role', 'cuar' );
 				$selected = ($this->options [$option_id] == $value) ? 'selected="selected"' : '';
 				
 				echo sprintf ( '<option value="%s" %s>%s</option>', esc_attr ( $value ), $selected, $label );

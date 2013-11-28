@@ -55,7 +55,7 @@ from [our online shop](http://www.marvinlabs.com/downloads/category/customer-are
 * Spanish by [e-rgonomy](http://e-rgonomy.com)
 * Brazilian Portuguese by [Ricardo Silva](http://walbatroz.com)
 * Italian by [Andrea Starz](http://www.work-on-web.it)
-* Swedish by [Patric Liljestrand](http://www.work-on-web.it)
+* Swedish by Patric Liljestrand
 
 If you translate the plugin to your language, feel free to send us the translation files, we will include them and give
 you the credit for it on this page.

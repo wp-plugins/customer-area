@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-11-28 08:54+0100\n"
-"PO-Revision-Date: 2013-11-28 08:55+0100\n"
+"POT-Creation-Date: 2013-11-29 11:41+0100\n"
+"PO-Revision-Date: 2013-11-29 11:42+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -73,11 +73,11 @@ msgstr "Frontend thema"
 
 #: ../includes/settings.class.php:269
 msgid "Hide owner selection"
-msgstr ""
+msgstr "Verberg eigenaar selectie"
 
 #: ../includes/settings.class.php:276
 msgid "Hide the owner selection field when a single owner is possible."
-msgstr ""
+msgstr "Verberg de selectie van de eigenaar wanneer er maar één eigenaar is"
 
 #: ../includes/settings.class.php:278
 msgid ""
@@ -85,6 +85,8 @@ msgid ""
 "is available to the current user and if within that owner type, a single "
 "owner is available."
 msgstr ""
+"De eigenaar wordt niet weergegeven maar direct geselecteerd wanneer er "
+"binnen het type eigenaar maar één eigenaar beschikbaar is. "
 
 #: ../includes/settings.class.php:334
 msgid " is not a valid post"
@@ -229,7 +231,6 @@ msgid "Subscribe to our newsletter"
 msgstr "Abonneer je op onze nieuwsbrief"
 
 #: ../includes/setup-wizard-done.view.php:56
-#, fuzzy
 msgid ""
 "You can get notified when we've got something exciting to say (plugin "
 "updates, news, etc.). Simply subscribe to our newsletter, we won't spam, we "
@@ -304,11 +305,11 @@ msgstr ""
 
 #: ../includes/setup-wizard-done.view.php:115
 msgid "Save money with our add-on bundles"
-msgstr ""
+msgstr "Spaar geld uit met onze extentie bundels!"
 
 #: ../includes/setup-wizard-done.view.php:144
 msgid "Get our add-ons individually"
-msgstr ""
+msgstr "Koop onze extenties indivudueel"
 
 #: ../includes/setup-wizard.view.php:23
 msgid "Setup your Customer Area in seconds"
@@ -344,7 +345,7 @@ msgstr "Administratie Zone"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:52
 msgid "Back-office"
-msgstr ""
+msgstr "Achterkant"
 
 #: ../includes/core-addons/admin-area/admin-area-addon.class.php:54
 msgid "View the menu"
@@ -369,9 +370,11 @@ msgid ""
 "you have not yet setup the plugin, or because you are upgrading from an "
 "older version."
 msgstr ""
+"Wij kunnen de Klant Zone pagina niet vinden binne uw website. Dit komt door "
+"verkeerde instellingen, of omdat u een oudere versies heeft bijgewerkt."
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:52
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "If you already have this page, just visit the <a href=\"%s\">plugin "
 "settings</a> to set it manually."
@@ -380,7 +383,7 @@ msgstr ""
 "om deze daar op te geven."
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:54
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "If you have not yet setup the plugin, we have a <a href=\"%s\">quick setup "
 "wizard</a>"
@@ -426,14 +429,13 @@ msgstr ""
 "bepaald. Indien dit niet correct is, kunt u dit altijd wijzigen."
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:265
-#, fuzzy
 msgid "Customer Area Menu"
 msgstr "Klanten Zone"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:272
 msgid ""
 "Automatically print the Customer Area menu on single private content pages."
-msgstr ""
+msgstr "Print automatisch het Klant Zone menu op een privé pagina."
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:274
 msgid ""
@@ -444,16 +446,24 @@ msgid ""
 "not happy with it, you can refer to our documentation to see how to change "
 "the place where it gets displayed."
 msgstr ""
+"Standaard ziet het het Klant Zone menu overal behalve op pagina's met alleen "
+"privé inhoud ( een privé pagina of bestand bijvoorbeeld). Door dit aan te "
+"vinken zal het menu automatisch getoond worden op die pagina's, maar "
+"misschien niet overal waar u dit wilt. Indien u hier niet tevreden mee bent, "
+"raadpleeg onze documentatie om het zodanig te veranderen dat het menu "
+"precies overal wordt getoond waar u dit wilt. "
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:282
 msgid "Number of items on dashboard"
-msgstr ""
+msgstr "Aantal items op het werkblad"
 
 #: ../includes/core-addons/customer-page/customer-page-addon.class.php:290
 msgid ""
 "Sets the number of items to be display in each \"latest\" section of the "
 "dashboard (-1 will make it show all items)."
 msgstr ""
+"Bepaald het aantal weer te geven items binnen elke  \"latest\" sectie op het "
+"werkblad (-1 zal alle items weergeven)."
 
 #: ../includes/core-addons/customer-page/templates/customer-page-login-required.template.php:1
 msgid "Hello"
@@ -553,10 +563,9 @@ msgstr ""
 
 #: ../includes/core-addons/help/templates/list-addons.template.php:18
 msgid "Save money with our bundles"
-msgstr ""
+msgstr "bespaar geld met onze bundels"
 
 #: ../includes/core-addons/help/templates/list-addons.template.php:45
-#, fuzzy
 msgid "Our add-ons"
 msgstr "Add-on extensies"
 
@@ -612,11 +621,11 @@ msgstr "Selecteer het type eigenaar"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:577
 msgid "It seems you cannot select any owner."
-msgstr ""
+msgstr "U kunt blijkbaar geen enkele eigenaar selecteren"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:587
 msgid "The owner is hidden"
-msgstr ""
+msgstr "De eigenaar is verborgen"
 
 #: ../includes/core-addons/post-owner/post-owner-addon.class.php:700
 msgid "You are not authorized to view this page"
@@ -650,7 +659,6 @@ msgid "An error happened while uploading your file: %s"
 msgstr "Er is een fout opgetreden tijdens het uploaden van uw bestand: %s"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:333
-#, fuzzy
 msgid "An error happened while copying your file from the FTP folder"
 msgstr "Er is een fout opgetreden tijdens het uploaden van uw bestand: %s"
 
@@ -659,7 +667,6 @@ msgid "You are not authorized to access this file"
 msgstr "U bent niet geautoriseerd om dit bestand te openen"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:509
-#, fuzzy
 msgid "Private Files (back-office)"
 msgstr "Privé Bestandscategoriën"
 
@@ -696,7 +703,6 @@ msgid "Assign categories"
 msgstr "Wijs categoriën toe"
 
 #: ../includes/core-addons/private-file/private-file-addon.class.php:525
-#, fuzzy
 msgid "View any private file"
 msgstr "Open het Privé-bestand"
 
@@ -843,57 +849,56 @@ msgstr "Bestand"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:182
 msgid "File currently associated to this post"
-msgstr ""
+msgstr "Bestand gekoppeld aan dit bericht"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:183
 msgid "Current file:"
 msgstr "Huidig bestand:"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:195
-#, fuzzy
 msgid "Change the associated file"
 msgstr "Gerelateerd bestand"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:196
 msgid "How to add the file?"
-msgstr ""
+msgstr "Hoe voeg ik een bestand toe?"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:199
 msgid "Direct upload"
-msgstr ""
+msgstr "Direct uploaden"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:200
 msgid "Copy from FTP folder"
-msgstr ""
+msgstr "Kopieer van een FTP map"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:206
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:216
-#, fuzzy
 msgid "Pick a file"
 msgstr "Alle bestanden opsommen"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:219
 msgid "The FTP upload folder does not exist."
-msgstr ""
+msgstr "De FTP map bestaat niet"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:221
 msgid "The FTP upload folder is empty."
-msgstr ""
+msgstr "De FTP map is leeg"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:224
-#, fuzzy
 msgid "Select a file"
 msgstr "Verwijder bestanden"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:238
 msgid "Copy file or move it?"
-msgstr ""
+msgstr "Bestand kopiëren of verplaatsen?"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:241
 msgid ""
 "If checked, the file will be deleted after it has been copied to the owner's "
 "private storage directory"
 msgstr ""
+"Indien aangevinkt zal het bestand worden verwijderd nadat het gekopieerd is "
+"naar de privé map van de eigenaar."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:356
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:146
@@ -914,16 +919,20 @@ msgid ""
 "This folder does not exist, please create it if you want to copy files from "
 "the FTP folder. Otherwise, you need not do anything."
 msgstr ""
+"Deze map bestaat niet, wilt u deze alstublieft aanmaken indien u bestanden "
+"van de FTP map wilt kopiëren. Zo niet, dan hoeft u verder niets te doen."
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:382
 msgid "FTP uploads folder"
-msgstr ""
+msgstr "FTP upload map"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:391
 msgid ""
 "This folder can be used when you want to use files uploaded with FTP. This "
 "is handy when direct upload is failing for big files for instance."
 msgstr ""
+"Deze map kan worden gebruikt wanneer u bestandne wilt uploaden via FTP. Dit "
+"is makkelijk wanneer direct uploaden mislukt bij grote bestanden. "
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:405
 #: ../includes/core-addons/private-page/private-page-admin-interface.class.php:173
@@ -954,7 +963,6 @@ msgid "Don't group files"
 msgstr "Bestanden niet groeperen"
 
 #: ../includes/core-addons/private-file/private-file-admin-interface.class.php:429
-#, fuzzy
 msgid "Group by month"
 msgstr "Groepeer op jaar"
 
@@ -1017,7 +1025,6 @@ msgid "Files"
 msgstr "Bestanden"
 
 #: ../includes/core-addons/private-file/private-file-frontend-interface.class.php:56
-#, fuzzy
 msgid "Show all private files"
 msgstr "Er zijn geen privé-bestanden gevonden"
 
@@ -1088,7 +1095,6 @@ msgid "Private Pages"
 msgstr "Privé Pagina's"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:103
-#, fuzzy
 msgid "Private Pages (back-office)"
 msgstr "Privé Pagina's"
 
@@ -1109,7 +1115,6 @@ msgid "Access pages"
 msgstr "Toegang verkrijgen tot pagina's"
 
 #: ../includes/core-addons/private-page/private-page-addon.class.php:115
-#, fuzzy
 msgid "View any private page"
 msgstr "Open de Privé Pagina"
 
@@ -1191,7 +1196,6 @@ msgid "Pages"
 msgstr "Pagina's"
 
 #: ../includes/core-addons/private-page/private-page-frontend-interface.class.php:54
-#, fuzzy
 msgid "Show all private pages"
 msgstr "Er zijn geen privé pagina's gevonden"
 

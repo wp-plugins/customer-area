@@ -31,12 +31,14 @@ global $screen_layout_columns;
 	<h2><?php _e( 'Customer Area' , 'cuar' ); ?></h2>
 
 	<div id="poststuff" class="metabox-holder<?php echo 2 == $screen_layout_columns ? ' has-right-sidebar' : ''; ?>">
-		<div class="cuar-main">
+		<div class="cuar-main-half">
 			<?php do_meta_boxes( 'customer-area', 'normal', array( 'echo'	=> true ) ); ?>
+		</div>
+		<div class="cuar-main-half-2">
+			<?php do_meta_boxes( 'customer-area', 'side', array( 'echo'	=> true ) ); ?>
 		</div>
 		<div class="cuar-side">
 			<div class="dashboard-logo"><img src="<?php echo $this->plugin->get_admin_theme_url(); ?>/images/logo.png" /></div>
-			<?php do_meta_boxes( 'customer-area', 'side', array( 'echo'	=> true ) ); ?>
 		</div>
 		<br class="clear"/>							
 	</div>	

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area v3.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-28 08:57+0100\n"
-"PO-Revision-Date: 2013-11-28 08:58+0100\n"
+"POT-Creation-Date: 2013-12-03 20:07+0100\n"
+"PO-Revision-Date: 2013-12-03 20:07+0100\n"
 "Last-Translator: admin <forlag@framsteget.net>\n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -35,63 +35,63 @@ msgid ""
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:81 includes/settings.class.php:82
-#: includes/settings.class.php:96
+#: includes/settings.class.php:82 includes/settings.class.php:83
+#: includes/settings.class.php:97
 msgid "Settings"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:111
+#: includes/settings.class.php:112
 msgid "The page title cannot be empty"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:217
+#: includes/settings.class.php:218
 msgid "General"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:230
+#: includes/settings.class.php:231
 msgid "General Settings"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:235
+#: includes/settings.class.php:236
 msgid "Include CSS"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:242
+#: includes/settings.class.php:243
 msgid "Include the default stylesheet."
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:242
+#: includes/settings.class.php:243
 msgid "If not, you should style the plugin yourself in your theme."
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:247
+#: includes/settings.class.php:248
 msgid "Admin theme"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:258
+#: includes/settings.class.php:259
 msgid "Frontend theme"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:269
+#: includes/settings.class.php:270
 msgid "Hide owner selection"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:276
+#: includes/settings.class.php:277
 msgid "Hide the owner selection field when a single owner is possible."
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:278
+#: includes/settings.class.php:279
 msgid ""
 "The owner will not be displayed but included directly if a single owner type "
 "is available to the current user and if within that owner type, a single "
@@ -99,111 +99,111 @@ msgid ""
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:334
+#: includes/settings.class.php:335
 msgid " is not a valid post"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:367
+#: includes/settings.class.php:368
 msgid " is not a valid role"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:434
+#: includes/settings.class.php:435
 msgid " cannot be empty"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:454
+#: includes/settings.class.php:455
 msgid " is not a valid email"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:474
+#: includes/settings.class.php:475
 msgid " is not a valid value"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:500
+#: includes/settings.class.php:501
 msgid "must be an integer"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:508
+#: includes/settings.class.php:509
 #, php-format
 msgid "must be greater than %s"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:516
+#: includes/settings.class.php:517
 #, php-format
 msgid "must be lower than %s"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:542
+#: includes/settings.class.php:543
 msgid " is not a valid owner type"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:566
+#: includes/settings.class.php:567
 msgid " is not a valid owner"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:609
+#: includes/settings.class.php:610
 msgid "Your license is active!"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:611
+#: includes/settings.class.php:612
 msgid "Your license key is invalid!"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:613
+#: includes/settings.class.php:614
 msgid "Your license key is expired!"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:619
+#: includes/settings.class.php:620
 msgid "Last check"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:619
+#: includes/settings.class.php:620
 msgid "d/m/Y"
 msgstr ""
 
 # @ cuarlf
-#: includes/settings.class.php:622
+#: includes/settings.class.php:623
 msgid ""
 "The license key you have received for this add-on. This is required in order "
 "to get automatic plugin updates."
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:724 includes/settings.class.php:847
+#: includes/settings.class.php:725 includes/settings.class.php:848
 msgid "None"
 msgstr "Ingen"
 
 # @ cuarmg
-#: includes/settings.class.php:807
+#: includes/settings.class.php:808
 msgid "Any Role"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:874
+#: includes/settings.class.php:875
 msgid "Main plugin folder"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:879
+#: includes/settings.class.php:880
 msgid "Current theme folder"
 msgstr ""
 
 # @ cuar
-#: includes/settings.class.php:884
+#: includes/settings.class.php:885
 msgid "WordPress content folder"
 msgstr ""
 
@@ -285,6 +285,7 @@ msgstr ""
 
 # @ cuar
 #: includes/setup-wizard-done.view.php:87
+#: includes/core-addons/admin-area/admin-area-addon.class.php:65
 #: includes/core-addons/help/templates/troubleshooting.template.php:8
 #, php-format
 msgid ""
@@ -294,6 +295,7 @@ msgstr ""
 
 # @ cuar
 #: includes/setup-wizard-done.view.php:90
+#: includes/core-addons/admin-area/admin-area-addon.class.php:68
 #: includes/core-addons/help/templates/troubleshooting.template.php:11
 #, php-format
 msgid "<a href=\"%1$s\" target=\"_blank\">Frequently Asked Questions</a>. "
@@ -301,6 +303,7 @@ msgstr ""
 
 # @ cuar
 #: includes/setup-wizard-done.view.php:93
+#: includes/core-addons/admin-area/admin-area-addon.class.php:71
 #: includes/core-addons/help/templates/troubleshooting.template.php:14
 #, php-format
 msgid ""
@@ -310,6 +313,7 @@ msgstr ""
 
 # @ cuar
 #: includes/setup-wizard-done.view.php:96
+#: includes/core-addons/admin-area/admin-area-addon.class.php:74
 #: includes/core-addons/help/templates/troubleshooting.template.php:17
 #, php-format
 msgid ""
@@ -362,19 +366,31 @@ msgstr ""
 msgid "Administration Area"
 msgstr ""
 
+#: includes/core-addons/admin-area/admin-area-addon.class.php:49
+msgid "News"
+msgstr ""
+
+#: includes/core-addons/admin-area/admin-area-addon.class.php:51
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: includes/core-addons/admin-area/admin-area-addon.class.php:53
+msgid "Resources"
+msgstr ""
+
 # @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:52
+#: includes/core-addons/admin-area/admin-area-addon.class.php:141
 msgid "Back-office"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:54
+#: includes/core-addons/admin-area/admin-area-addon.class.php:143
 msgid "View the menu"
 msgstr "Visa menyn"
 
 # @ cuar
-#: includes/core-addons/admin-area/admin-area-addon.class.php:67
-#: includes/core-addons/admin-area/admin-area-addon.class.php:68
+#: includes/core-addons/admin-area/admin-area-addon.class.php:156
+#: includes/core-addons/admin-area/admin-area-addon.class.php:157
 #: includes/core-addons/admin-area/templates/customer-area-dashboard.template.php:31
 msgid "Customer Area"
 msgstr "Författarzon"
@@ -447,8 +463,8 @@ msgstr "Hej %s,"
 
 # @ cuar
 #: includes/core-addons/customer-page/customer-page-addon.class.php:242
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:398
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:166
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:399
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:177
 msgid "Frontend Integration"
 msgstr ""
 
@@ -692,9 +708,9 @@ msgstr "Användare - %s"
 # @ cuar
 #: includes/core-addons/private-file/private-file-addon.class.php:36
 #: includes/core-addons/private-file/private-file-addon.class.php:523
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:101
 #: includes/core-addons/private-file/private-file-admin-interface.class.php:102
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:344
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:103
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:345
 msgid "Private Files"
 msgstr "Privata filer"
 
@@ -753,21 +769,25 @@ msgstr "Kom åt filer"
 
 # @ cuar
 #: includes/core-addons/private-file/private-file-addon.class.php:515
+#: includes/core-addons/private-page/private-page-addon.class.php:109
 msgid "Manage categories"
 msgstr "Hantera kategorier"
 
 # @ cuar
 #: includes/core-addons/private-file/private-file-addon.class.php:516
+#: includes/core-addons/private-page/private-page-addon.class.php:110
 msgid "Edit categories"
 msgstr "Redigera kategorier"
 
 # @ cuar
 #: includes/core-addons/private-file/private-file-addon.class.php:517
+#: includes/core-addons/private-page/private-page-addon.class.php:111
 msgid "Delete categories"
 msgstr "Radera kategorier"
 
 # @ cuar
 #: includes/core-addons/private-file/private-file-addon.class.php:518
+#: includes/core-addons/private-page/private-page-addon.class.php:112
 msgid "Assign categories"
 msgstr "Tilldela kategorier"
 
@@ -929,194 +949,198 @@ msgid "Choose from the most used file categories"
 msgstr "Välj från de mest använda filkategorierna"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:108
 #: includes/core-addons/private-file/private-file-admin-interface.class.php:109
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:110
 msgid "New Private File"
 msgstr "Ny Privat fil"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:115
 #: includes/core-addons/private-file/private-file-admin-interface.class.php:116
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:117
 msgid "Private File Categories"
 msgstr "Kategorier Privat fil"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:162
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:163
 msgid "File"
 msgstr "Fil"
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:182
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:183
 msgid "File currently associated to this post"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:183
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:184
 msgid "Current file:"
 msgstr "Nuvarande fil:"
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:195
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:196
 msgid "Change the associated file"
 msgstr ""
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:196
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:197
 msgid "How to add the file?"
 msgstr ""
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:199
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:200
 msgid "Direct upload"
 msgstr ""
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:200
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:201
 msgid "Copy from FTP folder"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:206
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:216
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:207
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:217
 #, fuzzy
 msgid "Pick a file"
 msgstr "Lista alla filer"
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:219
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:220
 msgid "The FTP upload folder does not exist."
 msgstr ""
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:221
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:222
 msgid "The FTP upload folder is empty."
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:224
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:225
 #, fuzzy
 msgid "Select a file"
 msgstr "Radera filer"
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:238
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:239
 msgid "Copy file or move it?"
 msgstr ""
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:241
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:242
 msgid ""
 "If checked, the file will be deleted after it has been copied to the owner's "
 "private storage directory"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:356
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:146
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:357
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:157
 msgid "General settings"
 msgstr "Allmänna inställningar"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:363
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:153
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:364
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:164
 msgid "Enable add-on"
 msgstr "Aktivera tillägg"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:371
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:372
 msgid "Check this to enable the private files add-on."
 msgstr "Kryssa i här för att aktivera privata filer tillägg."
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:375
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:376
 msgid ""
 "This folder does not exist, please create it if you want to copy files from "
 "the FTP folder. Otherwise, you need not do anything."
 msgstr ""
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:382
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:383
 msgid "FTP uploads folder"
 msgstr ""
 
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:391
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:392
 msgid ""
 "This folder can be used when you want to use files uploaded with FTP. This "
 "is handy when direct upload is failing for big files for instance."
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:405
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:173
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:406
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:184
 msgid "Show after post"
 msgstr "Visa efter inlägg"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:413
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:181
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:414
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:192
 msgid "Show additional information after the post in the single post view."
 msgstr ""
 "Visa ytterligare information efter inlägget vid visning av enskilt inlägg."
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:415
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:416
 msgid ""
 "You can disable this if you have your own \"single-cuar_private_file.php\" "
 "template file."
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:421
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:422
 msgid "File list"
 msgstr "Fillista"
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:428
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:429
 msgid "Don't group files"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:429
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:430
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:208
 msgid "Group by month"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:430
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:431
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:209
 msgid "Group by year"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:431
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:432
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:210
 msgid "Group by category"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:433
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:434
 msgid ""
 "You can choose how files will be organized by default in the customer area."
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:439
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:440
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:218
 msgid "Empty categories"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:447
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:448
 msgid ""
 "When listing files by category, empty categories will be hidden if you check "
 "this."
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:453
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:454
 msgid "File Storage"
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:530
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:531
 #, php-format
 msgid "The files will be stored in the following directory: <code>%s</code>."
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:535
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:536
 #, php-format
 msgid ""
 "Each user has his own sub-directory. For instance, yours is: <code>%s</code>."
 msgstr ""
 
 # @ cuar
-#: includes/core-addons/private-file/private-file-admin-interface.class.php:541
+#: includes/core-addons/private-file/private-file-admin-interface.class.php:542
 #, php-format
 msgid ""
 "That directory should at least have the permissions set to 705. Currently it "
@@ -1140,8 +1164,8 @@ msgid "Latest Files"
 msgstr "Senaste filer"
 
 # @ cuar
-#: includes/core-addons/private-file/templates/list_private_files-by-month.template.php:19
-#: includes/core-addons/private-file/templates/list_private_files-by-month.template.php:28
+#: includes/core-addons/private-file/templates/list_private_files-by-month.template.php:21
+#: includes/core-addons/private-file/templates/list_private_files-by-month.template.php:30
 #: includes/core-addons/private-file/templates/list_private_files-by-year.template.php:19
 #: includes/core-addons/private-file/templates/list_private_files-by-year.template.php:28
 #, php-format
@@ -1203,10 +1227,10 @@ msgstr "Fil skapad den %1$s av %2$s för %3$s"
 
 # @ cuar
 #: includes/core-addons/private-page/private-page-addon.class.php:35
-#: includes/core-addons/private-page/private-page-addon.class.php:113
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:61
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:62
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:134
+#: includes/core-addons/private-page/private-page-addon.class.php:117
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:96
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:97
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:145
 msgid "Private Pages"
 msgstr "Privata sidor"
 
@@ -1236,90 +1260,196 @@ msgid "Access pages"
 msgstr "Sidor åtkomst"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:115
+#: includes/core-addons/private-page/private-page-addon.class.php:119
 msgid "View any private page"
 msgstr "Visa privata sidor"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:137
-#: includes/core-addons/private-page/private-page-addon.class.php:148
+#: includes/core-addons/private-page/private-page-addon.class.php:141
+#: includes/core-addons/private-page/private-page-addon.class.php:152
 msgctxt "cuar_private_page"
 msgid "Private Pages"
 msgstr "Privata sidor"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:138
+#: includes/core-addons/private-page/private-page-addon.class.php:142
 msgctxt "cuar_private_page"
 msgid "Private Page"
 msgstr "Privat sida"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:139
+#: includes/core-addons/private-page/private-page-addon.class.php:143
 msgctxt "cuar_private_page"
 msgid "Add New"
 msgstr "Lägg till ny"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:140
+#: includes/core-addons/private-page/private-page-addon.class.php:144
 msgctxt "cuar_private_page"
 msgid "Add New Private Page"
 msgstr "Lägg till ny Privat sida"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:141
+#: includes/core-addons/private-page/private-page-addon.class.php:145
 msgctxt "cuar_private_page"
 msgid "Edit Private Page"
 msgstr "Redigera Privat sida"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:142
+#: includes/core-addons/private-page/private-page-addon.class.php:146
 msgctxt "cuar_private_page"
 msgid "New Private Page"
 msgstr "Ny Privat sida"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:143
+#: includes/core-addons/private-page/private-page-addon.class.php:147
 msgctxt "cuar_private_page"
 msgid "View Private Page"
 msgstr "Visa Privat sida"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:144
+#: includes/core-addons/private-page/private-page-addon.class.php:148
 msgctxt "cuar_private_page"
 msgid "Search Private Pages"
 msgstr "Sök Privata sidor"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:145
+#: includes/core-addons/private-page/private-page-addon.class.php:149
 msgctxt "cuar_private_page"
 msgid "No private pages found"
 msgstr "Inga Privata sidor hittades"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:146
+#: includes/core-addons/private-page/private-page-addon.class.php:150
 msgctxt "cuar_private_page"
 msgid "No private pages found in Trash"
 msgstr "Inga Privata sidor hittades i Papperskorgen"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-addon.class.php:147
+#: includes/core-addons/private-page/private-page-addon.class.php:151
 msgctxt "cuar_private_page"
 msgid "Parent Private Page:"
 msgstr "Förälder Privat sida:"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:68
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:69
+#: includes/core-addons/private-page/private-page-addon.class.php:184
+#: includes/core-addons/private-page/private-page-addon.class.php:200
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Page Categories"
+msgstr "Hantera kategorier"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:185
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Page Category"
+msgstr "Filkategori"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:186
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Search Page Categories"
+msgstr "Sök filkategorier"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:187
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Popular Page Categories"
+msgstr "Populära filkategorier"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:188
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "All Page Categories"
+msgstr "Alla filkategorier"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:189
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Parent Page Category"
+msgstr "Förälder filkategori"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:190
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Parent Page Category:"
+msgstr "Förälder filkategori:"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:191
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Edit Page Category"
+msgstr "Redigera filkategori"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:192
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Update Page Category"
+msgstr "Uppdatera filkategori"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:193
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Add New Page Category"
+msgstr "Lägg till ny filkategori"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:194
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "New Page Category"
+msgstr "Ny filkategori"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:195
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Separate page categories with commas"
+msgstr "Separata filkategorier med komman"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:197
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Add or remove page categories"
+msgstr "Lägg till eller ta bort filkategorier"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-addon.class.php:198
+#, fuzzy
+msgctxt "cuar_private_page_category"
+msgid "Choose from the most used page categories"
+msgstr "Välj från de mest använda filkategorierna"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:103
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:104
 msgid "New Private Page"
 msgstr "Ny Privat sida"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:161
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:110
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:111
+#, fuzzy
+msgid "Private Page Categories"
+msgstr "Kategorier Privat fil"
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:172
 msgid "Check this to enable the private pages add-on."
 msgstr "Kryssa i här för att aktivera tillägg för Privata sidor."
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-admin-interface.class.php:183
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:194
 msgid ""
 "You can disable this if you have your own \"single-cuar_private_page.php\" "
 "template file."
@@ -1328,12 +1458,33 @@ msgstr ""
 "filmall."
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-frontend-interface.class.php:53
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:200
+#, fuzzy
+msgid "Page list"
+msgstr "Sidor"
+
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:207
+msgid "Don't group pages"
+msgstr ""
+
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:212
+msgid ""
+"You can choose how pages will be organized by default in the customer area."
+msgstr ""
+
+#: includes/core-addons/private-page/private-page-admin-interface.class.php:226
+msgid ""
+"When listing pages by category, empty categories will be hidden if you check "
+"this."
+msgstr ""
+
+# @ cuar
+#: includes/core-addons/private-page/private-page-frontend-interface.class.php:55
 msgid "Pages"
 msgstr "Sidor"
 
 # @ cuar
-#: includes/core-addons/private-page/private-page-frontend-interface.class.php:54
+#: includes/core-addons/private-page/private-page-frontend-interface.class.php:56
 msgid "Show all private pages"
 msgstr "Visa alla Privata sidor"
 
@@ -1343,9 +1494,30 @@ msgid "Latest Pages"
 msgstr "Senaste Sidor"
 
 # @ cuar
+#: includes/core-addons/private-page/templates/list_private_pages-by-month.template.php:21
+#: includes/core-addons/private-page/templates/list_private_pages-by-month.template.php:30
+#: includes/core-addons/private-page/templates/list_private_pages-by-year.template.php:19
+#: includes/core-addons/private-page/templates/list_private_pages-by-year.template.php:28
+#, fuzzy, php-format
+msgid "Clic to show the pages published in %s"
+msgstr "Klicka för att visa filer publicerade i %s"
+
+# @ cuar
 #: includes/core-addons/private-page/templates/list_private_pages-empty.template.php:1
 msgid "You currently have no pages."
 msgstr "Du har just nu inga sidor."
+
+# @ cuar
+#: includes/core-addons/private-page/templates/list_private_pages-in-category.template.php:9
+#, fuzzy
+msgid "Clic to show the pages in this category"
+msgstr "Klicka för att visa filerna i denna kategori"
+
+# @ cuar
+#: includes/core-addons/private-page/templates/list_private_pages-in-category.template.php:24
+#, fuzzy
+msgid "No pages in this category"
+msgstr "Inga filer i denna kategori"
 
 # @ cuar
 #: includes/core-addons/private-page/templates/private-page-after_post_content.template.php:2

@@ -44,41 +44,6 @@ class CUAR_PrivatePageAdminInterface {
 			add_action( 'parse_query' , array( &$this, 'restrict_edit_post_listing' ) );
 		}		
 	}
-
-	/**
-	 * Add the menu item
-	 */
-	public function add_menu_items( $submenus ) {
-		$separator = '<span style="display:block;  
-				        margin: 3px 5px 6px -5px; 
-				        padding:0; 
-				        height:1px; 
-				        line-height:1px; 
-				        background:#ddd;"></span>';
-		
-		$my_submenus = array(
-				array(
-					'page_title'	=> __( 'Private Pages', 'cuar' ),
-					'title'			=> $separator . __( 'Private Pages', 'cuar' ),
-					'slug'			=> "edit.php?post_type=cuar_private_page",
-					'function' 		=> null,
-					'capability'	=> 'cuar_pp_edit'
-				),
-				array(
-					'page_title'	=> __( 'New Private Page', 'cuar' ),
-					'title'			=> __( 'New Private Page', 'cuar' ),
-					'slug'			=> "post-new.php?post_type=cuar_private_page",
-					'function' 		=> null,
-					'capability'	=> 'cuar_pp_edit'
-				),
-			); 
-	
-		foreach ( $my_submenus as $submenu ) {
-			$submenus[] = $submenu;
-		}
-	
-		return $submenus;
-	}
 			
 	/**
 	 * Highlight the proper menu item in the customer area
@@ -87,7 +52,10 @@ class CUAR_PrivatePageAdminInterface {
 		global $post;
 		
 		// For posts
-		if ( isset( $post ) && get_post_type( $post )=='cuar_private_page' ) {		
+		if ( isset( $_REQUEST['taxonomy'] ) && $_REQUEST['taxonomy']=='cuar_private_page_category' ) {		
+			$highlight_top 	= '#toplevel_page_customer-area';
+			$unhighligh_top = '#menu-posts';
+		} else if ( isset( $post ) && get_post_type( $post )=='cuar_private_page' ) {		
 			$highlight_top 	= '#toplevel_page_customer-area';
 			$unhighligh_top = '#menu-posts';
 		} else {
@@ -109,6 +77,49 @@ jQuery(document).ready( function($) {
 </script>
 <?php
 		}
+	}
+
+	/**
+	 * Add the menu item
+	 */
+	public function add_menu_items( $submenus ) {
+		$separator = '<span style="display:block;  
+				        margin: 0px 5px 12px -5px; 
+				        padding:0; 
+				        height:1px; 
+				        line-height:1px; 
+				        background:#ddd;
+						opacity: 0.5; "></span>';
+		
+		$my_submenus = array(
+				array(
+					'page_title'	=> __( 'Private Pages', 'cuar' ),
+					'title'			=> $separator . __( 'Private Pages', 'cuar' ),
+					'slug'			=> "edit.php?post_type=cuar_private_page",
+					'function' 		=> null,
+					'capability'	=> 'cuar_pp_edit'
+				),
+				array(
+					'page_title'	=> __( 'New Private Page', 'cuar' ),
+					'title'			=> __( 'New Private Page', 'cuar' ),
+					'slug'			=> "post-new.php?post_type=cuar_private_page",
+					'function' 		=> null,
+					'capability'	=> 'cuar_pp_edit'
+				),
+				array(
+					'page_title'	=> __( 'Private Page Categories', 'cuar' ),
+					'title'			=> __( 'Private Page Categories', 'cuar' ),
+					'slug'			=> "edit-tags.php?taxonomy=cuar_private_page_category",
+					'function' 		=> null,
+					'capability'	=> 'cuar_pp_manage_categories'
+				)
+			); 
+	
+		foreach ( $my_submenus as $submenu ) {
+			$submenus[] = $submenu;
+		}
+	
+		return $submenus;
 	}
 	
 	/*------- CUSTOMISATION OF THE EDIT PAGE OF A PRIVATE PAGES ------------------------------------------------------*/
@@ -183,31 +194,38 @@ jQuery(document).ready( function($) {
 							. __( 'You can disable this if you have your own "single-cuar_private_page.php" template file.', 'cuar' )
 							. '</p>' )
 			);
-/*		
-		add_settings_section(
-				'cuar_private_pages_addon_frontend',
-				__('Frontend Integration', 'cuar'),
-				array( &$this, 'print_frontend_section_info' ),
-				CUAR_Settings::$OPTIONS_PAGE_SLUG
-			);
 		
 		add_settings_field(
-				self::$OPTION_FILE_LIST_MODE, 
+				self::$OPTION_PAGE_LIST_MODE, 
 				__('Page list', 'cuar'),
 				array( &$cuar_settings, 'print_select_field' ), 
 				CUAR_Settings::$OPTIONS_PAGE_SLUG,
 				'cuar_private_pages_addon_frontend',
 				array( 
-					'option_id' => self::$OPTION_FILE_LIST_MODE, 
+					'option_id' => self::$OPTION_PAGE_LIST_MODE, 
 					'options'	=> array( 
-						'plain' 	=> __( "Don't group files", 'cuar' ),
+						'plain' 	=> __( "Don't group pages", 'cuar' ),
+						'month'		=> __( 'Group by month', 'cuar' ),
 						'year' 		=> __( 'Group by year', 'cuar' ),
 						'category' 	=> __( 'Group by category', 'cuar' ) ),
 	    			'after'	=> '<p class="description">'
-	    				. __( 'You can choose how files will be organized by default in the customer area.', 'cuar' )
+	    				. __( 'You can choose how pages will be organized by default in the customer area.', 'cuar' )
 	    				. '</p>' )
 			);	
-*/
+
+		add_settings_field(
+				self::$OPTION_HIDE_EMPTY_CATEGORIES,
+				__('Empty categories', 'cuar'),
+				array( &$cuar_settings, 'print_input_field' ),
+				CUAR_Settings::$OPTIONS_PAGE_SLUG,
+				'cuar_private_pages_addon_frontend',
+				array(
+					'option_id' => self::$OPTION_HIDE_EMPTY_CATEGORIES,
+					'type' 		=> 'checkbox',
+					'after'		=> 
+						__( 'When listing pages by category, empty categories will be hidden if you check this.', 
+							'cuar' ) )
+			);
 	}
 	
 	/**
@@ -220,8 +238,9 @@ jQuery(document).ready( function($) {
 	public function validate_options( $validated, $cuar_settings, $input ) {		
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_ENABLE_ADDON );
 		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_SHOW_AFTER_POST_CONTENT );
-//		$cuar_settings->validate_enum( $input, $validated, self::$OPTION_FILE_LIST_MODE, 
-//				array( 'plain', 'year', 'category' ) );
+		$cuar_settings->validate_enum( $input, $validated, self::$OPTION_PAGE_LIST_MODE, 
+				array( 'plain', 'year', 'month', 'category' ) );
+		$cuar_settings->validate_boolean( $input, $validated, self::$OPTION_HIDE_EMPTY_CATEGORIES );
 		
 		return $validated;
 	}
@@ -235,13 +254,18 @@ jQuery(document).ready( function($) {
 	public static function set_default_options( $defaults ) {
 		$defaults[ self::$OPTION_ENABLE_ADDON ] = true;
 		$defaults[ self::$OPTION_SHOW_AFTER_POST_CONTENT ] = true;
-		// $defaults[ self::$OPTION_FILE_LIST_MODE ] = 'year';
+		$defaults[ self::$OPTION_PAGE_LIST_MODE ] = 'plain';
+		$defaults[ self::$OPTION_HIDE_EMPTY_CATEGORIES ] = true;
 
 		$admin_role = get_role( 'administrator' );
 		if ( $admin_role ) {
 			$admin_role->add_cap( 'cuar_pp_edit' );
 			$admin_role->add_cap( 'cuar_pp_delete' );
 			$admin_role->add_cap( 'cuar_pp_read' );
+			$admin_role->add_cap( 'cuar_pp_manage_categories' );
+			$admin_role->add_cap( 'cuar_pp_edit_categories' );
+			$admin_role->add_cap( 'cuar_pp_delete_categories' );
+			$admin_role->add_cap( 'cuar_pp_assign_categories' );
 			$admin_role->add_cap( 'cuar_pp_list_all' );
 			$admin_role->add_cap( 'cuar_view_any_cuar_private_page' );
 		}
@@ -261,7 +285,8 @@ jQuery(document).ready( function($) {
 	public static $OPTION_SHOW_AFTER_POST_CONTENT		= 'pf_frontend_show_after_post_content';
 
 	// Frontend options
-	// public static $OPTION_FILE_LIST_MODE				= 'frontend_page_list_mode';
+	public static $OPTION_PAGE_LIST_MODE				= 'frontend_page_list_mode';
+	public static $OPTION_HIDE_EMPTY_CATEGORIES			= 'frontend_hide_empty_page_categories';
 		
 	/** @var CUAR_Plugin */
 	private $plugin;

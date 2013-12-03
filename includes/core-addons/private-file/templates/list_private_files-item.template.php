@@ -5,7 +5,7 @@
 ?>
 <tr class="cuar-private-file cuar-item<?php echo $extra_class; ?>">
 	<td class="meta">
-		<span class="date"><?php the_modified_time(get_option('date_format')); ?></span>
+		<span class="date"><?php the_time(get_option('date_format')); ?></span>
 		<br/>
 		<span class="sender"><?php echo CUAR_WordPressHelper::ellipsis( sprintf( __('From: %s', 'cuar' ), get_the_author_meta( 'display_name' ) ), 27 ); ?></span>
 	</td>

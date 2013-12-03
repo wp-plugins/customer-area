@@ -71,11 +71,12 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 */
 		public function add_settings_menu_item($submenus) {
 			$separator = '<span style="display:block;  
-				        margin: 3px 5px 6px -5px; 
+				        margin: 0px 5px 12px -5px; 
 				        padding:0; 
 				        height:1px; 
 				        line-height:1px; 
-				        background:#ddd;"></span>';
+				        background:#ddd;
+						opacity: 0.5; "></span>';
 			
 			$submenu = array (
 					'page_title' => __ ( 'Settings', 'cuar' ),

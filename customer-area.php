@@ -34,7 +34,7 @@ define( 'CUAR_LANGUAGE_DIR', 		'customer-area/languages' );
 
 define( 'CUAR_PLUGIN_URL', 			WP_PLUGIN_URL . '/customer-area/' ); // plugin_dir_url( __FILE__ ) );
 define( 'CUAR_SCRIPTS_URL', 		CUAR_PLUGIN_URL . 'scripts' );
-define( 'CUAR_ADMIN_THEME_URL', 	CUAR_PLUGIN_URL . 'themes/admin/default' );
+define( 'CUAR_ADMIN_THEME_URL', 	CUAR_PLUGIN_URL . 'themes/admin/default-wp38' );
 define( 'CUAR_FRONTEND_THEME_URL', 	CUAR_PLUGIN_URL . 'themes/frontend/default' );
 define( 'CUAR_PLUGIN_FILE', 		'customer-area/customer-area.php' );
 

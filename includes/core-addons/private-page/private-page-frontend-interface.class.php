@@ -42,6 +42,8 @@ class CUAR_PrivatePageFrontendInterface {
 			
 			add_filter( "get_previous_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
 			add_filter( "get_next_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
+	
+			add_action( 'init', array( &$this, 'load_scripts' ) );
 		}
 	}
 
@@ -60,23 +62,45 @@ class CUAR_PrivatePageFrontendInterface {
 	}
 	
 	public function handle_show_private_pages_actions() {		
+		$display_mode = $this->plugin->get_option( CUAR_PrivatePageAdminInterface::$OPTION_PAGE_LIST_MODE );
+		
 		$po_addon = $this->plugin->get_addon('post-owner');
 		$current_user_id = get_current_user_id();
 		
-		// Get user pages
-		$args = array(
-				'post_type' 		=> 'cuar_private_page',
-				'posts_per_page' 	=> -1,
-				'orderby' 			=> 'date',
-				'order' 			=> 'DESC',
-				'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )
-			);		
-		$pages_query = new WP_Query( apply_filters( 'cuar_user_pages_query_parameters', $args ) );
+		if ( $display_mode=='category' ) {			
+			$page_categories = get_terms( 'cuar_private_page_category', array(
+					'parent'		=> 0,
+					'hide_empty'	=> 0
+				) );			
+		} else if ( $display_mode=='year' || $display_mode=='month' ) {
+			// Get user pages
+			$args = array(
+					'post_type' 		=> 'cuar_private_page',
+					'posts_per_page' 	=> -1,
+					'orderby' 			=> 'date',
+					'order' 			=> 'DESC',
+					'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )
+				);			
+			
+			$pages_query = new WP_Query( apply_filters( 'cuar_user_pages_query_parameters', $args ) );
+		} else {
+			// Get user pages
+			$args = array(
+					'post_type' 		=> 'cuar_private_page',
+					'posts_per_page' 	=> -1,
+					'orderby' 			=> 'title',
+					'order' 			=> 'ASC',
+					'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )
+				);			
 				
+			$pages_query = new WP_Query( apply_filters( 'cuar_user_pages_query_parameters', $args ) );
+		}		
+			
 		include( $this->plugin->get_template_file_path(
 				CUAR_INCLUDES_DIR . '/core-addons/private-page',
-				"list_private_pages.template.php",
-				'templates' ));
+				"list_private_pages-by-{$display_mode}.template.php",
+				'templates',
+				"list_private_pages.template.php" ));
 	}
 	
 	public function after_post_content( $content ) {
@@ -115,6 +139,46 @@ class CUAR_PrivatePageFrontendInterface {
 				'templates' ));
 	}
 
+	public function print_category_pages( $category, $item_template, $current_user_id, $breadcrumb_sep, $breadcrumb = "", $parent = null ) {
+		if ( !$category ) return;
+
+		$po_addon = $this->plugin->get_addon('post-owner');
+		$hide_empty_categories = $this->plugin->get_option( CUAR_PrivatePageAdminInterface::$OPTION_HIDE_EMPTY_CATEGORIES );
+
+		$args = array(
+				'post_type' 		=> 'cuar_private_page',
+				'posts_per_page' 	=> -1,
+				'orderby' 			=> 'title',
+				'order' 			=> 'ASC',
+				'tax_query'			=> array( array(
+						'taxonomy' 			=> 'cuar_private_page_category',
+						'include_children'	=> false,
+						'field'				=> 'slug',
+						'terms'				=> $category->slug,
+						'operator'			=> 'IN'
+					) ),
+				'meta_query' 		=> $po_addon->get_meta_query_post_owned_by( $current_user_id )
+			);
+
+		$pages_query = new WP_Query( apply_filters( 'cuar_user_pages_query_parameters', $args ) );
+
+		include( $this->plugin->get_template_file_path(
+				CUAR_INCLUDES_DIR . '/core-addons/private-page',
+				"list_private_pages-in-category.template.php",
+				'templates' ));
+		
+		// Output children
+		$children = get_terms( 'cuar_private_page_category', array(
+				'parent'		=> $category->term_id,
+				'hide_empty'	=> 0
+			) );
+		
+		if ( empty( $children ) ) return;		
+		foreach ( $children as $child ) {
+			$this->print_category_pages( $child, $item_template, $current_user_id, $breadcrumb_sep, $heading, $category );
+		}
+	}
+
 	/**
 	 * Disable the navigation on the single page templates for private files
 	 */
@@ -122,6 +186,16 @@ class CUAR_PrivatePageFrontendInterface {
 	public function disable_single_post_navigation( $where, $in_same_cat, $excluded_categories ) {
 		if ( get_post_type()=='cuar_private_page' )	return "WHERE 1=0";		
 		return $where;
+	}
+
+	/**
+	 * Loads the required javascript files (only when not in admin area)
+	 */
+	// TODO Load only on the customer area page
+	public function load_scripts() {
+		if ( is_admin() ) return;
+		
+		wp_enqueue_script( 'jquery-ui-accordion' );
 	}
 	
 	/** @var CUAR_Plugin */

@@ -89,12 +89,13 @@ jQuery(document).ready( function($) {
 	 * Add the menu item
 	 */
 	public function add_menu_items( $submenus ) {
-		$separator = '<span style="display:block;  
-				        margin: 3px 5px 6px -5px; 
-				        padding:0; 
-				        height:1px; 
-				        line-height:1px; 
-				        background:#ddd;"></span>';
+		$separator = '<span style="display:block;
+				        margin: 0px 5px 12px -5px;
+				        padding:0;
+				        height:1px;
+				        line-height:1px;
+				        background:#ddd;
+						opacity: 0.5; "></span>';
 		
 		$my_submenus = array(
 				array(

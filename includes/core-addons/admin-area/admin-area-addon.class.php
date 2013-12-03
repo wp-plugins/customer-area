@@ -60,8 +60,7 @@ class CUAR_AdminAreaAddOn extends CUAR_AddOn {
 				'echo'	=> false
 			) ), EXTR_SKIP );
 			
-		$out = '<ul>';
-		
+		$out = '<ul>';		
 		$out .= '<li>&raquo; ' . sprintf( __(
 				'<a href="%1$s" target="_blank">Documentation</a> for the main plugin and for the add-ons.', 'cuar' ),
 				'http://customer-area.marvinlabs.com/documentation/') . '</li>';

@@ -106,6 +106,10 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 						'cuar_pp_edit' 		=> __( 'Create/Edit pages', 'cuar' ),
 						'cuar_pp_delete'	=> __( 'Delete pages', 'cuar' ),
 						'cuar_pp_read' 		=> __( 'Access pages', 'cuar' ),
+						'cuar_pp_manage_categories' 	=> __( 'Manage categories', 'cuar' ),
+						'cuar_pp_edit_categories' 		=> __( 'Edit categories', 'cuar' ),
+						'cuar_pp_delete_categories' 	=> __( 'Delete categories', 'cuar' ),
+						'cuar_pp_assign_categories' 	=> __( 'Assign categories', 'cuar' ),
 					)
 			);
 
@@ -152,7 +156,7 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 				'labels' 				=> $labels,
 				'hierarchical' 			=> false,
 				'supports' 				=> array( 'title', 'editor', 'author', 'thumbnail', 'comments' ),
-				'taxonomies' 			=> array(),
+				'taxonomies' 			=> array( 'cuar_private_page_category' ),
 				'public' 				=> true,
 				'show_ui' 				=> true,
 				'show_in_menu' 			=> false,
@@ -175,6 +179,48 @@ class CUAR_PrivatePageAddOn extends CUAR_AddOn {
 			);
 
 		register_post_type( 'cuar_private_page', apply_filters( 'cuar_private_page_post_type_args', $args ) );
+
+		$labels = array(
+				'name' 						=> _x( 'Page Categories', 'cuar_private_page_category', 'cuar' ),
+				'singular_name' 			=> _x( 'Page Category', 'cuar_private_page_category', 'cuar' ),
+				'search_items' 				=> _x( 'Search Page Categories', 'cuar_private_page_category', 'cuar' ),
+				'popular_items' 			=> _x( 'Popular Page Categories', 'cuar_private_page_category', 'cuar' ),
+				'all_items' 				=> _x( 'All Page Categories', 'cuar_private_page_category', 'cuar' ),
+				'parent_item' 				=> _x( 'Parent Page Category', 'cuar_private_page_category', 'cuar' ),
+				'parent_item_colon' 		=> _x( 'Parent Page Category:', 'cuar_private_page_category', 'cuar' ),
+				'edit_item' 				=> _x( 'Edit Page Category', 'cuar_private_page_category', 'cuar' ),
+				'update_item' 				=> _x( 'Update Page Category', 'cuar_private_page_category', 'cuar' ),
+				'add_new_item' 				=> _x( 'Add New Page Category', 'cuar_private_page_category', 'cuar' ),
+				'new_item_name' 			=> _x( 'New Page Category', 'cuar_private_page_category', 'cuar' ),
+				'separate_items_with_commas'=> _x( 'Separate page categories with commas', 'cuar_private_page_category',
+						'cuar' ),
+				'add_or_remove_items' 		=> _x( 'Add or remove page categories', 'cuar_private_page_category', 'cuar' ),
+				'choose_from_most_used' 	=> _x( 'Choose from the most used page categories', 'cuar_private_page_category',
+						'cuar' ),
+				'menu_name' 				=> _x( 'Page Categories', 'cuar_private_page_category', 'cuar' ),
+			);
+	  
+		$args = array(
+				'labels' 			=> $labels,
+				'public' 			=> true,
+				'show_in_menu' 		=> false,
+				'show_in_nav_menus' => 'customer-area',
+				'show_ui' 			=> true,
+				'show_tagcloud' 	=> false,
+				'hierarchical' 		=> true,
+				'query_var' 		=> true,
+				'rewrite' 			=> array(
+						'slug' 				=> 'private-page-category'
+					),
+				'capabilities' 			=> array(
+						'manage_terms' 		=> 'cuar_pp_manage_categories',
+						'edit_terms' 		=> 'cuar_pp_edit_categories',
+						'delete_terms' 		=> 'cuar_pp_delete_categories',
+						'assign_terms' 		=> 'cuar_pp_assign_categories',
+					)
+			);
+	  
+		register_taxonomy( 'cuar_private_page_category', array( 'cuar_private_page' ), $args );
 	}
 
 	/**

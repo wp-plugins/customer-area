@@ -6,7 +6,7 @@
 	// Print heading
 	if ( $files_query->have_posts() || !$hide_empty_categories ) {
 ?>
-	<h4 class="accordion-section-title cuar-private-file-section" title="<?php _e( 'Clic to show the files in this category', 'cuar' );?>"><?php echo $heading; ?></h4>
+	<h4 class="accordion-section-title cuar-private-file-section cuar-section" title="<?php _e( 'Clic to show the files in this category', 'cuar' );?>"><?php echo $heading; ?></h4>
 	<div class="accordion-section-content">
 		<table class="cuar-private-file-list"><tbody>
 <?php

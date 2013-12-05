@@ -3,8 +3,8 @@ Contributors: vprat, marvinlabs
 Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
-Tested up to: 3.8.0 beta 1
-Stable tag: 3.8.0
+Tested up to: 3.8.0 RC1
+Stable tag: 3.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -157,6 +157,10 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 3.8.1(2013/12/05) =
+
+* Added a button to reset options to default values (settings > Support)
 
 = 3.8.0 (2013/12/03) =
 

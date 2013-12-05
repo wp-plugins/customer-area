@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-12-03 20:03+0100\n"
-"PO-Revision-Date: 2013-12-03 20:06+0100\n"
+"POT-Creation-Date: 2013-12-05 15:14+0100\n"
+"PO-Revision-Date: 2013-12-05 15:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "Language: FR\n"
@@ -26,7 +26,7 @@ msgstr ""
 "L'extension \"%1$s\" nécessite Espace Client %3$s. Vous utilisez "
 "actuellement la version %2$s. Veuillez mettre à jour le plugin Espace Client."
 
-#: ../includes/plugin.class.php:263
+#: ../includes/plugin.class.php:267
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please enable "
 "them in the WordPress settings."
@@ -229,8 +229,8 @@ msgstr ""
 "que personne d'autre ne puisse voir ces contenus."
 
 #: ../includes/setup-wizard-done.view.php:52
-#: ../includes/core-addons/help/help-addon.class.php:85
-#: ../includes/core-addons/help/help-addon.class.php:111
+#: ../includes/core-addons/help/help-addon.class.php:93
+#: ../includes/core-addons/help/help-addon.class.php:119
 msgid "Subscribe to our newsletter"
 msgstr "S'inscrire à notre liste de diffusion"
 
@@ -246,7 +246,7 @@ msgstr ""
 "courriel par mois !"
 
 #: ../includes/setup-wizard-done.view.php:63
-#: ../includes/core-addons/help/help-addon.class.php:188
+#: ../includes/core-addons/help/help-addon.class.php:196
 msgid "Email Address"
 msgstr "Adresse email"
 
@@ -517,27 +517,31 @@ msgstr "S'enregistrer"
 msgid "Help"
 msgstr "Aide"
 
-#: ../includes/core-addons/help/help-addon.class.php:55
-#: ../includes/core-addons/help/help-addon.class.php:63
+#: ../includes/core-addons/help/help-addon.class.php:56
+#: ../includes/core-addons/help/help-addon.class.php:64
 msgid "Add-ons"
 msgstr "Extensions"
 
-#: ../includes/core-addons/help/help-addon.class.php:64
+#: ../includes/core-addons/help/help-addon.class.php:65
 msgid "Support"
 msgstr "Assistance"
 
-#: ../includes/core-addons/help/help-addon.class.php:83
-#: ../includes/core-addons/help/help-addon.class.php:95
+#: ../includes/core-addons/help/help-addon.class.php:86
+msgid "Settings have been resetted to default values"
+msgstr "Les réglages ont été réinitialisés"
+
+#: ../includes/core-addons/help/help-addon.class.php:91
+#: ../includes/core-addons/help/help-addon.class.php:103
 #: ../includes/core-addons/help/templates/list-addons.template.php:7
 msgid "Enhance your customer area"
 msgstr "Améliorez votre espace client"
 
-#: ../includes/core-addons/help/help-addon.class.php:87
-#: ../includes/core-addons/help/help-addon.class.php:103
+#: ../includes/core-addons/help/help-addon.class.php:95
+#: ../includes/core-addons/help/help-addon.class.php:111
 msgid "Get more from MarvinLabs"
 msgstr "Plus de MarvinLabs"
 
-#: ../includes/core-addons/help/help-addon.class.php:125
+#: ../includes/core-addons/help/help-addon.class.php:133
 msgid ""
 "&laquo Customer Area &raquo; is a very modular plugin. We have built it so "
 "that it can be extended in many ways. Some add-ons are presented in this "
@@ -550,11 +554,11 @@ msgstr ""
 "l'onglet &laquo Extensions &raquo;. Vous pouvez aussi voir toutes les "
 "extensions que nous tenons à votre disposition en suivant le lien ci-dessous."
 
-#: ../includes/core-addons/help/help-addon.class.php:130
+#: ../includes/core-addons/help/help-addon.class.php:138
 msgid "Browse all extensions"
 msgstr "Voir toutes les extensions"
 
-#: ../includes/core-addons/help/help-addon.class.php:148
+#: ../includes/core-addons/help/help-addon.class.php:156
 #, php-format
 msgid ""
 "If you like our plugins, you might want to <a href=\"%s\">check our website</"
@@ -563,25 +567,25 @@ msgstr ""
 "Si vous aimez nos plugins, vous devriez <a href=\"%s\">jeter un oeil sur "
 "notre site</a> pour voir les autres."
 
-#: ../includes/core-addons/help/help-addon.class.php:151
+#: ../includes/core-addons/help/help-addon.class.php:159
 msgid "If you want to get updates about our plugins, you can:"
 msgstr ""
 "Si vous souhaitez rester au courant des actualités de nos plugins, vous "
 "pouvez :"
 
-#: ../includes/core-addons/help/help-addon.class.php:153
+#: ../includes/core-addons/help/help-addon.class.php:161
 msgid "Follow us on Twitter"
 msgstr "Nous suivre sur Twitter"
 
-#: ../includes/core-addons/help/help-addon.class.php:156
+#: ../includes/core-addons/help/help-addon.class.php:164
 msgid "Follow us on Google+"
 msgstr "Nous mettre +1 sur Google+"
 
-#: ../includes/core-addons/help/help-addon.class.php:159
+#: ../includes/core-addons/help/help-addon.class.php:167
 msgid "Follow us on Facebook"
 msgstr "Nous suivre sur Facebook"
 
-#: ../includes/core-addons/help/help-addon.class.php:179
+#: ../includes/core-addons/help/help-addon.class.php:187
 msgid ""
 "You can also get notified when we've got something exciting to say (plugin "
 "updates, news, etc.). Simply subscribe to our newsletter, we won't spam, we "
@@ -611,22 +615,38 @@ msgstr ""
 "par courriel."
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:21
+msgid "Reset settings"
+msgstr "Réinitialiser les réglages"
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:23
+msgid ""
+"Pressing the button below will reset all your Customer Area settings to the "
+"default values. This cannot be undone!"
+msgstr ""
+"Appuyer sur le bouton ci-dessous remettra tous vos réglages de l'Espace "
+"Client à 0. Cette action ne peut pas être annulée !"
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:27
+msgid "Reset default settings"
+msgstr "Réinitialiser les réglages"
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:31
 msgid "Troubleshooting information"
 msgstr "Information de dépannage"
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:23
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:33
 msgid "Installed add-ons"
 msgstr "Extension installées"
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:28
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:38
 msgid "Name"
 msgstr "Nom"
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:29
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:39
 msgid "Required customer area version"
 msgstr "Version espace client requise"
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:47
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:57
 msgid "Plugin options"
 msgstr "Options de l'extension"
 

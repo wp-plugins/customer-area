@@ -46,7 +46,7 @@ foreach ( $all_capability_groups as $group ) :
 			$checked = $role->has_cap( $cap ) ? 'checked="checked" ' : '';
 			$readonly = $role->name=='administrator';
 ?>
-			<td title="<?php echo esc_attr( $cap_name ); ?>">
+			<td title="<?php echo esc_attr( $role->name . ' &raquo; ' . $cap_name ); ?>">
 <?php 		if ( $readonly ) : ?>
 <?php 			if ( !empty( $checked ) ) : ?>
 				<input type="hidden" name="<?php echo esc_attr( $id ); ?>" value="1" />

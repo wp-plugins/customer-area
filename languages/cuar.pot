@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Customer Area\n"
-"POT-Creation-Date: 2013-12-03 20:02+0100\n"
-"PO-Revision-Date: 2013-12-03 20:02+0100\n"
+"POT-Creation-Date: 2013-12-05 15:16+0100\n"
+"PO-Revision-Date: 2013-12-05 15:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: MarvinLabs\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgid ""
 "version %2$s. Please update the Customer Area plugin."
 msgstr ""
 
-#: ../includes/plugin.class.php:263
+#: ../includes/plugin.class.php:267
 msgid ""
 "Permalinks are disabled, Customer Area will not work properly. Please enable "
 "them in the WordPress settings."
@@ -205,8 +205,8 @@ msgid ""
 msgstr ""
 
 #: ../includes/setup-wizard-done.view.php:52
-#: ../includes/core-addons/help/help-addon.class.php:85
-#: ../includes/core-addons/help/help-addon.class.php:111
+#: ../includes/core-addons/help/help-addon.class.php:93
+#: ../includes/core-addons/help/help-addon.class.php:119
 msgid "Subscribe to our newsletter"
 msgstr ""
 
@@ -218,7 +218,7 @@ msgid ""
 msgstr ""
 
 #: ../includes/setup-wizard-done.view.php:63
-#: ../includes/core-addons/help/help-addon.class.php:188
+#: ../includes/core-addons/help/help-addon.class.php:196
 msgid "Email Address"
 msgstr ""
 
@@ -450,27 +450,31 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:55
-#: ../includes/core-addons/help/help-addon.class.php:63
+#: ../includes/core-addons/help/help-addon.class.php:56
+#: ../includes/core-addons/help/help-addon.class.php:64
 msgid "Add-ons"
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:64
+#: ../includes/core-addons/help/help-addon.class.php:65
 msgid "Support"
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:83
-#: ../includes/core-addons/help/help-addon.class.php:95
+#: ../includes/core-addons/help/help-addon.class.php:86
+msgid "Settings have been resetted to default values"
+msgstr ""
+
+#: ../includes/core-addons/help/help-addon.class.php:91
+#: ../includes/core-addons/help/help-addon.class.php:103
 #: ../includes/core-addons/help/templates/list-addons.template.php:7
 msgid "Enhance your customer area"
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:87
-#: ../includes/core-addons/help/help-addon.class.php:103
+#: ../includes/core-addons/help/help-addon.class.php:95
+#: ../includes/core-addons/help/help-addon.class.php:111
 msgid "Get more from MarvinLabs"
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:125
+#: ../includes/core-addons/help/help-addon.class.php:133
 msgid ""
 "&laquo Customer Area &raquo; is a very modular plugin. We have built it so "
 "that it can be extended in many ways. Some add-ons are presented in this "
@@ -478,34 +482,34 @@ msgid ""
 "extensions we have by clicking the link below."
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:130
+#: ../includes/core-addons/help/help-addon.class.php:138
 msgid "Browse all extensions"
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:148
+#: ../includes/core-addons/help/help-addon.class.php:156
 #, php-format
 msgid ""
 "If you like our plugins, you might want to <a href=\"%s\">check our website</"
 "a> for more."
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:151
+#: ../includes/core-addons/help/help-addon.class.php:159
 msgid "If you want to get updates about our plugins, you can:"
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:153
+#: ../includes/core-addons/help/help-addon.class.php:161
 msgid "Follow us on Twitter"
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:156
+#: ../includes/core-addons/help/help-addon.class.php:164
 msgid "Follow us on Google+"
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:159
+#: ../includes/core-addons/help/help-addon.class.php:167
 msgid "Follow us on Facebook"
 msgstr ""
 
-#: ../includes/core-addons/help/help-addon.class.php:179
+#: ../includes/core-addons/help/help-addon.class.php:187
 msgid ""
 "You can also get notified when we've got something exciting to say (plugin "
 "updates, news, etc.). Simply subscribe to our newsletter, we won't spam, we "
@@ -529,22 +533,36 @@ msgid "Please note that we do not reply to support requests sent by email."
 msgstr ""
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:21
-msgid "Troubleshooting information"
+msgid "Reset settings"
 msgstr ""
 
 #: ../includes/core-addons/help/templates/troubleshooting.template.php:23
+msgid ""
+"Pressing the button below will reset all your Customer Area settings to the "
+"default values. This cannot be undone!"
+msgstr ""
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:27
+msgid "Reset default settings"
+msgstr ""
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:31
+msgid "Troubleshooting information"
+msgstr ""
+
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:33
 msgid "Installed add-ons"
 msgstr ""
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:28
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:38
 msgid "Name"
 msgstr ""
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:29
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:39
 msgid "Required customer area version"
 msgstr ""
 
-#: ../includes/core-addons/help/templates/troubleshooting.template.php:47
+#: ../includes/core-addons/help/templates/troubleshooting.template.php:57
 msgid "Plugin options"
 msgstr ""
 

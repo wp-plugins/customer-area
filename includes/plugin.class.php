@@ -210,6 +210,10 @@ class CUAR_Plugin {
 		return $this->settings->save_options();
 	}
 	
+	public function reset_defaults() {
+		return $this->settings->reset_defaults();
+	}
+	
 	public function get_default_options() {
 		return $this->settings->get_default_options();
 	}

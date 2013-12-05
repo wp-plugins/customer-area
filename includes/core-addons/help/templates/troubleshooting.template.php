@@ -18,6 +18,16 @@
 		'http://customer-area.marvinlabs.com/support/'); ?></li>
 </ul>
 
+<h1><?php _e( 'Reset settings', 'cuar' ); ?></h1>
+
+<p><?php _e('Pressing the button below will reset all your Customer Area settings to the default values. This cannot be undone!', 'cuar' ); ?></p>
+
+<form method="POST" action="">
+	<p >
+		<input type="submit" name="cuar-reset-all-settings" id="cuar-reset-all-settings" class="button button-primary" value="<?php esc_attr_e( 'Reset default settings', 'cuar' ); ?>" />
+	</p>
+</form>
+
 <h1><?php _e( 'Troubleshooting information', 'cuar' ); ?></h1>
 
 <h2><?php _e( 'Installed add-ons', 'cuar' ); ?></h2>

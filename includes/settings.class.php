@@ -929,15 +929,20 @@ if (! class_exists ( 'CUAR_Settings' )) :
 		 */
 		public function update_option($option_id, $new_value, $commit = true) {
 			$this->options [$option_id] = $new_value;
-			if ($commit)
-				$this->save_options ();
+			if ($commit) $this->save_options ();
 		}
 		
 		/**
 		 * Persist the current plugin options to DB
 		 */
 		public function save_options() {
-			update_option ( CUAR_Settings::$OPTIONS_GROUP, $this->options );
+			update_option( CUAR_Settings::$OPTIONS_GROUP, $this->options );
+		}
+	
+		public function reset_defaults() {
+			$this->options = array();
+			$this->save_options();
+			$this->reload_options();
 		}
 		
 		/**

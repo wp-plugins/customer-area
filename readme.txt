@@ -3,8 +3,8 @@ Contributors: vprat, marvinlabs
 Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
-Tested up to: 3.8.0 RC1
-Stable tag: 3.8.1
+Tested up to: 3.8.0
+Stable tag: 3.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,7 @@ or download them on his page.
 * [Support](http://customer-area.marvinlabs.com/support)
 * [Demo](http://customer-area.marvinlabs.com/demo)
 * [Add-ons](http://www.marvinlabs.com/downloads/category/customer-area)
+* [Translations](http://customer-area.marvinlabs.com/documentation/translations/)
 
 **Current features**
 
@@ -53,7 +54,7 @@ from [our online shop](http://www.marvinlabs.com/downloads/category/customer-are
 * French by [MarvinLabs](http://www.marvinlabs.com)
 * German by [Benjamin Oechsler](http://benlocal.de)
 * Spanish by [e-rgonomy](http://e-rgonomy.com)
-* Brazilian Portuguese by [Ricardo Silva](http://walbatroz.com)
+* Brazilian Portuguese by [Ricardo Silva](http://walbatroz.com) and [Marcos Meyer Hollerweger](http://marcosh.eng.br/)
 * Italian by [Andrea Starz](http://www.work-on-web.it)
 * Swedish by Patric Liljestrand
 
@@ -158,7 +159,13 @@ your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
 
-= 3.8.1(2013/12/05) =
+= 3.8.2 (2013/12/06) =
+
+* Fix a PHP warning message on some servers for new install (Warning: session_start() [function.session-start]: Cannot send 
+session cookie - headers already sent by ...)
+* Updated Brazilian Portuguese translation
+
+= 3.8.1 (2013/12/05) =
 
 * Added a button to reset options to default values (settings > Support)
 

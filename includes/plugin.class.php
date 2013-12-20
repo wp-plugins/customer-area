@@ -290,7 +290,7 @@ class CUAR_Plugin {
 	 * Remove the stored notices
 	 */
 	private function get_admin_notices() {
-		return empty( $_SESSION[ 'cuar_admin_notices' ] ) ? false : $_SESSION['cuar_admin_notices'];
+		return isset( $_SESSION[ 'cuar_admin_notices' ] ) && !empty( $_SESSION[ 'cuar_admin_notices' ] ) ? $_SESSION['cuar_admin_notices'] : false;
 	}
 	
 	/**

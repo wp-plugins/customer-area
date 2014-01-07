@@ -233,7 +233,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 	 * @param array $new_owner
 	 */
 	public function handle_new_private_file_upload( $post_id, $previous_owner, $new_owner, $file ) {
-		if ( !isset( $file ) || empty( $file ) ) return;
+		if ( !isset( $file ) || empty( $file ) ) return array( 'error' => __( 'no file to upload', 'cuar' ) );
 		
 		$po_addon = $this->plugin->get_addon('post-owner');
 		
@@ -252,7 +252,7 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 				cuar_log_debug( $msg );
 		
 				$this->plugin->add_admin_notice( $msg );
-				return;
+				return array( 'error' => $msg );
 			}
 		}
 		
@@ -284,15 +284,18 @@ class CUAR_PrivateFileAddOn extends CUAR_AddOn {
 			$msg = sprintf( __( 'An unknown error happened while uploading your file.', 'cuar' ) );
 			cuar_log_debug( $msg );
 			$this->plugin->add_admin_notice( $msg );
+			return array( 'error' => $msg );
 		} else if ( isset( $upload['error'] ) ) {
 			$msg = sprintf( __( 'An error happened while uploading your file: %s', 'cuar' ), $upload['error'] );
 			cuar_log_debug( $msg );
 			$this->plugin->add_admin_notice( $msg );
+			return array( 'error' => $msg );
 		} else {
 			$upload['file'] = basename( $upload['file'] );
 			unset( $upload['url'] );
 			update_post_meta( $post_id, 'cuar_private_file_file', $upload );
 			cuar_log_debug( 'Uploaded new private file: ' . print_r( $upload, true ) );
+			return true;
 		}
 	}
 	

@@ -333,8 +333,20 @@ jQuery(document).ready( function($) {
 			}
 			
 			if ( !empty( $_FILES['cuar_private_file_file']['name'] ) ) {
-				$this->private_file_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner,
+				$upload_result = $this->private_file_addon->handle_new_private_file_upload( $post_id, $previous_owner, $new_owner,
 						$_FILES['cuar_private_file_file']);
+
+				if ( $upload_result!==true ) {
+					remove_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ) );
+
+					$my_post = array(
+							'ID'          => $post_id,
+							'post_status' => 'draft'
+						);
+					wp_update_post( $my_post );
+					
+					add_action( 'cuar_after_save_post_owner', array( &$this, 'do_save_post' ), 10, 4 );
+				}
 			}
 		}
 	}

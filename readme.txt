@@ -3,8 +3,8 @@ Contributors: vprat, marvinlabs
 Donate link: http://www.marvinlabs.com/donate/
 Tags: private files,client area,customer area,user files,secure area,crm
 Requires at least: 3.5
-Tested up to: 3.8.0
-Stable tag: 3.8.3
+Tested up to: 3.8.1
+Stable tag: 3.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -158,6 +158,11 @@ Contributions are welcome. Additionally, if you wish to participate to developme
 your wordpress.org profile with your other developed plugins.
 
 == Changelog ==
+
+= 3.9.0 (2014/01/23) =
+
+* Improved the interface to select private content owners. Threw in some jQuery goodness.
+* Load frontend scripts only when showing the Customer Area page (not on the other pages of the website)
 
 = 3.8.3 (2014/01/07) =
 

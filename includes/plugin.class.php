@@ -191,6 +191,11 @@ class CUAR_Plugin {
 		
 		return '';
 	}
+	
+	public function get_customer_page_id() {
+		$cp_addon = $this->get_addon('customer-page');
+		return $cp_addon->get_customer_page_id();
+	}
 
 	/*------- SETTINGS ----------------------------------------------------------------------------------------------*/
 	
@@ -216,6 +221,10 @@ class CUAR_Plugin {
 	
 	public function get_default_options() {
 		return $this->settings->get_default_options();
+	}
+	
+	public function get_version() {
+		return $this->get_option( CUAR_Settings::$OPTION_CURRENT_VERSION );
 	}
 	
 	/** @var CUAR_Settings */
@@ -307,6 +316,43 @@ class CUAR_Plugin {
 				'type' 	=> $type,
 				'msg' 	=> $msg 
 	 		);
+	}
+
+	/*------- EXTERNAL LIBRARIES ------------------------------------------------------------------------------------*/
+	
+	/**
+	 * Allow the use of an external library provided by Customer Area
+	 * 
+	 * @param string $id The ID for the external library
+	 */
+	public function enable_library( $id ) {
+		switch ( $id ) {
+			case 'jquery.select2': {
+				wp_enqueue_script( 'jquery.select2', CUAR_PLUGIN_URL . 'libs/select2/select2.min.js', array('jquery'), $this->get_version() );
+
+				$locale = get_locale();
+				if ( $locale && !empty( $locale ) ) {
+					$locale = str_replace("_", "-", $locale );
+					$locale_parts = explode( "-", $locale );
+					
+					$loc_files = array( 'select2_locale_' . $locale . '.js' );
+					
+					if ( count( $locale_parts ) > 0 ) {
+						$loc_files[] = 'select2_locale_' . $locale_parts[0] . '.js';
+					}
+					
+					foreach ( $loc_files as $lf ) {
+						if ( file_exists( CUAR_PLUGIN_DIR . '/libs/select2/' . $lf ) ) {
+							wp_enqueue_script( 'jquery.select2.locale', CUAR_PLUGIN_URL . 'libs/select2/' . $lf, array('jquery.select2'), $this->get_version() );
+							break;
+						}
+					}					
+				}
+				
+				wp_enqueue_style( 'jquery.select2', CUAR_PLUGIN_URL . 'libs/select2/select2.css', $this->get_version() );
+			}
+			default:
+		}
 	}
 	
 	/*------- OTHER FUNCTIONS ---------------------------------------------------------------------------------------*/

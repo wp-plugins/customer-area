@@ -1,7 +1,12 @@
 .metabox-row {
 	margin: 0.5em 0; 
 }
-
+table.metabox-row {
+	width: 100%;
+}
+table.metabox-row td.label {
+	width: 30%;
+}
 span.label {
 	display: inline-block;
 	min-width: 40%;
@@ -257,4 +262,11 @@ p.forcelinebreak {
 	list-style-type: disc;
 	padding-left: 40px;
 	line-height: 1.5em;
+}
+
+/* -= JQUERY.SELECT2 */
+
+.wp-admin .select2-container-multi .select2-choices .select2-search-choice {
+	border-radius: 0;
+	background-image: none;
 }

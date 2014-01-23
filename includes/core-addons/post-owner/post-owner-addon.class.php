@@ -41,6 +41,8 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 
 			add_action('cuar_after_addons_init', array( &$this, 'customize_post_edit_pages'));
 			add_action('cuar_after_addons_init', array( &$this, 'customize_post_list_pages'));
+
+			add_action( 'admin_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
 		} else {
 			add_action( 'template_redirect', array( &$this, 'protect_single_post_access' ) );
 		}
@@ -394,6 +396,20 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 	
 	/*------- CUSTOMISATION OF THE EDIT PAGE FOR A POST WITH OWNER INFO ---------------------------------------------*/
 
+	/**
+	 * Enqueues the select script on the user-edit and profile screens.
+	 */
+	public function enqueue_scripts() {
+		$screen = get_current_screen();
+		$post_types = $this->plugin->get_private_post_types();		
+	
+		if ( isset( $screen->id ) ) {
+			if ( in_array( $screen->id, $post_types ) ) {
+				$this->plugin->enable_library('jquery.select2');
+			}
+		}
+	}
+	
 	public function customize_post_edit_pages() {
 		add_action( 'admin_menu', array( &$this, 'register_post_edit_meta_boxes' ));
 		add_action( 'save_post', array( &$this, 'do_save_post' ), 10, 2 );
@@ -430,19 +446,21 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 
 		// $owner_type_field_id = 'cuar_owner_type', $owner_field_id = 'cuar_owner'
 
-		echo '<div id="cuar_owner_type_row" class="metabox-row">';
-		echo '<span class="label"><label for="cuar_owner_type">' . __('Select the type of owner', 'cuar') . '</label></span><span class="field">';
-		
+		echo '<table class="metabox-row">';
+		echo '<tr>';
+		echo '<td class="label"><label for="cuar_owner_type">' . __('Select the type of owner', 'cuar') . '</label></td>';
+		echo '<td class="field">';		
 		$this->print_owner_type_select_field( 'cuar_owner_type', null, $current_owner_type );
+		echo '</td>';
+		echo '</tr>';
 
-		echo '</span></div>';
-		
-		echo '<div id="cuar_owner_type_row" class="metabox-row">';
-		echo '<span class="label"><label></label></span><span class="field">';
-		
+		echo '<tr>';
+		echo '<td class="label"></td>';
+		echo '<td class="field">';				
 		$this->print_owner_select_field( 'cuar_owner_type', 'cuar_owner', null, $current_owner_type, $current_owner_ids );
-				
-		echo '</span></div>';
+		echo '</td>';
+		echo '</tr>';
+		echo '</table>';
 
 		$this->print_owner_select_javascript( 'cuar_owner_type', 'cuar_owner' );
 		
@@ -513,16 +531,16 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			jQuery( document ).ready( function($) {
 				$( '#<?php echo $owner_type_field_id; ?>' ).change(function() {
 					var type = $(this).val();
-					var newVisibleId = '#<?php echo $owner_field_id ?>_' + type + '_id';
+					var newVisibleId = '#<?php echo $owner_field_id ?>_' + type + '_container';
 
 					// Do nothing if already visible
 					if ( $(newVisibleId).is(":visible") ) return
 
 					// Hide previous and then show new
-					if ( $('.<?php echo $owner_type_field_id; ?>_owner_select:visible').length<=0 ) {
+					if ( $('.<?php echo $owner_type_field_id; ?>_owner_select_container:visible').length<=0 ) {
 						$(newVisibleId).fadeToggle();
 					} else {
-						$('.<?php echo $owner_type_field_id; ?>_owner_select:visible').fadeToggle("fast", function () {
+						$('.<?php echo $owner_type_field_id; ?>_owner_select_container:visible').fadeToggle("fast", function () {
 							$(newVisibleId).fadeToggle();
 						});
 					}
@@ -558,7 +576,8 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			$hide_if_single_owner = false;
 		}
 		
-		foreach ( $owner_types as $type_id => $type_label ) { 			
+		foreach ( $owner_types as $type_id => $type_label ) { 		
+			$container_id = $owner_field_id . '_' . $type_id . '_container';	
 			$field_id = $owner_field_id . '_' . $type_id . '_id'; 					
 			if ($field_group!=null) {
 				$field_name = $field_group . '[' . $field_id . ']';
@@ -569,27 +588,30 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 			$owners = apply_filters( 'cuar_get_printable_owners_for_type_' . $type_id, array() );
 
 			$hidden = ( $visible_owner_select==$type_id ? '' : ' style="display: none;"' );
-						
+
+			printf( '<div id="%s" class="field %s" %s>', 
+					$container_id,
+					$owner_type_field_id . '_owner_select_container',
+					$hidden
+				);
+			
 			if ( count( $owners )==0 )	{
-				printf( '<span class="no-owner %s" %s><em>%s</em></span>', 
+				printf( '<span class="no-owner %s"><em>%s</em></span>', 
 						$owner_type_field_id . '_owner_select', 
-						$hidden, 
-						__( 'It seems you cannot select any owner.', 'cuar' ) );
+						__( 'It seems you cannot select any owner of that type.', 'cuar' ) );
 			} else if ( count( $owners )==1 )	{
 				foreach ( $owners as $id => $name ) {
 					printf( '<input type="hidden" name="%s" value="%s" />', $field_name, $id );
 										
 					if ( $hide_if_single_owner ) {
-						printf( '<span id="%s" class="single-owner hidden-message %s" %s><em>%s</em></span>', 
+						printf( '<span id="%s" class="single-owner hidden-message %s"><em>%s</em></span>', 
 								$field_id, 
 								$owner_type_field_id . '_owner_select', 
-								$hidden, 
 								apply_filters( 'cuar_select_owner_text_hidden', __( 'The owner is hidden', 'cuar' ) ) );
 					} else {
-						printf( '<span id="%s" class="single-owner %s" %s><em>%s</em></span>', 
+						printf( '<span id="%s" class="single-owner %s"><em>%s</em></span>', 
 								$field_id, 
 								$owner_type_field_id . '_owner_select', 
-								$hidden, 
 								apply_filters( 'cuar_select_owner_text_single', $name ) );
 					}
 				}
@@ -597,12 +619,12 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 				$enable_multiple_selection = apply_filters( 'cuar_enable_multiple_select_for_type_' . $type_id, false );
 				$multiple = $enable_multiple_selection ? ' multiple="multiple" size="8"' : '';
 				
-				printf( '<select id="%s" name="%s" class="%s" %s %s>',
+				printf( '<select id="%s" name="%s" class="%s" %s data-placeholder="%s">',
 						$field_id,
 						$enable_multiple_selection ? $field_name . '[]' : $field_name,
 						$owner_type_field_id . '_owner_select',
-						$hidden, 
-						$multiple
+						$multiple,
+						__('Select or search an owner', 'cuar')
 					);
 	
 				foreach ( $owners as $id => $name ) {
@@ -611,7 +633,20 @@ class CUAR_PostOwnerAddOn extends CUAR_AddOn {
 				}
 				
 				echo '</select>';
+?>
+				<script type="text/javascript">
+					<!--
+					jQuery("document").ready(function($){
+						$("#<?php echo $field_id; ?>").select2({
+							width:						"100%"
+						});
+					});
+					//-->
+				</script>
+<?php 			
 			}
+			
+			echo '</div>';
 		}			
 	}
 	

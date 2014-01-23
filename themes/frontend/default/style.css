@@ -267,17 +267,32 @@ h4.cuar-private-file-section.ui-accordion-header-active {
 .cuar_form_row {
 	display: table;
 	width: 100%;
+	margin: 20px 0;
 }
-.cuar_form_row>label {
+.cuar_form_row .cuar_label {
 	display: table-cell;
 	width: 30%;
 	vertical-align: top;
 }
 
-.cuar_form_row>span {
+.cuar_form_row .cuar_field {
 	display: table-cell;
 	min-width: 30%;
 	vertical-align: top;
+}
+
+.cuar_form_row .cuar_field input,
+.cuar_form_row .cuar_field text-area,
+.cuar_form_row .cuar_field select {
+	width: 100%;
+}
+
+.cuar_form_row.cuar_submit_row {
+	margin-left: 30%;
+}
+
+.cuar_form_row.cuar_submit_row input {
+	width: auto;
 }
 
 .cuar_form_row span.hint {
@@ -285,14 +300,8 @@ h4.cuar-private-file-section.ui-accordion-header-active {
 	opacity: 0.6;
 }
 
-.cuar_form_create_content .cuar_form_row>span input,
-.cuar_form_create_content .cuar_form_row>span textarea {
-	width: 100%;
-	margin-bottom: 12px;
-}
-.cuar_form_create_content .cuar_form_row>span select {
-	min-width: 50%;	
-	margin-bottom: 12px;
+.cuar_form_row #cuar_owner_type {
+	margin-bottom: 20px;
 }
 
 .cuar_form_create_content .single-owner, .cuar_form_create_content .no-owner {

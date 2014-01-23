@@ -43,7 +43,7 @@ class CUAR_PrivatePageFrontendInterface {
 			add_filter( "get_previous_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
 			add_filter( "get_next_post_where", array( &$this, 'disable_single_post_navigation' ), 1, 3 );
 	
-			add_action( 'init', array( &$this, 'load_scripts' ) );
+			add_action( 'wp_head', array( &$this, 'load_scripts' ) );
 		}
 	}
 
@@ -191,11 +191,13 @@ class CUAR_PrivatePageFrontendInterface {
 	/**
 	 * Loads the required javascript files (only when not in admin area)
 	 */
-	// TODO Load only on the customer area page
 	public function load_scripts() {
 		if ( is_admin() ) return;
-		
-		wp_enqueue_script( 'jquery-ui-accordion' );
+
+		$obj = get_queried_object();
+		if ( is_page( $obj ) && $obj->ID==$this->plugin->get_customer_page_id() ) {
+			wp_enqueue_script( 'jquery-ui-accordion' );
+		}
 	}
 	
 	/** @var CUAR_Plugin */
